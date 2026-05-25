@@ -31,12 +31,13 @@ const pTimer = setInterval(() => {
 
 // ===== NODE MESH CANVAS =====
 const meshCanvas = document.getElementById('meshCanvas');
+// Only run canvas if not on a very low-end device/tiny screen or scale particles
 if (meshCanvas) {
     const ctx = meshCanvas.getContext('2d');
     let particles = [];
-    const MAX_P = 70;
     let W = (meshCanvas.width  = window.innerWidth);
     let H = (meshCanvas.height = window.innerHeight);
+    const MAX_P = window.innerWidth > 768 ? 70 : 25; // Drastically reduce on mobile
     let mouse = { x: null, y: null, r: 150 };
 
     window.addEventListener('resize', () => {
