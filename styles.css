@@ -1352,12 +1352,13 @@ footer {
     .channel-card { gap: 2rem; }
     .vid-stats-row { gap: 0.7rem; }
 }
+
 @media (max-width: 960px) {
-    .hero-inner { grid-template-columns: 1fr; gap: 4rem; text-align: center; }
+    .hero-inner { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
     .hero-right { order: -1; }
-    .profile-halo { width: 300px; height: 300px; }
-    .profile-badge-float { right: -10px; bottom: 12px; }
-    .profile-stat-float { left: -10px; top: 12px; }
+    .profile-halo { width: 280px; height: 280px; }
+    .profile-badge-float { right: -5px; bottom: 10px; }
+    .profile-stat-float { left: -5px; top: 10px; }
     .brand-chip, .hero-cta, .hero-stats { justify-content: center; }
     .hstat-sep { display: none; }
     .acronym-row { justify-content: center; }
@@ -1368,7 +1369,9 @@ footer {
     .ch-left { flex-direction: column; gap: 1.2rem; }
     .ch-stats { justify-content: center; }
     .brand-grid { grid-template-columns: 1fr; }
+    .brand-visual { width: 50%; padding-top: 50%; }
 }
+
 @media (max-width: 768px) {
     body { cursor: auto; }
     .cursor-dot, .cursor-outline { display: none; }
@@ -1377,6 +1380,88 @@ footer {
     .video-grid { grid-template-columns: 1fr; }
     .services-grid { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
-    .hero { padding: 7rem 5% 5rem; }
     .scroll-hint { display: none; }
+
+    /* Hero */
+    .hero { padding: 6rem 5% 4rem; }
+    .hero-heading { font-size: clamp(2.4rem, 9vw, 3.5rem); letter-spacing: -1.5px; }
+    .profile-halo { width: 240px; height: 240px; }
+    .profile-badge-float { display: none; }
+    .profile-stat-float { display: none; }
+    .hero-cta { flex-direction: column; align-items: center; gap: 0.8rem; }
+    .btn-gold, .btn-ghost, .btn-cyan { width: 100%; justify-content: center; }
+    .hero-stats { gap: 1.5rem; }
+    .hstat strong { font-size: 1.3rem; }
+    .acronym-row { gap: 0.4rem; }
+    .acr-block { padding: 0.3rem 0.65rem; }
+    .acr-letter { font-size: 1.1rem; }
+    .acr-word { font-size: 0.75rem; }
+
+    /* About */
+    .about { padding: 5rem 0; }
+    .about-cards { gap: 1rem; }
+    .about-card { padding: 1.5rem; }
+
+    /* Process timeline */
+    .process { padding: 5rem 0; }
+    .tl-item { padding: 3.5rem 1.5rem 1.5rem; }
+
+    /* Services */
+    .services { padding: 5rem 0; }
+
+    /* Portfolio / Channel card */
+    .portfolio { padding: 5rem 0; }
+    .channel-card { padding: 2rem; flex-direction: column; }
+    .ch-avatar { width: 70px; height: 70px; font-size: 1.6rem; }
+    .ch-name { font-size: 1.2rem; }
+    .ch-stats { gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .ch-stat strong { font-size: 1rem; }
+    .btn-youtube { width: 100%; justify-content: center; }
+
+    /* Video grid */
+    .vid-stats-row { flex-wrap: wrap; gap: 0.5rem; }
+    .vid-meta { padding: 1.2rem 1.2rem 1.4rem; }
+    .vid-meta h3 { font-size: 0.95rem; }
+    .vid-desc { display: none; } /* hide desc on mobile to save space */
+
+    /* Branding */
+    .branding { padding: 5rem 0; }
+    .brand-visual { width: 65%; padding-top: 65%; }
+    .brand-meta h3 { font-size: 1.4rem; }
+    .brand-desc { font-size: 0.85rem; }
+
+    /* Contact */
+    .contact { padding: 5rem 0; }
+    .contact-info { padding: 1.8rem; }
+    .contact-form { padding: 1.8rem; }
+    .contact-grid { max-width: 100%; }
+
+    /* Footer */
+    footer { padding: 3.5rem 5% 3rem; }
+    .footer-brand { font-size: 2rem; }
+
+    /* Lightbox */
+    .lightbox { padding: 1rem; }
+
+    /* Section headings */
+    h2 { font-size: clamp(1.8rem, 7vw, 2.5rem); }
+    .section-sub { font-size: 0.95rem; margin-bottom: 2.5rem; }
 }
+
+@media (max-width: 480px) {
+    /* Very small phones */
+    .hero-heading { font-size: clamp(2rem, 10vw, 2.8rem); }
+    .profile-halo { width: 200px; height: 200px; }
+    .hero-stats { flex-direction: row; justify-content: center; gap: 1.2rem; }
+    .hstat { align-items: center; }
+    .section-sub { font-size: 0.9rem; }
+    .container { padding: 0 4%; }
+    .channel-card { padding: 1.5rem; }
+    .brand-visual { width: 75%; padding-top: 75%; }
+    .brand-explore { font-size: 0.78rem; padding: 0.7rem 1.3rem; }
+    .tl-item { padding: 3rem 1rem 1.5rem; }
+    .contact-info, .contact-form { padding: 1.4rem; }
+    .services-grid { gap: 1rem; }
+    .video-grid { gap: 1.2rem; }
+}
+
