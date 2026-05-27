@@ -594,69 +594,71 @@
     </section>
 
     <!-- ===== CONTACT ===== -->
-    <section id="contact" class="contact">
+    <section id="contact" class="contact spaceship-hud">
+        <div class="hud-overlay"></div>
         <div class="container">
-            <p class="eyebrow text-center reveal">Direct Link</p>
-            <h2 class="text-center reveal">Initiate <span class="gold">Brief</span></h2>
-            <p class="section-sub text-center reveal">Connect with the editor core to establish a project timeline.</p>
+            <p class="eyebrow text-center reveal hud-text">COMMS LINK</p>
+            <h2 class="text-center reveal">ENGAGE <span class="cyan">UPLINK</span></h2>
+            <p class="section-sub text-center reveal hud-sub">Establish secure connection with the central editing core.</p>
 
             <div class="contact-grid reveal">
-                <div class="contact-info glass" id="contactInfoCard">
-                    <div class="cc tl"></div><div class="cc tr"></div><div class="cc bl"></div><div class="cc br"></div>
-                    <div class="card-top-bar cyan-bar"></div>
-                    <h3>Terminal Direct</h3>
-                    <a href="mailto:ahmednazief@gmail.com" class="contact-link" id="contactEmail">
-                        <div class="contact-link-icon cyan"><i class="fa-solid fa-envelope"></i></div>
+                <div class="contact-info hud-panel" id="contactInfoCard">
+                    <div class="cc tl hud-cc"></div><div class="cc tr hud-cc"></div><div class="cc bl hud-cc"></div><div class="cc br hud-cc"></div>
+                    <div class="hud-scanning-line"></div>
+                    <h3 class="hud-heading">SYS.OP.COMMS</h3>
+                    <a href="mailto:ahmednazief@gmail.com" class="contact-link hud-link" id="contactEmail">
+                        <div class="contact-link-icon cyan"><i class="fa-solid fa-satellite-dish"></i></div>
                         <div>
-                            <span class="contact-link-label">Email</span>
+                            <span class="contact-link-label">NET_ADDRESS</span>
                             <span class="contact-link-val">ahmednazief@gmail.com</span>
                         </div>
                     </a>
-                    <a href="https://www.youtube.com/@Plains" target="_blank" class="contact-link" id="contactYT">
-                        <div class="contact-link-icon gold"><i class="fa-brands fa-youtube"></i></div>
+                    <a href="https://www.youtube.com/@Plains" target="_blank" class="contact-link hud-link" id="contactYT">
+                        <div class="contact-link-icon cyan"><i class="fa-solid fa-video"></i></div>
                         <div>
-                            <span class="contact-link-label">YouTube</span>
+                            <span class="contact-link-label">BROADCAST_NODE</span>
                             <span class="contact-link-val">youtube.com/@Plains</span>
                         </div>
                     </a>
-                    <div class="availability-badge">
-                        <span class="avail-dot"></span>
-                        Console Active &amp; Ready
+                    <div class="availability-badge hud-status">
+                        <span class="avail-dot hud-dot"></span>
+                        STATUS: ONLINE // READY
                     </div>
                 </div>
 
-                <form class="contact-form glass" id="contactForm">
-                    <div class="cc tl"></div><div class="cc tr"></div><div class="cc bl"></div><div class="cc br"></div>
-                    <div class="card-top-bar gold-bar"></div>
-                    <div class="vip-badge"><i class="fa-solid fa-crown"></i> VIP Onboarding Priority</div>
+                <form class="contact-form hud-panel" id="contactForm">
+                    <div class="cc tl hud-cc"></div><div class="cc tr hud-cc"></div><div class="cc bl hud-cc"></div><div class="cc br hud-cc"></div>
+                    <div class="hud-scanning-line"></div>
+                    <div class="vip-badge hud-priority"><i class="fa-solid fa-triangle-exclamation"></i> PRIORITY CHANNEL</div>
                     <div class="form-row">
-                        <div class="form-group">
-                            <label for="name">Your Identity</label>
-                            <input type="text" id="name" name="name" placeholder="Creator / Brand Name" required>
+                        <div class="form-group hud-input-group">
+                            <label for="name">> ID_TAG</label>
+                            <input type="text" id="name" name="name" placeholder="Creator / Brand" required class="hud-input">
                         </div>
-                        <div class="form-group">
-                            <label for="email">Direct Link (Email)</label>
-                            <input type="email" id="email" name="email" placeholder="client@domain.com" required>
+                        <div class="form-group hud-input-group">
+                            <label for="email">> NET_ADDRESS</label>
+                            <input type="email" id="email" name="email" placeholder="client@domain.com" required class="hud-input">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="subject">Project Directive</label>
-                        <input type="text" id="subject" name="subject" placeholder="Valorant / General Edit Brief">
+                    <div class="form-group hud-input-group">
+                        <label for="subject">> OBJECTIVE</label>
+                        <input type="text" id="subject" name="subject" placeholder="Valorant / Gen Edit" class="hud-input">
                     </div>
-                    <div class="form-group">
-                        <label for="message">Project Parameters</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Stream size, files, style goals..." required></textarea>
+                    <div class="form-group hud-input-group">
+                        <label for="message">> PARAMETERS</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Stream size, files, goals..." required class="hud-input"></textarea>
                     </div>
-                    <button type="submit" class="btn-gold submit-btn" id="submitBtn">
-                        <span>Deploy Message</span> <i class="fa-solid fa-paper-plane"></i>
+                    <button type="submit" class="hud-submit-btn" id="submitBtn">
+                        <span class="btn-text">INITIALIZE TRANSMISSION</span> <i class="fa-solid fa-power-off btn-icon"></i>
                     </button>
-                    <div class="form-success" id="formSuccess">
-                        <i class="fa-solid fa-circle-check"></i> Dispatch successful! Email client prepared.
+                    <div class="form-success hud-success" id="formSuccess">
+                        <i class="fa-solid fa-circle-check"></i> [DATA TRANSMITTED] Email client prepared.
                     </div>
                 </form>
             </div>
         </div>
     </section>
+
 
     <!-- ===== FOOTER ===== -->
     <footer>

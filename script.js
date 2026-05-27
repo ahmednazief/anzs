@@ -191,6 +191,16 @@ function playUI(type) {
                 gain.gain.setValueAtTime(0.06, t);
                 gain.gain.exponentialRampToValueAtTime(0.001, t + 0.28);
                 osc.start(t); osc.stop(t + 0.3);
+            },
+            keychar: () => {
+                // Subtle high-frequency telemetry blip for typing
+                osc.type = 'square';
+                const freq = 1800 + Math.random() * 400;
+                osc.frequency.setValueAtTime(freq, t);
+                osc.frequency.exponentialRampToValueAtTime(freq * 0.6, t + 0.018);
+                gain.gain.setValueAtTime(0.008, t);
+                gain.gain.exponentialRampToValueAtTime(0.001, t + 0.022);
+                osc.start(t); osc.stop(t + 0.025);
             }
         };
         if (presets[type]) presets[type]();
@@ -395,6 +405,23 @@ const contactForm = document.getElementById('contactForm');
 const submitBtn   = document.getElementById('submitBtn');
 const formSuccess = document.getElementById('formSuccess');
 
+// --- Telemetry typing sound for HUD inputs ---
+let keycharThrottle = 0;
+document.querySelectorAll('.hud-input').forEach(input => {
+    input.addEventListener('keydown', e => {
+        // Ignore control keys (Backspace, Shift, etc.) — only printable chars
+        if (e.key.length === 1) {
+            const now = Date.now();
+            if (now - keycharThrottle > 40) { // Throttle: max ~25 beeps/sec
+                keycharThrottle = now;
+                playUI('keychar');
+            }
+        }
+    });
+    // Subtle glow pulse on focus
+    input.addEventListener('focus', () => playUI('hover'));
+});
+
 if (contactForm) {
     contactForm.addEventListener('submit', e => {
         e.preventDefault();
@@ -404,7 +431,7 @@ if (contactForm) {
         const message = document.getElementById('message').value.trim();
         if (!name || !email || !message) return;
 
-        submitBtn.innerHTML = '<span>Deploying Brief...</span> <i class="fa-solid fa-circle-notch fa-spin"></i>';
+        submitBtn.innerHTML = '<span class="btn-text">UPLINK ESTABLISHED...</span> <i class="fa-solid fa-circle-notch fa-spin btn-icon"></i>';
         submitBtn.disabled  = true;
 
         setTimeout(() => {
@@ -412,7 +439,7 @@ if (contactForm) {
             const body = encodeURIComponent(`Creator: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
             window.location.href = `mailto:ahmednazief@gmail.com?subject=${sub}&body=${body}`;
 
-            submitBtn.innerHTML = '<span>Deploy Message</span> <i class="fa-solid fa-paper-plane"></i>';
+            submitBtn.innerHTML = '<span class="btn-text">INITIALIZE TRANSMISSION</span> <i class="fa-solid fa-power-off btn-icon"></i>';
             submitBtn.disabled  = false;
             formSuccess.style.display = 'flex';
             contactForm.reset();
