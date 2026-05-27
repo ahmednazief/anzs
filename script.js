@@ -280,18 +280,14 @@ const mobileClose = document.getElementById('mobileClose');
 function openMenu() {
     playUI('click');
     mobileMenu.classList.add('open');
-    const s = hamburger.querySelectorAll('span');
-    s[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
-    s[1].style.opacity   = '0';
-    s[2].style.transform = 'rotate(-45deg) translate(5px, -6px)';
+    if (hamburger) hamburger.style.opacity = '0';
+    if (hamburger) hamburger.style.pointerEvents = 'none';
 }
 
 function closeMenu() {
     mobileMenu.classList.remove('open');
-    const s = hamburger.querySelectorAll('span');
-    s[0].style.transform = '';
-    s[1].style.opacity   = '';
-    s[2].style.transform = '';
+    if (hamburger) hamburger.style.opacity = '1';
+    if (hamburger) hamburger.style.pointerEvents = 'auto';
 }
 
 if (hamburger) hamburger.addEventListener('click', openMenu);
