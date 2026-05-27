@@ -59,7 +59,7 @@ body::before {
     background: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');
     opacity: 0.025;
     pointer-events: none;
-    z-index: 9999;
+    z-index: 997; /* must be below mobile menu (998) so it doesn't block touches */
 }
 a { text-decoration: none; color: inherit; cursor: none; }
 button { cursor: none; font-family: inherit; }
@@ -402,7 +402,7 @@ h2 {
     width: 80vw; max-width: 340px; height: 100vh;
     background: rgba(3, 6, 9, 0.98);
     backdrop-filter: blur(40px);
-    z-index: 998;
+    z-index: 9998;
     display: flex; align-items: center; justify-content: center;
     transition: left 0.5s var(--ease);
     border-right: 1px solid rgba(0, 229, 255, 0.08);
@@ -410,13 +410,17 @@ h2 {
 .mobile-menu.open { left: 0; }
 .mobile-close {
     position: absolute; top: 1.5rem; right: 1.5rem;
-    width: 40px; height: 40px;
+    width: 44px; height: 44px;
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(0,229,255,0.15);
     border-radius: 50%;
     color: var(--text); font-size: 1rem;
     display: flex; align-items: center; justify-content: center;
     transition: var(--transition);
+    cursor: pointer;
+    z-index: 9999;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 .mobile-close:hover { background: var(--cyan); color: #050c16; border-color: var(--cyan); }
 .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 2.8rem; }
