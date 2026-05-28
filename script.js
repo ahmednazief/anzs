@@ -396,53 +396,179 @@ if (lightboxOverlay) lightboxOverlay.addEventListener('click', closeLightbox);
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
 
-// ===== CONTACT FORM =====
-const contactForm = document.getElementById('contactForm');
-const submitBtn   = document.getElementById('submitBtn');
-const formSuccess = document.getElementById('formSuccess');
+// ===== CONTACT WIZARD ENGINE =====
+const wizState = { name: '', email: '', type: '', message: '' };
+let wizCurrentStep = 0;
 
-// --- Telemetry typing sound for HUD inputs ---
-let keycharThrottle = 0;
-document.querySelectorAll('.hud-input').forEach(input => {
-    input.addEventListener('keydown', e => {
-        // Ignore control keys (Backspace, Shift, etc.) — only printable chars
-        if (e.key.length === 1) {
-            const now = Date.now();
-            if (now - keycharThrottle > 40) { // Throttle: max ~25 beeps/sec
-                keycharThrottle = now;
-                playUI('keychar');
-            }
-        }
+function wizGoTo(stepIndex) {
+    const current = document.getElementById('step' + wizCurrentStep);
+    const next    = document.getElementById('step' + stepIndex);
+    if (!next) return;
+
+    // Animate out current
+    if (current) {
+        current.classList.add('exiting');
+        setTimeout(() => {
+            current.classList.remove('active', 'exiting');
+        }, 300);
+    }
+
+    // Animate in next
+    setTimeout(() => {
+        next.classList.add('active');
+        // Auto-focus input if present
+        const inp = next.querySelector('.wiz-input');
+        if (inp) setTimeout(() => inp.focus(), 80);
+    }, 280);
+
+    wizCurrentStep = stepIndex;
+
+    // Update progress dots (only count steps 0-3)
+    const dots = document.querySelectorAll('.wiz-dot');
+    dots.forEach((d, i) => {
+        d.classList.remove('active', 'done');
+        const s = parseInt(d.dataset.step);
+        if (s < stepIndex && stepIndex <= 4) d.classList.add('done');
+        if (s === Math.min(stepIndex, 3))     d.classList.add('active');
     });
-    // Subtle glow pulse on focus
-    input.addEventListener('focus', () => playUI('hover'));
+
+    // Update counter
+    const counter = document.getElementById('wizCounter');
+    if (counter && stepIndex < 4) {
+        counter.textContent = String(stepIndex + 1).padStart(2,'0') + ' / 04';
+    } else if (counter) {
+        counter.textContent = 'READY';
+    }
+}
+
+function wizNext(step) {
+    if (step === 0) {
+        const val = document.getElementById('wiz-name').value.trim();
+        if (!val) { shakeInput('wiz-name'); return; }
+        wizState.name = val;
+        document.getElementById('wiz-name-echo').textContent = val.split(' ')[0];
+        playUI('click');
+        wizGoTo(1);
+    } else if (step === 1) {
+        const val = document.getElementById('wiz-email').value.trim();
+        if (!val || !val.includes('@')) { shakeInput('wiz-email'); return; }
+        wizState.email = val;
+        playUI('click');
+        wizGoTo(2);
+    } else if (step === 3) {
+        wizState.message = document.getElementById('wiz-message').value.trim();
+        playUI('click');
+        wizShowSummary();
+    }
+}
+
+function wizSkip() {
+    wizState.message = '';
+    playUI('hover');
+    wizShowSummary();
+}
+
+function wizSelectCard(btn) {
+    document.querySelectorAll('.wiz-card').forEach(c => c.classList.remove('selected'));
+    btn.classList.add('selected');
+    wizState.type = btn.dataset.value;
+    playUI('success');
+    // Auto-advance after brief delay so selection is visible
+    setTimeout(() => wizGoTo(3), 420);
+}
+
+function wizShowSummary() {
+    const s = wizState;
+    const summary = document.getElementById('wizSummary');
+    summary.innerHTML = `
+        <div class="wiz-summary-row"><span class="wiz-summary-label">ID_TAG</span><span class="wiz-summary-val">${s.name}</span></div>
+        <div class="wiz-summary-row"><span class="wiz-summary-label">NET_ADDR</span><span class="wiz-summary-val">${s.email}</span></div>
+        <div class="wiz-summary-row"><span class="wiz-summary-label">MISSION</span><span class="wiz-summary-val">${s.type || 'Not specified'}</span></div>
+        ${s.message ? `<div class="wiz-summary-row"><span class="wiz-summary-label">PARAMS</span><span class="wiz-summary-val">${s.message}</span></div>` : ''}
+    `;
+    wizGoTo(4);
+}
+
+function wizTransmit() {
+    const s = wizState;
+    const btn = document.getElementById('wizLaunch');
+    btn.innerHTML = '<span>TRANSMITTING...</span> <i class="fa-solid fa-circle-notch fa-spin"></i>';
+    btn.disabled = true;
+    playUI('success');
+
+    setTimeout(() => {
+        const sub  = encodeURIComponent(`[${s.type || 'Project'}] Brief from ${s.name}`);
+        const body = encodeURIComponent(`Name: ${s.name}\nEmail: ${s.email}\nProject: ${s.type || 'N/A'}\n\n${s.message}`);
+        window.location.href = `mailto:ahmednazief@gmail.com?subject=${sub}&body=${body}`;
+
+        btn.innerHTML = '<span>TRANSMIT</span> <i class="fa-solid fa-paper-plane"></i>';
+        btn.disabled = false;
+        const sent = document.getElementById('wizSent');
+        sent.style.display = 'flex';
+        setTimeout(() => { sent.style.display = 'none'; }, 7000);
+    }, 900);
+}
+
+function wizRestart() {
+    wizState.name = ''; wizState.email = ''; wizState.type = ''; wizState.message = '';
+    // Reset all steps
+    document.querySelectorAll('.wiz-step').forEach(s => s.classList.remove('active','exiting'));
+    document.querySelectorAll('.wiz-card').forEach(c => c.classList.remove('selected'));
+    ['wiz-name','wiz-email','wiz-message'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = '';
+    });
+    wizCurrentStep = 0;
+    document.getElementById('step0').classList.add('active');
+    const dots = document.querySelectorAll('.wiz-dot');
+    dots.forEach((d, i) => { d.classList.remove('active','done'); if (i===0) d.classList.add('active'); });
+    const counter = document.getElementById('wizCounter');
+    if (counter) counter.textContent = '01 / 04';
+    playUI('toggle');
+}
+
+function shakeInput(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.style.borderBottomColor = '#ff4444';
+    el.style.animation = 'none';
+    el.offsetHeight; // reflow
+    el.style.animation = 'shake 0.35s ease';
+    setTimeout(() => {
+        el.style.borderBottomColor = '';
+        el.style.animation = '';
+    }, 400);
+    el.focus();
+    playUI('hover');
+}
+
+// Enter key support for wizard text inputs
+document.addEventListener('keydown', e => {
+    if (e.key !== 'Enter') return;
+    const tag = document.activeElement.tagName;
+    if (tag === 'TEXTAREA') return; // Allow Enter in textarea
+    if (document.activeElement.id === 'wiz-name')  wizNext(0);
+    if (document.activeElement.id === 'wiz-email') wizNext(1);
 });
 
-if (contactForm) {
-    contactForm.addEventListener('submit', e => {
-        e.preventDefault();
-        playUI('success');
-        const name    = document.getElementById('name').value.trim();
-        const email   = document.getElementById('email').value.trim();
-        const message = document.getElementById('message').value.trim();
-        if (!name || !email || !message) return;
+// Shake animation
+const shakeStyle = document.createElement('style');
+shakeStyle.textContent = `@keyframes shake {
+    0%,100%{transform:translateX(0)} 20%{transform:translateX(-6px)} 40%{transform:translateX(6px)} 60%{transform:translateX(-4px)} 80%{transform:translateX(4px)}
+}`;
+document.head.appendChild(shakeStyle);
 
-        submitBtn.innerHTML = '<span class="btn-text">UPLINK ESTABLISHED...</span> <i class="fa-solid fa-circle-notch fa-spin btn-icon"></i>';
-        submitBtn.disabled  = true;
-
-        setTimeout(() => {
-            const sub  = encodeURIComponent(document.getElementById('subject').value || 'Editing Inquiry from ' + name);
-            const body = encodeURIComponent(`Creator: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-            window.location.href = `mailto:ahmednazief@gmail.com?subject=${sub}&body=${body}`;
-
-            submitBtn.innerHTML = '<span class="btn-text">INITIALIZE TRANSMISSION</span> <i class="fa-solid fa-power-off btn-icon"></i>';
-            submitBtn.disabled  = false;
-            formSuccess.style.display = 'flex';
-            contactForm.reset();
-            setTimeout(() => { formSuccess.style.display = 'none'; }, 6000);
-        }, 900);
+// Typing telemetry for wizard inputs
+let keycharThrottle = 0;
+document.querySelectorAll('.wiz-input').forEach(input => {
+    input.addEventListener('keydown', e => {
+        if (e.key.length === 1) {
+            const now = Date.now();
+            if (now - keycharThrottle > 40) { keycharThrottle = now; playUI('keychar'); }
+        }
     });
-}
+    input.addEventListener('focus', () => playUI('hover'));
+});
 
 
 // ===== FOOTER YEAR =====

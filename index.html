@@ -585,7 +585,7 @@
                             <h3>IGM Group</h3>
                             <p class="brand-niche">Mining & Agriculture</p>
                             <p class="brand-desc">Authoritative corporate identity engineering for an international enterprise. Designed to project stability, scale, and environmental trust.</p>
-                            <div class="brand-explore">Explore Identity <i class="fa-solid fa-arrow-right"></i></div>
+                        <div class="brand-explore">Explore Identity <i class="fa-solid fa-arrow-right"></i></div>
                         </div>
                     </div>
                 </div>
@@ -598,64 +598,117 @@
         <div class="hud-overlay"></div>
         <div class="container">
             <p class="eyebrow text-center reveal hud-text">COMMS LINK</p>
-            <h2 class="text-center reveal">ENGAGE <span class="cyan">UPLINK</span></h2>
-            <p class="section-sub text-center reveal hud-sub">Establish secure connection with the central editing core.</p>
+            <h2 class="text-center reveal">INITIATE <span class="cyan">MISSION</span></h2>
 
-            <div class="contact-grid reveal">
-                <div class="contact-info hud-panel" id="contactInfoCard">
-                    <div class="cc tl hud-cc"></div><div class="cc tr hud-cc"></div><div class="cc bl hud-cc"></div><div class="cc br hud-cc"></div>
-                    <div class="hud-scanning-line"></div>
-                    <h3 class="hud-heading">SYS.OP.COMMS</h3>
-                    <a href="mailto:ahmednazief@gmail.com" class="contact-link hud-link" id="contactEmail">
-                        <div class="contact-link-icon cyan"><i class="fa-solid fa-satellite-dish"></i></div>
-                        <div>
-                            <span class="contact-link-label">NET_ADDRESS</span>
-                            <span class="contact-link-val">ahmednazief@gmail.com</span>
-                        </div>
-                    </a>
-                    <a href="https://www.youtube.com/@Plains" target="_blank" class="contact-link hud-link" id="contactYT">
-                        <div class="contact-link-icon cyan"><i class="fa-solid fa-video"></i></div>
-                        <div>
-                            <span class="contact-link-label">BROADCAST_NODE</span>
-                            <span class="contact-link-val">youtube.com/@Plains</span>
-                        </div>
-                    </a>
-                    <div class="availability-badge hud-status">
-                        <span class="avail-dot hud-dot"></span>
-                        STATUS: ONLINE // READY
-                    </div>
+            <!-- Quick contact strip -->
+            <div class="quick-contact-strip reveal">
+                <a href="mailto:ahmednazief@gmail.com" class="qc-link" id="qcEmail">
+                    <i class="fa-solid fa-satellite-dish"></i>
+                    <span>ahmednazief@gmail.com</span>
+                </a>
+                <div class="qc-sep"></div>
+                <a href="https://www.youtube.com/@Plains" target="_blank" class="qc-link" id="qcYT">
+                    <i class="fa-brands fa-youtube"></i>
+                    <span>youtube.com/@Plains</span>
+                </a>
+                <div class="qc-sep"></div>
+                <div class="qc-status">
+                    <span class="hud-dot"></span>
+                    <span>ONLINE</span>
                 </div>
-
-                <form class="contact-form hud-panel" id="contactForm">
-                    <div class="cc tl hud-cc"></div><div class="cc tr hud-cc"></div><div class="cc bl hud-cc"></div><div class="cc br hud-cc"></div>
-                    <div class="hud-scanning-line"></div>
-                    <div class="vip-badge hud-priority"><i class="fa-solid fa-triangle-exclamation"></i> PRIORITY CHANNEL</div>
-                    <div class="form-row">
-                        <div class="form-group hud-input-group">
-                            <label for="name">> ID_TAG</label>
-                            <input type="text" id="name" name="name" placeholder="Creator / Brand" required class="hud-input">
-                        </div>
-                        <div class="form-group hud-input-group">
-                            <label for="email">> NET_ADDRESS</label>
-                            <input type="email" id="email" name="email" placeholder="client@domain.com" required class="hud-input">
-                        </div>
-                    </div>
-                    <div class="form-group hud-input-group">
-                        <label for="subject">> OBJECTIVE</label>
-                        <input type="text" id="subject" name="subject" placeholder="Valorant / Gen Edit" class="hud-input">
-                    </div>
-                    <div class="form-group hud-input-group">
-                        <label for="message">> PARAMETERS</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Stream size, files, goals..." required class="hud-input"></textarea>
-                    </div>
-                    <button type="submit" class="hud-submit-btn" id="submitBtn">
-                        <span class="btn-text">INITIALIZE TRANSMISSION</span> <i class="fa-solid fa-power-off btn-icon"></i>
-                    </button>
-                    <div class="form-success hud-success" id="formSuccess">
-                        <i class="fa-solid fa-circle-check"></i> [DATA TRANSMITTED] Email client prepared.
-                    </div>
-                </form>
             </div>
+
+            <!-- Wizard Panel -->
+            <div class="wizard-panel reveal" id="wizardPanel">
+                <div class="cc tl hud-cc"></div><div class="cc tr hud-cc"></div><div class="cc bl hud-cc"></div><div class="cc br hud-cc"></div>
+                <div class="hud-scanning-line"></div>
+
+                <!-- Progress dots -->
+                <div class="wiz-progress" id="wizProgress">
+                    <span class="wiz-dot active" data-step="0"></span>
+                    <span class="wiz-dot" data-step="1"></span>
+                    <span class="wiz-dot" data-step="2"></span>
+                    <span class="wiz-dot" data-step="3"></span>
+                </div>
+                <div class="wiz-counter" id="wizCounter">01 / 04</div>
+
+                <!-- Steps -->
+                <div class="wiz-steps" id="wizSteps">
+
+                    <!-- Step 1: Name -->
+                    <div class="wiz-step active" id="step0">
+                        <div class="wiz-prompt"><span class="wiz-prompt-tag">&gt;_</span> Who's reaching out?</div>
+                        <input type="text" class="wiz-input" id="wiz-name" placeholder="Your name or brand..." autocomplete="off" maxlength="60">
+                        <div class="wiz-actions">
+                            <button class="wiz-next-btn" onclick="wizNext(0)">Continue <i class="fa-solid fa-arrow-right"></i></button>
+                            <span class="wiz-hint">or press <kbd>Enter ↵</kbd></span>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Email -->
+                    <div class="wiz-step" id="step1">
+                        <div class="wiz-prompt"><span class="wiz-prompt-tag">&gt;_</span> <span id="wiz-name-echo"></span>, where do I reach you?</div>
+                        <input type="email" class="wiz-input" id="wiz-email" placeholder="your@email.com" autocomplete="off">
+                        <div class="wiz-actions">
+                            <button class="wiz-next-btn" onclick="wizNext(1)">Continue <i class="fa-solid fa-arrow-right"></i></button>
+                            <span class="wiz-hint">or press <kbd>Enter ↵</kbd></span>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Project type cards -->
+                    <div class="wiz-step" id="step2">
+                        <div class="wiz-prompt"><span class="wiz-prompt-tag">&gt;_</span> What kind of project?</div>
+                        <div class="wiz-cards" id="wizCards">
+                            <button class="wiz-card" data-value="Gaming Edit" onclick="wizSelectCard(this)">
+                                <span class="wiz-card-icon">🎮</span>
+                                <span class="wiz-card-label">Gaming</span>
+                            </button>
+                            <button class="wiz-card" data-value="Cinematic Edit" onclick="wizSelectCard(this)">
+                                <span class="wiz-card-icon">🎬</span>
+                                <span class="wiz-card-label">Cinematic</span>
+                            </button>
+                            <button class="wiz-card" data-value="Music Video" onclick="wizSelectCard(this)">
+                                <span class="wiz-card-icon">🎵</span>
+                                <span class="wiz-card-label">Music Video</span>
+                            </button>
+                            <button class="wiz-card" data-value="Other Project" onclick="wizSelectCard(this)">
+                                <span class="wiz-card-icon">⚡</span>
+                                <span class="wiz-card-label">Other</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Message -->
+                    <div class="wiz-step" id="step3">
+                        <div class="wiz-prompt"><span class="wiz-prompt-tag">&gt;_</span> Anything else I need to know?</div>
+                        <textarea class="wiz-input wiz-textarea" id="wiz-message" placeholder="Budget, deadline, references... (optional)" rows="3"></textarea>
+                        <div class="wiz-actions">
+                            <button class="wiz-next-btn" onclick="wizNext(3)">Review Brief <i class="fa-solid fa-arrow-right"></i></button>
+                            <button class="wiz-skip-btn" onclick="wizSkip()">Skip <i class="fa-solid fa-forward"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Summary + Launch -->
+                    <div class="wiz-step" id="step4">
+                        <div class="wiz-prompt"><span class="wiz-prompt-tag">&gt;_</span> Mission brief ready. Transmit?</div>
+                        <div class="wiz-summary" id="wizSummary"></div>
+                        <div class="wiz-actions wiz-launch-actions">
+                            <button class="wiz-launch-btn" id="wizLaunch" onclick="wizTransmit()">
+                                <span>TRANSMIT</span> <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                            <button class="wiz-restart-btn" onclick="wizRestart()">
+                                <i class="fa-solid fa-rotate-left"></i> Edit
+                            </button>
+                        </div>
+                        <div class="wiz-sent" id="wizSent">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>Signal transmitted. Ahmed will respond shortly.</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
     </section>
 
