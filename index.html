@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Space+Grotesk:wght@300;400;500;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Space+Grotesk:wght@300;400;500;700&family=Share+Tech+Mono&family=Barlow+Condensed:wght@400;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
@@ -61,6 +61,12 @@
             <li>
                 <button class="sound-toggle-btn" id="soundToggle" title="Toggle UI Sound">
                     <i class="fa-solid fa-volume-high"></i>
+                    <span class="sound-viz" id="soundViz">
+                        <span class="sound-viz-bar" style="height:8px"></span>
+                        <span class="sound-viz-bar" style="height:14px"></span>
+                        <span class="sound-viz-bar" style="height:5px"></span>
+                        <span class="sound-viz-bar" style="height:11px"></span>
+                    </span>
                 </button>
             </li>
             <li><a href="#contact" class="btn-nav-cta">Initiate Project</a></li>
@@ -211,6 +217,37 @@
         </div>
     </section>
 
+    <!-- ===== RETENTION ENGINE ===== -->
+    <section id="retention" class="retention">
+        <div class="section-divider"></div>
+        <div class="container">
+            <p class="eyebrow text-center reveal">By The Numbers</p>
+            <h2 class="text-center reveal">Results That <span class="cyan">Speak</span></h2>
+        </div>
+        <div class="retention-grid reveal">
+            <div class="ret-stat">
+                <canvas class="ret-wave-canvas"></canvas>
+                <div class="ret-number" data-target="49000" data-suffix="+"><span class="ret-count">0</span><span class="ret-accent">+</span></div>
+                <div class="ret-label">Best Single Video</div>
+            </div>
+            <div class="ret-stat">
+                <canvas class="ret-wave-canvas"></canvas>
+                <div class="ret-number" data-target="350000" data-suffix="+"><span class="ret-count">0</span><span class="ret-accent">+</span></div>
+                <div class="ret-label">Total Channel Views</div>
+            </div>
+            <div class="ret-stat">
+                <canvas class="ret-wave-canvas"></canvas>
+                <div class="ret-number" data-target="8500" data-suffix="+"><span class="ret-count">0</span><span class="ret-accent">+</span></div>
+                <div class="ret-label">Subscribers Grown</div>
+            </div>
+            <div class="ret-stat">
+                <canvas class="ret-wave-canvas"></canvas>
+                <div class="ret-number" data-target="6" data-suffix="+"><span class="ret-count">0</span><span class="ret-accent">+</span></div>
+                <div class="ret-label">Viral Videos Produced</div>
+            </div>
+        </div>
+    </section>
+
     <!-- ===== WORKFLOW TIMELINE ===== -->
     <section id="process" class="process">
         <div class="section-divider"></div>
@@ -268,34 +305,94 @@
 
                 <div class="svc-card glass reveal" id="svcEdit">
                     <div class="cc tl"></div><div class="cc tr"></div><div class="cc bl"></div><div class="cc br"></div>
-                    <div class="svc-icon icon-cyan"><i class="fa-solid fa-scissors"></i></div>
-                    <h3>Advanced Video Editing</h3>
-                    <p>Premium timing manipulation, color mapping, structural pacing, and narrative assembly for competitive content.</p>
-                    <div class="svc-hover-bar"></div>
+                    <div class="svc-card-inner">
+                        <div class="svc-card-front">
+                            <div class="svc-icon icon-cyan"><i class="fa-solid fa-scissors"></i></div>
+                            <h3>Advanced Video Editing</h3>
+                            <p>Premium timing manipulation, color mapping, structural pacing, and narrative assembly for competitive content.</p>
+                            <div class="svc-hover-bar"></div>
+                        </div>
+                        <div class="svc-card-back">
+                            <div class="svc-back-title">What's Included</div>
+                            <ul class="svc-back-list">
+                                <li>Multi-cam structural cut</li>
+                                <li>Color grade + LUT</li>
+                                <li>Pacing timeline audit</li>
+                                <li>Comedic subtitle overlays</li>
+                                <li>Custom transitions</li>
+                            </ul>
+                            <div class="svc-back-time">⏱ Typical turnaround: 48–72 hrs</div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="svc-card glass reveal delay-1" id="svcRetention">
                     <div class="cc tl"></div><div class="cc tr"></div><div class="cc bl"></div><div class="cc br"></div>
-                    <div class="svc-icon icon-gold"><i class="fa-solid fa-chart-line"></i></div>
-                    <h3>Retention Optimization</h3>
-                    <p>Analytics-based pacing audits, hook design, visual speed adjustments, and audience curve optimization.</p>
-                    <div class="svc-hover-bar svc-hover-bar-gold"></div>
+                    <div class="svc-card-inner">
+                        <div class="svc-card-front">
+                            <div class="svc-icon icon-gold"><i class="fa-solid fa-chart-line"></i></div>
+                            <h3>Retention Optimization</h3>
+                            <p>Analytics-based pacing audits, hook design, visual speed adjustments, and audience curve optimization.</p>
+                            <div class="svc-hover-bar svc-hover-bar-gold"></div>
+                        </div>
+                        <div class="svc-card-back">
+                            <div class="svc-back-title">What's Included</div>
+                            <ul class="svc-back-list">
+                                <li>Hook architecture (0–3s)</li>
+                                <li>Audience curve analysis</li>
+                                <li>Re-watch moment design</li>
+                                <li>Pacing speed adjustment</li>
+                                <li>CTA placement strategy</li>
+                            </ul>
+                            <div class="svc-back-time">⏱ Consultation: 24 hrs</div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="svc-card glass reveal delay-2" id="svcVFX">
                     <div class="cc tl"></div><div class="cc tr"></div><div class="cc bl"></div><div class="cc br"></div>
-                    <div class="svc-icon icon-cyan"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-                    <h3>Esports VFX &amp; Graphics</h3>
-                    <p>Comedic motion graphics, animated subtitles, custom transitions, and professional overlays.</p>
-                    <div class="svc-hover-bar"></div>
+                    <div class="svc-card-inner">
+                        <div class="svc-card-front">
+                            <div class="svc-icon icon-cyan"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                            <h3>Esports VFX &amp; Graphics</h3>
+                            <p>Comedic motion graphics, animated subtitles, custom transitions, and professional overlays.</p>
+                            <div class="svc-hover-bar"></div>
+                        </div>
+                        <div class="svc-card-back">
+                            <div class="svc-back-title">What's Included</div>
+                            <ul class="svc-back-list">
+                                <li>Animated kill-feed overlays</li>
+                                <li>Screen shake + zoom VFX</li>
+                                <li>Custom lower-thirds</li>
+                                <li>Intro / outro sequences</li>
+                                <li>Motion graphic subtitles</li>
+                            </ul>
+                            <div class="svc-back-time">⏱ Per video: 24–48 hrs</div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="svc-card glass reveal delay-3" id="svcAudio">
                     <div class="cc tl"></div><div class="cc tr"></div><div class="cc bl"></div><div class="cc br"></div>
-                    <div class="svc-icon icon-gold"><i class="fa-solid fa-microphone-lines"></i></div>
-                    <h3>Pro Audio Engineering</h3>
-                    <p>Voice denoising, dynamic compression, SFX boosting, soundtrack pacing, and spatial ambient layers.</p>
-                    <div class="svc-hover-bar svc-hover-bar-gold"></div>
+                    <div class="svc-card-inner">
+                        <div class="svc-card-front">
+                            <div class="svc-icon icon-gold"><i class="fa-solid fa-microphone-lines"></i></div>
+                            <h3>Pro Audio Engineering</h3>
+                            <p>Voice denoising, dynamic compression, SFX boosting, soundtrack pacing, and spatial ambient layers.</p>
+                            <div class="svc-hover-bar svc-hover-bar-gold"></div>
+                        </div>
+                        <div class="svc-card-back">
+                            <div class="svc-back-title">What's Included</div>
+                            <ul class="svc-back-list">
+                                <li>AI voice denoise</li>
+                                <li>Dynamic compression chain</li>
+                                <li>Gaming SFX library mix</li>
+                                <li>Music sync + ducking</li>
+                                <li>Spatial ambient layering</li>
+                            </ul>
+                            <div class="svc-back-time">⏱ Audio pass: 12–24 hrs</div>
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -309,6 +406,14 @@
             <p class="eyebrow text-center reveal">Channel Showcase</p>
             <h2 class="text-center reveal">Featured <span class="cyan">Campaigns</span></h2>
             <p class="section-sub text-center reveal">Cutting-edge post-production powering the @Plains gaming channel. Click any card to stream.</p>
+
+            <!-- Filter Bar -->
+            <div class="pf-filter-bar reveal">
+                <button class="pf-filter-btn active" data-filter="all">All</button>
+                <button class="pf-filter-btn" data-filter="challenge">Challenge</button>
+                <button class="pf-filter-btn" data-filter="comedy">Comedy</button>
+                <button class="pf-filter-btn" data-filter="vfx">VFX Heavy</button>
+            </div>
 
             <!-- Channel Dashboard Card -->
             <div class="channel-wrap reveal">
@@ -352,7 +457,7 @@
             <div class="video-grid">
 
                 <!-- Card 1 -->
-                <div class="video-card glass reveal" data-video-id="WgmfFzcpOmc" id="videoCard1">
+                <div class="video-card glass reveal" data-video-id="WgmfFzcpOmc" id="videoCard1" data-category="challenge">
                     <div class="cc tl"></div><div class="cc tr"></div><div class="cc bl"></div><div class="cc br"></div>
                     <div class="vid-thumb-wrap">
                         <img loading="lazy" class="vid-thumb" src="https://img.youtube.com/vi/WgmfFzcpOmc/maxresdefault.jpg" alt="Valorant Coach Challenge Edit" onerror="this.src='https://img.youtube.com/vi/WgmfFzcpOmc/hqdefault.jpg'">
@@ -385,7 +490,7 @@
                 </div>
 
                 <!-- Card 2 -->
-                <div class="video-card glass reveal delay-1" data-video-id="1Myr-s_QAhA" id="videoCard2">
+                <div class="video-card glass reveal delay-1" data-video-id="1Myr-s_QAhA" id="videoCard2" data-category="comedy">
                     <div class="cc tl"></div><div class="cc tr"></div><div class="cc bl"></div><div class="cc br"></div>
                     <div class="vid-thumb-wrap">
                         <img loading="lazy" class="vid-thumb" src="https://img.youtube.com/vi/1Myr-s_QAhA/maxresdefault.jpg" alt="Egyptian in America Server Edit" onerror="this.src='https://img.youtube.com/vi/1Myr-s_QAhA/hqdefault.jpg'">
@@ -418,7 +523,7 @@
                 </div>
 
                 <!-- Card 3 -->
-                <div class="video-card glass reveal delay-2" data-video-id="1UQBT9-h-Es" data-start-time="195" id="videoCard3">
+                <div class="video-card glass reveal delay-2" data-video-id="1UQBT9-h-Es" data-start-time="195" id="videoCard3" data-category="comedy">
                     <div class="cc tl"></div><div class="cc tr"></div><div class="cc bl"></div><div class="cc br"></div>
                     <div class="vid-thumb-wrap">
                         <img loading="lazy" class="vid-thumb" src="https://img.youtube.com/vi/1UQBT9-h-Es/maxresdefault.jpg" alt="Egyptian Undercover in Valorant Australia Server" onerror="this.src='https://img.youtube.com/vi/1UQBT9-h-Es/hqdefault.jpg'">
@@ -450,7 +555,7 @@
                 </div>
 
                 <!-- Card 4 -->
-                <div class="video-card glass reveal" data-video-id="3VohVmtUpXE" data-start-time="243" id="videoCard4">
+                <div class="video-card glass reveal" data-video-id="3VohVmtUpXE" data-start-time="243" id="videoCard4" data-category="vfx">
                     <div class="cc tl"></div><div class="cc tr"></div><div class="cc bl"></div><div class="cc br"></div>
                     <div class="vid-thumb-wrap">
                         <img loading="lazy" class="vid-thumb" src="https://img.youtube.com/vi/3VohVmtUpXE/maxresdefault.jpg" alt="Valorant Editing Showcase" onerror="this.src='https://img.youtube.com/vi/3VohVmtUpXE/hqdefault.jpg'">
@@ -482,7 +587,7 @@
                 </div>
 
                 <!-- Card 5 -->
-                <div class="video-card glass reveal delay-1" data-video-id="tPQExFt0rD4" id="videoCard5">
+                <div class="video-card glass reveal delay-1" data-video-id="tPQExFt0rD4" id="videoCard5" data-category="comedy">
                     <div class="cc tl"></div><div class="cc tr"></div><div class="cc bl"></div><div class="cc br"></div>
                     <div class="vid-thumb-wrap">
                         <img loading="lazy" class="vid-thumb" src="https://img.youtube.com/vi/tPQExFt0rD4/maxresdefault.jpg" alt="Valorant Server Comedy" onerror="this.src='https://img.youtube.com/vi/tPQExFt0rD4/hqdefault.jpg'">
@@ -510,7 +615,7 @@
                 </div>
 
                 <!-- Card 6 -->
-                <div class="video-card glass reveal delay-2" data-video-id="_Nqzup8QzFs" data-start-time="24" id="videoCard6">
+                <div class="video-card glass reveal delay-2" data-video-id="_Nqzup8QzFs" data-start-time="24" id="videoCard6" data-category="vfx">
                     <div class="cc tl"></div><div class="cc tr"></div><div class="cc bl"></div><div class="cc br"></div>
                     <div class="vid-thumb-wrap">
                         <img loading="lazy" class="vid-thumb" src="https://img.youtube.com/vi/_Nqzup8QzFs/maxresdefault.jpg" alt="Valorant Highlights" onerror="this.src='https://img.youtube.com/vi/_Nqzup8QzFs/hqdefault.jpg'">
@@ -543,6 +648,57 @@
                 <a href="https://www.youtube.com/@Plains" target="_blank" rel="noopener" class="btn-cyan" id="subscribeBtn">
                     <i class="fa-brands fa-youtube"></i> Subscribe on YouTube
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SOCIAL PROOF TICKER ===== -->
+    <section class="social-proof">
+        <div class="container">
+            <p class="eyebrow reveal">Social Proof</p>
+        </div>
+        <!-- Row 1 -->
+        <div class="ticker-wrap">
+            <div class="ticker-track" id="ticker1">
+                <div class="ticker-item"><span class="ti-icon">▶</span> <strong>49K views</strong> on first upload &nbsp;·&nbsp;</div>
+                <div class="ticker-item"><span class="ti-icon">★</span> "The pacing is absolutely insane" &nbsp;·&nbsp;</div>
+                <div class="ticker-item"><span class="ti-icon">▶</span> <strong>6 videos</strong> surpassed 10K views &nbsp;·&nbsp;</div>
+                <div class="ticker-item"><span class="ti-icon">★</span> "Subscribed after the first 10 seconds" &nbsp;·&nbsp;</div>
+                <div class="ticker-item"><span class="ti-icon">▶</span> <strong>350K+</strong> total channel views &nbsp;·&nbsp;</div>
+                <div class="ticker-item"><span class="ti-icon">★</span> "This edit went viral overnight" &nbsp;·&nbsp;</div>
+                <div class="ticker-item"><span class="ti-icon">▶</span> Best gaming edit of 2024 &nbsp;·&nbsp;</div>
+                <div class="ticker-item"><span class="ti-icon">★</span> "Bro how are the subtitles so clean" &nbsp;·&nbsp;</div>
+                <!-- Duplicate for seamless loop -->
+                <div class="ticker-item"><span class="ti-icon">▶</span> <strong>49K views</strong> on first upload &nbsp;·&nbsp;</div>
+                <div class="ticker-item"><span class="ti-icon">★</span> "The pacing is absolutely insane" &nbsp;·&nbsp;</div>
+                <div class="ticker-item"><span class="ti-icon">▶</span> <strong>6 videos</strong> surpassed 10K views &nbsp;·&nbsp;</div>
+                <div class="ticker-item"><span class="ti-icon">★</span> "Subscribed after the first 10 seconds" &nbsp;·&nbsp;</div>
+                <div class="ticker-item"><span class="ti-icon">▶</span> <strong>350K+</strong> total channel views &nbsp;·&nbsp;</div>
+                <div class="ticker-item"><span class="ti-icon">★</span> "This edit went viral overnight" &nbsp;·&nbsp;</div>
+                <div class="ticker-item"><span class="ti-icon">▶</span> Best gaming edit of 2024 &nbsp;·&nbsp;</div>
+                <div class="ticker-item"><span class="ti-icon">★</span> "Bro how are the subtitles so clean" &nbsp;·&nbsp;</div>
+            </div>
+        </div>
+        <!-- Row 2 (reverse) -->
+        <div class="ticker-wrap">
+            <div class="ticker-track reverse" id="ticker2">
+                <div class="ticker-item"><span class="ti-icon">◆</span> 8,500+ subscribers grown from zero &nbsp;·&nbsp;</div>
+                <div class="ticker-item"><span class="ti-icon">◆</span> "The sound design hits different" &nbsp;·&nbsp;</div>
+                <div class="ticker-item"><span class="ti-icon">◆</span> <strong>#1</strong> trending video on release day &nbsp;·&nbsp;</div>
+                <div class="ticker-item"><span class="ti-icon">◆</span> "I've watched this 4 times already" &nbsp;·&nbsp;</div>
+                <div class="ticker-item"><span class="ti-icon">◆</span> 100% retention-focused post-production &nbsp;·&nbsp;</div>
+                <div class="ticker-item"><span class="ti-icon">◆</span> "The transitions are cinema-level" &nbsp;·&nbsp;</div>
+                <div class="ticker-item"><span class="ti-icon">◆</span> <strong>26K</strong> views within 48 hours &nbsp;·&nbsp;</div>
+                <div class="ticker-item"><span class="ti-icon">◆</span> "Nazief made our channel feel premium" &nbsp;·&nbsp;</div>
+                <!-- Duplicate -->
+                <div class="ticker-item"><span class="ti-icon">◆</span> 8,500+ subscribers grown from zero &nbsp;·&nbsp;</div>
+                <div class="ticker-item"><span class="ti-icon">◆</span> "The sound design hits different" &nbsp;·&nbsp;</div>
+                <div class="ticker-item"><span class="ti-icon">◆</span> <strong>#1</strong> trending video on release day &nbsp;·&nbsp;</div>
+                <div class="ticker-item"><span class="ti-icon">◆</span> "I've watched this 4 times already" &nbsp;·&nbsp;</div>
+                <div class="ticker-item"><span class="ti-icon">◆</span> 100% retention-focused post-production &nbsp;·&nbsp;</div>
+                <div class="ticker-item"><span class="ti-icon">◆</span> "The transitions are cinema-level" &nbsp;·&nbsp;</div>
+                <div class="ticker-item"><span class="ti-icon">◆</span> <strong>26K</strong> views within 48 hours &nbsp;·&nbsp;</div>
+                <div class="ticker-item"><span class="ti-icon">◆</span> "Nazief made our channel feel premium" &nbsp;·&nbsp;</div>
             </div>
         </div>
     </section>
