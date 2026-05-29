@@ -142,6 +142,7 @@ if (soundBtn) {
         soundBtn.classList.toggle('muted', !soundOn);
         soundBtn.querySelector('i').className = soundOn ? 'fa-solid fa-volume-high' : 'fa-solid fa-volume-xmark';
         playUI('toggle');
+        setTimeout(updateSoundViz, 50);
     });
 }
 
@@ -714,7 +715,7 @@ filterBtns.forEach(btn => {
         videoCards.forEach(card => {
             const cat = card.dataset.category || '';
             if (filter === 'all' || cat === filter) {
-                card.classList.remove('hidden');
+                card.style.display = '';
                 card.style.opacity = '0';
                 card.style.transform = 'scale(0.95)';
                 setTimeout(() => {
@@ -722,7 +723,9 @@ filterBtns.forEach(btn => {
                     card.style.transform = 'scale(1)';
                 }, 50);
             } else {
-                card.classList.add('hidden');
+                card.style.opacity = '0';
+                card.style.transform = 'scale(0.95)';
+                setTimeout(() => { card.style.display = 'none'; }, 350);
             }
         });
     });
@@ -756,8 +759,7 @@ const soundToggleBtn = document.getElementById('soundToggle');
 
 function updateSoundViz() {
     if (!soundViz) return;
-    // soundEnabled is defined in the sound system above
-    const isOn = typeof soundEnabled !== 'undefined' ? soundEnabled : true;
+    const isOn = soundOn;
     if (isOn) {
         soundViz.classList.remove('off');
     } else {
