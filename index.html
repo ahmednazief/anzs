@@ -223,27 +223,28 @@
         <div class="container">
             <p class="eyebrow text-center reveal">By The Numbers</p>
             <h2 class="text-center reveal">Results That <span class="cyan">Speak</span></h2>
-        </div>
-        <div class="retention-grid reveal">
-            <div class="ret-stat">
-                <canvas class="ret-wave-canvas"></canvas>
-                <div class="ret-number" data-target="49000" data-suffix="+"><span class="ret-count">0</span><span class="ret-accent">+</span></div>
-                <div class="ret-label">Best Single Video</div>
-            </div>
-            <div class="ret-stat">
-                <canvas class="ret-wave-canvas"></canvas>
-                <div class="ret-number" data-target="350000" data-suffix="+"><span class="ret-count">0</span><span class="ret-accent">+</span></div>
-                <div class="ret-label">Total Channel Views</div>
-            </div>
-            <div class="ret-stat">
-                <canvas class="ret-wave-canvas"></canvas>
-                <div class="ret-number" data-target="8500" data-suffix="+"><span class="ret-count">0</span><span class="ret-accent">+</span></div>
-                <div class="ret-label">Subscribers Grown</div>
-            </div>
-            <div class="ret-stat">
-                <canvas class="ret-wave-canvas"></canvas>
-                <div class="ret-number" data-target="6" data-suffix="+"><span class="ret-count">0</span><span class="ret-accent">+</span></div>
-                <div class="ret-label">Viral Videos Produced</div>
+            
+            <div class="retention-grid reveal">
+                <div class="ret-stat">
+                    <canvas class="ret-wave-canvas"></canvas>
+                    <div class="ret-number" data-target="49000" data-suffix="+"><span class="ret-count">0</span><span class="ret-accent">+</span></div>
+                    <div class="ret-label">Best Single Video</div>
+                </div>
+                <div class="ret-stat">
+                    <canvas class="ret-wave-canvas"></canvas>
+                    <div class="ret-number" data-target="350000" data-suffix="+"><span class="ret-count">0</span><span class="ret-accent">+</span></div>
+                    <div class="ret-label">Total Channel Views</div>
+                </div>
+                <div class="ret-stat">
+                    <canvas class="ret-wave-canvas"></canvas>
+                    <div class="ret-number" data-target="8500" data-suffix="+"><span class="ret-count">0</span><span class="ret-accent">+</span></div>
+                    <div class="ret-label">Subscribers Grown</div>
+                </div>
+                <div class="ret-stat">
+                    <canvas class="ret-wave-canvas"></canvas>
+                    <div class="ret-number" data-target="6" data-suffix="+"><span class="ret-count">0</span><span class="ret-accent">+</span></div>
+                    <div class="ret-label">Viral Videos Produced</div>
+                </div>
             </div>
         </div>
     </section>
@@ -886,13 +887,16 @@
         </div>
     </footer>
 
-    <!-- ===== VIDEO LIGHTBOX ===== -->
+    <!-- ===== LIGHTBOX SYSTEM ===== -->
     <div class="lightbox" id="videoLightbox">
         <div class="lightbox-overlay" id="lightboxOverlay"></div>
         <div class="lightbox-box">
-            <button class="lightbox-close" id="lightboxClose" aria-label="Close video"><i class="fa-solid fa-xmark"></i></button>
-            <div class="lightbox-ratio">
-                <iframe id="lightboxIframe" src="" title="YouTube Video Player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <button class="lightbox-close" id="lightboxClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+            <div class="lightbox-content-wrapper">
+                <div class="lightbox-ratio" id="lightboxRatio">
+                    <iframe id="lightboxIframe" src="" title="YouTube Video Player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <img id="lightboxImg" src="" alt="Showcase Preview" style="display:none; width:100%; height:auto; max-height:80vh; border-radius:4px; object-fit:contain;">
             </div>
         </div>
     </div>

@@ -1658,7 +1658,16 @@ footer {
 @media (max-width: 1140px) {
     .services-grid { grid-template-columns: repeat(2, 1fr); }
     .timeline-track { grid-template-columns: 1fr; gap: 4rem; }
-    .tl-connector { display: none; }
+    .tl-connector {
+        display: block;
+        top: 0;
+        bottom: 40px;
+        left: 50%;
+        width: 2px;
+        height: auto;
+        transform: translateX(-50%);
+        background: rgba(255,255,255,0.05);
+    }
     .tl-node { top: -30px; left: 50%; transform: translateX(-50%); }
     .tl-item { text-align: center; padding-top: 4rem; }
     .tl-item-wrap:hover .tl-node { transform: translateX(-50%) scale(1.12); }
@@ -1666,6 +1675,13 @@ footer {
     .video-grid { grid-template-columns: repeat(2, 1fr); }
     .channel-card { gap: 2rem; }
     .vid-stats-row { gap: 0.7rem; }
+    .tl-connector-fill {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2px;
+        height: 0%;
+        background: linear-gradient(to bottom, var(--red), var(--gold));
+    }
 }
 
 @media (max-width: 960px) {
@@ -1797,10 +1813,10 @@ body::before { opacity: 0.04; }
 /* h2 heading upgrade - taller, more aggressive */
 h2 {
     font-family: var(--font-h);
-    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-size: clamp(2.2rem, 5.5vw, 4.2rem);
     font-weight: 900;
     line-height: 1.0;
-    letter-spacing: -2px;
+    letter-spacing: -1.5px;
     margin-bottom: 1.2rem;
     text-transform: uppercase;
 }
@@ -1958,9 +1974,8 @@ h2 {
 }
 @media (max-width: 768px) {
     .svc-card:hover .svc-card-inner { transform: none; }
-    .svc-card-back { display: none; }
-    .svc-card-front { position: relative; }
-    .svc-card-inner { min-height: auto; }
+    .svc-card.flipped .svc-card-inner { transform: rotateY(180deg); }
+    .svc-card-inner { min-height: 300px; }
 }
 
 /* ===== PORTFOLIO FILTER BAR ===== */
@@ -2047,13 +2062,12 @@ h2 {
 /* ===== TIMELINE PROGRESS LINE ===== */
 .tl-connector-fill {
     position: absolute;
-    top: 0; left: 50%;
-    width: 2px;
-    height: 0%;
-    background: linear-gradient(to bottom, var(--red), var(--gold));
+    top: 0; left: 0;
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(to right, var(--red), var(--gold));
     box-shadow: 0 0 12px var(--red);
-    transform: translateX(-50%);
-    transition: height 0.05s linear;
+    transition: width 0.05s linear, height 0.05s linear;
     z-index: 2;
 }
 .tl-node.node-active {

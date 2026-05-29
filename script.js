@@ -6,10 +6,20 @@
 const preloader        = document.getElementById('preloader');
 const preloaderBar     = document.getElementById('preloaderBar');
 const preloaderPercent = document.getElementById('preloaderPercent');
+const preloaderStatus  = document.querySelector('.preloader-status');
 
 let pVal = 0;
 const pStep = 20;
 const pIncr = 100 / (1800 / pStep);
+
+const telemetryTexts = [
+    { threshold: 20,  text: "INITIALIZING CREATIVE ENGINE..." },
+    { threshold: 42,  text: "LOADING RETENTION TELEMETRY..." },
+    { threshold: 64,  text: "MIXING AUDIO TIMELINES..." },
+    { threshold: 82,  text: "COMPILING MOTION GRAPHICS..." },
+    { threshold: 99,  text: "POLISHING CINEMATIC RENDER..." },
+    { threshold: 100, text: "MISSION INITIALIZED. READY." }
+];
 
 const pTimer = setInterval(() => {
     pVal += pIncr + Math.random() * 1.8;
@@ -26,6 +36,14 @@ const pTimer = setInterval(() => {
     const floored = Math.floor(pVal);
     if (preloaderPercent) preloaderPercent.textContent = (floored < 10 ? '0' : '') + floored + '%';
     if (preloaderBar) preloaderBar.style.width = floored + '%';
+    
+    if (preloaderStatus) {
+        const matching = telemetryTexts.find(t => floored <= t.threshold);
+        if (matching && preloaderStatus.textContent !== matching.text) {
+            preloaderStatus.textContent = matching.text;
+            playUI('keychar');
+        }
+    }
 }, pStep);
 
 
@@ -56,7 +74,7 @@ if (meshCanvas) {
             this.vx = (Math.random() - 0.5) * 0.4;
             this.vy = (Math.random() - 0.5) * 0.4;
             this.r  = Math.random() * 1.8 + 0.8;
-            this.color = Math.random() > 0.5 ? 'rgba(0, 229, 255, 0.5)' : 'rgba(255, 215, 0, 0.5)';
+            this.color = Math.random() > 0.5 ? 'rgba(255, 31, 31, 0.45)' : 'rgba(255, 122, 0, 0.35)';
         }
         update() {
             if (mouse.x !== null) {
@@ -257,8 +275,8 @@ if (window.innerWidth > 768 && cursorDot && cursorOutline) {
             cursorDot.style.background = 'var(--gold)';
             cursorOutline.style.width  = '42px';
             cursorOutline.style.height = '42px';
-            cursorOutline.style.borderColor = 'rgba(0, 229, 255, 0.5)';
-            cursorOutline.style.boxShadow   = '0 0 12px rgba(0, 229, 255, 0.1)';
+            cursorOutline.style.borderColor = 'rgba(255, 31, 31, 0.5)';
+            cursorOutline.style.boxShadow   = '0 0 12px rgba(255, 31, 31, 0.15)';
         });
     });
 }
@@ -363,9 +381,11 @@ const secObs = new IntersectionObserver(entries => {
 sections.forEach(s => secObs.observe(s));
 
 
-// ===== VIDEO LIGHTBOX =====
+// ===== LIGHTBOX SYSTEM =====
 const lightbox        = document.getElementById('videoLightbox');
 const lightboxIframe  = document.getElementById('lightboxIframe');
+const lightboxImg     = document.getElementById('lightboxImg');
+const lightboxRatio   = document.getElementById('lightboxRatio');
 const lightboxClose   = document.getElementById('lightboxClose');
 const lightboxOverlay = document.getElementById('lightboxOverlay');
 
@@ -376,6 +396,9 @@ document.querySelectorAll('.video-card').forEach(card => {
         const start = card.getAttribute('data-start-time');
         let url = `https://www.youtube.com/embed/${vid}?autoplay=1&rel=0&modestbranding=1`;
         if (start) url += `&start=${start}`;
+        
+        if (lightboxImg) lightboxImg.style.display = 'none';
+        if (lightboxRatio) lightboxRatio.style.display = 'block';
         if (lightboxIframe) lightboxIframe.src = url;
         if (lightbox) lightbox.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -388,6 +411,11 @@ function closeLightbox() {
     playUI('click');
     lightbox.classList.remove('active');
     if (lightboxIframe) lightboxIframe.src = '';
+    if (lightboxImg) {
+        lightboxImg.src = '';
+        lightboxImg.style.display = 'none';
+    }
+    if (lightboxRatio) lightboxRatio.style.display = 'block';
     document.body.style.overflow = '';
     if (cursorOutline) cursorOutline.style.opacity = '1';
 }
@@ -583,19 +611,6 @@ document.querySelectorAll('a[href^="#"], button').forEach(el => {
 });
 
 
-// ===== VOID CINEMA — RED PARTICLES =====
-// Override particle colors to red/orange palette
-if (typeof Particle !== 'undefined') {
-    // Patch the Particle reset to use red colors
-    const origReset = Particle.prototype.reset;
-    Particle.prototype.reset = function() {
-        origReset.call(this);
-        this.color = Math.random() > 0.5
-            ? 'rgba(255, 31, 31, 0.45)'
-            : 'rgba(255, 122, 0, 0.35)';
-    };
-}
-
 
 // ===== GLITCH TEXT REVEAL =====
 function glitchReveal(el) {
@@ -732,6 +747,17 @@ filterBtns.forEach(btn => {
 });
 
 
+// ===== MOBILE SERVICES FLIP =====
+document.querySelectorAll('.svc-card').forEach(card => {
+    card.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+            card.classList.toggle('flipped');
+            playUI('click');
+        }
+    });
+});
+
+
 // ===== BRANDING CARD 3D TILT =====
 document.querySelectorAll('.brand-card').forEach(card => {
     card.addEventListener('mousemove', e => {
@@ -748,7 +774,17 @@ document.querySelectorAll('.brand-card').forEach(card => {
     // Open lightbox on brand card click
     card.addEventListener('click', () => {
         const img = card.querySelector('.brand-visual img');
-        if (!img || !window.openLightboxImage) return;
+        if (!img) return;
+        playUI('click');
+        if (lightboxIframe) lightboxIframe.src = '';
+        if (lightboxRatio) lightboxRatio.style.display = 'none';
+        if (lightboxImg) {
+            lightboxImg.src = img.src;
+            lightboxImg.style.display = 'block';
+        }
+        if (lightbox) lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        if (cursorOutline) cursorOutline.style.opacity = '0';
     });
 });
 
@@ -791,10 +827,23 @@ if (tlConnector) {
 
     window.addEventListener('scroll', () => {
         const rect = tlConnector.getBoundingClientRect();
-        const totalH = tlConnector.offsetHeight;
-        const visible = window.innerHeight - rect.top;
-        const pct = Math.max(0, Math.min(100, (visible / totalH) * 100));
-        fill.style.height = pct + '%';
+        let pct = 0;
+        
+        if (window.innerWidth > 1140) {
+            // Horizontal fill animation on desktop
+            const totalDist = window.innerHeight * 0.5;
+            const currentDist = window.innerHeight * 0.85 - rect.top;
+            pct = Math.max(0, Math.min(100, (currentDist / totalDist) * 100));
+            fill.style.width = pct + '%';
+            fill.style.height = '100%';
+        } else {
+            // Vertical fill animation on mobile
+            const totalH = tlConnector.offsetHeight || 1;
+            const scrolled = window.innerHeight * 0.75 - rect.top;
+            pct = Math.max(0, Math.min(100, (scrolled / totalH) * 100));
+            fill.style.height = pct + '%';
+            fill.style.width = '2px';
+        }
 
         // Pulse nodes as fill reaches them
         nodes.forEach((node, i) => {
@@ -804,5 +853,99 @@ if (tlConnector) {
             }
         });
     }, { passive: true });
+}
+
+
+// ===== RETENTION ENGINE TELEMETRY WAVES =====
+function initRetentionWaves() {
+    const stats = document.querySelectorAll('.ret-stat');
+    stats.forEach(stat => {
+        const canvas = stat.querySelector('.ret-wave-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let animationFrameId;
+        
+        let width = (canvas.width = stat.offsetWidth);
+        let height = (canvas.height = stat.offsetHeight);
+        
+        let phase = 0;
+        let hoverActive = false;
+        let currentAmp = 20;
+        let targetAmp = 20;
+        let currentFreq = 0.012;
+        let targetFreq = 0.012;
+        let currentSpeed = 0.02;
+        let targetSpeed = 0.02;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = stat.offsetWidth;
+            height = canvas.height = stat.offsetHeight;
+        });
+        
+        stat.addEventListener('mouseenter', () => {
+            hoverActive = true;
+            targetAmp = 42;
+            targetFreq = 0.028;
+            targetSpeed = 0.08;
+        });
+        
+        stat.addEventListener('mouseleave', () => {
+            hoverActive = false;
+            targetAmp = 20;
+            targetFreq = 0.012;
+            targetSpeed = 0.02;
+        });
+        
+        function draw() {
+            ctx.clearRect(0, 0, width, height);
+            
+            currentAmp += (targetAmp - currentAmp) * 0.1;
+            currentFreq += (targetFreq - currentFreq) * 0.1;
+            currentSpeed += (targetSpeed - currentSpeed) * 0.1;
+            
+            phase += currentSpeed;
+            
+            ctx.beginPath();
+            ctx.lineWidth = 1.5;
+            
+            const grad = ctx.createLinearGradient(0, 0, width, 0);
+            grad.addColorStop(0, 'rgba(255, 31, 31, 0.05)');
+            grad.addColorStop(0.5, hoverActive ? 'rgba(255, 31, 31, 0.42)' : 'rgba(255, 31, 31, 0.22)');
+            grad.addColorStop(1, 'rgba(255, 122, 0, 0.05)');
+            ctx.strokeStyle = grad;
+            
+            ctx.beginPath();
+            for (let x = 0; x < width; x++) {
+                const y = height / 2 + Math.sin(x * currentFreq + phase) * currentAmp + Math.cos(x * 0.005 + phase * 0.5) * 5;
+                if (x === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+            
+            ctx.beginPath();
+            ctx.lineWidth = 0.8;
+            const grad2 = ctx.createLinearGradient(0, 0, width, 0);
+            grad2.addColorStop(0, 'rgba(255, 122, 0, 0.02)');
+            grad2.addColorStop(0.5, hoverActive ? 'rgba(255, 122, 0, 0.25)' : 'rgba(255, 122, 0, 0.12)');
+            grad2.addColorStop(1, 'rgba(255, 31, 31, 0.02)');
+            ctx.strokeStyle = grad2;
+            for (let x = 0; x < width; x++) {
+                const y = height / 2 + Math.sin(x * (currentFreq * 0.8) - phase + 1.5) * (currentAmp * 0.6) + Math.sin(x * 0.008 + phase) * 3;
+                if (x === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+            
+            animationFrameId = requestAnimationFrame(draw);
+        }
+        
+        draw();
+    });
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initRetentionWaves);
+} else {
+    initRetentionWaves();
 }
 
