@@ -706,3 +706,98 @@ img { max-width: 100%; display: block; }
     .how-steps { grid-template-columns: 1fr; }
     .cutify-footer { flex-direction: column; text-align: center; align-items: center; }
 }
+
+/* ===== DEPENDENCIES CARD / GRID ===== */
+.dependencies-container {
+    margin: 3rem auto 2rem;
+    max-width: 600px;
+    padding: 1.5rem;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    text-align: left;
+}
+.dep-title {
+    font-family: var(--font-b);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.6rem;
+}
+.dep-title i {
+    color: var(--blue);
+}
+.dep-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+@media (max-width: 600px) {
+    .dep-grid {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+}
+.dep-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem;
+    align-items: center;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.dep-card:hover {
+    border-color: var(--border-blue);
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.06);
+}
+.dep-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-b);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text);
+}
+.dep-header i {
+    font-size: 1.6rem;
+}
+.dep-icon-py { color: #3776AB; }
+.dep-icon-node { color: #339933; }
+.dep-icon-ffmpeg { color: #858585; }
+
+.dep-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    width: 100%;
+    padding: 0.45rem;
+    background: var(--bg-3);
+    color: var(--text-muted);
+    font-family: var(--font-b);
+    font-size: 0.72rem;
+    font-weight: 600;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+}
+.dep-btn:hover {
+    background: var(--blue);
+    color: #fff;
+    border-color: var(--blue);
+}
+.dep-btn i {
+    font-size: 0.65rem;
+}
