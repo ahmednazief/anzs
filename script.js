@@ -978,8 +978,8 @@ function initLutSlider() {
         // Apply clip-path to graded layer (shows graded on right, raw on left by default, or vice versa)
         // Original CSS: clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%)
         // So the left side of the polygon is the slider position.
-        gradedLayer.style.clipPath = \polygon(\% 0, 100% 0, 100% 100%, \% 100%)\;
-        sliderBar.style.left = \\%\;
+        gradedLayer.style.clipPath = `polygon(${percent}% 0, 100% 0, 100% 100%, ${percent}% 100%)`;
+        sliderBar.style.left = `${percent}%`;
     }
 
     // Mouse events
@@ -1008,12 +1008,12 @@ function init3DTilt() {
             const rotateX = ((y - centerY) / centerY) * -10;
             const rotateY = ((x - centerX) / centerX) * 10;
             
-            card.style.transform = \perspective(1000px) rotateX(\deg) rotateY(\deg) scale3d(1.02, 1.02, 1.02)\;
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
             card.style.transition = 'none';
         });
         
         card.addEventListener('mouseleave', () => {
-            card.style.transform = \perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)\;
+            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
             card.style.transition = 'transform 0.5s ease';
         });
     });
