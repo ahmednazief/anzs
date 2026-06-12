@@ -259,6 +259,40 @@
     bottom: -35px;
 }
 
+/* DISABLED STATE */
+.big-download-btn.disabled {
+    cursor: not-allowed;
+    color: rgba(255, 255, 255, 0.4);
+    pointer-events: all; /* to allow cursor to show */
+}
+.big-download-btn.disabled::before {
+    background: linear-gradient(90deg, #333, #444, #555, #333, #444);
+    animation: none;
+    opacity: 0.5;
+}
+.big-download-btn.disabled::after {
+    background: linear-gradient(135deg, #1a1a1a, #222);
+}
+.big-download-btn.disabled .btn-icon {
+    color: rgba(255, 255, 255, 0.4);
+    text-shadow: none;
+}
+.big-download-btn.disabled:hover {
+    transform: none;
+}
+.big-download-btn.disabled:hover::before {
+    filter: none;
+    opacity: 0.5;
+}
+.big-download-btn.disabled:hover::after {
+    background: linear-gradient(135deg, #1a1a1a, #222);
+}
+.big-download-btn.disabled:hover .btn-icon {
+    transform: none;
+    color: rgba(255, 255, 255, 0.4);
+    text-shadow: none;
+}
+
 /* ANIMATED TIMELINE SHOWCASE */
 .timeline-showcase {
     background: var(--timeline-bg);

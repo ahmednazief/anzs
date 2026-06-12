@@ -136,6 +136,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let particleTimer;
         
         downloadBtn.addEventListener('mousemove', (e) => {
+            if (downloadBtn.classList.contains('disabled')) return;
+            
             const rect = downloadBtn.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
@@ -161,6 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         
         downloadBtn.addEventListener('mouseleave', () => {
+            if (downloadBtn.classList.contains('disabled')) return;
             downloadBtn.style.transform = `perspective(1000px) translate(0px, 0px) scale(1) rotateX(0deg) rotateY(0deg)`;
         });
         
