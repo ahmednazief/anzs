@@ -47,15 +47,27 @@
 
             <!-- ===== CHROME-STYLE DOWNLOAD ===== -->
             <div class="download-center" id="download">
-                <a href="https://github.com/ahmednazief/anzs/releases/download/Cutify/Cutify-Setup-1.1.0.exe" class="big-download-btn" id="downloadBtn">
-                    <span class="btn-icon-wrap">
-                        <i class="fa-solid fa-download"></i>
-                    </span>
-                    <span class="btn-text-group">
-                        <span class="btn-main-text">Download for Windows</span>
-                        <span class="btn-sub-text">Version 1.1.0 · Cutify-Setup-1.1.0.exe</span>
-                    </span>
-                </a>
+                <div class="download-buttons-wrapper">
+                    <a href="https://github.com/ahmednazief/anzs/releases/download/Cutify/Cutify-Setup-1.0.1.exe" class="big-download-btn old-version-btn" id="downloadBtnOld">
+                        <span class="btn-icon-wrap">
+                            <i class="fa-solid fa-download"></i>
+                        </span>
+                        <span class="btn-text-group">
+                            <span class="btn-main-text">Download Version 1.0.1</span>
+                            <span class="btn-sub-text">Stable Beta · Cutify-Setup-1.0.1.exe</span>
+                        </span>
+                    </a>
+
+                    <a href="#" class="big-download-btn disabled-btn" id="downloadBtnNew" onclick="event.preventDefault();">
+                        <span class="btn-icon-wrap">
+                            <i class="fa-solid fa-lock"></i>
+                        </span>
+                        <span class="btn-text-group">
+                            <span class="btn-main-text" style="color: #fff;">Version 1.1.0</span>
+                            <span class="btn-sub-text" style="color: #fff;">Coming Soon</span>
+                        </span>
+                    </a>
+                </div>
                 <p class="download-note">
                     <i class="fa-solid fa-circle-info"></i>
                     Requires Adobe Premiere Pro 2022 or later
@@ -231,13 +243,20 @@
     <section class="cutify-cta-section">
         <div class="container cta-inner">
             <h2>Ready to Edit Smarter?</h2>
-            <p>Cutify 1.1.0 is now live. Download the installer and start automating your video editing.</p>
-            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
-                <a href="https://github.com/ahmednazief/anzs/releases/download/Cutify/Cutify-Setup-1.1.0.exe" class="big-download-btn">
+            <p>Cutify 1.1.0 is almost here, or download the stable 1.0.1 beta to start automating your video editing today.</p>
+            <div class="download-buttons-wrapper" style="margin-top: 1.5rem;">
+                <a href="https://github.com/ahmednazief/anzs/releases/download/Cutify/Cutify-Setup-1.0.1.exe" class="big-download-btn old-version-btn">
                     <span class="btn-icon-wrap"><i class="fa-solid fa-download"></i></span>
                     <span class="btn-text-group">
-                        <span class="btn-main-text" style="color: #fff;">Download Version 1.1.0</span>
-                        <span class="btn-sub-text" style="color: #fff;">For Windows</span>
+                        <span class="btn-main-text" style="color: #fff;">Download Version 1.0.1</span>
+                        <span class="btn-sub-text" style="color: #fff;">Stable Beta</span>
+                    </span>
+                </a>
+                <a href="#" class="big-download-btn disabled-btn" onclick="event.preventDefault();">
+                    <span class="btn-icon-wrap"><i class="fa-solid fa-lock"></i></span>
+                    <span class="btn-text-group">
+                        <span class="btn-main-text" style="color: #fff;">Version 1.1.0</span>
+                        <span class="btn-sub-text" style="color: #fff;">Coming Soon</span>
                     </span>
                 </a>
             </div>
