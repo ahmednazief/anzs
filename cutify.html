@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cutify — Premiere Pro Automation Plugin | ANZS</title>
     <meta name="description" content="Cutify is an AI-powered Premiere Pro plugin by ANZS. Remove silences, decimate frames, and edit smarter — directly inside your Premiere Pro timeline.">
-    <link rel="stylesheet" href="cutify.css?v=3.4">
+    <link rel="stylesheet" href="cutify.css?v=3.5">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Barlow+Condensed:wght@400;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -18,7 +18,6 @@
         <a href="index.html" class="logo">AN<span class="logo-z">Z</span><span class="logo-s">S</span></a>
         <ul class="nav-links">
             <li><a href="index.html" class="nav-link">← Back to ANZS</a></li>
-            <li><a href="#screenshots" class="nav-link">Preview</a></li>
             <li><a href="#tools" class="nav-link">Tools</a></li>
             <li><a href="#download" class="nav-link plugin-btn"><i class="fa-solid fa-bolt"></i> Get Cutify</a></li>
         </ul>
@@ -105,46 +104,6 @@
         </div>
     </section>
 
-    <!-- ===== APP SCREENSHOT SHOWCASE ===== -->
-    <section class="cutify-screenshots" id="screenshots">
-        <div class="container">
-            <span class="section-eyebrow">See It In Action</span>
-            <h2 class="section-title">Built Inside <span style="color:var(--blue)">Premiere Pro</span></h2>
-            <p class="section-sub">No exports. No roundtrips. Cutify runs natively inside your existing Premiere Pro workflow.</p>
-
-            <div class="screenshots-grid">
-
-                <!-- Screenshot 1 — Remove Silences tool -->
-                <div class="screenshot-card">
-                    <div class="screenshot-label">
-                        <span class="tool-dot dot-purple"></span>
-                        <span class="tool-name"><i class="fa-solid fa-scissors"></i> Remove Silences</span>
-                        <span class="tool-tag ai-tag">AI</span>
-                    </div>
-                    <div class="screenshot-frame">
-                        <img src="images/cutify_app1.png" alt="Cutify — Remove Silences tool showing audio tracks with waveforms and silence detection settings" loading="lazy">
-                        <div class="screenshot-shine"></div>
-                    </div>
-                    <p class="screenshot-desc">AI-powered voice activity detection that finds dead air and makes frame-accurate cuts directly inside your Premiere Pro timeline.</p>
-                </div>
-
-                <!-- Screenshot 2 — Dashboard / Home -->
-                <div class="screenshot-card">
-                    <div class="screenshot-label">
-                        <span class="tool-dot dot-teal"></span>
-                        <span class="tool-name"><i class="fa-solid fa-house"></i> Cutify Dashboard</span>
-                        <span class="tool-tag smart-tag">Studio v1.0</span>
-                    </div>
-                    <div class="screenshot-frame">
-                        <img src="images/cutify_app2.png" alt="Cutify — Plugin dashboard showing available tools: Remove Silences and Frame Decimation" loading="lazy">
-                        <div class="screenshot-shine"></div>
-                    </div>
-                    <p class="screenshot-desc">Clean, minimal dashboard showing all available automation tools. Select your tool and get to work instantly — no configuration needed.</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
 
     <!-- ===== AVAILABLE TOOLS (accurate from app) ===== -->
     <section class="cutify-tools" id="tools">
@@ -277,7 +236,7 @@
             });
         }, { threshold: 0.08 });
 
-        document.querySelectorAll('.feature-card, .how-step, .tool-card, .screenshot-card').forEach((el, i) => {
+        document.querySelectorAll('.feature-card, .how-step, .tool-card').forEach((el, i) => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(24px)';
             el.style.transition = `opacity 0.6s ease ${i * 0.1}s, transform 0.6s ease ${i * 0.1}s`;
