@@ -1,5 +1,6 @@
 /* =====================================================
-   ANZS — Ahmed Nazif Solutions | Premium JS Engine
+   ANZS — Ahmed NaZif Solutions | Premium JS Engine
+   v3.0 — Sky Blue + Gold Edition
    ===================================================== */
 
 // ===== PRELOADER =====
@@ -74,7 +75,7 @@ if (meshCanvas) {
             this.vx = (Math.random() - 0.5) * 0.4;
             this.vy = (Math.random() - 0.5) * 0.4;
             this.r  = Math.random() * 1.8 + 0.8;
-            this.color = Math.random() > 0.5 ? 'rgba(255, 31, 31, 0.45)' : 'rgba(255, 122, 0, 0.35)';
+            this.color = Math.random() > 0.5 ? 'rgba(56, 189, 248, 0.35)' : 'rgba(251, 191, 36, 0.28)';
         }
         update() {
             if (mouse.x !== null) {
@@ -862,9 +863,9 @@ function initRetentionWaves() {
             ctx.lineWidth = 1.5;
             
             const grad = ctx.createLinearGradient(0, 0, width, 0);
-            grad.addColorStop(0, 'rgba(255, 31, 31, 0.05)');
-            grad.addColorStop(0.5, hoverActive ? 'rgba(255, 31, 31, 0.42)' : 'rgba(255, 31, 31, 0.22)');
-            grad.addColorStop(1, 'rgba(255, 122, 0, 0.05)');
+            grad.addColorStop(0, 'rgba(56, 189, 248, 0.05)');
+            grad.addColorStop(0.5, hoverActive ? 'rgba(56, 189, 248, 0.42)' : 'rgba(56, 189, 248, 0.22)');
+            grad.addColorStop(1, 'rgba(251, 191, 36, 0.05)');
             ctx.strokeStyle = grad;
             
             ctx.beginPath();
@@ -878,9 +879,9 @@ function initRetentionWaves() {
             ctx.beginPath();
             ctx.lineWidth = 0.8;
             const grad2 = ctx.createLinearGradient(0, 0, width, 0);
-            grad2.addColorStop(0, 'rgba(255, 122, 0, 0.02)');
-            grad2.addColorStop(0.5, hoverActive ? 'rgba(255, 122, 0, 0.25)' : 'rgba(255, 122, 0, 0.12)');
-            grad2.addColorStop(1, 'rgba(255, 31, 31, 0.02)');
+            grad2.addColorStop(0, 'rgba(251, 191, 36, 0.02)');
+            grad2.addColorStop(0.5, hoverActive ? 'rgba(251, 191, 36, 0.25)' : 'rgba(251, 191, 36, 0.12)');
+            grad2.addColorStop(1, 'rgba(56, 189, 248, 0.02)');
             ctx.strokeStyle = grad2;
             for (let x = 0; x < width; x++) {
                 const y = height / 2 + Math.sin(x * (currentFreq * 0.8) - phase + 1.5) * (currentAmp * 0.6) + Math.sin(x * 0.008 + phase) * 3;

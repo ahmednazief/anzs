@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nazief — Elite Gaming Editor</title>
-    <meta name="description" content="Nazief — Cinema-grade video editing, retention-engineered gaming content, and storytelling for the @Plains YouTube channel.">
-    <link rel="stylesheet" href="styles.css?v=2.1">
+    <title>ANZS — Ahmed NaZif Solutions</title>
+    <meta name="description" content="ANZS (Ahmed NaZif Solutions) — Cinema-grade video editing, retention-engineered gaming content, and storytelling for the @Plains YouTube channel.">
+    <link rel="stylesheet" href="styles.css?v=3.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Space+Grotesk:wght@300;400;500;700&family=Share+Tech+Mono&family=Barlow+Condensed:wght@400;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -16,25 +16,23 @@
     <!-- Interactive node canvas -->
     <canvas id="meshCanvas" class="cyber-mesh-canvas"></canvas>
 
-    <!-- Moving Neon Blurs -->
+    <!-- Moving Blurs -->
     <div class="aurora-bg">
         <div class="aurora aurora-cyan" id="aurora1"></div>
         <div class="aurora aurora-gold" id="aurora2"></div>
-        <div class="aurora aurora-mid" id="aurora3"></div>
+        <div class="aurora aurora-mid"  id="aurora3"></div>
     </div>
 
-    <!-- ===== CINEMATIC PRELOADER ===== -->
+    <!-- ===== PRELOADER ===== -->
     <div class="preloader" id="preloader">
         <div class="preloader-content">
             <div class="preloader-logo">
-                <span class="p-letter gold-glow-text">N</span>
-                <span class="p-letter cyan-glow-text">A</span>
-                <span class="p-letter gold-glow-text">Z</span>
-                <span class="p-letter cyan-glow-text">I</span>
-                <span class="p-letter gold-glow-text">E</span>
-                <span class="p-letter cyan-glow-text">F</span>
+                <span class="p-letter">A</span>
+                <span class="p-letter">N</span>
+                <span class="p-letter">Z</span>
+                <span class="p-letter">S</span>
             </div>
-            <p class="preloader-label">Ahmed Nazif</p>
+            <p class="preloader-label">Ahmed NaZif Solutions</p>
             <div class="preloader-progress-wrap">
                 <div class="preloader-progress-bar" id="preloaderBar"></div>
             </div>
@@ -45,30 +43,28 @@
         </div>
     </div>
 
-
-
     <!-- ===== NAVBAR ===== -->
     <nav class="navbar" id="navbar">
-        <a href="#home" class="logo">N<span class="logo-z">AZ</span>IE<span class="logo-s">F</span></a>
+        <a href="#home" class="logo">AN<span class="logo-z">Z</span><span class="logo-s">S</span></a>
         <ul class="nav-links">
-            <li><a href="#about" class="nav-link">About</a></li>
-            <li><a href="#process" class="nav-link">Workflow</a></li>
-            <li><a href="#services" class="nav-link">Services</a></li>
+            <li><a href="#about"     class="nav-link">About</a></li>
+            <li><a href="#process"   class="nav-link">Workflow</a></li>
+            <li><a href="#services"  class="nav-link">Services</a></li>
             <li><a href="#portfolio" class="nav-link">Showcase</a></li>
-            <li><a href="#branding" class="nav-link">Branding</a></li>
-            <li><a href="cutify.html" class="nav-link" style="color: #C542FF; font-weight: bold;"><i class="fa-solid fa-bolt"></i> Cutify</a></li>
+            <li><a href="#branding"  class="nav-link">Branding</a></li>
+            <li><a href="cutify.html" class="nav-link" style="color:#FBBF24; font-weight:600;"><i class="fa-solid fa-bolt"></i> Cutify</a></li>
             <li>
                 <button class="sound-toggle-btn" id="soundToggle" title="Toggle UI Sound">
                     <i class="fa-solid fa-volume-high"></i>
                     <span class="sound-viz" id="soundViz">
                         <span class="sound-viz-bar" style="height:8px"></span>
-                        <span class="sound-viz-bar" style="height:14px"></span>
+                        <span class="sound-viz-bar" style="height:12px"></span>
                         <span class="sound-viz-bar" style="height:5px"></span>
-                        <span class="sound-viz-bar" style="height:11px"></span>
+                        <span class="sound-viz-bar" style="height:10px"></span>
                     </span>
                 </button>
             </li>
-            <li><a href="#contact" class="btn-nav-cta">Initiate Project</a></li>
+            <li><a href="#contact" class="btn-nav-cta">Get in Touch</a></li>
         </ul>
         <div class="hamburger" id="hamburger">
             <span></span><span></span><span></span>
@@ -79,13 +75,13 @@
     <div class="mobile-menu" id="mobileMenu">
         <button class="mobile-close" id="mobileClose"><i class="fa-solid fa-xmark"></i></button>
         <ul>
-            <li><a href="#about" class="mobile-link">About</a></li>
-            <li><a href="#process" class="mobile-link">Workflow</a></li>
-            <li><a href="#services" class="mobile-link">Services</a></li>
+            <li><a href="#about"     class="mobile-link">About</a></li>
+            <li><a href="#process"   class="mobile-link">Workflow</a></li>
+            <li><a href="#services"  class="mobile-link">Services</a></li>
             <li><a href="#portfolio" class="mobile-link">Showcase</a></li>
-            <li><a href="#branding" class="mobile-link">Branding</a></li>
-            <li><a href="cutify.html" class="mobile-link" style="color: #C542FF;"><i class="fa-solid fa-bolt"></i> Cutify</a></li>
-            <li><a href="#contact" class="mobile-link mobile-cta">Initiate Project</a></li>
+            <li><a href="#branding"  class="mobile-link">Branding</a></li>
+            <li><a href="cutify.html" class="mobile-link" style="color:#FBBF24;"><i class="fa-solid fa-bolt"></i> Cutify</a></li>
+            <li><a href="#contact"   class="mobile-link mobile-cta">Get in Touch</a></li>
         </ul>
     </div>
 
@@ -101,16 +97,17 @@
                 </div>
 
                 <h1 class="hero-heading fade-up delay-1">
-                    <span class="hero-line-top">Ahmed</span>
-                    <span class="hero-line-bottom liquid-text">Nazif</span>
+                    <span class="hero-line-top">ANZS</span>
+                    <span class="hero-line-bottom">Solutions</span>
                 </h1>
 
-                <p class="hero-tagline fade-up delay-3">
+                <p class="hero-tagline fade-up delay-2">
+                    <strong style="color:var(--text); font-size:0.85rem; font-family:var(--font-m); letter-spacing:2px; display:block; margin-bottom:0.4rem;">Ahmed NaZif Solutions</strong>
                     Cinema-grade editing engineered for <em>gaming creators</em>.
-                    Fast pacing. Grip story-arcs. Maximum viewer retention.
+                    Fast pacing. Story-driven hooks. Maximum viewer retention.
                 </p>
 
-                <div class="hero-cta fade-up delay-4">
+                <div class="hero-cta fade-up delay-3">
                     <a href="#portfolio" class="btn-gold" id="heroShowreelBtn">
                         <i class="fa-solid fa-play"></i> Launch Showreel
                     </a>
@@ -119,10 +116,10 @@
                     </a>
                 </div>
 
-                <!-- Mini stats bar -->
+                <!-- Stats bar -->
                 <div class="hero-stats fade-up delay-4">
                     <div class="hstat">
-                        <strong class="cyan">8.5K<span class="plus">+</span></strong>
+                        <strong class="blue">8.5K<span class="plus">+</span></strong>
                         <span>Subscribers</span>
                     </div>
                     <div class="hstat-sep"></div>
@@ -132,7 +129,7 @@
                     </div>
                     <div class="hstat-sep"></div>
                     <div class="hstat">
-                        <strong class="cyan">6<span class="plus">+</span></strong>
+                        <strong class="blue">6<span class="plus">+</span></strong>
                         <span>Viral Videos</span>
                     </div>
                     <div class="hstat-sep"></div>
@@ -153,12 +150,12 @@
                         <!-- Raw/flat LUT style -->
                         <div class="photo-layer photo-raw">
                             <img src="profile.jpg" alt="Ahmed Nazif — Raw Footage">
-                            <span class="lut-label raw-label">RAW FOOTAGE</span>
+                            <span class="lut-label raw-label">RAW</span>
                         </div>
                         <!-- Color Graded style -->
                         <div class="photo-layer photo-graded" id="lutGraded">
                             <img src="profile.jpg" alt="Ahmed Nazif — Color Graded">
-                            <span class="lut-label graded-label">COLOR GRADED</span>
+                            <span class="lut-label graded-label">GRADED</span>
                         </div>
                         <!-- Interactive slider bar -->
                         <div class="lut-slider-bar" id="lutSliderBar">
@@ -198,8 +195,8 @@
             <div class="about-grid">
                 <div class="about-text reveal">
                     <p class="eyebrow">The Director</p>
-                    <h2>Weaponizing<br><span class="cyan">Attention Spans.</span></h2>
-                    <p>I am Ahmed Nazif — a specialist in visual flow. I don't just put clips together; I construct highly technical, rapid-fire narratives that hook the viewer's brain within the first three seconds and never let go.</p>
+                    <h2>Weaponizing<br><span class="blue">Attention Spans.</span></h2>
+                    <p>I am Ahmed Nazif — the founder of <strong>ANZS (Ahmed NaZif Solutions)</strong>. I don't just put clips together; I construct highly technical, rapid-fire narratives that hook the viewer's brain within the first three seconds and never let go.</p>
                     <p>My work combines lightning-fast comedic timing, pristine audio design, and custom motion graphics — tailored for competitive shooter creators turning casual views into obsessive subscribers.</p>
                     <a href="#process" class="btn-outline-cyan" id="viewWorkflowBtn">
                         View Workflow <i class="fa-solid fa-arrow-right"></i>
@@ -217,7 +214,7 @@
                         <div class="cc tl"></div><div class="cc tr"></div><div class="cc bl"></div><div class="cc br"></div>
                         <div class="card-top-bar cyan-bar"></div>
                         <div class="card-icon icon-cyan"><i class="fa-solid fa-wave-square"></i></div>
-                        <h3 class="cyan">Pacing Control</h3>
+                        <h3 class="blue">Pacing Control</h3>
                         <p>Fine-tuned editing wave — balancing high-stress gameplay with comedic dynamic pauses.</p>
                     </div>
                     <div class="about-card glass reveal-right delay-2" id="cardAudio">
@@ -237,8 +234,8 @@
         <div class="section-divider"></div>
         <div class="container">
             <p class="eyebrow text-center reveal">By The Numbers</p>
-            <h2 class="text-center reveal">Results That <span class="cyan">Speak</span></h2>
-            
+            <h2 class="text-center reveal">Results That <span class="blue">Speak</span></h2>
+
             <div class="retention-grid reveal">
                 <div class="ret-stat">
                     <canvas class="ret-wave-canvas"></canvas>
@@ -269,7 +266,7 @@
         <div class="section-divider"></div>
         <div class="container">
             <p class="eyebrow text-center reveal">The Pipeline</p>
-            <h2 class="text-center reveal">Post-Production <span class="cyan">Console</span></h2>
+            <h2 class="text-center reveal">Post-Production <span class="blue">Console</span></h2>
             <p class="section-sub text-center reveal">How raw stream footage becomes a viral, high-retention video file.</p>
 
             <div class="timeline-track">
@@ -420,7 +417,7 @@
         <div class="section-divider"></div>
         <div class="container">
             <p class="eyebrow text-center reveal">Channel Showcase</p>
-            <h2 class="text-center reveal">Featured <span class="cyan">Campaigns</span></h2>
+            <h2 class="text-center reveal">Featured <span class="blue">Campaigns</span></h2>
             <p class="section-sub text-center reveal">Cutting-edge post-production powering the @Plains gaming channel. Click any card to stream.</p>
 
             <!-- Filter Bar -->
@@ -448,7 +445,7 @@
                             <p class="ch-handle">@Plains · Valorant Content Creator</p>
                             <div class="ch-stats">
                                 <div class="ch-stat">
-                                    <strong class="cyan">8.5K+</strong>
+                                    <strong class="blue">8.5K+</strong>
                                     <span>Subscribers</span>
                                 </div>
                                 <div class="ch-stat-dot"></div>
@@ -457,13 +454,13 @@
                                     <span>Total Views</span>
                                 </div>
                                 <div class="ch-stat">
-                                    <strong class="cyan">49K</strong>
+                                    <strong class="blue">49K</strong>
                                     <span>Best Video</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <a href="https://www.youtube.com/@Plains" target="_blank" rel="noopener" class="btn-youtube" id="visitChannelBtn" style="white-space: nowrap;">
+                    <a href="https://www.youtube.com/@Plains" target="_blank" rel="noopener" class="btn-youtube" id="visitChannelBtn" style="white-space:nowrap;">
                         <i class="fa-brands fa-youtube"></i> Visit Channel
                     </a>
                 </div>
@@ -478,9 +475,7 @@
                     <div class="vid-thumb-wrap">
                         <img loading="lazy" class="vid-thumb" src="https://img.youtube.com/vi/WgmfFzcpOmc/maxresdefault.jpg" alt="Valorant Coach Challenge Edit" onerror="this.src='https://img.youtube.com/vi/WgmfFzcpOmc/hqdefault.jpg'">
                         <div class="vid-scanlines"></div>
-                        <div class="vid-play-overlay">
-                            <div class="play-circle"><i class="fa-solid fa-play"></i></div>
-                        </div>
+                        <div class="vid-play-overlay"><div class="play-circle"><i class="fa-solid fa-play"></i></div></div>
                         <div class="vid-views-tag"><i class="fa-solid fa-eye"></i> 46K Views</div>
                         <div class="vid-rank-badge">#2 Top Performer</div>
                     </div>
@@ -488,18 +483,9 @@
                         <span class="vid-badge vid-badge-gold"><i class="fa-solid fa-trophy"></i> Challenge Edit</span>
                         <h3>Hired a Pro Valorant Coach for 1000 EGP</h3>
                         <div class="vid-stats-row">
-                            <div class="vid-stat">
-                                <i class="fa-solid fa-eye"></i>
-                                <span><strong>46K</strong> views</span>
-                            </div>
-                            <div class="vid-stat">
-                                <i class="fa-solid fa-fire"></i>
-                                <span><strong>High</strong> retention</span>
-                            </div>
-                            <div class="vid-stat">
-                                <i class="fa-solid fa-clock"></i>
-                                <span><strong>~10</strong> min</span>
-                            </div>
+                            <div class="vid-stat"><i class="fa-solid fa-eye"></i><span><strong>46K</strong> views</span></div>
+                            <div class="vid-stat"><i class="fa-solid fa-fire"></i><span><strong>High</strong> retention</span></div>
+                            <div class="vid-stat"><i class="fa-solid fa-clock"></i><span><strong>~10</strong> min</span></div>
                         </div>
                         <p class="vid-desc">Challenge format — hired a Valorant pro coach for 1000 EGP to see measurable rank improvement. Massive comedic payoff with high re-watch moments.</p>
                     </div>
@@ -511,9 +497,7 @@
                     <div class="vid-thumb-wrap">
                         <img loading="lazy" class="vid-thumb" src="https://img.youtube.com/vi/1Myr-s_QAhA/maxresdefault.jpg" alt="Egyptian in America Server Edit" onerror="this.src='https://img.youtube.com/vi/1Myr-s_QAhA/hqdefault.jpg'">
                         <div class="vid-scanlines"></div>
-                        <div class="vid-play-overlay">
-                            <div class="play-circle"><i class="fa-solid fa-play"></i></div>
-                        </div>
+                        <div class="vid-play-overlay"><div class="play-circle"><i class="fa-solid fa-play"></i></div></div>
                         <div class="vid-views-tag"><i class="fa-solid fa-eye"></i> 49K Views</div>
                         <div class="vid-rank-badge vid-rank-badge-cyan">#1 Top Performer</div>
                     </div>
@@ -521,18 +505,9 @@
                         <span class="vid-badge"><i class="fa-solid fa-flag"></i> Comedy Series</span>
                         <h3>Undercover in US Server</h3>
                         <div class="vid-stats-row">
-                            <div class="vid-stat">
-                                <i class="fa-solid fa-eye"></i>
-                                <span><strong>49K</strong> views</span>
-                            </div>
-                            <div class="vid-stat">
-                                <i class="fa-solid fa-chart-line"></i>
-                                <span><strong>Best</strong> performing</span>
-                            </div>
-                            <div class="vid-stat">
-                                <i class="fa-solid fa-earth-americas"></i>
-                                <span><strong>US</strong> server</span>
-                            </div>
+                            <div class="vid-stat"><i class="fa-solid fa-eye"></i><span><strong>49K</strong> views</span></div>
+                            <div class="vid-stat"><i class="fa-solid fa-chart-line"></i><span><strong>Best</strong> performing</span></div>
+                            <div class="vid-stat"><i class="fa-solid fa-earth-americas"></i><span><strong>US</strong> server</span></div>
                         </div>
                         <p class="vid-desc">Undercover in the American Valorant server — cultural contrast comedy, fast pacing, and top-tier comedic subtitles. Channel's best-performing video.</p>
                     </div>
@@ -544,27 +519,16 @@
                     <div class="vid-thumb-wrap">
                         <img loading="lazy" class="vid-thumb" src="https://img.youtube.com/vi/1UQBT9-h-Es/maxresdefault.jpg" alt="Egyptian Undercover in Valorant Australia Server" onerror="this.src='https://img.youtube.com/vi/1UQBT9-h-Es/hqdefault.jpg'">
                         <div class="vid-scanlines"></div>
-                        <div class="vid-play-overlay">
-                            <div class="play-circle"><i class="fa-solid fa-play"></i></div>
-                        </div>
+                        <div class="vid-play-overlay"><div class="play-circle"><i class="fa-solid fa-play"></i></div></div>
                         <div class="vid-views-tag"><i class="fa-solid fa-eye"></i> 26K Views</div>
                     </div>
                     <div class="vid-meta">
                         <span class="vid-badge"><i class="fa-solid fa-flag"></i> Comedy Series</span>
                         <h3>Egyptian Undercover in Valorant US Server</h3>
                         <div class="vid-stats-row">
-                            <div class="vid-stat">
-                                <i class="fa-solid fa-eye"></i>
-                                <span><strong>26K</strong> views</span>
-                            </div>
-                            <div class="vid-stat">
-                                <i class="fa-solid fa-star"></i>
-                                <span><strong>High</strong> engagement</span>
-                            </div>
-                            <div class="vid-stat">
-                                <i class="fa-solid fa-earth-oceania"></i>
-                                <span><strong>AUS</strong> server</span>
-                            </div>
+                            <div class="vid-stat"><i class="fa-solid fa-eye"></i><span><strong>26K</strong> views</span></div>
+                            <div class="vid-stat"><i class="fa-solid fa-star"></i><span><strong>High</strong> engagement</span></div>
+                            <div class="vid-stat"><i class="fa-solid fa-earth-oceania"></i><span><strong>AUS</strong> server</span></div>
                         </div>
                         <p class="vid-desc">Part 3 of the undercover server series — the Australia edition. Continued the viral comedy format with an international spin, locking strong engagement.</p>
                     </div>
@@ -576,27 +540,16 @@
                     <div class="vid-thumb-wrap">
                         <img loading="lazy" class="vid-thumb" src="https://img.youtube.com/vi/3VohVmtUpXE/maxresdefault.jpg" alt="Valorant Editing Showcase" onerror="this.src='https://img.youtube.com/vi/3VohVmtUpXE/hqdefault.jpg'">
                         <div class="vid-scanlines"></div>
-                        <div class="vid-play-overlay">
-                            <div class="play-circle"><i class="fa-solid fa-play"></i></div>
-                        </div>
+                        <div class="vid-play-overlay"><div class="play-circle"><i class="fa-solid fa-play"></i></div></div>
                         <div class="vid-views-tag"><i class="fa-solid fa-fire"></i> Trending</div>
                     </div>
                     <div class="vid-meta">
                         <span class="vid-badge"><i class="fa-solid fa-gamepad"></i> Comedy Series</span>
                         <h3>Searching for Animer Girls in Valorant</h3>
                         <div class="vid-stats-row">
-                            <div class="vid-stat">
-                                <i class="fa-solid fa-bolt"></i>
-                                <span><strong>Fast</strong> pacing</span>
-                            </div>
-                            <div class="vid-stat">
-                                <i class="fa-solid fa-wand-magic-sparkles"></i>
-                                <span><strong>VFX</strong> heavy</span>
-                            </div>
-                            <div class="vid-stat">
-                                <i class="fa-solid fa-earth-europe"></i>
-                                <span><strong>EU</strong> server</span>
-                            </div>
+                            <div class="vid-stat"><i class="fa-solid fa-bolt"></i><span><strong>Fast</strong> pacing</span></div>
+                            <div class="vid-stat"><i class="fa-solid fa-wand-magic-sparkles"></i><span><strong>VFX</strong> heavy</span></div>
+                            <div class="vid-stat"><i class="fa-solid fa-earth-europe"></i><span><strong>EU</strong> server</span></div>
                         </div>
                         <p class="vid-desc">EU server edition of the undercover series. Cinema-grade motion graphics, screen shakes, and high-energy comedic timing throughout.</p>
                     </div>
@@ -608,23 +561,15 @@
                     <div class="vid-thumb-wrap">
                         <img loading="lazy" class="vid-thumb" src="https://img.youtube.com/vi/tPQExFt0rD4/maxresdefault.jpg" alt="Valorant Server Comedy" onerror="this.src='https://img.youtube.com/vi/tPQExFt0rD4/hqdefault.jpg'">
                         <div class="vid-scanlines"></div>
-                        <div class="vid-play-overlay">
-                            <div class="play-circle"><i class="fa-solid fa-play"></i></div>
-                        </div>
+                        <div class="vid-play-overlay"><div class="play-circle"><i class="fa-solid fa-play"></i></div></div>
                         <div class="vid-views-tag"><i class="fa-solid fa-eye"></i> Popular</div>
                     </div>
                     <div class="vid-meta">
                         <span class="vid-badge"><i class="fa-solid fa-masks-theater"></i> Comedy</span>
                         <h3>The Valorant Server That Will Make You Rich</h3>
                         <div class="vid-stats-row">
-                            <div class="vid-stat">
-                                <i class="fa-solid fa-masks-theater"></i>
-                                <span><strong>High</strong> comedy</span>
-                            </div>
-                            <div class="vid-stat">
-                                <i class="fa-solid fa-arrow-trend-up"></i>
-                                <span><strong>Viral</strong> format</span>
-                            </div>
+                            <div class="vid-stat"><i class="fa-solid fa-masks-theater"></i><span><strong>High</strong> comedy</span></div>
+                            <div class="vid-stat"><i class="fa-solid fa-arrow-trend-up"></i><span><strong>Viral</strong> format</span></div>
                         </div>
                         <p class="vid-desc">Hilarious server interaction format featuring rapid-fire meme cuts, punchline timing, and comedic visual effects. Perfect for channel growth.</p>
                     </div>
@@ -636,23 +581,15 @@
                     <div class="vid-thumb-wrap">
                         <img loading="lazy" class="vid-thumb" src="https://img.youtube.com/vi/_Nqzup8QzFs/maxresdefault.jpg" alt="Valorant Highlights" onerror="this.src='https://img.youtube.com/vi/_Nqzup8QzFs/hqdefault.jpg'">
                         <div class="vid-scanlines"></div>
-                        <div class="vid-play-overlay">
-                            <div class="play-circle"><i class="fa-solid fa-play"></i></div>
-                        </div>
+                        <div class="vid-play-overlay"><div class="play-circle"><i class="fa-solid fa-play"></i></div></div>
                         <div class="vid-views-tag"><i class="fa-solid fa-crosshairs"></i> Top Frags</div>
                     </div>
                     <div class="vid-meta">
                         <span class="vid-badge vid-badge-gold"><i class="fa-solid fa-trophy"></i> Comedy Series</span>
                         <h3>Egyptian Undercover in Valorant India Server</h3>
                         <div class="vid-stats-row">
-                            <div class="vid-stat">
-                                <i class="fa-solid fa-stopwatch"></i>
-                                <span><strong>Tight</strong> edits</span>
-                            </div>
-                            <div class="vid-stat">
-                                <i class="fa-solid fa-bullseye"></i>
-                                <span><strong>Aim</strong> highlights</span>
-                            </div>
+                            <div class="vid-stat"><i class="fa-solid fa-stopwatch"></i><span><strong>Tight</strong> edits</span></div>
+                            <div class="vid-stat"><i class="fa-solid fa-bullseye"></i><span><strong>Aim</strong> highlights</span></div>
                         </div>
                         <p class="vid-desc">Challenge-focused editing style with tight transitions, impactful sound effects on every kill, and smooth narrative progression through the match.</p>
                     </div>
@@ -705,7 +642,7 @@
                 <div class="ticker-item"><span class="ti-icon">◆</span> 100% retention-focused post-production &nbsp;·&nbsp;</div>
                 <div class="ticker-item"><span class="ti-icon">◆</span> "The transitions are cinema-level" &nbsp;·&nbsp;</div>
                 <div class="ticker-item"><span class="ti-icon">◆</span> <strong>26K</strong> views within 48 hours &nbsp;·&nbsp;</div>
-                <div class="ticker-item"><span class="ti-icon">◆</span> "Nazief made our channel feel premium" &nbsp;·&nbsp;</div>
+                <div class="ticker-item"><span class="ti-icon">◆</span> "ANZS made our channel feel premium" &nbsp;·&nbsp;</div>
                 <!-- Duplicate -->
                 <div class="ticker-item"><span class="ti-icon">◆</span> 8,500+ subscribers grown from zero &nbsp;·&nbsp;</div>
                 <div class="ticker-item"><span class="ti-icon">◆</span> "The sound design hits different" &nbsp;·&nbsp;</div>
@@ -714,7 +651,7 @@
                 <div class="ticker-item"><span class="ti-icon">◆</span> 100% retention-focused post-production &nbsp;·&nbsp;</div>
                 <div class="ticker-item"><span class="ti-icon">◆</span> "The transitions are cinema-level" &nbsp;·&nbsp;</div>
                 <div class="ticker-item"><span class="ti-icon">◆</span> <strong>26K</strong> views within 48 hours &nbsp;·&nbsp;</div>
-                <div class="ticker-item"><span class="ti-icon">◆</span> "Nazief made our channel feel premium" &nbsp;·&nbsp;</div>
+                <div class="ticker-item"><span class="ti-icon">◆</span> "ANZS made our channel feel premium" &nbsp;·&nbsp;</div>
             </div>
         </div>
     </section>
@@ -755,9 +692,9 @@
                         <div class="brand-meta">
                             <span class="brand-badge"><i class="fa-solid fa-building"></i> Corporate Branding</span>
                             <h3>IGM Group</h3>
-                            <p class="brand-niche">Mining & Agriculture</p>
+                            <p class="brand-niche">Mining &amp; Agriculture</p>
                             <p class="brand-desc">Authoritative corporate identity engineering for an international enterprise. Designed to project stability, scale, and environmental trust.</p>
-                        <div class="brand-explore">Explore Identity <i class="fa-solid fa-arrow-right"></i></div>
+                            <div class="brand-explore">Explore Identity <i class="fa-solid fa-arrow-right"></i></div>
                         </div>
                     </div>
                 </div>
@@ -770,7 +707,7 @@
         <div class="hud-overlay"></div>
         <div class="container">
             <p class="eyebrow text-center reveal hud-text">COMMS LINK</p>
-            <h2 class="text-center reveal">INITIATE <span class="cyan">MISSION</span></h2>
+            <h2 class="text-center reveal">Start a <span class="blue">Project</span></h2>
 
             <!-- Quick contact strip -->
             <div class="quick-contact-strip reveal">
@@ -874,7 +811,7 @@
                         </div>
                         <div class="wiz-sent" id="wizSent">
                             <i class="fa-solid fa-circle-check"></i>
-                            <span>Signal transmitted. Ahmed will respond shortly.</span>
+                            <span>Signal transmitted. ANZS will respond shortly.</span>
                         </div>
                     </div>
 
@@ -888,8 +825,8 @@
     <!-- ===== FOOTER ===== -->
     <footer>
         <div class="footer-inner">
-            <div class="footer-brand">N<span class="gold">AZ</span>IE<span class="cyan">F</span></div>
-            <p>Ahmed Nazif - Premium Post-Production</p>
+            <div class="footer-brand">AN<span class="gold">Z</span><span class="blue">S</span></div>
+            <p>Ahmed NaZif Solutions — Premium Post-Production</p>
             <div class="footer-social">
                 <a href="https://www.youtube.com/@Plains" target="_blank" class="footer-social-link" id="footerYT">
                     <i class="fa-brands fa-youtube"></i>
@@ -898,7 +835,7 @@
                     <i class="fa-solid fa-envelope"></i>
                 </a>
             </div>
-            <p class="footer-copy">&copy; <span id="year"></span> Nazief. Built for the elite.</p>
+            <p class="footer-copy">&copy; <span id="year"></span> ANZS. Built for the elite.</p>
         </div>
     </footer>
 
@@ -911,11 +848,11 @@
                 <div class="lightbox-ratio" id="lightboxRatio">
                     <iframe id="lightboxIframe" src="" title="YouTube Video Player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
-                <img id="lightboxImg" src="" alt="Showcase Preview" style="display:none; width:100%; height:auto; max-height:80vh; border-radius:4px; object-fit:contain;">
+                <img id="lightboxImg" src="" alt="Showcase Preview" style="display:none; width:100%; height:auto; max-height:80vh; border-radius:6px; object-fit:contain;">
             </div>
         </div>
     </div>
 
-    <script src="script.js?v=2.1"></script>
+    <script src="script.js?v=3.0"></script>
 </body>
 </html>
