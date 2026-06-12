@@ -276,20 +276,6 @@ img { max-width: 100%; display: block; }
 .btn-main-text { font-size: 1rem; font-weight: 700; line-height: 1; }
 .btn-sub-text  { font-size: 0.7rem; opacity: 0.8; font-weight: 400; margin-top: 2px; }
 
-/* DISABLED state */
-.big-download-btn.disabled {
-    background: #CBD5E1;
-    color: #94A3B8;
-    box-shadow: none;
-    cursor: not-allowed;
-}
-.big-download-btn.disabled:hover {
-    background: #CBD5E1;
-    transform: none;
-    box-shadow: none;
-}
-.big-download-btn.disabled .btn-icon-wrap { background: rgba(0,0,0,0.06); color: #94A3B8; }
-.big-download-btn.disabled::before { display: none; }
 
 /* Requirements note */
 .download-note {
@@ -442,10 +428,12 @@ img { max-width: 100%; display: block; }
     width: 100%;
     height: auto;
     display: block;
+    transform: scale(1.1); /* Zoom in to crop out screenshot title bars/borders */
+    transform-origin: center center;
     transition: transform 0.6s var(--ease);
 }
 .screenshot-card:hover .screenshot-frame img {
-    transform: scale(1.02);
+    transform: scale(1.16); /* Zoom in slightly more on hover */
 }
 .screenshot-shine {
     position: absolute;
