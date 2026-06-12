@@ -130,18 +130,69 @@ document.addEventListener('DOMContentLoaded', () => {
     // Start loop
     setTimeout(runAnimation, 1000);
 
-    // Magnetic Download Button
+    // Mindblowing Magnetic Download Button with Particles
     const downloadBtn = document.getElementById('downloadBtn');
     if(downloadBtn) {
+        let particleTimer;
+        
         downloadBtn.addEventListener('mousemove', (e) => {
             const rect = downloadBtn.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
             
-            downloadBtn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px) scale(1.05)`;
+            const moveX = (x - centerX) * 0.15;
+            const moveY = (y - centerY) * 0.15;
+            
+            // 3D tilt effect
+            const rotateX = ((y - centerY) / centerY) * -15;
+            const rotateY = ((x - centerX) / centerX) * 15;
+            
+            downloadBtn.style.transform = `perspective(1000px) translate(${moveX}px, ${moveY}px) scale(1.08) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            
+            // Spawn particles
+            if (!particleTimer) {
+                particleTimer = setTimeout(() => {
+                    createParticle(e.clientX, e.clientY);
+                    particleTimer = null;
+                }, 50);
+            }
         });
+        
         downloadBtn.addEventListener('mouseleave', () => {
-            downloadBtn.style.transform = `translate(0px, 0px) scale(1)`;
+            downloadBtn.style.transform = `perspective(1000px) translate(0px, 0px) scale(1) rotateX(0deg) rotateY(0deg)`;
         });
+        
+        function createParticle(x, y) {
+            const particle = document.createElement('div');
+            particle.className = 'btn-particle';
+            
+            // Random size between 4 and 10px
+            const size = Math.random() * 6 + 4;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            
+            // Random color from theme
+            const colors = ['var(--plugin-primary)', 'var(--plugin-secondary)', 'var(--plugin-tertiary)'];
+            particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+            particle.style.boxShadow = `0 0 10px ${particle.style.background}`;
+            
+            particle.style.left = `${x}px`;
+            particle.style.top = `${y}px`;
+            
+            // Random movement target
+            const tx = (Math.random() - 0.5) * 100;
+            const ty = (Math.random() - 0.5) * 100 - 50; // Tend to go up
+            
+            particle.style.setProperty('--tx', `${tx}px`);
+            particle.style.setProperty('--ty', `${ty}px`);
+            
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 1000);
+        }
     }
 });
