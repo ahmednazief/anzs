@@ -5,18 +5,18 @@
 /* ===== TOKENS ===== */
 :root {
     --blue:        #38BDF8;
-    --blue-deep:   #0EA5E9;
+    --blue-deep:   #0284C7;
     --blue-light:  #BAE6FD;
     --blue-glow:   rgba(56, 189, 248, 0.25);
     --gold:        #FBBF24;
-    --gold-dark:   #D97706;
+    --gold-dark:   #F59E0B;
 
-    --bg:          #080D16;
-    --bg-2:        #0F172A;
-    --bg-3:        #1E293B;
-    --surface:     #0F172A;
+    --bg:          #050811;
+    --bg-2:        #0A0F21;
+    --bg-3:        #0F162E;
+    --surface:     #0A0F21;
     --border:      rgba(255, 255, 255, 0.08);
-    --border-blue: rgba(56, 189, 248, 0.25);
+    --border-blue: rgba(56, 189, 248, 0.22);
 
     --text:        #F8FAFC;
     --text-muted:  #94A3B8;
@@ -44,6 +44,10 @@ body {
     font-size: 16px;
     line-height: 1.65;
     background: var(--bg);
+    background-image: 
+        linear-gradient(rgba(56, 189, 248, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.015) 1px, transparent 1px);
+    background-size: 64px 64px;
     color: var(--text);
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
