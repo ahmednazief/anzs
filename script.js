@@ -227,59 +227,12 @@ function playUI(type) {
 }
 
 
-// ===== CUSTOM CURSOR =====
-const cursorDot     = document.getElementById('cursorDot');
-const cursorOutline = document.getElementById('cursorOutline');
-let mX = 0, mY = 0, oX = 0, oY = 0;
-
-if (window.innerWidth > 768 && cursorDot && cursorOutline) {
-    document.addEventListener('mousemove', e => {
-        mX = e.clientX; mY = e.clientY;
-        cursorDot.style.left = mX + 'px';
-        cursorDot.style.top  = mY + 'px';
-    });
-
-    (function moveCursor() {
-        oX += (mX - oX) * 0.14;
-        oY += (mY - oY) * 0.14;
-        cursorOutline.style.left = oX + 'px';
-        cursorOutline.style.top  = oY + 'px';
-        requestAnimationFrame(moveCursor);
-    })();
-
-    const hoverEls = document.querySelectorAll(
-        'a, button, .svc-card, .video-card, .about-card, .tl-item, .channel-card, input, textarea'
-    );
-    hoverEls.forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            playUI('hover');
-            cursorDot.style.width     = '11px';
-            cursorDot.style.height    = '11px';
-            cursorOutline.style.width  = '62px';
-            cursorOutline.style.height = '62px';
-
-            const isGold = el.classList.contains('btn-gold') || el.classList.contains('about-card');
-            if (isGold) {
-                cursorOutline.style.borderColor = 'var(--gold)';
-                cursorOutline.style.boxShadow   = '0 0 18px var(--gold-glow)';
-                cursorDot.style.background      = 'var(--gold)';
-            } else {
-                cursorOutline.style.borderColor = 'var(--cyan)';
-                cursorOutline.style.boxShadow   = '0 0 18px var(--cyan-glow)';
-                cursorDot.style.background      = 'var(--cyan)';
-            }
-        });
-        el.addEventListener('mouseleave', () => {
-            cursorDot.style.width      = '7px';
-            cursorDot.style.height     = '7px';
-            cursorDot.style.background = 'var(--gold)';
-            cursorOutline.style.width  = '42px';
-            cursorOutline.style.height = '42px';
-            cursorOutline.style.borderColor = 'rgba(255, 31, 31, 0.5)';
-            cursorOutline.style.boxShadow   = '0 0 12px rgba(255, 31, 31, 0.15)';
-        });
-    });
-}
+// ===== HOVER SOUNDS =====
+document.querySelectorAll(
+    'a, button, .svc-card, .video-card, .about-card, .tl-item, .channel-card, input, textarea'
+).forEach(el => {
+    el.addEventListener('mouseenter', () => playUI('hover'));
+});
 
 
 // ===== NAVBAR SCROLL EFFECT =====

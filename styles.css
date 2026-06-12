@@ -55,7 +55,6 @@ body {
     background: var(--bg);
     color: var(--text);
     overflow-x: hidden;
-    cursor: none;
     -webkit-font-smoothing: antialiased;
 }
 /* Cinematic Film Grain Overlay */
@@ -67,8 +66,8 @@ body::before {
     pointer-events: none;
     z-index: 997; /* must be below mobile menu (998) so it doesn't block touches */
 }
-a { text-decoration: none; color: inherit; cursor: none; -webkit-tap-highlight-color: transparent; }
-button { cursor: none; font-family: inherit; -webkit-tap-highlight-color: transparent; }
+a { text-decoration: none; color: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+button { cursor: pointer; font-family: inherit; -webkit-tap-highlight-color: transparent; }
 img { max-width: 100%; display: block; }
 input, textarea, select { font-family: inherit; }
 
