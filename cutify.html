@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cutify — Smart Premiere Pro Plugin | ANZS</title>
-    <meta name="description" content="Cutify is an AI-powered Premiere Pro plugin by ANZS that automates smart cuts, beat syncing, and subtitle generation for gaming content creators.">
-    <link rel="stylesheet" href="cutify.css?v=3.0">
+    <title>Cutify — Premiere Pro Automation Plugin | ANZS</title>
+    <meta name="description" content="Cutify is an AI-powered Premiere Pro plugin by ANZS. Remove silences, decimate frames, and edit smarter — directly inside your Premiere Pro timeline.">
+    <link rel="stylesheet" href="cutify.css?v=3.1">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Barlow+Condensed:wght@400;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -18,8 +18,8 @@
         <a href="index.html" class="logo">AN<span class="logo-z">Z</span><span class="logo-s">S</span></a>
         <ul class="nav-links">
             <li><a href="index.html" class="nav-link">← Back to ANZS</a></li>
-            <li><a href="#features" class="nav-link">Features</a></li>
-            <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+            <li><a href="#screenshots" class="nav-link">Preview</a></li>
+            <li><a href="#tools" class="nav-link">Tools</a></li>
             <li><a href="#download" class="nav-link plugin-btn"><i class="fa-solid fa-bolt"></i> Get Cutify</a></li>
         </ul>
     </nav>
@@ -31,7 +31,7 @@
             <!-- Plugin badge -->
             <span class="cutify-badge">
                 <i class="fa-solid fa-bolt"></i>
-                Premiere Pro Plugin · By ANZS
+                Premiere Pro Automation · By ANZS
             </span>
 
             <!-- Title -->
@@ -40,10 +40,10 @@
                 <span class="title-accent">Cutify</span>
             </h1>
 
-            <!-- Tagline -->
+            <!-- Tagline — taken directly from the app -->
             <p class="cutify-tagline">
-                The smart Premiere Pro plugin that automates beat syncing,
-                smart cuts, and subtitle generation — so you can focus on storytelling.
+                Edit smarter, not harder.<br>
+                <span class="tagline-sub">AI-powered tools that live inside your workflow. No exports. No roundtrips. Just results.</span>
             </p>
 
             <!-- ===== CHROME-STYLE DOWNLOAD ===== -->
@@ -54,7 +54,7 @@
                     </span>
                     <span class="btn-text-group">
                         <span class="btn-main-text">Coming Soon</span>
-                        <span class="btn-sub-text">Link updating soon · Stay tuned</span>
+                        <span class="btn-sub-text">Download link updating soon · Stay tuned</span>
                     </span>
                 </a>
                 <p class="download-note">
@@ -63,7 +63,7 @@
                 </p>
             </div>
 
-            <!-- Hero stats -->
+            <!-- Hero stats — accurate from the app -->
             <div class="hero-stats-row">
                 <div class="h-stat">
                     <strong>Free</strong>
@@ -74,10 +74,6 @@
                     <span>Compatible</span>
                 </div>
                 <div class="h-stat">
-                    <strong>&lt; 5MB</strong>
-                    <span>Lightweight</span>
-                </div>
-                <div class="h-stat">
                     <strong>One-click</strong>
                     <span>Install</span>
                 </div>
@@ -86,49 +82,92 @@
         </div>
     </section>
 
-    <!-- ===== FEATURES ===== -->
-    <section class="cutify-features" id="features">
+    <!-- ===== APP SCREENSHOT SHOWCASE ===== -->
+    <section class="cutify-screenshots" id="screenshots">
         <div class="container">
-            <span class="section-eyebrow">What It Does</span>
-            <h2 class="section-title">Built for <span style="color:var(--blue)">Speed</span></h2>
-            <p class="section-sub">Every tool in Cutify is designed to cut your editing time in half without sacrificing quality.</p>
+            <span class="section-eyebrow">See It In Action</span>
+            <h2 class="section-title">Built Inside <span style="color:var(--blue)">Premiere Pro</span></h2>
+            <p class="section-sub">No exports. No roundtrips. Cutify runs natively inside your existing Premiere Pro workflow.</p>
 
-            <div class="features-grid">
+            <div class="screenshots-grid">
 
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fa-solid fa-scissors"></i></div>
-                    <h3>Smart Auto-Cuts</h3>
-                    <p>Intelligently detects silence, dead air, and low-energy moments to remove them in one click. Keeps only the action.</p>
+                <!-- Screenshot 1 — Remove Silences tool -->
+                <div class="screenshot-card">
+                    <div class="screenshot-label">
+                        <span class="tool-dot dot-purple"></span>
+                        <span class="tool-name"><i class="fa-solid fa-scissors"></i> Remove Silences</span>
+                        <span class="tool-tag ai-tag">AI</span>
+                    </div>
+                    <div class="screenshot-frame">
+                        <img src="images/cutify_app1.png" alt="Cutify — Remove Silences tool showing audio tracks with waveforms and silence detection settings" loading="lazy">
+                        <div class="screenshot-shine"></div>
+                    </div>
+                    <p class="screenshot-desc">AI-powered voice activity detection that finds dead air and makes frame-accurate cuts directly inside your Premiere Pro timeline.</p>
                 </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fa-solid fa-music"></i></div>
-                    <h3>Beat Sync Engine</h3>
-                    <p>Analyzes your background music and automatically snaps your cuts to the beat. Instant rhythmic editing.</p>
+                <!-- Screenshot 2 — Dashboard / Home -->
+                <div class="screenshot-card">
+                    <div class="screenshot-label">
+                        <span class="tool-dot dot-teal"></span>
+                        <span class="tool-name"><i class="fa-solid fa-house"></i> Cutify Dashboard</span>
+                        <span class="tool-tag smart-tag">Studio v1.0</span>
+                    </div>
+                    <div class="screenshot-frame">
+                        <img src="images/cutify_app2.png" alt="Cutify — Plugin dashboard showing available tools: Remove Silences and Frame Decimation" loading="lazy">
+                        <div class="screenshot-shine"></div>
+                    </div>
+                    <p class="screenshot-desc">Clean, minimal dashboard showing all available automation tools. Select your tool and get to work instantly — no configuration needed.</p>
                 </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fa-solid fa-closed-captioning"></i></div>
-                    <h3>Auto-Subtitles</h3>
-                    <p>Transcribes speech and generates styled animated subtitle sequences — ready to customize or export instantly.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== AVAILABLE TOOLS (accurate from app) ===== -->
+    <section class="cutify-tools" id="tools">
+        <div class="container">
+            <span class="section-eyebrow">Available Tools</span>
+            <h2 class="section-title">What Cutify <span style="color:var(--blue)">Does</span></h2>
+            <p class="section-sub">Two powerful automation tools built into Cutify Studio v1.0.</p>
+
+            <div class="tools-grid">
+
+                <div class="tool-card">
+                    <div class="tool-card-header">
+                        <div class="tool-icon icon-purple">
+                            <i class="fa-solid fa-scissors"></i>
+                        </div>
+                        <div class="tool-header-text">
+                            <h3>Remove Silences</h3>
+                            <span class="tool-sub">Detect &amp; cut silences</span>
+                        </div>
+                        <span class="tool-badge ai-badge"><i class="fa-solid fa-star"></i> AI</span>
+                    </div>
+                    <p>AI-powered voice activity detection that finds dead air and makes frame-accurate cuts directly inside your Premiere Pro timeline. Select entire timeline, in/out points, or specific clips.</p>
+                    <div class="tool-features">
+                        <span><i class="fa-solid fa-check"></i> Silence threshold control</span>
+                        <span><i class="fa-solid fa-check"></i> Per-track audio selection</span>
+                        <span><i class="fa-solid fa-check"></i> Timeline, in/out, or clip mode</span>
+                    </div>
                 </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
-                    <h3>One-Click Exports</h3>
-                    <p>Pre-configured export presets for YouTube, TikTok, Reels, and Discord — perfectly optimized every time.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fa-solid fa-palette"></i></div>
-                    <h3>LUT Packs Included</h3>
-                    <p>Ship with a curated library of cinematic LUTs tuned for gaming footage — apply any grade in one click.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-                    <h3>Motion Presets</h3>
-                    <p>Ready-to-use zoom punches, screen shakes, speed ramps, and comedic transitions — drag and drop.</p>
+                <div class="tool-card">
+                    <div class="tool-card-header">
+                        <div class="tool-icon icon-teal">
+                            <i class="fa-solid fa-film"></i>
+                        </div>
+                        <div class="tool-header-text">
+                            <h3>Frame Decimation</h3>
+                            <span class="tool-sub">Remove duplicate frames</span>
+                        </div>
+                        <span class="tool-badge smart-badge"><i class="fa-solid fa-star"></i> SMART</span>
+                    </div>
+                    <p>Intelligently scan and remove near-duplicate or matching frames from your footage for a cleaner, optimized video sequence. Perfect for screen recordings and gameplay footage.</p>
+                    <div class="tool-features">
+                        <span><i class="fa-solid fa-check"></i> Near-duplicate detection</span>
+                        <span><i class="fa-solid fa-check"></i> Frame-accurate processing</span>
+                        <span><i class="fa-solid fa-check"></i> Optimized video sequence</span>
+                    </div>
                 </div>
 
             </div>
@@ -139,69 +178,27 @@
     <section class="cutify-how" id="how-it-works">
         <div class="container">
             <span class="section-eyebrow">Workflow</span>
-            <h2 class="section-title">Three Steps to <span style="color:var(--blue)">Done</span></h2>
-            <p class="section-sub">From raw footage to finished video in a fraction of the usual time.</p>
+            <h2 class="section-title">Up &amp; Running in <span style="color:var(--blue)">Minutes</span></h2>
+            <p class="section-sub">From install to your first automated cut in under 5 minutes.</p>
 
             <div class="how-steps">
                 <div class="how-step">
                     <span class="step-num">01</span>
                     <div class="step-icon"><i class="fa-solid fa-plug"></i></div>
                     <h3>Install the Plugin</h3>
-                    <p>Download and drop Cutify into your Premiere Pro extensions folder. Instant setup, no accounts required.</p>
+                    <p>Download Cutify and install it into Premiere Pro. The plugin appears in your Extensions panel — no account required.</p>
                 </div>
                 <div class="how-step">
                     <span class="step-num">02</span>
-                    <div class="step-icon"><i class="fa-solid fa-sliders"></i></div>
-                    <h3>Choose Your Tools</h3>
-                    <p>Select from auto-cut, beat sync, subtitles, or all three. Tune the sensitivity sliders to your preference.</p>
+                    <div class="step-icon"><i class="fa-solid fa-hand-pointer"></i></div>
+                    <h3>Pick Your Tool</h3>
+                    <p>Open the Cutify panel inside Premiere Pro. Choose Remove Silences or Frame Decimation from the sidebar.</p>
                 </div>
                 <div class="how-step">
                     <span class="step-num">03</span>
-                    <div class="step-icon"><i class="fa-solid fa-rocket"></i></div>
-                    <h3>Apply &amp; Export</h3>
-                    <p>Hit Apply. Cutify processes your timeline, makes the cuts, and queues your export in the right format.</p>
-                </div>
-            </div>
-
-            <!-- Premiere-style timeline mockup -->
-            <div class="timeline-showcase">
-                <div class="timeline-bar">
-                    <div class="tl-label">Video</div>
-                    <div class="tl-clips">
-                        <div class="tl-clip c-blue-1"></div>
-                        <div class="tl-cut"></div>
-                        <div class="tl-clip c-blue-3"></div>
-                        <div class="tl-cut"></div>
-                        <div class="tl-clip c-blue-2"></div>
-                        <div class="tl-clip c-blue-4"></div>
-                        <div class="tl-clip c-blue-5"></div>
-                    </div>
-                    <div class="tl-playhead"></div>
-                </div>
-                <div class="timeline-bar">
-                    <div class="tl-label">Audio</div>
-                    <div class="tl-clips">
-                        <div class="tl-clip c-gold-1"></div>
-                        <div class="tl-clip c-gold-3"></div>
-                        <div class="tl-clip c-gold-2"></div>
-                        <div class="tl-clip c-gold-4"></div>
-                        <div class="tl-clip c-gold-3"></div>
-                    </div>
-                </div>
-                <div class="timeline-bar">
-                    <div class="tl-label">Subtitles</div>
-                    <div class="tl-clips">
-                        <div class="tl-clip c-blue-6" style="width:100px"></div>
-                        <div class="tl-clip c-blue-6" style="width:75px"></div>
-                        <div class="tl-clip c-blue-6" style="width:90px"></div>
-                        <div class="tl-clip c-blue-6" style="width:60px"></div>
-                    </div>
-                </div>
-                <div class="tl-tool-row">
-                    <div class="tl-tool active"><i class="fa-solid fa-scissors"></i> Auto-Cut</div>
-                    <div class="tl-tool active"><i class="fa-solid fa-music"></i> Beat Sync</div>
-                    <div class="tl-tool"><i class="fa-solid fa-closed-captioning"></i> Subtitles</div>
-                    <div class="tl-tool"><i class="fa-solid fa-wand-magic-sparkles"></i> Motion</div>
+                    <div class="step-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <h3>Apply &amp; Done</h3>
+                    <p>Configure your settings, hit Analyze, then Apply. Cutify makes the cuts directly in your timeline. That's it.</p>
                 </div>
             </div>
         </div>
@@ -210,7 +207,7 @@
     <!-- ===== CTA BOTTOM ===== -->
     <section class="cutify-cta-section">
         <div class="container cta-inner">
-            <h2>Ready to Edit Faster?</h2>
+            <h2>Ready to Edit Smarter?</h2>
             <p>Cutify is coming soon. Be the first to know when the download goes live.</p>
             <a href="mailto:ahmednazief@gmail.com?subject=Cutify Early Access" class="cta-btn-white">
                 <i class="fa-solid fa-envelope"></i>
@@ -222,7 +219,7 @@
     <!-- ===== FOOTER ===== -->
     <footer class="cutify-footer">
         <div class="footer-logo">AN<span class="gold">Z</span><span class="blue">S</span></div>
-        <p>Ahmed NaZif Solutions · Cutify Plugin &copy; <span id="cutYear"></span></p>
+        <p>Ahmed NaZif Solutions · Cutify Studio v1.0 &copy; <span id="cutYear"></span></p>
         <div class="footer-social">
             <a href="https://www.youtube.com/@Plains" target="_blank" class="social-link"><i class="fa-brands fa-youtube"></i></a>
             <a href="mailto:ahmednazief@gmail.com" class="social-link"><i class="fa-solid fa-envelope"></i></a>
@@ -231,15 +228,12 @@
     </footer>
 
     <script>
-        // Footer year
         document.getElementById('cutYear').textContent = new Date().getFullYear();
 
-        // Prevent disabled download click
         document.getElementById('downloadBtn').addEventListener('click', function(e) {
             e.preventDefault();
         });
 
-        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(a => {
             a.addEventListener('click', e => {
                 const target = document.querySelector(a.getAttribute('href'));
@@ -247,21 +241,22 @@
             });
         });
 
-        // Feature card entrance
-        const observer = new IntersectionObserver((entries) => {
+        // Scroll reveal
+        const obs = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0)';
+                    obs.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.08 });
 
-        document.querySelectorAll('.feature-card, .how-step').forEach((el, i) => {
+        document.querySelectorAll('.feature-card, .how-step, .tool-card, .screenshot-card').forEach((el, i) => {
             el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = `opacity 0.6s ease ${i * 0.07}s, transform 0.6s ease ${i * 0.07}s`;
-            observer.observe(el);
+            el.style.transform = 'translateY(24px)';
+            el.style.transition = `opacity 0.6s ease ${i * 0.1}s, transform 0.6s ease ${i * 0.1}s`;
+            obs.observe(el);
         });
     </script>
 
