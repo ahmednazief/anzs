@@ -71,14 +71,20 @@ img { max-width: 100%; display: block; }
 }
 .logo {
     font-family: var(--font-h);
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 900;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--text);
+    background: linear-gradient(135deg, var(--blue) 0%, #7DD3FC 40%, var(--gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+    transition: transform 0.3s var(--ease);
 }
-.logo-z { color: var(--gold); }
-.logo-s { color: var(--blue); }
+.logo:hover {
+    transform: scale(1.05);
+}
 .nav-links { display: flex; align-items: center; list-style: none; gap: 0.2rem; }
 .nav-link {
     font-size: 0.875rem;
@@ -675,14 +681,16 @@ img { max-width: 100%; display: block; }
 }
 .footer-logo {
     font-family: var(--font-h);
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 900;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--text);
+    background: linear-gradient(135deg, var(--blue) 0%, #7DD3FC 40%, var(--gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
 }
-.footer-logo .gold { color: var(--gold); }
-.footer-logo .blue { color: var(--blue); }
 .cutify-footer p { font-size: 0.82rem; color: var(--text-muted); }
 .footer-social { display: flex; gap: 0.8rem; }
 .social-link {

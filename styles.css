@@ -412,14 +412,21 @@ h3 {
 }
 .logo {
     font-family: var(--font-h);
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 900;
     letter-spacing: 2px;
-    color: var(--text);
     text-transform: uppercase;
+    background: linear-gradient(135deg, var(--blue) 0%, #7DD3FC 40%, var(--gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+    transition: transform 0.3s var(--ease), filter 0.3s var(--ease);
 }
-.logo-z { color: var(--gold); }
-.logo-s { color: var(--blue); }
+.logo:hover {
+    transform: scale(1.04);
+    filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.4));
+}
 .nav-links {
     display: flex; align-items: center;
     list-style: none; gap: 0.2rem;
@@ -1450,10 +1457,12 @@ footer {
     font-size: 2rem; font-weight: 900;
     letter-spacing: 4px;
     text-transform: uppercase;
+    background: linear-gradient(135deg, var(--blue) 0%, #7DD3FC 40%, var(--gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
 }
-.footer-brand .gold { color: var(--gold); }
-.footer-brand .blue { color: var(--blue); }
-.footer-brand .cyan { color: var(--blue); }
 .footer-inner p { font-size: 0.82rem; color: var(--text-muted); }
 .footer-social { display: flex; gap: 0.8rem; margin: 0.5rem 0; }
 .footer-social-link {
