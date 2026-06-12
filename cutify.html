@@ -48,13 +48,13 @@
 
             <!-- ===== CHROME-STYLE DOWNLOAD ===== -->
             <div class="download-center" id="download">
-                <a href="#" class="big-download-btn disabled" id="downloadBtn" aria-disabled="true">
+                <a href="https://github.com/ahmednazief/anzs/releases/download/Cutify/Cutify-Setup.exe" class="big-download-btn" id="downloadBtn">
                     <span class="btn-icon-wrap">
                         <i class="fa-solid fa-download"></i>
                     </span>
                     <span class="btn-text-group">
-                        <span class="btn-main-text">Coming Soon</span>
-                        <span class="btn-sub-text">Download link updating soon · Stay tuned</span>
+                        <span class="btn-main-text">Download for Windows</span>
+                        <span class="btn-sub-text">Beta Version · Cutify-Setup.exe</span>
                     </span>
                 </a>
                 <p class="download-note">
@@ -208,11 +208,17 @@
     <section class="cutify-cta-section">
         <div class="container cta-inner">
             <h2>Ready to Edit Smarter?</h2>
-            <p>Cutify is coming soon. Be the first to know when the download goes live.</p>
-            <a href="mailto:ahmednazief@gmail.com?subject=Cutify Early Access" class="cta-btn-white">
-                <i class="fa-solid fa-envelope"></i>
-                Request Early Access
-            </a>
+            <p>Cutify Beta is now live. Download the installer and start automating your video editing.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
+                <a href="https://github.com/ahmednazief/anzs/releases/download/Cutify/Cutify-Setup.exe" class="cta-btn-white">
+                    <i class="fa-solid fa-download"></i>
+                    Download Beta for Windows
+                </a>
+                <a href="mailto:ahmednazief@gmail.com?subject=Cutify Beta Feedback" class="cta-btn-white" style="background: transparent; border: 2px solid #fff; color: #fff; box-shadow: none;">
+                    <i class="fa-solid fa-comments"></i>
+                    Send Beta Feedback
+                </a>
+            </div>
         </div>
     </section>
 
@@ -229,10 +235,6 @@
 
     <script>
         document.getElementById('cutYear').textContent = new Date().getFullYear();
-
-        document.getElementById('downloadBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-        });
 
         document.querySelectorAll('a[href^="#"]').forEach(a => {
             a.addEventListener('click', e => {
