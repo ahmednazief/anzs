@@ -949,3 +949,83 @@ if (document.readyState === 'loading') {
     initRetentionWaves();
 }
 
+// ===== LUT SLIDER (RAW VS GRADED) =====
+function initLutSlider() {
+    const wrap = document.getElementById('lutPhotoWrap');
+    const gradedLayer = document.getElementById('lutGraded');
+    const sliderBar = document.getElementById('lutSliderBar');
+    
+    if (!wrap || !gradedLayer || !sliderBar) return;
+
+    let isDragging = false;
+
+    function updateSlider(e) {
+        if (!isDragging) return;
+        const rect = wrap.getBoundingClientRect();
+        // Calculate X position relative to container
+        let x;
+        if (e.touches && e.touches.length > 0) {
+            x = e.touches[0].clientX - rect.left;
+        } else {
+            x = e.clientX - rect.left;
+        }
+        
+        // Clamp to 0-100%
+        let percent = (x / rect.width) * 100;
+        if (percent < 0) percent = 0;
+        if (percent > 100) percent = 100;
+
+        // Apply clip-path to graded layer (shows graded on right, raw on left by default, or vice versa)
+        // Original CSS: clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%)
+        // So the left side of the polygon is the slider position.
+        gradedLayer.style.clipPath = \polygon(\% 0, 100% 0, 100% 100%, \% 100%)\;
+        sliderBar.style.left = \\%\;
+    }
+
+    // Mouse events
+    sliderBar.addEventListener('mousedown', () => isDragging = true);
+    window.addEventListener('mouseup', () => isDragging = false);
+    window.addEventListener('mousemove', updateSlider);
+
+    // Touch events
+    sliderBar.addEventListener('touchstart', (e) => { isDragging = true; e.preventDefault(); });
+    window.addEventListener('touchend', () => isDragging = false);
+    window.addEventListener('touchmove', updateSlider, { passive: false });
+}
+
+// ===== 3D MAGNETIC TILT FOR PORTFOLIO CARDS =====
+function init3DTilt() {
+    const cards = document.querySelectorAll('.video-card');
+    
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = ((y - centerY) / centerY) * -10;
+            const rotateY = ((x - centerX) / centerX) * 10;
+            
+            card.style.transform = \perspective(1000px) rotateX(\deg) rotateY(\deg) scale3d(1.02, 1.02, 1.02)\;
+            card.style.transition = 'none';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = \perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)\;
+            card.style.transition = 'transform 0.5s ease';
+        });
+    });
+}
+
+// Initialize new modules
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        initLutSlider();
+        init3DTilt();
+    });
+} else {
+    initLutSlider();
+    init3DTilt();
+}

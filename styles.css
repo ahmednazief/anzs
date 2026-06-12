@@ -2196,3 +2196,151 @@ h2 {
     font-size: 0.7rem;
     pointer-events: none;
 }
+/* =========================================================
+   ULTIMATE AESTHETIC OVERHAUL - PREMIUM VOID CINEMA
+   ========================================================= */
+
+/* 1. Cinematic Grid Overlay (Red/Gold variant) */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: 
+        linear-gradient(rgba(255, 31, 31, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 31, 31, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.5;
+    transform: perspective(600px) rotateX(60deg) scale(2);
+    transform-origin: top center;
+    animation: gridMovePortfolio 30s linear infinite;
+}
+
+@keyframes gridMovePortfolio {
+    from { background-position: 0 0; }
+    to { background-position: 0 50px; }
+}
+
+/* 2. Next-Gen Primary Buttons (.btn-nav-cta, .btn-primary) */
+.btn-nav-cta, .btn-primary {
+    position: relative;
+    background: rgba(10, 10, 15, 0.8) !important;
+    border: none !important;
+    color: #fff !important;
+    box-shadow: 0 0 10px rgba(255, 31, 31, 0.2);
+    transform-style: preserve-3d;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.btn-nav-cta::before, .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--red), var(--gold), var(--red));
+    background-size: 200%;
+    z-index: -1;
+    animation: glowingBorderRed 4s linear infinite;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.btn-nav-cta::after, .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(20, 10, 10, 0.95), rgba(30, 10, 10, 0.95));
+    z-index: -1;
+    transition: background 0.3s;
+}
+
+.btn-nav-cta:hover, .btn-primary:hover {
+    transform: translateY(-3px) scale(1.05) !important;
+}
+
+.btn-nav-cta:hover::before, .btn-primary:hover::before {
+    opacity: 1;
+    filter: blur(5px);
+}
+
+.btn-nav-cta:hover::after, .btn-primary:hover::after {
+    background: linear-gradient(135deg, rgba(40, 10, 10, 0.9), rgba(255, 31, 31, 0.2));
+}
+
+@keyframes glowingBorderRed {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+/* 3. Premium Glassmorphism (Services, Portfolio, Stats) */
+.svc-card-front, .svc-card-back, .video-card, .ret-stat {
+    background: rgba(15, 10, 10, 0.6) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 31, 31, 0.1) !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 10px rgba(255, 31, 31, 0.05);
+    transition: all 0.4s ease !important;
+}
+
+.svc-card-front:hover, .svc-card-back:hover, .ret-stat:hover {
+    border-color: rgba(255, 31, 31, 0.4) !important;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 20px rgba(255, 31, 31, 0.15) !important;
+    background: rgba(25, 10, 10, 0.8) !important;
+    transform: translateY(-5px);
+}
+
+/* Portfolio cards have JS 3D tilt, so we just enhance the glow */
+.video-card {
+    overflow: hidden;
+}
+.video-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%; width: 50%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    transform: skewX(-20deg);
+    transition: none;
+    z-index: 10;
+    pointer-events: none;
+}
+.video-card:hover::before {
+    animation: glassShine 1s ease forwards;
+}
+
+@keyframes glassShine {
+    0% { left: -100%; }
+    100% { left: 200%; }
+}
+
+/* 4. LUT Slider Fixes */
+.lut-slider-bar {
+    cursor: grab;
+    z-index: 10;
+}
+.lut-slider-bar:active {
+    cursor: grabbing;
+}
+.photo-graded {
+    clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+    transition: clip-path 0.1s linear; /* Smooth but fast tracking */
+}
+
+/* 5. Mobile Typography & Padding Fixes */
+@media (max-width: 768px) {
+    h2, .section-title {
+        font-size: clamp(2.2rem, 8vw, 3rem) !important;
+    }
+    .hero-inner {
+        padding-top: 6rem;
+    }
+    .ret-number {
+        font-size: clamp(2rem, 8vw, 3rem) !important;
+    }
+    .svc-card-inner {
+        min-height: 250px !important;
+    }
+}
