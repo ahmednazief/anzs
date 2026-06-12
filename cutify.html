@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cutify - Premiere Pro Plugin | Nazief</title>
+    <meta name="description" content="Cutify - Automate your workflow. Delete the silence automatically in Premiere Pro.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="cutify.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Space+Grotesk:wght@300;400;500;700&family=Share+Tech+Mono&family=Barlow+Condensed:wght@400;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="cutify-body">
+
+    <!-- Moving Neon Blurs (Plugin theme: Purple/Magenta) -->
+    <div class="aurora-bg">
+        <div class="aurora aurora-plugin" id="aurora1"></div>
+        <div class="aurora aurora-plugin-dark" id="aurora2"></div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-outline" id="cursorOutline"></div>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar">
+        <a href="index.html" class="logo">N<span class="logo-z">AZ</span>IE<span class="logo-s">F</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-link"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a></li>
+            <li><a href="#download" class="btn-nav-cta plugin-btn">Download Cutify</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-close" id="mobileClose"><i class="fa-solid fa-xmark"></i></button>
+        <ul>
+            <li><a href="index.html" class="mobile-link"><i class="fa-solid fa-arrow-left"></i> Portfolio</a></li>
+            <li><a href="#download" class="mobile-link mobile-cta plugin-btn">Download</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <!-- ===== HERO ===== -->
+        <section class="cutify-hero" id="download">
+            <div class="container">
+                <div class="cutify-hero-content">
+                    <div class="plugin-badge">Premiere Pro Plugin</div>
+                    <h1 class="cutify-title">
+                        <span class="glitch-char">C</span><span class="glitch-char">U</span><span class="glitch-char">T</span><span class="glitch-char">I</span><span class="glitch-char">F</span><span class="glitch-char">Y</span>
+                    </h1>
+                    <p class="cutify-tagline">Automate your workflow. Delete the silence instantly.</p>
+                    
+                    <a href="#" class="big-download-btn" id="downloadBtn">
+                        <span class="btn-icon"><i class="fa-solid fa-download"></i></span>
+                        <span class="btn-text">Download Plugin</span>
+                        <span class="btn-glow"></span>
+                    </a>
+                </div>
+
+                <!-- ANIMATED TIMELINE -->
+                <div class="timeline-showcase">
+                    <div class="timeline-header">
+                        <div class="tl-tools">
+                            <i class="fa-solid fa-mouse-pointer"></i>
+                            <i class="fa-solid fa-cut active-tool"></i>
+                        </div>
+                        <div class="tl-title">Sequence 01 *</div>
+                    </div>
+                    <div class="timeline-tracks">
+                        <!-- Video Track -->
+                        <div class="track v-track">
+                            <div class="track-label">V1</div>
+                            <div class="track-content" id="vTrack">
+                                <div class="clip clip-good" style="width: 20%;"></div>
+                                <div class="clip clip-silent" style="width: 15%;"></div>
+                                <div class="clip clip-good" style="width: 30%;"></div>
+                                <div class="clip clip-silent" style="width: 10%;"></div>
+                                <div class="clip clip-good" style="width: 25%;"></div>
+                            </div>
+                        </div>
+                        <!-- Audio Track -->
+                        <div class="track a-track">
+                            <div class="track-label">A1</div>
+                            <div class="track-content" id="aTrack">
+                                <div class="clip clip-good" style="width: 20%;">
+                                    <div class="waveform"></div>
+                                </div>
+                                <div class="clip clip-silent" style="width: 15%;">
+                                    <div class="waveform flat"></div>
+                                </div>
+                                <div class="clip clip-good" style="width: 30%;">
+                                    <div class="waveform"></div>
+                                </div>
+                                <div class="clip clip-silent" style="width: 10%;">
+                                    <div class="waveform flat"></div>
+                                </div>
+                                <div class="clip clip-good" style="width: 25%;">
+                                    <div class="waveform"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Playhead -->
+                        <div class="playhead" id="playhead"></div>
+                    </div>
+                    <div class="status-overlay" id="statusOverlay">Scanning for Silence...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FEATURES ===== -->
+        <section class="cutify-features">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title">Why Use Cutify?</h2>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="f-icon"><i class="fa-solid fa-bolt"></i></div>
+                        <h3>1-Click Removal</h3>
+                        <p>Eliminate all dead air from your footage instantly with a single button press. Save hours of tedious editing.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="f-icon"><i class="fa-solid fa-sliders"></i></div>
+                        <h3>Custom Thresholds</h3>
+                        <p>Fine-tune the dB level and minimum silence duration to perfectly match your microphone setup and speaking pace.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="f-icon"><i class="fa-solid fa-layer-group"></i></div>
+                        <h3>Non-Destructive</h3>
+                        <p>Cutify works safely in your timeline, leaving your original media untouched so you can always recover audio if needed.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">N<span class="logo-z">AZ</span>IE<span class="logo-s">F</span></a>
+                <p>Elite Video Editor & Creative Developer</p>
+            </div>
+            <div class="footer-social">
+                <a href="#" class="social-link"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#" class="social-link"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="cutify.js"></script>
+</body>
+</html>

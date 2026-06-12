@@ -58,6 +58,7 @@
             <li><a href="#services" class="nav-link">Services</a></li>
             <li><a href="#portfolio" class="nav-link">Showcase</a></li>
             <li><a href="#branding" class="nav-link">Branding</a></li>
+            <li><a href="cutify.html" class="nav-link" style="color: #C542FF; font-weight: bold;"><i class="fa-solid fa-bolt"></i> Cutify</a></li>
             <li>
                 <button class="sound-toggle-btn" id="soundToggle" title="Toggle UI Sound">
                     <i class="fa-solid fa-volume-high"></i>
@@ -85,6 +86,7 @@
             <li><a href="#services" class="mobile-link">Services</a></li>
             <li><a href="#portfolio" class="mobile-link">Showcase</a></li>
             <li><a href="#branding" class="mobile-link">Branding</a></li>
+            <li><a href="cutify.html" class="mobile-link" style="color: #C542FF;"><i class="fa-solid fa-bolt"></i> Cutify</a></li>
             <li><a href="#contact" class="mobile-link mobile-cta">Initiate Project</a></li>
         </ul>
     </div>
@@ -149,8 +151,23 @@
                     <div class="halo-ring r1"></div>
                     <div class="halo-ring r2"></div>
                     <div class="halo-ring r3"></div>
-                    <div class="profile-photo-wrap">
-                        <img src="profile.jpg" alt="Ahmed Nazif — Elite Video Editor" id="profileImg">
+                    <div class="profile-photo-wrap" id="lutPhotoWrap">
+                        <!-- Raw/flat LUT style -->
+                        <div class="photo-layer photo-raw">
+                            <img src="profile.jpg" alt="Ahmed Nazif — Raw Footage">
+                            <span class="lut-label raw-label">RAW FOOTAGE</span>
+                        </div>
+                        <!-- Color Graded style -->
+                        <div class="photo-layer photo-graded" id="lutGraded">
+                            <img src="profile.jpg" alt="Ahmed Nazif — Color Graded">
+                            <span class="lut-label graded-label">COLOR GRADED</span>
+                        </div>
+                        <!-- Interactive slider bar -->
+                        <div class="lut-slider-bar" id="lutSliderBar">
+                            <div class="lut-slider-handle">
+                                <i class="fa-solid fa-arrows-left-right"></i>
+                            </div>
+                        </div>
                         <div class="photo-gloss"></div>
                     </div>
                     <div class="profile-badge-float">
