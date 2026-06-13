@@ -710,6 +710,11 @@ img { max-width: 100%; display: block; }
     color: var(--c-muted);
     line-height: 1.65;
 }
+.feat-card-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
 
 .feat-icon {
     width: 52px; height: 52px;
