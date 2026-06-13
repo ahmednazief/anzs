@@ -459,16 +459,26 @@ body:hover .cursor { opacity: 1; }
 
 /* Scroll hint */
 .hero-scroll {
-    position: absolute; bottom: 32px; left: 6%;
-    display: flex; align-items: center; gap: 1rem;
-    color: var(--subtle); font-family: var(--fm); font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;
+    position: absolute; bottom: 36px; left: 50%;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    color: var(--subtle); font-family: var(--fm); font-size: 0.65rem;
+    letter-spacing: 3px; text-transform: uppercase;
+    animation: fadeIn 1s ease 1.8s both;
 }
-.hs-line {
-    width: 60px; height: 1px;
-    background: linear-gradient(90deg, var(--purple), transparent);
-    animation: lineAnim 2s ease-in-out infinite;
+.hs-arrow {
+    width: 32px; height: 32px;
+    border: 1px solid rgba(167,139,250,0.25);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem; color: var(--purple);
+    animation: bounceDown 2s ease-in-out infinite;
 }
-@keyframes lineAnim { 0%,100% { width: 40px; } 50% { width: 70px; } }
+@keyframes bounceDown {
+    0%, 100% { transform: translateY(0); opacity: 0.6; }
+    50%       { transform: translateY(6px); opacity: 1; }
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 /* ═══════════════════════════════════
    MARQUEE
