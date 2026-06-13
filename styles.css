@@ -890,7 +890,7 @@ body:hover .cursor { opacity: 1; }
 .bc-img {
     background: var(--bg3);
     overflow: hidden;
-    height: 240px;
+    height: 160px;
     display: flex; align-items: center; justify-content: center;
     border-bottom: 1px solid var(--border);
 }
