@@ -284,7 +284,7 @@ body:hover .cursor { opacity: 1; }
 ═══════════════════════════════════ */
 .hero {
     min-height: 100vh;
-    padding: 120px 6% 80px;
+    padding: 120px 6% 160px;
     display: flex; align-items: center;
     position: relative;
     overflow: hidden;
@@ -364,7 +364,7 @@ body:hover .cursor { opacity: 1; }
 
 .hero-stats {
     display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
-    padding-top: 2rem;
+    padding-top: 1.5rem;
     border-top: 1px solid var(--border);
 }
 .hs { display: flex; flex-direction: column; gap: 2px; }
