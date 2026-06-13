@@ -652,8 +652,7 @@ img { max-width: 100%; display: block; }
 }
 .features-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
+    grid-template-columns: repeat(6, 1fr);
     gap: 1.5rem;
 }
 
@@ -687,7 +686,7 @@ img { max-width: 100%; display: block; }
 .feat-card:hover .feat-card-glow { opacity: 1.5; }
 
 .feat-card-big {
-    grid-row: span 1;
+    grid-column: span 3;
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
@@ -710,11 +709,7 @@ img { max-width: 100%; display: block; }
     color: var(--c-muted);
     line-height: 1.65;
 }
-.feat-card-text {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
+
 
 .feat-icon {
     width: 52px; height: 52px;
@@ -842,15 +837,10 @@ img { max-width: 100%; display: block; }
     background: linear-gradient(transparent, rgba(9,12,24,0.9));
 }
 
-/* Small cards — last 3 in a row */
-.features-grid .feat-card-sm:nth-child(3),
-.features-grid .feat-card-sm:nth-child(4),
-.features-grid .feat-card-sm:nth-child(5) {
-    grid-column: auto;
+/* Small cards span 2 columns of the 6-column grid */
+.features-grid .feat-card-sm {
+    grid-column: span 2;
 }
-.features-grid .feat-card-sm:nth-child(3) { grid-column: 1; }
-.features-grid .feat-card-sm:nth-child(4) { grid-column: 2; }
-.features-grid .feat-card-sm:nth-child(5) { grid-column: 1 / -1; display: grid; grid-template-columns: 42px 1fr; gap: 1rem; align-items: start; }
 
 /* ──── SCREENSHOTS ──── */
 .screenshots {
@@ -1282,10 +1272,8 @@ img { max-width: 100%; display: block; }
     .download-block { align-items: center; }
     .hero-trust { justify-content: center; }
     .features-grid { grid-template-columns: 1fr; }
-    .features-grid .feat-card-sm:nth-child(3),
-    .features-grid .feat-card-sm:nth-child(4),
-    .features-grid .feat-card-sm:nth-child(5) { grid-column: 1; }
-    .features-grid .feat-card-sm:nth-child(5) { grid-template-columns: 42px 1fr; }
+    .feat-card-big { grid-column: auto; }
+    .features-grid .feat-card-sm { grid-column: auto; }
 }
 @media (max-width: 768px) {
     .nav-links { display: none; }
