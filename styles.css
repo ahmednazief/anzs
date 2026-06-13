@@ -878,7 +878,7 @@ body:hover .cursor { opacity: 1; }
    BRANDING
 ═══════════════════════════════════ */
 .branding { padding: 9rem 0; background: var(--bg2); border-top: 1px solid var(--border); }
-.brand-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.brand-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; width: 40%; margin: 0 auto; }
 .brand-card {
     background: var(--surf);
     border: 1px solid var(--border);
