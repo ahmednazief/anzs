@@ -3,6 +3,17 @@
    Ahmed Nazif
 ═══════════════════════════════════════════════════ */
 
+// Clean tracking parameters from URL
+try {
+    const url = new URL(window.location.href);
+    if (url.searchParams.has('fbclid')) {
+        url.searchParams.delete('fbclid');
+        window.history.replaceState({}, document.title, url.pathname + url.search);
+    }
+} catch (e) {
+    console.error(e);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ── Footer year ── */
