@@ -185,17 +185,22 @@ body:hover .cursor { opacity: 1; }
 }
 .nl:hover { color: var(--text); background: var(--surf); }
 .nl-special {
-    display: flex;
+    display: inline-flex !important;
     align-items: center;
+    justify-content: center;
     gap: 0.45rem;
-    padding: 0.5rem 1.1rem !important;
+    padding: 0.55rem 1.25rem !important;
     border-radius: var(--r-pill);
     border: 1px solid rgba(167, 139, 250, 0.25) !important;
     background: rgba(167, 139, 250, 0.05);
     color: #fff !important;
-    font-weight: 600;
+    font-size: 0.875rem !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+    margin-left: 0.4rem;
     transition: all 0.3s var(--ease) !important;
     box-shadow: 0 0 15px rgba(167, 139, 250, 0.05);
+    box-sizing: border-box;
 }
 .nl-special:hover {
     background: rgba(167, 139, 250, 0.15) !important;
@@ -222,7 +227,7 @@ body:hover .cursor { opacity: 1; }
     border: 1px solid rgba(167, 139, 250, 0.25) !important;
     background: rgba(167, 139, 250, 0.05);
     color: #a78bfa !important;
-    font-weight: 600;
+    font-weight: 700;
     margin-top: 0.5rem;
     transition: all 0.3s var(--ease) !important;
 }
@@ -245,14 +250,28 @@ body:hover .cursor { opacity: 1; }
 }
 
 .nav-cta {
-    padding: 0.55rem 1.3rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.55rem 1.4rem;
     background: var(--purple);
-    color: #fff; font-size: 0.875rem; font-weight: 700;
+    color: #fff !important;
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1.2;
     border-radius: var(--r-pill);
+    border: 1px solid transparent;
+    margin-left: 0.6rem;
     transition: all 0.25s var(--ease);
     box-shadow: 0 0 24px rgba(167,139,250,0.35);
+    box-sizing: border-box;
 }
-.nav-cta:hover { background: #b99dff; transform: translateY(-2px); box-shadow: 0 4px 30px rgba(167,139,250,0.5); }
+.nav-cta:hover {
+    background: #b99dff;
+    border-color: transparent;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 30px rgba(167,139,250,0.5);
+}
 .nav-burger {
     display: none; flex-direction: column; gap: 5px;
     width: 28px; background: none; border: none; cursor: pointer;
