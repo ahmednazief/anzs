@@ -452,19 +452,35 @@ body:hover .cursor { opacity: 1; }
 .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
 
 .hero-stats {
-    display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    gap: 2rem;
     padding-top: 1.5rem;
     border-top: 1px solid var(--border);
 }
-.hs { display: flex; flex-direction: column; gap: 2px; }
+.hs {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    position: relative;
+}
+.hs:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -1rem;
+    top: 15%;
+    height: 70%;
+    width: 1px;
+    background: var(--border);
+}
 .hs strong {
     font-family: var(--fd); font-size: 1.6rem; font-weight: 900;
     background: linear-gradient(135deg, var(--text), var(--purple));
     -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 .hs strong span { font-size: 1.2rem; }
-.hs span { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; font-family: var(--fm); }
-.hs-sep { width: 1px; height: 36px; background: var(--border); }
+.hs span { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; font-family: var(--fm); line-height: 1.3; }
+.hs-sep { display: none; }
 
 /* Hero Right – Profile Card */
 .hero-right { display: flex; justify-content: center; }
@@ -1277,7 +1293,13 @@ body:hover .cursor { opacity: 1; }
     .hero-content { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
     .hero-right { display: none; }
     .hero-btns { justify-content: center; }
-    .hero-stats { justify-content: center; }
+    .hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 500px;
+        margin: 0 auto;
+        gap: 1.5rem 2rem;
+    }
+    .hs:not(:last-child)::after { display: none; }
     .hero-scroll { display: none; }
     .about-grid { grid-template-columns: 1fr; gap: 3rem; }
     .svc-grid { grid-template-columns: 1fr 1fr; }
@@ -1304,4 +1326,11 @@ body:hover .cursor { opacity: 1; }
     .about, .services, .work, .process, .branding, .contact { padding: 6rem 0; }
     .stats-section { padding: 3rem 0; }
     .cf-type-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 480px) {
+    .hero-stats {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
 }
