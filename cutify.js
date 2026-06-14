@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════
    Cutify Page — Script v5.0
-   Ahmed Nazif · ANZS
+   Ahmed Nazif
 ═══════════════════════════════════════════════════ */
 
 document.addEventListener('DOMContentLoaded', () => {

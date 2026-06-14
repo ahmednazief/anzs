@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════
-   ANZS Portfolio — Script v5.0
+   Ahmed Nazif Portfolio — Script v5.0
    Ahmed Nazif
 ═══════════════════════════════════════════════════ */
 
@@ -355,7 +355,7 @@ function cfBuildSummary() {
 }
 
 function cfTransmit() {
-    const subject = encodeURIComponent(`ANZS Project Brief — ${cfData.type || 'Inquiry'}`);
+    const subject = encodeURIComponent(`Ahmed Nazif Project Brief — ${cfData.type || 'Inquiry'}`);
     const body = encodeURIComponent(
         `Name: ${cfData.name}\nEmail: ${cfData.email}\nProject: ${cfData.type}\n\n${cfData.msg}`
     );
