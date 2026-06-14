@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="cutify.css?v=5.1">
+    <link rel="stylesheet" href="cutify.css?v=5.2">
 </head>
 <body>
 
@@ -23,7 +23,16 @@
 ════════════════════════════════════════════ -->
 <nav class="nav" id="nav">
     <a href="index.html" class="nav-logo">
-        <span class="logo-mark">✦</span>
+        <svg viewBox="0 0 100 100" class="logo-svg">
+            <defs>
+                <linearGradient id="cutify-nav-logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FFFFFF" />
+                    <stop offset="100%" stop-color="var(--c-purple)" />
+                </linearGradient>
+            </defs>
+            <path d="M 5,95 L 50,5 L 95,95 L 50,95 M 50,5 L 50,95 M 27.5,50 L 27.5,95 L 5,95 M 27.5,50 L 50,95" 
+                  stroke="url(#cutify-nav-logo-grad)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+        </svg>
         <span>AHMED NAZIF</span>
     </a>
     <ul class="nav-links">
@@ -426,7 +435,17 @@
 <footer class="site-footer">
     <div class="footer-left">
         <a href="index.html" class="footer-logo">
-            <span class="logo-mark">✦</span> AHMED NAZIF
+            <svg viewBox="0 0 100 100" class="logo-svg">
+                <defs>
+                    <linearGradient id="cutify-ft-logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#FFFFFF" />
+                        <stop offset="100%" stop-color="var(--c-purple)" />
+                    </linearGradient>
+                </defs>
+                <path d="M 5,95 L 50,5 L 95,95 L 50,95 M 50,5 L 50,95 M 27.5,50 L 27.5,95 L 5,95 M 27.5,50 L 50,95" 
+                      stroke="url(#cutify-ft-logo-grad)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+            </svg>
+            <span>AHMED NAZIF</span>
         </a>
         <p>Ahmed Nazif · Cutify Studio v1.0 © <span id="footYear"></span></p>
     </div>
