@@ -212,13 +212,14 @@ document.addEventListener('DOMContentLoaded', () => {
             if (entry.isIntersecting) {
                 const el = entry.target;
                 const target = parseInt(el.dataset.target, 10);
+                const prefix = el.dataset.prefix || '';
                 const suffix = el.dataset.suffix || '';
                 const duration = 1600;
                 const start = performance.now();
                 const tick = (now) => {
                     const t = Math.min((now - start) / duration, 1);
                     const eased = 1 - Math.pow(1 - t, 4);
-                    el.textContent = formatNum(Math.round(eased * target)) + suffix;
+                    el.textContent = prefix + formatNum(Math.round(eased * target)) + suffix;
                     if (t < 1) requestAnimationFrame(tick);
                 };
                 requestAnimationFrame(tick);
