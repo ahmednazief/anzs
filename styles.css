@@ -533,7 +533,7 @@ body:hover .cursor { opacity: 1; }
     transform: translateX(-50%);
     display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
     color: var(--subtle); font-family: var(--fm); font-size: 0.65rem;
-    letter-spacing: 3px; text-transform: uppercase;
+    letter-spacing: 3px; text-indent: 3px; text-transform: uppercase;
     animation: fadeIn 1s ease 1.8s both;
 }
 .hs-arrow {
@@ -543,6 +543,10 @@ body:hover .cursor { opacity: 1; }
     display: flex; align-items: center; justify-content: center;
     font-size: 0.7rem; color: var(--purple);
     animation: bounceDown 2s ease-in-out infinite;
+}
+.hs-arrow i {
+    line-height: 1;
+    margin-top: 1px;
 }
 @keyframes bounceDown {
     0%, 100% { transform: translateY(0); opacity: 0.6; }
