@@ -1306,3 +1306,93 @@ body:hover .cursor { opacity: 1; }
     .stats-section { padding: 3rem 0; }
     .cf-type-grid { grid-template-columns: 1fr 1fr; }
 }
+
+/* ════════════════════════════════
+   ARABIC & RTL OVERRIDES
+   ════════════════════════════════ */
+html[lang="ar"] {
+    --fd: 'Cairo', sans-serif;
+    --fb: 'Cairo', sans-serif;
+}
+
+/* Adjust tracking (letter-spacing) since Arabic script does not support it */
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3,
+html[lang="ar"] h4,
+html[lang="ar"] h5,
+html[lang="ar"] h6,
+html[lang="ar"] .eyebrow,
+html[lang="ar"] .tag-mono,
+html[lang="ar"] .btn-primary,
+html[lang="ar"] .btn-ghost,
+html[lang="ar"] .nav-cta,
+html[lang="ar"] .mn-link,
+html[lang="ar"] .svc-num,
+html[lang="ar"] .svc-time,
+html[lang="ar"] .vc-stats span,
+html[lang="ar"] .proc-tags span,
+html[lang="ar"] .bc-niche,
+html[lang="ar"] .ci-label,
+html[lang="ar"] .cf-prompt,
+html[lang="ar"] .cft-btn,
+html[lang="ar"] .cf-hint,
+html[lang="ar"] .cf-summary strong,
+html[lang="ar"] .ft-copy,
+html[lang="ar"] .pl-label {
+    letter-spacing: normal !important;
+}
+
+/* Re-align navigation lists margins for RTL */
+html[lang="ar"] .nl-special {
+    margin-left: 0 !important;
+    margin-right: 0.4rem !important;
+}
+html[lang="ar"] .nav-cta {
+    margin-left: 0 !important;
+    margin-right: 0.6rem !important;
+}
+
+/* Floating badge alignment on profile card */
+html[lang="ar"] .pc-badge-tl {
+    left: auto !important;
+    right: -20px !important;
+}
+html[lang="ar"] .pc-badge-br {
+    right: auto !important;
+    left: -20px !important;
+}
+
+/* Service lists bullet arrows */
+html[lang="ar"] .svc-list li {
+    padding-left: 0 !important;
+    padding-right: 1rem !important;
+}
+html[lang="ar"] .svc-list li::before {
+    content: '←' !important;
+    left: auto !important;
+    right: 0 !important;
+}
+
+/* Mobile nav close button */
+html[lang="ar"] .mn-close {
+    right: auto !important;
+    left: 6% !important;
+}
+
+/* Stats grid vertical border swap for RTL */
+@media (min-width: 1101px) {
+    html[lang="ar"] .sg-item {
+        border-left: 1px solid var(--border) !important;
+        border-right: none !important;
+    }
+    html[lang="ar"] .sg-item:last-child {
+        border-left: none !important;
+    }
+}
+
+/* Adjust font-weight slightly for Arabic Cairo font readability */
+html[lang="ar"] body {
+    font-weight: 400;
+}
+

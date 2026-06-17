@@ -1509,4 +1509,75 @@ img { max-width: 100%; display: block; }
         border-radius: 50%;
         justify-content: center;
     }
+    .nav-lang span {
+        display: none;
+    }
+    .nav-lang {
+        padding: 0.55rem;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        justify-content: center;
+    }
 }
+
+.nav-lang {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 1.1rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--c-border);
+    color: var(--c-text);
+    font-size: 0.875rem;
+    font-weight: 700;
+    border-radius: var(--r-pill);
+    transition: all 0.25s var(--ease-out);
+}
+.nav-lang i {
+    color: var(--c-purple);
+    transition: transform 0.25s var(--ease-spring);
+}
+.nav-lang:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(167, 139, 250, 0.15);
+}
+.nav-lang:hover i {
+    transform: scale(1.2);
+}
+
+
+/* ════════════════════════════════
+   ARABIC OVERRIDES
+   ════════════════════════════════ */
+html[lang="ar"] {
+    --f-display: 'Cairo', sans-serif;
+    --f-body: 'Cairo', sans-serif;
+}
+
+/* Adjust letter-spacing for Arabic text readability */
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3,
+html[lang="ar"] h4,
+html[lang="ar"] .eyebrow,
+html[lang="ar"] .hero-pill,
+html[lang="ar"] .dl-btn,
+html[lang="ar"] .trust-item,
+html[lang="ar"] .stat-label,
+html[lang="ar"] .feat-badge,
+html[lang="ar"] .tab-btn,
+html[lang="ar"] .dep-chip,
+html[lang="ar"] .cta-tag,
+html[lang="ar"] .footer-logo,
+html[lang="ar"] .chrome-title,
+html[lang="ar"] .stage-title {
+    letter-spacing: normal !important;
+}
+
+/* Adjust font-weight slightly for Arabic Cairo font readability */
+html[lang="ar"] body {
+    font-weight: 400;
+}
+

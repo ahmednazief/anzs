@@ -358,18 +358,20 @@ function cfSkip() {
 function cfBuildSummary() {
     const s = document.getElementById('cfSummary');
     if (!s) return;
+    const isAr = document.documentElement.lang === 'ar';
     s.innerHTML = `
-        <div><strong>Name:</strong> ${cfData.name}</div>
-        <div><strong>Email:</strong> ${cfData.email}</div>
-        <div><strong>Project:</strong> ${cfData.type || '—'}</div>
-        ${cfData.msg ? `<div><strong>Notes:</strong> ${cfData.msg}</div>` : ''}
+        <div><strong>${isAr ? 'الاسم:' : 'Name:'}</strong> ${cfData.name}</div>
+        <div><strong>${isAr ? 'البريد الإلكتروني:' : 'Email:'}</strong> ${cfData.email}</div>
+        <div><strong>${isAr ? 'نوع المشروع:' : 'Project:'}</strong> ${cfData.type || '—'}</div>
+        ${cfData.msg ? `<div><strong>${isAr ? 'ملاحظات:' : 'Notes:'}</strong> ${cfData.msg}</div>` : ''}
     `;
 }
 
 function cfTransmit() {
-    const subject = encodeURIComponent(`Ahmed Nazif Project Brief — ${cfData.type || 'Inquiry'}`);
+    const isAr = document.documentElement.lang === 'ar';
+    const subject = encodeURIComponent(isAr ? `طلب مشروع أحمد نظيف — ${cfData.type || 'استفسار'}` : `Ahmed Nazif Project Brief — ${cfData.type || 'Inquiry'}`);
     const body = encodeURIComponent(
-        `Name: ${cfData.name}\nEmail: ${cfData.email}\nProject: ${cfData.type}\n\n${cfData.msg}`
+        `${isAr ? 'الاسم' : 'Name'}: ${cfData.name}\n${isAr ? 'البريد الإلكتروني' : 'Email'}: ${cfData.email}\n${isAr ? 'المشروع' : 'Project'}: ${cfData.type}\n\n${cfData.msg}`
     );
     window.location.href = `mailto:ahmednazief@gmail.com?subject=${subject}&body=${body}`;
     const sent = document.getElementById('cfSent');
