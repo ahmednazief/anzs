@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════
-   Cutify Page — Script v5.0
+   Cuttify Page — Script v5.0
    Ahmed Nazif
 ═══════════════════════════════════════════════════ */
 
@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* ── Hero Preview image cycling ── */
     const previewImg = document.getElementById('previewImg');
-    const previewImages = ['images/cutify_app1.png', 'images/cutify_app2.png'];
+    const previewImages = ['images/cuttify_app1.png', 'images/cuttify_app2.png'];
     if (previewImg) {
         let idx = 0;
         setInterval(() => {
