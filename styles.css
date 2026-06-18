@@ -1395,4 +1395,15 @@ html[lang="ar"] .mn-close {
 html[lang="ar"] body {
     font-weight: 400;
 }
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3,
+html[lang="ar"] h4,
+html[lang="ar"] h5,
+html[lang="ar"] h6 {
+    line-height: 1.45 !important;
+}
+html[lang="ar"] p {
+    line-height: 1.8 !important;
+}
 
