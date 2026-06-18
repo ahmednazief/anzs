@@ -1,12 +1,6 @@
 RewriteEngine On
 
-# Redirect old Cutify URLs to new Cuttify URLs
-RewriteRule ^cutify$ /cuttify [R=301,L,NC]
-RewriteRule ^cutify-ar$ /cuttify-ar [R=301,L,NC]
-RewriteRule ^cutify\.html$ /cuttify [R=301,L,NC]
-RewriteRule ^cutify-ar\.html$ /cuttify-ar [R=301,L,NC]
-
-# 1. Redirect /cuttify.html to /cuttify (Optional but good for SEO)
+# 1. Redirect /cuttify.html to /cuttify (clean URLs)
 RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
 RewriteRule ^ %1 [R=301,L]
 
@@ -14,3 +8,4 @@ RewriteRule ^ %1 [R=301,L]
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.html -f
 RewriteRule ^(.*)$ $1.html [NC,L]
+
