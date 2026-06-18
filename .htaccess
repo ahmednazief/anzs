@@ -1,4 +1,10 @@
+AddDefaultCharset UTF-8
+<IfModule mod_headers.c>
+    Header set Content-Type "text/html; charset=UTF-8"
+</IfModule>
+
 RewriteEngine On
+
 
 # 1. Redirect /cuttify.html to /cuttify (clean URLs)
 RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
