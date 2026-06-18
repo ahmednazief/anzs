@@ -198,4 +198,97 @@ document.addEventListener('DOMContentLoaded', () => {
         previewImg.style.transition = 'opacity 0.4s ease';
     }
 
+    /* ── Pro Tour Modal & Slider ── */
+    const proModal = document.getElementById('proModal');
+    const tourTriggers = document.querySelectorAll('.btn-tour');
+    const modalCloseBtn = document.querySelector('.modal-close');
+    const slides = document.querySelectorAll('.modal-slide');
+    const prevArrow = document.querySelector('.arrow-prev');
+    const nextArrow = document.querySelector('.arrow-next');
+    const dots = document.querySelectorAll('.slider-dot');
+
+    if (proModal && slides.length > 0) {
+        let currentSlide = 0;
+
+        const showSlide = (idx) => {
+            // Bounds/wrap-around
+            if (idx < 0) idx = slides.length - 1;
+            if (idx >= slides.length) idx = 0;
+            currentSlide = idx;
+
+            // Update active classes on slides
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('slide-active', i === currentSlide);
+            });
+
+            // Update active classes on dots
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('dot-active', i === currentSlide);
+            });
+        };
+
+        const openModal = () => {
+            proModal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            showSlide(0); // always start at first slide
+        };
+
+        const closeModal = () => {
+            proModal.classList.remove('open');
+            document.body.style.overflow = '';
+        };
+
+        // Open triggers
+        tourTriggers.forEach(btn => btn.addEventListener('click', openModal));
+
+        // Close triggers
+        if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
+        proModal.addEventListener('click', (e) => {
+            if (e.target === proModal) closeModal();
+        });
+
+        // Keyboard navigation (Escape, Left, Right)
+        document.addEventListener('keydown', (e) => {
+            if (!proModal.classList.contains('open')) return;
+            if (e.key === 'Escape') closeModal();
+            if (e.key === 'ArrowLeft') showSlide(currentSlide - 1);
+            if (e.key === 'ArrowRight') showSlide(currentSlide + 1);
+        });
+
+        // Prev/Next buttons
+        if (prevArrow) prevArrow.addEventListener('click', () => showSlide(currentSlide - 1));
+        if (nextArrow) nextArrow.addEventListener('click', () => showSlide(currentSlide + 1));
+
+        // Dot buttons
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', () => showSlide(i));
+        });
+    }
+
+    /* ── Installer Tab Toggle ── */
+    const installTabFree = document.getElementById('installTabFree');
+    const installTabPro = document.getElementById('installTabPro');
+    const stepsFree = document.getElementById('stepsFree');
+    const stepsPro = document.getElementById('stepsPro');
+
+    if (installTabFree && installTabPro && stepsFree && stepsPro) {
+        const toggleInstallTab = (type) => {
+            if (type === 'free') {
+                installTabFree.classList.add('tab-active');
+                installTabPro.classList.remove('tab-active');
+                stepsFree.style.display = 'flex';
+                stepsPro.style.display = 'none';
+            } else {
+                installTabFree.classList.remove('tab-active');
+                installTabPro.classList.add('tab-active');
+                stepsFree.style.display = 'none';
+                stepsPro.style.display = 'flex';
+            }
+        };
+
+        installTabFree.addEventListener('click', () => toggleInstallTab('free'));
+        installTabPro.addEventListener('click', () => toggleInstallTab('pro'));
+    }
+
 });
+

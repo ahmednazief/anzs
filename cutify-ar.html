@@ -171,16 +171,17 @@
                 </div>
             </a>
 
-            <a href="#" class="dl-btn dl-btn-ghost dl-btn-coming"
-               onclick="event.preventDefault()" title="قريبًا">
-                <div class="dl-btn-icon dl-icon-locked">
-                    <i class="fa-solid fa-lock"></i>
+            <a href="#pricing" class="dl-btn dl-btn-ghost dl-btn-pro" id="proHeroBtn">
+                <div class="dl-btn-icon" style="color: #a78bfa;">
+                    <i class="fa-solid fa-gem"></i>
                 </div>
                 <div class="dl-btn-text">
-                    <span class="dl-btn-main">كيوتيفاي برو</span>
-                    <span class="dl-btn-sub">قريبًا</span>
+                    <span class="dl-btn-main">احصل على كيوتيفاي برو</span>
+                    <span class="dl-btn-sub">ترخيص فوري · 14.99$</span>
                 </div>
-                <div class="coming-badge">قريبًا</div>
+                <div class="dl-btn-arrow">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </div>
             </a>
         </div>
 
@@ -346,6 +347,68 @@
 </section>
 
 <!-- ═══════════════════════════════════════════
+     PRICING / COMPARISON
+════════════════════════════════════════════ -->
+<section class="pricing-compare" id="pricing">
+    <div class="section-header">
+        <div class="eyebrow">خطط الأسعار</div>
+        <h2 class="section-title">اختر <span class="text-gradient">سرعتك.</span></h2>
+        <p class="section-desc">ابدأ بالأدوات الأساسية المجانية أو قم بالترقية إلى كيوتيفاي برو للحصول على حزمة أتمتة الخط الزمني الكاملة والمدعومة بالذكاء الاصطناعي.</p>
+    </div>
+    
+    <div class="compare-grid">
+        <!-- Free Plan -->
+        <div class="compare-card reveal">
+            <span class="comp-badge comp-badge-free">مجاني</span>
+            <h3>كيوتيفاي لايت</h3>
+            <p class="compare-desc">الأدوات الأساسية لأتمتة قص الصمت وتحسين مقاطع الفيديو الخام.</p>
+            <div class="compare-price">0$ <span>/ مدى الحياة</span></div>
+            <ul class="compare-features">
+                <li><i class="fa-solid fa-check"></i> إزالة الصمت (نشاط الصوت)</li>
+                <li><i class="fa-solid fa-check"></i> تقليص الإطارات (المتطابقة تقريباً)</li>
+                <li><i class="fa-solid fa-check"></i> يعمل داخل لوحة بريمير برو</li>
+                <li class="unavailable"><i class="fa-solid fa-xmark"></i> كتابة نصوص تلقائية بالذكاء الاصطناعي (Whisper)</li>
+                <li class="unavailable"><i class="fa-solid fa-xmark"></i> مزامنة القص مع الموسيقى (Beat & Onset Sync)</li>
+                <li class="unavailable"><i class="fa-solid fa-xmark"></i> نماذج Ollama المحلية المتقدمة</li>
+                <li class="unavailable"><i class="fa-solid fa-xmark"></i> دعم اللهجة المصرية Nile-Chat 4B</li>
+                <li class="unavailable"><i class="fa-solid fa-xmark"></i> برنامج تثبيت متميز ودليل إعداد مفصل</li>
+            </ul>
+            <a href="https://github.com/ahmednazief/anzs/releases/download/Cutify/Cutify-Setup-1.0.1.zip" class="dl-btn dl-btn-ghost">
+                <i class="fa-solid fa-download"></i> تحميل مجاني
+            </a>
+        </div>
+
+        <!-- Pro Plan -->
+        <div class="compare-card compare-card-pro reveal">
+            <span class="comp-badge comp-badge-pro">أفضل قيمة</span>
+            <h3>كيوتيفاي برو</h3>
+            <p class="compare-desc">مجموعة الأدوات الإبداعية القصوى مع مزامنة الإيقاع، تفريغ النصوص دون اتصال بالإنترنت، ودعم اللهجة المصرية المخصصة.</p>
+            <div class="compare-price">14.99$ <span>/ لمرة واحدة</span></div>
+            <ul class="compare-features">
+                <li><i class="fa-solid fa-check"></i> إزالة الصمت (نشاط الصوت)</li>
+                <li><i class="fa-solid fa-check"></i> تقليص الإطارات (المتطابقة تقريباً)</li>
+                <li><i class="fa-solid fa-check"></i> يعمل داخل لوحة بريمير برو</li>
+                <li><i class="fa-solid fa-check"></i> كتابة نصوص تلقائية بالذكاء الاصطناعي (Whisper)</li>
+                <li><i class="fa-solid fa-check"></i> مزامنة القص مع الموسيقى (Beat & Onset Sync)</li>
+                <li><i class="fa-solid fa-check"></i> نماذج Ollama المحلية المتقدمة</li>
+                <li><i class="fa-solid fa-check"></i> دعم اللهجة المصرية Nile-Chat 4B</li>
+                <li><i class="fa-solid fa-check"></i> برنامج تثبيت متميز ودليل إعداد مفصل</li>
+            </ul>
+            <a href="#buy-pro" class="dl-btn dl-btn-primary">
+                <i class="fa-solid fa-gem"></i> شراء كيوتيفاي برو
+            </a>
+        </div>
+    </div>
+
+    <!-- Pro Tour Trigger Button -->
+    <div class="tour-trigger-wrap reveal">
+        <button class="btn-tour">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> استكشف ميزات وجولة كيوتيفاي برو
+        </button>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
      SCREENSHOT SHOWCASE
      ════════════════════════════════════════════ -->
 <section class="screenshots" id="screenshots">
@@ -391,7 +454,17 @@
         <p class="section-desc">من الصفر إلى أول قص تلقائي في أقل من 5 دقائق.</p>
     </div>
 
-    <div class="steps">
+    <div class="screenshot-tabs" style="justify-content: center; margin-bottom: 3rem; gap: 1rem;">
+        <button class="tab-btn tab-active" id="installTabFree">
+            <i class="fa-solid fa-gift"></i> إعداد النسخة المجانية
+        </button>
+        <button class="tab-btn" id="installTabPro">
+            <i class="fa-solid fa-gem"></i> إعداد نسخة برو (Pro)
+        </button>
+    </div>
+
+    <!-- Free Edition Steps -->
+    <div class="steps" id="stepsFree">
         <div class="step reveal">
             <div class="step-num-wrap">
                 <div class="step-num">01</div>
@@ -435,6 +508,56 @@
                 <div class="step-text">
                     <h3>الفتح في بريمير برو</h3>
                     <p>انتقلت إلى <strong>Window ← Extensions ← Cutify</strong> داخل بريمير برو. ستفتح اللوحة، ويتصل بريمير، وتكون جاهزًا لبدء القص والتعديل.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pro Edition Steps -->
+    <div class="steps" id="stepsPro" style="display: none;">
+        <div class="step reveal">
+            <div class="step-num-wrap">
+                <div class="step-num">01</div>
+                <div class="step-line"></div>
+            </div>
+            <div class="step-content">
+                <div class="step-icon-wrap step-icon-blue">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+                <div class="step-text">
+                    <h3>الشراء والحصول على الترخيص</h3>
+                    <p>قم بشراء كيوتيفاي برو عبر موقع <a href="#buy-pro" class="text-gradient" style="font-weight: 700;">Payhip</a>. بعد إتمام الدفع، ستتلقى كود التفعيل تلقائياً في بريدك الإلكتروني.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="step reveal">
+            <div class="step-num-wrap">
+                <div class="step-num">02</div>
+                <div class="step-line"></div>
+            </div>
+            <div class="step-content">
+                <div class="step-icon-wrap step-icon-purple">
+                    <i class="fa-solid fa-key"></i>
+                </div>
+                <div class="step-text">
+                    <h3>تشغيل وتفعيل كود الترخيص</h3>
+                    <p>قم بتشغيل برنامج تثبيت كيوتيفاي برو المتميز. أثناء عملية التثبيت، الصق كود التفعيل الذي استلمته في شاشة التفعيل لفتح جميع ميزات النظام.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="step reveal">
+            <div class="step-num-wrap">
+                <div class="step-num">03</div>
+            </div>
+            <div class="step-content">
+                <div class="step-icon-wrap step-icon-green">
+                    <i class="fa-solid fa-plug"></i>
+                </div>
+                <div class="step-text">
+                    <h3>الاتصال داخل بريمير برو</h3>
+                    <p>افتح برنامج أدوبي بريمير برو وانتقل إلى <strong>Window → Extensions → Cutify Pro</strong>. انقر فوق <strong>Connect App</strong> للمزامنة مع محرك التطبيق المفعّل فوراً.</p>
                 </div>
             </div>
         </div>
@@ -541,16 +664,17 @@
                 </div>
             </a>
 
-            <a href="#" class="dl-btn dl-btn-ghost dl-btn-coming"
-               onclick="event.preventDefault()">
-                <div class="dl-btn-icon dl-icon-locked">
-                    <i class="fa-solid fa-lock"></i>
+            <a href="#pricing" class="dl-btn dl-btn-ghost dl-btn-pro">
+                <div class="dl-btn-icon" style="color: #a78bfa;">
+                    <i class="fa-solid fa-gem"></i>
                 </div>
                 <div class="dl-btn-text">
-                    <span class="dl-btn-main">كيوتيفاي برو</span>
-                    <span class="dl-btn-sub">قريبًا</span>
+                    <span class="dl-btn-main">احصل على كيوتيفاي برو</span>
+                    <span class="dl-btn-sub">ترخيص فوري · 14.99$</span>
                 </div>
-                <div class="coming-badge">قريبًا</div>
+                <div class="dl-btn-arrow">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </div>
             </a>
         </div>
 
@@ -589,6 +713,168 @@
     </div>
 </footer>
 
-<script src="cutify.js?v=5.1"></script>
+<!-- ═══════════════════════════════════════════
+     PRO TOUR MODAL (ARABIC)
+════════════════════════════════════════════ -->
+<div class="pro-modal" id="proModal">
+    <button class="modal-close" aria-label="إغلاق النافذة">&times;</button>
+    <div class="modal-container">
+        <div class="modal-slider">
+            <!-- Slide 1: AI Auto-Captions -->
+            <div class="modal-slide slide-active">
+                <div class="slide-visual">
+                    <img src="images/pro_1.png" alt="واجهة تفريغ النصوص بالذكاء الاصطناعي">
+                </div>
+                <div class="slide-content">
+                    <span class="slide-pill">ذكاء اصطناعي محلي</span>
+                    <h2>تفريغ النصوص بالذكاء الاصطناعي</h2>
+                    <p>قم بتوليد تفريغ نصي وترجمة عالية الدقة دون الحاجة للاتصال بالإنترنت باستخدام تكامل Ollama المحلي. يدعم نماذج Llama 3 العامة ونموذج Nile-Chat 4B للهجة المصرية العامية.</p>
+                    <ul class="slide-features">
+                        <li><i class="fa-solid fa-circle-check"></i> تفريغ نصوص محلي خاص وآمن بنسبة 100%</li>
+                        <li><i class="fa-solid fa-circle-check"></i> دعم تمييز اللهجة المصرية العامية بدقة</li>
+                        <li><i class="fa-solid fa-circle-check"></i> تنزيل النماذج مدمج مع شريط التقدم</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 2: Beat Sync -->
+            <div class="modal-slide">
+                <div class="slide-visual">
+                    <img src="images/pro_2.png" alt="واجهة مزامنة الإيقاع">
+                </div>
+                <div class="slide-content">
+                    <span class="slide-pill">تحليل الصوت</span>
+                    <h2>مزامنة الإيقاع (القص على الموسيقى)</h2>
+                    <p>قم بقص لقطات الفيديو تلقائيًا لتطابق ذروة الطاقة وإيقاع أي مسار موسيقي على الخط الزمني دون الحاجة لأي قص يدوي.</p>
+                    <ul class="slide-features">
+                        <li><i class="fa-solid fa-circle-check"></i> خوارزمية كشف ذروة الصوت المؤقتة (RMS)</li>
+                        <li><i class="fa-solid fa-circle-check"></i> إضافة علامات تلقائية على مواضع الإيقاع</li>
+                        <li><i class="fa-solid fa-circle-check"></i> إمكانية تحديد مقاطع معينة للقص فقط</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 3: Remove Silences -->
+            <div class="modal-slide">
+                <div class="slide-visual">
+                    <img src="images/pro_3.png" alt="واجهة إزالة الصمت">
+                </div>
+                <div class="slide-content">
+                    <span class="slide-pill">أتمتة الخط الزمني</span>
+                    <h2>إزالة الصمت والفراغات</h2>
+                    <p>كشف فوري لنشاط الصوت لقص وحذف الأجزاء الصامتة في مسارات الصوت والفيديو مباشرة داخل بريمير برو لتسريع المونتاج.</p>
+                    <ul class="slide-features">
+                        <li><i class="fa-solid fa-circle-check"></i> التحكم في حساسية مستوى الصوت للصمت</li>
+                        <li><i class="fa-solid fa-circle-check"></i> قص دقيق ومطابق تماماً للإطارات</li>
+                        <li><i class="fa-solid fa-circle-check"></i> دعم المسارات الفردية أو الخط الزمني بالكامل</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 4: Frame Decimation -->
+            <div class="modal-slide">
+                <div class="slide-visual">
+                    <img src="images/pro_4.png" alt="واجهة تقليص الإطارات">
+                </div>
+                <div class="slide-content">
+                    <span class="slide-pill">تحسين لقطات الفيديو</span>
+                    <h2>تقليص وإزالة الإطارات</h2>
+                    <p>فحص ذكي للخط الزمني لكشف الإطارات المتطابقة أو المتجمدة وإزالتها تلقائياً. ممتاز لتسجيلات الشاشة وفيديوهات التايم لابس.</p>
+                    <ul class="slide-features">
+                        <li><i class="fa-solid fa-circle-check"></i> مؤشر لضبط نسبة التشابه المطلوبة للكشف</li>
+                        <li><i class="fa-solid fa-circle-check"></i> فحص وقص سريع باستخدام إف إف إم بي جي</li>
+                        <li><i class="fa-solid fa-circle-check"></i> تحسين وتطهير الخط الزمني في ثوانٍ معدودة</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 5: Premiere CEP Panel -->
+            <div class="modal-slide">
+                <div class="slide-visual">
+                    <img src="images/pro_5.png" alt="واجهة مستخدم الملحق الأصيلة">
+                </div>
+                <div class="slide-content">
+                    <span class="slide-pill">مزامنة مساحة العمل</span>
+                    <h2>واجهة مستخدم الملحق الأصيلة</h2>
+                    <p>ملحق CEP أصيل مبني برياكت، تم تصميمه ومطابقته بدقة ليناسب طراز ومظهر مساحة العمل الداكنة لبرنامج أدوبي بريمير برو 2026.</p>
+                    <ul class="slide-features">
+                        <li><i class="fa-solid fa-circle-check"></i> توافق تام مع لوحة ألوان وظلال أدوبي</li>
+                        <li><i class="fa-solid fa-circle-check"></i> واجهة مستجيبة بالكامل لتناسب النوافذ الجانبية</li>
+                        <li><i class="fa-solid fa-circle-check"></i> مؤشرات حية لحالة الاتصال وفصل التطبيق</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 6: Activation Portal -->
+            <div class="modal-slide">
+                <div class="slide-visual">
+                    <img src="images/pro_6.png" alt="شاشة التفعيل والترخيص">
+                </div>
+                <div class="slide-content">
+                    <span class="slide-pill">الأمان والترخيص</span>
+                    <h2>تفعيل مفتاح الترخيص</h2>
+                    <p>حافظ على تطبيقك مفعّلاً وآمناً عبر بوابة تفعيل محلية تتحقق من مفتاح الترخيص الذي تستلمه فورياً بعد الشراء لتشغيل التطبيق.</p>
+                    <ul class="slide-features">
+                        <li><i class="fa-solid fa-circle-check"></i> تفعيل وتحقق عبر الإنترنت في ثوانٍ</li>
+                        <li><i class="fa-solid fa-circle-check"></i> واجهة إعدادات تفعيل متميزة ونظيفة</li>
+                        <li><i class="fa-solid fa-circle-check"></i> إدارة سهلة للتحديثات وحالة الترخيص</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 7: Custom Setup Wizard -->
+            <div class="modal-slide">
+                <div class="slide-visual">
+                    <img src="images/installer-1.png" alt="برنامج تثبيت متميز">
+                </div>
+                <div class="slide-content">
+                    <span class="slide-pill">معالج الإعداد</span>
+                    <h2>برنامج تثبيت متميز</h2>
+                    <p>برنامج تثبيت مخصص (Inno Setup) بدون حواف، يتميز بمظهر بصري رائع يجمع بين ألوان الحجر البركاني والذهب السائل.</p>
+                    <ul class="slide-features">
+                        <li><i class="fa-solid fa-circle-check"></i> شريط جانبي مخصص باللونين الذهبي والأسود</li>
+                        <li><i class="fa-solid fa-circle-check"></i> تثبيت تلقائي لبايثون، نود، وإف إف إم بي جي</li>
+                        <li><i class="fa-solid fa-circle-check"></i> واجهة مستخدم خالية من الحواف التقليدية</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 8: Setup Progress Screen -->
+            <div class="modal-slide">
+                <div class="slide-visual">
+                    <img src="images/installer-2.png" alt="تقدم التثبيت بتدرج متميز">
+                </div>
+                <div class="slide-content">
+                    <span class="slide-pill">تقدم الإعداد</span>
+                    <h2>تدرج الحجر البركاني والبنفسجي</h2>
+                    <p>واجهة تثبيت بتدرج لوني رأسي متميز، تعرض تقدم استخراج الملفات في الوقت الفعلي مع أيقونات بصرية نظيفة ونوافذ شفافة.</p>
+                    <ul class="slide-features">
+                        <li><i class="fa-solid fa-circle-check"></i> تأثير تدرج لوني مبرمج مخصص</li>
+                        <li><i class="fa-solid fa-circle-check"></i> تحديث مسار الملف الجاري تثبيته حياً مع أيقونة</li>
+                        <li><i class="fa-solid fa-circle-check"></i> تجربة مستخدم راقية وعصرية بالكامل</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slider Arrows -->
+        <button class="slider-arrow arrow-prev" aria-label="الشريحة السابقة"><i class="fa-solid fa-chevron-right"></i></button>
+        <button class="slider-arrow arrow-next" aria-label="الشريحة التالية"><i class="fa-solid fa-chevron-left"></i></button>
+
+        <!-- Slider Dots -->
+        <div class="slider-dots">
+            <button class="slider-dot dot-active" aria-label="الشريحة 1"></button>
+            <button class="slider-dot" aria-label="الشريحة 2"></button>
+            <button class="slider-dot" aria-label="الشريحة 3"></button>
+            <button class="slider-dot" aria-label="الشريحة 4"></button>
+            <button class="slider-dot" aria-label="الشريحة 5"></button>
+            <button class="slider-dot" aria-label="الشريحة 6"></button>
+            <button class="slider-dot" aria-label="الشريحة 7"></button>
+            <button class="slider-dot" aria-label="الشريحة 8"></button>
+        </div>
+    </div>
+</div>
+
+<script src="cutify.js?v=5.2"></script>
 </body>
 </html>

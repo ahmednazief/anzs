@@ -171,16 +171,17 @@
                 </div>
             </a>
 
-            <a href="#" class="dl-btn dl-btn-ghost dl-btn-coming"
-               onclick="event.preventDefault()" title="Coming Soon">
-                <div class="dl-btn-icon dl-icon-locked">
-                    <i class="fa-solid fa-lock"></i>
+            <a href="#pricing" class="dl-btn dl-btn-ghost dl-btn-pro" id="proHeroBtn">
+                <div class="dl-btn-icon" style="color: #a78bfa;">
+                    <i class="fa-solid fa-gem"></i>
                 </div>
                 <div class="dl-btn-text">
-                    <span class="dl-btn-main">Cutify Pro</span>
-                    <span class="dl-btn-sub">Coming Soon</span>
+                    <span class="dl-btn-main">Get Cutify Pro</span>
+                    <span class="dl-btn-sub">Instant License · $14.99</span>
                 </div>
-                <div class="coming-badge">Soon</div>
+                <div class="dl-btn-arrow">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
             </a>
         </div>
 
@@ -346,6 +347,68 @@
 </section>
 
 <!-- ═══════════════════════════════════════════
+     PRICING / COMPARISON
+════════════════════════════════════════════ -->
+<section class="pricing-compare" id="pricing">
+    <div class="section-header">
+        <div class="eyebrow">Pricing Plans</div>
+        <h2 class="section-title">Choose your <span class="text-gradient">speed.</span></h2>
+        <p class="section-desc">Get started with the free core tool or upgrade to Cutify Pro for the ultimate, AI-powered timeline automation suite.</p>
+    </div>
+    
+    <div class="compare-grid">
+        <!-- Free Plan -->
+        <div class="compare-card reveal">
+            <span class="comp-badge comp-badge-free">Free</span>
+            <h3>Cutify Lite</h3>
+            <p class="compare-desc">The essential core tools to automate silence cutting and optimize raw sequence clips.</p>
+            <div class="compare-price">$0 <span>/ forever</span></div>
+            <ul class="compare-features">
+                <li><i class="fa-solid fa-check"></i> Remove Silences (Voice Activity)</li>
+                <li><i class="fa-solid fa-check"></i> Frame Decimation (Near-Duplicates)</li>
+                <li><i class="fa-solid fa-check"></i> Inside Premiere Pro Panel</li>
+                <li class="unavailable"><i class="fa-solid fa-xmark"></i> Local AI Auto-Captions (Whisper)</li>
+                <li class="unavailable"><i class="fa-solid fa-xmark"></i> Cut to Music (Beat & Onset Sync)</li>
+                <li class="unavailable"><i class="fa-solid fa-xmark"></i> Advanced Ollama Local LLMs</li>
+                <li class="unavailable"><i class="fa-solid fa-xmark"></i> Egyptian Arabic Nile-Chat 4B Dialect</li>
+                <li class="unavailable"><i class="fa-solid fa-xmark"></i> Premium Installer & Setup Guide</li>
+            </ul>
+            <a href="https://github.com/ahmednazief/anzs/releases/download/Cutify/Cutify-Setup-1.0.1.zip" class="dl-btn dl-btn-ghost">
+                <i class="fa-solid fa-download"></i> Download Free
+            </a>
+        </div>
+
+        <!-- Pro Plan -->
+        <div class="compare-card compare-card-pro reveal">
+            <span class="comp-badge comp-badge-pro">Best Value</span>
+            <h3>Cutify Pro</h3>
+            <p class="compare-desc">The ultimate creative toolset with beat sync, offline AI captioning, and custom Egyptian dialects.</p>
+            <div class="compare-price">$14.99 <span>/ one-time</span></div>
+            <ul class="compare-features">
+                <li><i class="fa-solid fa-check"></i> Remove Silences (Voice Activity)</li>
+                <li><i class="fa-solid fa-check"></i> Frame Decimation (Near-Duplicates)</li>
+                <li><i class="fa-solid fa-check"></i> Inside Premiere Pro Panel</li>
+                <li><i class="fa-solid fa-check"></i> Local AI Auto-Captions (Whisper)</li>
+                <li><i class="fa-solid fa-check"></i> Cut to Music (Beat & Onset Sync)</li>
+                <li><i class="fa-solid fa-check"></i> Advanced Ollama Local LLMs</li>
+                <li><i class="fa-solid fa-check"></i> Egyptian Arabic Nile-Chat 4B Dialect</li>
+                <li><i class="fa-solid fa-check"></i> Premium Installer & Setup Guide</li>
+            </ul>
+            <a href="#buy-pro" class="dl-btn dl-btn-primary">
+                <i class="fa-solid fa-gem"></i> Buy Cutify Pro
+            </a>
+        </div>
+    </div>
+
+    <!-- Pro Tour Trigger Button -->
+    <div class="tour-trigger-wrap reveal">
+        <button class="btn-tour">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Explore Cutify Pro Tour & Screenshots
+        </button>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
      SCREENSHOT SHOWCASE
 ════════════════════════════════════════════ -->
 <section class="screenshots" id="screenshots">
@@ -391,7 +454,17 @@
         <p class="section-desc">From zero to your first automated cut in under 5 minutes.</p>
     </div>
 
-    <div class="steps">
+    <div class="screenshot-tabs" style="justify-content: center; margin-bottom: 3rem; gap: 1rem;">
+        <button class="tab-btn tab-active" id="installTabFree">
+            <i class="fa-solid fa-gift"></i> Free Edition Setup
+        </button>
+        <button class="tab-btn" id="installTabPro">
+            <i class="fa-solid fa-gem"></i> Pro Edition Setup
+        </button>
+    </div>
+
+    <!-- Free Edition Steps -->
+    <div class="steps" id="stepsFree">
         <div class="step reveal">
             <div class="step-num-wrap">
                 <div class="step-num">01</div>
@@ -435,6 +508,56 @@
                 <div class="step-text">
                     <h3>Open in Premiere Pro</h3>
                     <p>Go to <strong>Window → Extensions → Cutify</strong> inside Premiere Pro. The panel opens, Premiere connects, and you're ready to start cutting.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pro Edition Steps -->
+    <div class="steps" id="stepsPro" style="display: none;">
+        <div class="step reveal">
+            <div class="step-num-wrap">
+                <div class="step-num">01</div>
+                <div class="step-line"></div>
+            </div>
+            <div class="step-content">
+                <div class="step-icon-wrap step-icon-blue">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+                <div class="step-text">
+                    <h3>Purchase & Get License</h3>
+                    <p>Purchase Cutify Pro on <a href="#buy-pro" class="text-gradient" style="font-weight: 700;">Payhip</a>. Once payment is processed, you will automatically receive an activation license key sent straight to your email.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="step reveal">
+            <div class="step-num-wrap">
+                <div class="step-num">02</div>
+                <div class="step-line"></div>
+            </div>
+            <div class="step-content">
+                <div class="step-icon-wrap step-icon-purple">
+                    <i class="fa-solid fa-key"></i>
+                </div>
+                <div class="step-text">
+                    <h3>Run & Activate Wizard</h3>
+                    <p>Run the premium Cutify Pro setup wizard. During installation, paste the license code you received into the activation screen to unlock all system features.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="step reveal">
+            <div class="step-num-wrap">
+                <div class="step-num">03</div>
+            </div>
+            <div class="step-content">
+                <div class="step-icon-wrap step-icon-green">
+                    <i class="fa-solid fa-plug"></i>
+                </div>
+                <div class="step-text">
+                    <h3>Connect in Premiere Pro</h3>
+                    <p>Launch Adobe Premiere Pro and navigate to <strong>Window → Extensions → Cutify Pro</strong>. Click <strong>Connect App</strong> to sync with your activated backend instantly.</p>
                 </div>
             </div>
         </div>
@@ -541,16 +664,17 @@
                 </div>
             </a>
 
-            <a href="#" class="dl-btn dl-btn-ghost dl-btn-coming"
-               onclick="event.preventDefault()">
-                <div class="dl-btn-icon dl-icon-locked">
-                    <i class="fa-solid fa-lock"></i>
+            <a href="#pricing" class="dl-btn dl-btn-ghost dl-btn-pro">
+                <div class="dl-btn-icon" style="color: #a78bfa;">
+                    <i class="fa-solid fa-gem"></i>
                 </div>
                 <div class="dl-btn-text">
-                    <span class="dl-btn-main">Cutify Pro</span>
-                    <span class="dl-btn-sub">Coming Soon</span>
+                    <span class="dl-btn-main">Get Cutify Pro</span>
+                    <span class="dl-btn-sub">Instant License · $14.99</span>
                 </div>
-                <div class="coming-badge">Soon</div>
+                <div class="dl-btn-arrow">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
             </a>
         </div>
 
@@ -589,6 +713,168 @@
     </div>
 </footer>
 
-<script src="cutify.js?v=5.1"></script>
+<!-- ═══════════════════════════════════════════
+     PRO TOUR MODAL
+════════════════════════════════════════════ -->
+<div class="pro-modal" id="proModal">
+    <button class="modal-close" aria-label="Close Modal">&times;</button>
+    <div class="modal-container">
+        <div class="modal-slider">
+            <!-- Slide 1: AI Auto-Captions -->
+            <div class="modal-slide slide-active">
+                <div class="slide-visual">
+                    <img src="images/pro_1.png" alt="AI Auto-Captions UI">
+                </div>
+                <div class="slide-content">
+                    <span class="slide-pill">Local AI</span>
+                    <h2>AI Auto-Captions</h2>
+                    <p>Locally transcribe and translate timeline audio using Whisper and Llama 3 LLMs. Features full Egyptian Arabic dialect recognition via Nile-Chat 4B model.</p>
+                    <ul class="slide-features">
+                        <li><i class="fa-solid fa-circle-check"></i> 100% private offline transcription</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Nile-Chat 4B Egyptian dialect support</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Integrated model downloader</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 2: Beat Sync -->
+            <div class="modal-slide">
+                <div class="slide-visual">
+                    <img src="images/pro_2.png" alt="Beat Sync UI">
+                </div>
+                <div class="slide-content">
+                    <span class="slide-pill">Audio Analysis</span>
+                    <h2>Beat Sync (Cut to Music)</h2>
+                    <p>Automatically analyze song beats and energy envelopes to slice raw timeline video clips or place audio markers to match the rhythm instantly.</p>
+                    <ul class="slide-features">
+                        <li><i class="fa-solid fa-circle-check"></i> Peak transient onset algorithms</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Synchronizes cuts to beat-onsets</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Range selection for highlighted clips</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 3: Remove Silences -->
+            <div class="modal-slide">
+                <div class="slide-visual">
+                    <img src="images/pro_3.png" alt="Silence Removal UI">
+                </div>
+                <div class="slide-content">
+                    <span class="slide-pill">Audio Processing</span>
+                    <h2>Silence Removal</h2>
+                    <p>Detect and cut out empty pauses or silent segments from voiceovers and dialog recordings with high precision and adjustable threshold parameters.</p>
+                    <ul class="slide-features">
+                        <li><i class="fa-solid fa-circle-check"></i> Adjustable noise floor thresholds</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Frame-accurate silence trimming</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Supports single tracks or full timelines</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 4: Frame Decimation -->
+            <div class="modal-slide">
+                <div class="slide-visual">
+                    <img src="images/pro_4.png" alt="Frame Decimation UI">
+                </div>
+                <div class="slide-content">
+                    <span class="slide-pill">Footage Optimization</span>
+                    <h2>Frame Decimation</h2>
+                    <p>Intelligently scan raw timeline video to identify duplicate or frozen frames and strip them away. Ideal for screen recordings, time-lapses, and gameplay clips.</p>
+                    <ul class="slide-features">
+                        <li><i class="fa-solid fa-circle-check"></i> Near-duplicate comparison index</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Scans and trims with bundled FFmpeg</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Optimizes sequence in seconds</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 5: Premiere CEP Panel -->
+            <div class="modal-slide">
+                <div class="slide-visual">
+                    <img src="images/pro_5.png" alt="Premiere CEP Panel">
+                </div>
+                <div class="slide-content">
+                    <span class="slide-pill">Workspace Sync</span>
+                    <h2>Native Extension UI</h2>
+                    <p>A native CEP extension panel built with React, styled and adjusted to match Premiere Pro 2026's dark workspace layout and theme colors.</p>
+                    <ul class="slide-features">
+                        <li><i class="fa-solid fa-circle-check"></i> Harmonized border radii and colors</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Fully responsive sidebar docking</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Live connection/disconnection statuses</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 6: Activation Portal -->
+            <div class="modal-slide">
+                <div class="slide-visual">
+                    <img src="images/pro_6.png" alt="Activation Portal">
+                </div>
+                <div class="slide-content">
+                    <span class="slide-pill">Licensing</span>
+                    <h2>License Key Activation</h2>
+                    <p>Keep your copy authenticated via a local, secure key validation gateway that authorizes and unlocks the background processes immediately.</p>
+                    <ul class="slide-features">
+                        <li><i class="fa-solid fa-circle-check"></i> Instant online validation</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Clean configuration settings</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Automatic updates and license management</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 7: Custom Setup Wizard -->
+            <div class="modal-slide">
+                <div class="slide-visual">
+                    <img src="images/installer-1.png" alt="Setup Welcome Screen">
+                </div>
+                <div class="slide-content">
+                    <span class="slide-pill">Setup Wizard</span>
+                    <h2>Premium Installer</h2>
+                    <p>A custom, borderless Inno Setup installer featuring an obsidian-gold visual theme. Streamlines setup by auto-bundling dependencies.</p>
+                    <ul class="slide-features">
+                        <li><i class="fa-solid fa-circle-check"></i> Premium obsidian-gold sidebar</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Bundles Python, Node & FFmpeg</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Clean layout with borderless panels</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 8: Setup Progress Screen -->
+            <div class="modal-slide">
+                <div class="slide-visual">
+                    <img src="images/installer-2.png" alt="Setup Progress Screen">
+                </div>
+                <div class="slide-content">
+                    <span class="slide-pill">Setup Progress</span>
+                    <h2>Obsidian-Violet Gradient</h2>
+                    <p>A beautiful vertical gradient backdrop that displays real-time file extraction progress with clean visual icons and transparent windows.</p>
+                    <ul class="slide-features">
+                        <li><i class="fa-solid fa-circle-check"></i> Obsidian-to-Violet gradient paint</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Dynamic file progress path icon</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Modern, elegant user experience</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slider Arrows -->
+        <button class="slider-arrow arrow-prev" aria-label="Previous Slide"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="slider-arrow arrow-next" aria-label="Next Slide"><i class="fa-solid fa-chevron-right"></i></button>
+
+        <!-- Slider Dots -->
+        <div class="slider-dots">
+            <button class="slider-dot dot-active" aria-label="Slide 1"></button>
+            <button class="slider-dot" aria-label="Slide 2"></button>
+            <button class="slider-dot" aria-label="Slide 3"></button>
+            <button class="slider-dot" aria-label="Slide 4"></button>
+            <button class="slider-dot" aria-label="Slide 5"></button>
+            <button class="slider-dot" aria-label="Slide 6"></button>
+            <button class="slider-dot" aria-label="Slide 7"></button>
+            <button class="slider-dot" aria-label="Slide 8"></button>
+        </div>
+    </div>
+</div>
+
+<script src="cutify.js?v=5.2"></script>
 </body>
 </html>
