@@ -198,78 +198,53 @@ document.addEventListener('DOMContentLoaded', () => {
         previewImg.style.transition = 'opacity 0.4s ease';
     }
 
-    /* ── Pro Tour Modal & Slider ── */
-    const proModal = document.getElementById('proModal');
-    const tourTriggers = document.querySelectorAll('.btn-tour');
-    const modalCloseBtn = document.querySelector('.modal-close');
-    const slides = document.querySelectorAll('.modal-slide');
-    const prevArrow = document.querySelector('.arrow-prev');
-    const nextArrow = document.querySelector('.arrow-next');
-    const dots = document.querySelectorAll('.slider-dot');
+    /* ── Pro Feature Navigator ── */
+    const pfnItems = document.querySelectorAll('.pfn-item');
+    const pfnPanels = document.querySelectorAll('.pfn-panel');
 
-    if (proModal && slides.length > 0) {
-        let currentSlide = 0;
+    if (pfnItems.length > 0 && pfnPanels.length > 0) {
+        let activeFeat = 0;
 
-        const showSlide = (idx) => {
-            // Bounds/wrap-around
-            if (idx < 0) idx = slides.length - 1;
-            if (idx >= slides.length) idx = 0;
-            currentSlide = idx;
+        const showFeat = (idx) => {
+            activeFeat = idx;
 
-            // Update active classes on slides
-            slides.forEach((slide, i) => {
-                slide.classList.toggle('slide-active', i === currentSlide);
+            pfnItems.forEach((item, i) => {
+                item.classList.toggle('pfn-active', i === idx);
             });
 
-            // Update active classes on dots
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('dot-active', i === currentSlide);
+            pfnPanels.forEach((panel, i) => {
+                panel.classList.toggle('pfn-panel-active', i === idx);
             });
         };
 
-        const openModal = () => {
-            proModal.classList.add('open');
-            document.body.style.overflow = 'hidden';
-            showSlide(0); // always start at first slide
+        pfnItems.forEach((item, i) => {
+            item.addEventListener('click', () => showFeat(i));
+        });
+
+        // Auto-rotate through features every 5 seconds (pause on hover)
+        let autoFeatTimer;
+        const pfnNav = document.querySelector('.pro-feature-nav');
+
+        const startAutoRotate = () => {
+            autoFeatTimer = setInterval(() => {
+                showFeat((activeFeat + 1) % pfnItems.length);
+            }, 5000);
         };
 
-        const closeModal = () => {
-            proModal.classList.remove('open');
-            document.body.style.overflow = '';
-        };
+        const stopAutoRotate = () => clearInterval(autoFeatTimer);
 
-        // Open triggers
-        tourTriggers.forEach(btn => btn.addEventListener('click', openModal));
-
-        // Close triggers
-        if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
-        proModal.addEventListener('click', (e) => {
-            if (e.target === proModal) closeModal();
-        });
-
-        // Keyboard navigation (Escape, Left, Right)
-        document.addEventListener('keydown', (e) => {
-            if (!proModal.classList.contains('open')) return;
-            if (e.key === 'Escape') closeModal();
-            if (e.key === 'ArrowLeft') showSlide(currentSlide - 1);
-            if (e.key === 'ArrowRight') showSlide(currentSlide + 1);
-        });
-
-        // Prev/Next buttons
-        if (prevArrow) prevArrow.addEventListener('click', () => showSlide(currentSlide - 1));
-        if (nextArrow) nextArrow.addEventListener('click', () => showSlide(currentSlide + 1));
-
-        // Dot buttons
-        dots.forEach((dot, i) => {
-            dot.addEventListener('click', () => showSlide(i));
-        });
+        startAutoRotate();
+        if (pfnNav) {
+            pfnNav.addEventListener('mouseenter', stopAutoRotate);
+            pfnNav.addEventListener('mouseleave', startAutoRotate);
+        }
     }
 
     /* ── Installer Tab Toggle ── */
     const installTabFree = document.getElementById('installTabFree');
-    const installTabPro = document.getElementById('installTabPro');
-    const stepsFree = document.getElementById('stepsFree');
-    const stepsPro = document.getElementById('stepsPro');
+    const installTabPro  = document.getElementById('installTabPro');
+    const stepsFree      = document.getElementById('stepsFree');
+    const stepsPro       = document.getElementById('stepsPro');
 
     if (installTabFree && installTabPro && stepsFree && stepsPro) {
         const toggleInstallTab = (type) => {
@@ -277,17 +252,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 installTabFree.classList.add('tab-active');
                 installTabPro.classList.remove('tab-active');
                 stepsFree.style.display = 'flex';
-                stepsPro.style.display = 'none';
+                stepsPro.style.display  = 'none';
             } else {
                 installTabFree.classList.remove('tab-active');
                 installTabPro.classList.add('tab-active');
                 stepsFree.style.display = 'none';
-                stepsPro.style.display = 'flex';
+                stepsPro.style.display  = 'flex';
             }
         };
 
         installTabFree.addEventListener('click', () => toggleInstallTab('free'));
-        installTabPro.addEventListener('click', () => toggleInstallTab('pro'));
+        installTabPro.addEventListener('click',  () => toggleInstallTab('pro'));
+    }
+
+    /* ── Buy Pro button placeholder (link will be set once Payhip is live) ── */
+    const buyProBtn = document.getElementById('buyProBtn');
+    if (buyProBtn) {
+        buyProBtn.addEventListener('click', (e) => {
+            const href = buyProBtn.getAttribute('href');
+            if (!href || href === '#') {
+                e.preventDefault();
+                // Subtle shake + tooltip to indicate coming soon
+                buyProBtn.style.animation = 'none';
+                buyProBtn.offsetHeight; // reflow
+                buyProBtn.style.animation = 'buyShake 0.4s ease';
+            }
+        });
     }
 
 });
