@@ -1,942 +1,942 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BYE6X0HX68"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BYE6X0HX68"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-BYE6X0HX68');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuttify &mdash; Edit Smarter, Not Harder | Free Premiere Pro Plugin</title>
+    <meta name="description" content="Cuttify is the AI-powered Premiere Pro plugin that removes silences and decimates frames directly inside your timeline. Free. No roundtrips. No exports.">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://ahmednazif.com/cuttify">
+
+    <!-- Robots and Alternate Languages -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="alternate" hreflang="en" href="https://ahmednazif.com/cuttify">
+    <link rel="alternate" hreflang="x-default" href="https://ahmednazif.com/cuttify">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ahmednazif.com/cuttify">
+    <meta property="og:title" content="Cuttify &mdash; Edit Smarter, Not Harder | Free Premiere Pro Plugin">
+    <meta property="og:description" content="Cuttify is the AI-powered Premiere Pro plugin that removes silences and decimates frames directly inside your timeline. Free. No roundtrips. No exports.">
+    <meta property="og:image" content="https://ahmednazif.com/images/cuttify_app1.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ahmednazif.com/cuttify">
+    <meta property="twitter:title" content="Cuttify &mdash; Edit Smarter, Not Harder | Free Premiere Pro Plugin">
+    <meta property="twitter:description" content="Cuttify is the AI-powered Premiere Pro plugin that removes silences and decimates frames directly inside your timeline. Free. No roundtrips. No exports.">
+    <meta property="twitter:image" content="https://ahmednazif.com/images/cuttify_app1.png">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Cuttify",
+      "operatingSystem": "Windows 10, Windows 11",
+      "applicationCategory": "MultimediaApplication",
+      "applicationSubCategory": "Premiere Pro Extension",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Cuttify is the AI-powered Premiere Pro plugin that removes silences and decimates frames directly inside your timeline. Free. No roundtrips. No exports.",
+      "featureList": "Remove Silences, Frame Decimation, AI Audio Voice Activity Detection, Near-Duplicate Frame Scanning",
+      "requirements": "Adobe Premiere Pro 2022 or newer, Windows 10/11",
+      "downloadUrl": "https://github.com/ahmednazief/anzs/releases/download/Cuttify/Cuttify-Setup-1.0.1.zip",
+      "softwareVersion": "1.0.1",
+      "author": {
+        "@type": "Person",
+        "name": "Ahmed Nazif",
+        "url": "https://ahmednazif.com/"
+      }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="cuttify.css?v=7.0">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png">
+    <link rel="apple-touch-icon" href="/images/logo.png">
+</head>
+<body>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+     CURSOR GLOW
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+     NAVBAR
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<nav class="nav" id="nav">
+    <a href="index.html" class="nav-logo">
+        <svg viewBox="0 0 100 100" class="logo-svg">
+            <defs>
+                <linearGradient id="cuttify-nav-logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FFFFFF" />
+                    <stop offset="100%" stop-color="var(--c-purple)" />
+                </linearGradient>
+            </defs>
+            <path d="M 5,95 L 50,5 L 95,95 L 50,95 M 50,5 L 50,95 M 27.5,50 L 27.5,95 L 5,95 M 27.5,50 L 50,95" 
+                  stroke="url(#cuttify-nav-logo-grad)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+        </svg>
+        <span>AHMED NAZIF</span>
+    </a>
+    <ul class="nav-links">
+        <li><a href="#features" class="nav-link">Features</a></li>
+        <li><a href="#screenshots" class="nav-link">Preview</a></li>
+        <li><a href="#install" class="nav-link">Install</a></li>
+        <li><a href="index.html" class="nav-link nav-back">&larr; Portfolio</a></li>
+    </ul>
+    <div class="nav-actions">
+        <a href="#support" class="nav-btn-support">
+            <i class="fa-solid fa-heart"></i>
+            <span>Support</span>
+        </a>
+        <a href="#download" class="nav-cta">
+            <i class="fa-solid fa-download"></i>
+            <span>Download Free</span>
+        </a>
+    </div>
+</nav>
+
+<!-- â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• 
+     HERO
+â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â•  -->
+<section class="hero" id="home">
+    <canvas id="particleCanvas"></canvas>
+    
+    <div class="hero-glow hero-glow-1"></div>
+    <div class="hero-glow hero-glow-2"></div>
+    <div class="hero-glow hero-glow-3"></div>
+
+    <div class="hero-inner">
+        <div class="hero-pill">
+            <span class="pill-dot"></span>
+            <span>Premiere Pro Automation &middot; By Ahmed Nazif</span>
+        </div>
+
+        <h1 class="hero-title">
+            <span class="title-line title-line-1">Edit</span>
+            <span class="title-line title-line-2">
+                <span class="text-gradient">Smarter.</span>
+            </span>
+            <span class="title-line title-line-3">Not harder.</span>
+        </h1>
+
+        <p class="hero-sub">
+            AI-powered tools that live <em>inside</em> your Premiere Pro timeline.<br>
+            No exports. No roundtrips. Just results &mdash; in seconds.
+        </p>
+
+        <!-- DOWNLOAD BUTTONS -->
+        <div class="download-block" id="download">
+            <a href="https://github.com/ahmednazief/anzs/releases/download/Cuttify/Cuttify-Setup-1.0.1.zip"
+               class="dl-btn dl-btn-primary" id="mainDownloadBtn">
+                <div class="dl-btn-shimmer"></div>
+                <div class="dl-btn-icon">
+                    <i class="fa-solid fa-download"></i>
+                </div>
+                <div class="dl-btn-text">
+                    <span class="dl-btn-main">Download Cuttify Free</span>
+                    <span class="dl-btn-sub">Version 1.0.1 &middot; Windows &middot; ~300MB</span>
+                </div>
+                <div class="dl-btn-arrow">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+            </a>
+
+            <a href="#pricing" class="dl-btn dl-btn-ghost dl-btn-pro" id="proHeroBtn">
+                <div class="dl-btn-icon" style="color: #a78bfa;">
+                    <i class="fa-solid fa-gem"></i>
+                </div>
+                <div class="dl-btn-text">
+                    <span class="dl-btn-main">Get Cuttify Pro</span>
+                    <span class="dl-btn-sub">Instant License &middot; $14.99</span>
+                </div>
+                <div class="dl-btn-arrow">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+            </a>
+        </div>
+
+        <div class="hero-trust">
+            <div class="trust-item">
+                <i class="fa-solid fa-circle-check"></i>
+                <span>Always Free</span>
+            </div>
+            <div class="trust-divider"></div>
+            <div class="trust-item">
+                <i class="fa-brands fa-windows"></i>
+                <span>Windows 10 / 11</span>
+            </div>
+            <div class="trust-divider"></div>
+            <div class="trust-item">
+                <i class="fa-solid fa-plug"></i>
+                <span>Premiere Pro 2022+</span>
+            </div>
+            <div class="trust-divider"></div>
+            <div class="trust-item">
+                <i class="fa-solid fa-box"></i>
+                <span>All-in-one installer</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating App Preview -->
+    <div class="hero-preview">
+        <div class="preview-chrome">
+            <div class="chrome-bar">
+                <div class="chrome-dots">
+                    <span class="dot dot-red"></span>
+                    <span class="dot dot-yellow"></span>
+                    <span class="dot dot-green"></span>
+                </div>
+                <span class="chrome-title">&#10022; CUTTIFY &mdash; Studio v1.0</span>
+            </div>
+            <div class="preview-img-wrap">
+                <img src="images/cuttify_app1.png" alt="Cuttify Plugin Interface" class="preview-img" id="previewImg">
+                <div class="preview-overlay"></div>
+            </div>
+        </div>
+        <div class="preview-reflection"></div>
+    </div>
+
+    <div class="hero-scroll-hint">
+        <span>Scroll to explore</span>
+        <div class="scroll-arrow">
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+    </div>
+</section>
+
+<!-- â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• 
+     STATS BAR
+â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â•  -->
+<div class="stats-bar">
+    <div class="stats-inner">
+        <div class="stat-item">
+            <span class="stat-num" data-target="10">0</span>
+            <span class="stat-suffix">&times;</span>
+            <span class="stat-label">Faster Editing</span>
+        </div>
+        <div class="stat-sep"></div>
+        <div class="stat-item">
+            <span class="stat-num" data-target="100">0</span>
+            <span class="stat-suffix">%</span>
+            <span class="stat-label">Inside Premiere</span>
+        </div>
+        <div class="stat-sep"></div>
+        <div class="stat-item">
+            <span class="stat-num" data-target="2">0</span>
+            <span class="stat-suffix"></span>
+            <span class="stat-label">AI-Powered Tools</span>
+        </div>
+        <div class="stat-sep"></div>
+        <div class="stat-item">
+            <span class="stat-num" data-target="0">0</span>
+            <span class="stat-suffix"></span>
+            <span class="stat-label">Exports Required</span>
+        </div>
+    </div>
+</div>
+
+<!-- â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• 
+     FEATURES
+â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â•  -->
+<section class="features" id="features">
+    <div class="section-header">
+        <div class="eyebrow">What it does</div>
+        <h2 class="section-title">Two tools.<br><span class="text-gradient">Endless time saved.</span></h2>
+        <p class="section-desc">Every feature is built to eliminate the boring parts of editing and let you focus on what matters &mdash; your story.</p>
+    </div>
+
+    <div class="features-grid">
+
+        <!-- Feature 1 &mdash; Big Card -->
+        <div class="feat-card feat-card-big reveal">
+            <div class="feat-card-glow"></div>
+            <div class="feat-icon feat-icon-purple">
+                <i class="fa-solid fa-scissors"></i>
+            </div>
+            <div class="feat-badge feat-badge-ai"><i class="fa-solid fa-wand-magic-sparkles"></i> AI-Powered</div>
+            <h3 class="feat-title">Remove Silences</h3>
+            <p class="feat-desc">Our AI voice-activity detection pinpoints dead air with frame-accurate precision and makes the cuts <em>directly inside</em> your Premiere timeline. Select entire timeline, In/Out points, or individual clips &mdash; your choice.</p>
+            <ul class="feat-list">
+                <li><i class="fa-solid fa-check"></i> Adjustable silence threshold</li>
+                <li><i class="fa-solid fa-check"></i> Per-track audio selection</li>
+                <li><i class="fa-solid fa-check"></i> Timeline, In/Out, or clip mode</li>
+                <li><i class="fa-solid fa-check"></i> Frame-accurate cuts</li>
+            </ul>
+            <div class="feat-preview-mini">
+                <img src="images/cuttify_app1.png" alt="Remove Silences UI">
+            </div>
+        </div>
+
+        <!-- Feature 2 &mdash; Big Card -->
+        <div class="feat-card feat-card-big reveal">
+            <div class="feat-card-glow feat-card-glow-teal"></div>
+            <div class="feat-icon feat-icon-teal">
+                <i class="fa-solid fa-film"></i>
+            </div>
+            <div class="feat-badge feat-badge-smart"><i class="fa-solid fa-microchip"></i> Smart</div>
+            <h3 class="feat-title">Frame Decimation</h3>
+            <p class="feat-desc">Intelligently scan and remove near-duplicate or matching frames from your footage for a cleaner, optimized video sequence. Perfect for screen recordings, gameplay, and time-lapses.</p>
+            <ul class="feat-list">
+                <li><i class="fa-solid fa-check"></i> Near-duplicate detection</li>
+                <li><i class="fa-solid fa-check"></i> Adjustable similarity threshold</li>
+                <li><i class="fa-solid fa-check"></i> Optimized video output</li>
+                <li><i class="fa-solid fa-check"></i> No re-encoding required</li>
+            </ul>
+            <div class="feat-preview-mini">
+                <img src="images/cuttify_app2.png" alt="Frame Decimation UI">
+            </div>
+        </div>
+
+        <!-- Small perks row -->
+        <div class="feat-card feat-card-sm reveal">
+            <div class="feat-icon feat-icon-sm feat-icon-blue">
+                <i class="fa-solid fa-bolt"></i>
+            </div>
+            <h4>Lightning Fast</h4>
+            <p>Process entire timelines in seconds, not minutes.</p>
+        </div>
+
+        <div class="feat-card feat-card-sm reveal">
+            <div class="feat-icon feat-icon-sm feat-icon-green">
+                <i class="fa-solid fa-plug"></i>
+            </div>
+            <h4>Zero Setup</h4>
+            <p>Python, Node.js & FFmpeg are bundled. One installer does everything.</p>
+        </div>
+
+        <div class="feat-card feat-card-sm reveal">
+            <div class="feat-icon feat-icon-sm feat-icon-orange">
+                <i class="fa-solid fa-puzzle-piece"></i>
+            </div>
+            <h4>Native Integration</h4>
+            <p>Lives inside Premiere Pro's Extensions panel. No switching apps.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• 
+     CUTTIFY PRO &mdash; CINEMATIC REVEAL SECTION
+â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â•  -->
+<section class="pro-reveal" id="pricing">
+
+    <!-- AMBIENT AURA -->
+    <div class="pro-aura pro-aura-1"></div>
+    <div class="pro-aura pro-aura-2"></div>
+    <div class="pro-aura pro-aura-3"></div>
+
+    <!-- â”€â”€ ANNOUNCEMENT HEADER â”€â”€ -->
+    <div class="pro-announce reveal">
+        <div class="pro-announce-badge">
+            <span class="badge-pulse"></span>
+            <i class="fa-solid fa-gem"></i>
+            <span>Cuttify Pro &mdash; Now Available</span>
+        </div>
+        <h2 class="pro-headline">
+            The <span class="pro-grad-text">professional</span> toolkit<br>
+            editors actually need.
+        </h2>
+        <p class="pro-sub">Everything in Free, plus AI captions, beat sync, local LLMs &amp; priority support. One payment. Yours forever.</p>
+        <div class="pro-price-chip">
+            <span class="pro-price-num">$14.99</span>
+            <div class="pro-price-meta">
+                <span class="pro-price-tag">One-time payment</span>
+                <span class="pro-price-note">No subscriptions &middot; Instant license key</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- â”€â”€ FEATURE NAVIGATOR â”€â”€ -->
+    <div class="pro-feature-nav reveal">
+        <div class="pfn-sidebar">
+            <div class="pfn-label">Exclusive Pro Features</div>
+            <button class="pfn-item pfn-active" data-feat="0">
+                <div class="pfn-item-icon"><i class="fa-solid fa-closed-captioning"></i></div>
+                <div class="pfn-item-text">
+                    <strong>AI Auto-Captions</strong>
+                    <span>Whisper + Nile-Chat 4B</span>
+                </div>
+                <i class="fa-solid fa-chevron-right pfn-arrow"></i>
+            </button>
+            <button class="pfn-item" data-feat="1">
+                <div class="pfn-item-icon"><i class="fa-solid fa-music"></i></div>
+                <div class="pfn-item-text">
+                    <strong>Cut to Music</strong>
+                    <span>Beat &amp; onset sync</span>
+                </div>
+                <i class="fa-solid fa-chevron-right pfn-arrow"></i>
+            </button>
+            <button class="pfn-item" data-feat="2">
+                <div class="pfn-item-icon"><i class="fa-solid fa-scissors"></i></div>
+                <div class="pfn-item-text">
+                    <strong>Silence Removal</strong>
+                    <span>Frame-accurate VAD</span>
+                </div>
+                <i class="fa-solid fa-chevron-right pfn-arrow"></i>
+            </button>
+            <button class="pfn-item" data-feat="3">
+                <div class="pfn-item-icon"><i class="fa-solid fa-film"></i></div>
+                <div class="pfn-item-text">
+                    <strong>Frame Decimation</strong>
+                    <span>Near-duplicate removal</span>
+                </div>
+                <i class="fa-solid fa-chevron-right pfn-arrow"></i>
+            </button>
+            <button class="pfn-item" data-feat="4">
+                <div class="pfn-item-icon"><i class="fa-solid fa-plug"></i></div>
+                <div class="pfn-item-text">
+                    <strong>Native CEP Panel</strong>
+                    <span>Inside Premiere Pro</span>
+                </div>
+                <i class="fa-solid fa-chevron-right pfn-arrow"></i>
+            </button>
+            <button class="pfn-item" data-feat="5">
+                <div class="pfn-item-icon"><i class="fa-solid fa-key"></i></div>
+                <div class="pfn-item-text">
+                    <strong>License Activation</strong>
+                    <span>Instant validation</span>
+                </div>
+                <i class="fa-solid fa-chevron-right pfn-arrow"></i>
+            </button>
+        </div>
+
+        <div class="pfn-stage">
+            <!-- Feature 0 -->
+            <div class="pfn-panel pfn-panel-active" data-panel="0">
+                <div class="pfn-screen">
+                    <div class="pfn-screen-bar"><span></span><span></span><span></span><span class="pfn-screen-title">AI Auto-Captions &mdash; Whisper Engine</span></div>
+                    <img src="images/pro_1.png" alt="AI Auto-Captions UI" loading="lazy">
+                </div>
+                <div class="pfn-detail">
+                    <div class="pfn-detail-tag">Local AI &middot; 100% Private</div>
+                    <h3>AI Auto-Captions</h3>
+                    <p>Offline speech-to-text powered by OpenAI Whisper, running entirely on your machine. Full Egyptian Arabic dialect recognition using the exclusive Nile-Chat 4B model &mdash; no cloud API keys needed.</p>
+                    <ul class="pfn-feats">
+                        <li><i class="fa-solid fa-circle-check"></i> 100% local &mdash; nothing leaves your PC</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Egyptian Arabic dialect (Nile-Chat 4B)</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Integrated model downloader</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Multi-language transcription support</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Feature 1 -->
+            <div class="pfn-panel" data-panel="1">
+                <div class="pfn-screen">
+                    <div class="pfn-screen-bar"><span></span><span></span><span></span><span class="pfn-screen-title">Cut to Music &mdash; Beat Sync Engine</span></div>
+                    <img src="images/pro_2.png" alt="Beat Sync UI" loading="lazy">
+                </div>
+                <div class="pfn-detail">
+                    <div class="pfn-detail-tag">Audio Analysis &middot; Beat Detection</div>
+                    <h3>Cut to Music</h3>
+                    <p>Analyze musical energy and beat-onset peaks to automatically slice your timeline clips or place audio markers in perfect rhythm. Make cinematic edits in seconds, not hours.</p>
+                    <ul class="pfn-feats">
+                        <li><i class="fa-solid fa-circle-check"></i> Peak transient onset algorithms</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Synchronizes cuts to beat-onsets</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Marker or auto-cut mode</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Works on any audio track</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Feature 2 -->
+            <div class="pfn-panel" data-panel="2">
+                <div class="pfn-screen">
+                    <div class="pfn-screen-bar"><span></span><span></span><span></span><span class="pfn-screen-title">Remove Silences &mdash; VAD Engine</span></div>
+                    <img src="images/pro_4.png" alt="Silence Removal UI" loading="lazy">
+                </div>
+                <div class="pfn-detail">
+                    <div class="pfn-detail-tag">Audio Processing &middot; AI-Powered</div>
+                    <h3>Silence Removal</h3>
+                    <p>AI voice-activity detection pinpoints dead air with frame-accurate precision and makes the cuts directly inside your Premiere timeline. Configure thresholds, select tracks, and let it run.</p>
+                    <ul class="pfn-feats">
+                        <li><i class="fa-solid fa-circle-check"></i> Adjustable noise floor thresholds</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Timeline, In/Out, or clip mode</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Per-track audio selection</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Frame-accurate silence trimming</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Feature 3 -->
+            <div class="pfn-panel" data-panel="3">
+                <div class="pfn-screen">
+                    <div class="pfn-screen-bar"><span></span><span></span><span></span><span class="pfn-screen-title">Frame Decimation &mdash; Duplicate Scanner</span></div>
+                    <img src="images/pro_3.png" alt="Frame Decimation UI" loading="lazy">
+                </div>
+                <div class="pfn-detail">
+                    <div class="pfn-detail-tag">Footage Optimization &middot; Smart</div>
+                    <h3>Frame Decimation</h3>
+                    <p>Intelligently scan and strip near-duplicate or frozen frames from your footage. Perfect for screen recordings, gameplay clips, and time-lapses &mdash; optimizes sequences in seconds.</p>
+                    <ul class="pfn-feats">
+                        <li><i class="fa-solid fa-circle-check"></i> Near-duplicate frame comparison</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Adjustable similarity threshold</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Bundled FFmpeg &mdash; no re-encoding</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Optimizes in seconds</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Feature 4 -->
+            <div class="pfn-panel" data-panel="4">
+                <div class="pfn-screen">
+                    <div class="pfn-screen-bar"><span></span><span></span><span></span><span class="pfn-screen-title">Cuttify Pro &mdash; Native Premiere CEP Panel</span></div>
+                    <img src="images/pro_5.png" alt="Premiere CEP Panel" loading="lazy">
+                </div>
+                <div class="pfn-detail">
+                    <div class="pfn-detail-tag">Workspace Sync &middot; Native UI</div>
+                    <h3>Native CEP Extension</h3>
+                    <p>A native CEP extension panel built with React, perfectly styled to match Premiere Pro 2026's dark workspace. All tools accessible in one unified side panel &mdash; never leave your editor.</p>
+                    <ul class="pfn-feats">
+                        <li><i class="fa-solid fa-circle-check"></i> Matches Premiere Pro dark theme</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Live connection status indicator</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Fully responsive sidebar docking</li>
+                        <li><i class="fa-solid fa-circle-check"></i> All tools in one unified panel</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Feature 5 -->
+            <div class="pfn-panel" data-panel="5">
+                <div class="pfn-screen">
+                    <div class="pfn-screen-bar"><span></span><span></span><span></span><span class="pfn-screen-title">License Key &mdash; Activation Portal</span></div>
+                    <img src="images/pro_6.png" alt="Activation Portal" loading="lazy">
+                </div>
+                <div class="pfn-detail">
+                    <div class="pfn-detail-tag">Licensing &middot; Instant Unlock</div>
+                    <h3>License Activation</h3>
+                    <p>Purchase on Payhip, receive your unique license key instantly by email, paste it into the activation screen and all Pro features unlock immediately. No waiting, no manual steps.</p>
+                    <ul class="pfn-feats">
+                        <li><i class="fa-solid fa-circle-check"></i> Instant license delivery via email</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Secure online key validation</li>
+                        <li><i class="fa-solid fa-circle-check"></i> One purchase &mdash; one machine</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Automatic updates included</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- â”€â”€ FREE vs PRO COMPARISON STRIP â”€â”€ -->
+    <div class="compare-strip reveal">
+        <div class="cs-header">
+            <div class="eyebrow">What's included</div>
+            <h3>Free vs <span class="text-gradient">Pro</span></h3>
+        </div>
+        <div class="cs-table">
+            <div class="cs-col cs-col-free">
+                <div class="cs-col-head">
+                    <span class="cs-plan-name">Cuttify Free</span>
+                    <span class="cs-plan-price">$0</span>
+                </div>
+                <ul>
+                    <li class="yes"><i class="fa-solid fa-check"></i> Remove Silences</li>
+                    <li class="yes"><i class="fa-solid fa-check"></i> Frame Decimation</li>
+                    <li class="yes"><i class="fa-solid fa-check"></i> Premiere Pro Panel</li>
+                    <li class="no"><i class="fa-solid fa-xmark"></i> AI Auto-Captions</li>
+                    <li class="no"><i class="fa-solid fa-xmark"></i> Cut to Music</li>
+                    <li class="no"><i class="fa-solid fa-xmark"></i> Local LLMs (Ollama)</li>
+                    <li class="no"><i class="fa-solid fa-xmark"></i> Egyptian Arabic dialect</li>
+                </ul>
+                <a href="https://github.com/ahmednazief/anzs/releases/download/Cuttify/Cuttify-Setup-1.0.1.zip" class="cs-btn cs-btn-free">
+                    <i class="fa-solid fa-download"></i> Download Free
+                </a>
+            </div>
+            <div class="cs-divider"><span>vs</span></div>
+            <div class="cs-col cs-col-pro">
+                <div class="cs-glow-border"></div>
+                <div class="cs-col-head">
+                    <span class="cs-plan-name">Cuttify Pro</span>
+                    <span class="cs-plan-price cs-pro-price">$14.99 <em>one-time</em></span>
+                </div>
+                <ul>
+                    <li class="yes"><i class="fa-solid fa-check"></i> Remove Silences</li>
+                    <li class="yes"><i class="fa-solid fa-check"></i> Frame Decimation</li>
+                    <li class="yes"><i class="fa-solid fa-check"></i> Premiere Pro Panel</li>
+                    <li class="yes pro-only"><i class="fa-solid fa-gem"></i> AI Auto-Captions</li>
+                    <li class="yes pro-only"><i class="fa-solid fa-gem"></i> Cut to Music</li>
+                    <li class="yes pro-only"><i class="fa-solid fa-gem"></i> Local LLMs (Ollama)</li>
+                    <li class="yes pro-only"><i class="fa-solid fa-gem"></i> Egyptian Arabic dialect</li>
+                </ul>
+                <a href="#buy-pro" class="cs-btn cs-btn-pro">
+                    <div class="cs-btn-shimmer"></div>
+                    <i class="fa-solid fa-gem"></i> Get Cuttify Pro &mdash; $14.99
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- â”€â”€ BUY BAND â”€â”€ -->
+    <div class="buy-band" id="buy-pro">
+        <div class="buy-band-glow"></div>
+        <div class="buy-band-grid-lines"></div>
+        <div class="buy-band-inner">
+            <div class="buy-left">
+                <div class="buy-tag"><i class="fa-solid fa-gem"></i> Cuttify Pro</div>
+                <h2 class="buy-title">Ready to unlock<br><span class="pro-grad-text">the full suite?</span></h2>
+                <p class="buy-sub">One payment. Instant license key delivered to your inbox. No subscriptions, no renewals, no nonsense.</p>
+                <div class="buy-trust">
+                    <div class="buy-trust-item"><i class="fa-solid fa-shield-halved"></i> Secure via Payhip</div>
+                    <div class="buy-trust-item"><i class="fa-brands fa-paypal"></i> PayPal &amp; Card</div>
+                    <div class="buy-trust-item"><i class="fa-solid fa-envelope"></i> Instant delivery</div>
+                </div>
+            </div>
+            <div class="buy-right">
+                <div class="buy-card">
+                    <div class="buy-card-badge">One-time payment</div>
+                    <div class="buy-card-price">
+                        <span class="buy-price-val">$14.99</span>
+                        <span class="buy-price-note">USD &middot; No recurring fees</span>
+                    </div>
+                    <p class="buy-hook">Want a <span>&times;100 better app?</span></p>
+                    <a href="#" class="buy-cta" id="buyProBtn">
+                        <div class="buy-cta-shine"></div>
+                        <i class="fa-solid fa-gem"></i>
+                        <span>Buy Cuttify Pro</span>
+                        <i class="fa-solid fa-arrow-right buy-cta-arrow"></i>
+                    </a>
+                    <p class="buy-note"><i class="fa-solid fa-circle-info"></i> Purchase link will be live when Pro launches</p>
+                    <div class="buy-includes">
+                        <div class="buy-inc-item"><i class="fa-solid fa-key"></i> License key via email</div>
+                        <div class="buy-inc-item"><i class="fa-solid fa-box-open"></i> Full installer bundle</div>
+                        <div class="buy-inc-item"><i class="fa-solid fa-rotate"></i> Future updates</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+     SCREENSHOT SHOWCASE
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<section class="screenshots" id="screenshots">
+    <div class="section-header">
+        <div class="eyebrow">Inside the plugin</div>
+        <h2 class="section-title">A closer <span class="text-gradient">look.</span></h2>
+        <p class="section-desc">A clean, beautiful interface that feels like it belongs inside Premiere Pro.</p>
+    </div>
+
+    <div class="screenshot-tabs">
+        <button class="tab-btn tab-active" data-img="images/cuttify_app1.png" data-label="Remove Silences Panel">
+            <i class="fa-solid fa-scissors"></i> Remove Silences
+        </button>
+        <button class="tab-btn" data-img="images/cuttify_app2.png" data-label="App Dashboard">
+            <i class="fa-solid fa-house"></i> Dashboard
+        </button>
+    </div>
+
+    <div class="screenshot-stage">
+        <div class="stage-chrome">
+            <div class="stage-bar">
+                <div class="stage-dots">
+                    <span></span><span></span><span></span>
+                </div>
+                <span class="stage-title" id="stageLabel">Remove Silences Panel</span>
+            </div>
+            <div class="stage-img-wrap">
+                <img src="images/cuttify_app1.png" alt="App Screenshot" id="stageImg">
+                <div class="stage-shine"></div>
+            </div>
+        </div>
+        <div class="stage-glow"></div>
+    </div>
+</section>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+     HOW TO INSTALL
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<section class="install" id="install">
+    <div class="section-header">
+        <div class="eyebrow">Setup</div>
+        <h2 class="section-title">Up & running in <span class="text-gradient">3 steps.</span></h2>
+        <p class="section-desc">From zero to your first automated cut in under 5 minutes.</p>
+    </div>
+
+    <div class="screenshot-tabs" style="justify-content: center; margin-bottom: 3rem; gap: 1rem;">
+        <button class="tab-btn tab-active" id="installTabFree">
+            <i class="fa-solid fa-gift"></i> Free Edition Setup
+        </button>
+        <button class="tab-btn" id="installTabPro">
+            <i class="fa-solid fa-gem"></i> Pro Edition Setup
+        </button>
+    </div>
+
+    <!-- Free Edition Steps -->
+    <div class="steps" id="stepsFree">
+        <div class="step reveal">
+            <div class="step-num-wrap">
+                <div class="step-num">01</div>
+                <div class="step-line"></div>
+            </div>
+            <div class="step-content">
+                <div class="step-icon-wrap step-icon-blue">
+                    <i class="fa-solid fa-download"></i>
+                </div>
+                <div class="step-text">
+                    <h3>Download the Installer</h3>
+                    <p>Click the download button and save <code>Cuttify-Setup-1.0.1.zip</code>. Extract the zip file and run the installer inside. If Windows SmartScreen appears, click <strong>More Info &larr; Run Anyway</strong> &mdash; the app is safe and unsigned.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="step reveal">
+            <div class="step-num-wrap">
+                <div class="step-num">02</div>
+                <div class="step-line"></div>
+            </div>
+            <div class="step-content">
+                <div class="step-icon-wrap step-icon-purple">
+                    <i class="fa-solid fa-box-open"></i>
+                </div>
+                <div class="step-text">
+                    <h3>Run the Installer</h3>
+                    <p>The installer automatically sets up Python, Node.js, and FFmpeg. No manual configuration required. Just click through and let it do its thing.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="step reveal">
+            <div class="step-num-wrap">
+                <div class="step-num">03</div>
+            </div>
+            <div class="step-content">
+                <div class="step-icon-wrap step-icon-green">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </div>
+                <div class="step-text">
+                    <h3>Open in Premiere Pro</h3>
+                    <p>Go to <strong>Window &larr; Extensions &larr; Cuttify</strong> inside Premiere Pro. The panel opens, Premiere connects, and you're ready to start cutting.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pro Edition Steps -->
+    <div class="steps" id="stepsPro" style="display: none;">
+        <div class="step reveal">
+            <div class="step-num-wrap">
+                <div class="step-num">01</div>
+                <div class="step-line"></div>
+            </div>
+            <div class="step-content">
+                <div class="step-icon-wrap step-icon-blue">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+                <div class="step-text">
+                    <h3>Purchase & Get License</h3>
+                    <p>Purchase Cuttify Pro on <a href="#buy-pro" class="text-gradient" style="font-weight: 700;">Payhip</a>. Once payment is processed, you will automatically receive an activation license key sent straight to your email.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="step reveal">
+            <div class="step-num-wrap">
+                <div class="step-num">02</div>
+                <div class="step-line"></div>
+            </div>
+            <div class="step-content">
+                <div class="step-icon-wrap step-icon-purple">
+                    <i class="fa-solid fa-key"></i>
+                </div>
+                <div class="step-text">
+                    <h3>Run & Activate Wizard</h3>
+                    <p>Run the premium Cuttify Pro setup wizard. During installation, paste the license code you received into the activation screen to unlock all system features.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="step reveal">
+            <div class="step-num-wrap">
+                <div class="step-num">03</div>
+            </div>
+            <div class="step-content">
+                <div class="step-icon-wrap step-icon-green">
+                    <i class="fa-solid fa-plug"></i>
+                </div>
+                <div class="step-text">
+                    <h3>Connect in Premiere Pro</h3>
+                    <p>Launch Adobe Premiere Pro and navigate to <strong>Window &larr; Extensions &larr; Cuttify Pro</strong>. Click <strong>Connect App</strong> to sync with your activated backend instantly.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bundled deps -->
+    <div class="bundled-wrap reveal">
+        <div class="bundled-label"><i class="fa-solid fa-circle-check"></i> All-in-one installer includes:</div>
+        <div class="bundled-chips">
+            <div class="dep-chip">
+                <i class="fa-brands fa-python"></i>
+                <span>Python 3.10</span>
+                <span class="chip-tag">Bundled</span>
+            </div>
+            <div class="dep-chip">
+                <i class="fa-brands fa-node-js"></i>
+                <span>Node.js 18</span>
+                <span class="chip-tag">Bundled</span>
+            </div>
+            <div class="dep-chip">
+                <i class="fa-solid fa-terminal"></i>
+                <span>FFmpeg</span>
+                <span class="chip-tag">Bundled</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+     SUPPORT / DONATION SECTION
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<section class="support-section" id="support">
+    <div class="support-glow"></div>
+    <div class="section-header">
+        <div class="eyebrow">Support the project</div>
+        <h2 class="section-title">Keep Cuttify <span class="text-gradient">growing.</span></h2>
+        <p class="section-desc">Cuttify is free and open-source. If it helps you cut down editing time, consider supporting its development!</p>
+    </div>
+
+    <div class="support-grid">
+        <!-- Card 1: Outside Egypt -->
+        <div class="support-card reveal">
+            <div class="support-card-glow support-card-glow-purple"></div>
+            <div class="support-card-header">
+                <div class="support-icon">
+                    <i class="fa-solid fa-globe"></i>
+                </div>
+                <h3>International Support</h3>
+                <p>For supporters outside Egypt. Donate securely using PayPal or Card via Ko-fi, or transfer directly through PayPal.</p>
+            </div>
+            <div class="support-actions">
+                <a href="https://ko-fi.com/ahmednazif" target="_blank" class="support-btn support-btn-kofi">
+                    <i class="fa-solid fa-mug-hot"></i>
+                    <span>Donate via Ko-fi</span>
+                </a>
+                <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=ahmednazief@gmail.com&item_name=Support+Cuttify+Development&currency_code=USD" target="_blank" class="support-btn support-btn-paypal">
+                    <i class="fa-brands fa-paypal"></i>
+                    <span>Donate via PayPal</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Card 2: Inside Egypt -->
+        <div class="support-card reveal">
+            <div class="support-card-glow support-card-glow-green"></div>
+            <div class="support-card-header">
+                <div class="support-icon">
+                    <i class="fa-solid fa-landmark"></i>
+                </div>
+                <h3>Local Support (Egypt)</h3>
+                <p>For supporters in Egypt. Send payments instantly using your InstaPay account.</p>
+            </div>
+            <div class="support-actions">
+                <a href="https://ipn.eg/S/ahmednazeif/instapay/55EXL4" target="_blank" class="support-btn support-btn-instapay">
+                    <i class="fa-solid fa-bolt"></i>
+                    <span>Transfer via InstaPay</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+     FINAL CTA
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<section class="cta-section">
+    <div class="cta-glow"></div>
+    <div class="cta-grid-bg"></div>
+    <div class="cta-inner">
+        <div class="cta-tag">Free forever</div>
+        <h2 class="cta-title">Stop wasting time<br>on the boring parts.</h2>
+        <p class="cta-sub">Download Cuttify and get back to creating.</p>
+
+        <div class="cta-btns">
+            <a href="https://github.com/ahmednazief/anzs/releases/download/Cuttify/Cuttify-Setup-1.0.1.zip"
+               class="dl-btn dl-btn-primary dl-btn-lg">
+                <div class="dl-btn-shimmer"></div>
+                <div class="dl-btn-icon">
+                    <i class="fa-solid fa-download"></i>
+                </div>
+                <div class="dl-btn-text">
+                    <span class="dl-btn-main">Download for Windows</span>
+                    <span class="dl-btn-sub">Version 1.0.1 &middot; Free</span>
+                </div>
+            </a>
+
+            <a href="#pricing" class="dl-btn dl-btn-ghost dl-btn-pro">
+                <div class="dl-btn-icon" style="color: #a78bfa;">
+                    <i class="fa-solid fa-gem"></i>
+                </div>
+                <div class="dl-btn-text">
+                    <span class="dl-btn-main">Get Cuttify Pro</span>
+                    <span class="dl-btn-sub">Instant License &middot; $14.99</span>
+                </div>
+                <div class="dl-btn-arrow">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+            </a>
+        </div>
+
+        <p class="cta-note">
+            <i class="fa-solid fa-shield-halved"></i>
+            Requires Adobe Premiere Pro 2022 or later &middot; Windows 10 / 11
+        </p>
+    </div>
+</section>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+     FOOTER
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<footer class="site-footer">
+    <div class="footer-left">
+        <a href="index.html" class="footer-logo">
+            <svg viewBox="0 0 100 100" class="logo-svg">
+                <defs>
+                    <linearGradient id="cuttify-ft-logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#FFFFFF" />
+                        <stop offset="100%" stop-color="var(--c-purple)" />
+                    </linearGradient>
+                </defs>
+                <path d="M 5,95 L 50,5 L 95,95 L 50,95 M 50,5 L 50,95 M 27.5,50 L 27.5,95 L 5,95 M 27.5,50 L 50,95" 
+                      stroke="url(#cuttify-ft-logo-grad)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+            </svg>
+            <span>AHMED NAZIF</span>
+        </a>
+        <p>Ahmed Nazif &middot; Cuttify Studio v1.0 &copy; <span id="footYear"></span></p>
+    </div>
+    <div class="footer-right">
+        <a href="https://www.youtube.com/@Plains" target="_blank" class="f-link"><i class="fa-brands fa-youtube"></i></a>
+        <a href="mailto:ahmednazief@gmail.com" class="f-link"><i class="fa-solid fa-envelope"></i></a>
+        <a href="#support" class="f-link f-link-heart" title="Support Cuttify"><i class="fa-solid fa-heart"></i></a>
+        <a href="index.html" class="f-link"><i class="fa-solid fa-house"></i></a>
+    </div>
+</footer>
+
+
+<script src="cuttify.js?v=7.0"></script>
+</body>
+</html>
 
-      gtag('config', 'G-BYE6X0HX68');
-    </script>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cuttify &mdash; Edit Smarter, Not Harder | Free Premiere Pro Plugin</title>
-    <meta name="description" content="Cuttify is the AI-powered Premiere Pro plugin that removes silences and decimates frames directly inside your timeline. Free. No roundtrips. No exports.">
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://ahmednazif.com/cuttify">
-
-    <!-- Robots and Alternate Languages -->
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    <link rel="alternate" hreflang="en" href="https://ahmednazif.com/cuttify">
-    <link rel="alternate" hreflang="x-default" href="https://ahmednazif.com/cuttify">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ahmednazif.com/cuttify">
-    <meta property="og:title" content="Cuttify &mdash; Edit Smarter, Not Harder | Free Premiere Pro Plugin">
-    <meta property="og:description" content="Cuttify is the AI-powered Premiere Pro plugin that removes silences and decimates frames directly inside your timeline. Free. No roundtrips. No exports.">
-    <meta property="og:image" content="https://ahmednazif.com/images/cuttify_app1.png">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://ahmednazif.com/cuttify">
-    <meta property="twitter:title" content="Cuttify &mdash; Edit Smarter, Not Harder | Free Premiere Pro Plugin">
-    <meta property="twitter:description" content="Cuttify is the AI-powered Premiere Pro plugin that removes silences and decimates frames directly inside your timeline. Free. No roundtrips. No exports.">
-    <meta property="twitter:image" content="https://ahmednazif.com/images/cuttify_app1.png">
-
-    <!-- Structured Data (JSON-LD) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Cuttify",
-      "operatingSystem": "Windows 10, Windows 11",
-      "applicationCategory": "MultimediaApplication",
-      "applicationSubCategory": "Premiere Pro Extension",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "description": "Cuttify is the AI-powered Premiere Pro plugin that removes silences and decimates frames directly inside your timeline. Free. No roundtrips. No exports.",
-      "featureList": "Remove Silences, Frame Decimation, AI Audio Voice Activity Detection, Near-Duplicate Frame Scanning",
-      "requirements": "Adobe Premiere Pro 2022 or newer, Windows 10/11",
-      "downloadUrl": "https://github.com/ahmednazief/anzs/releases/download/Cuttify/Cuttify-Setup-1.0.1.zip",
-      "softwareVersion": "1.0.1",
-      "author": {
-        "@type": "Person",
-        "name": "Ahmed Nazif",
-        "url": "https://ahmednazif.com/"
-      }
-    }
-    </script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="cuttify.css?v=6.2">
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon-48x48.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png">
-    <link rel="apple-touch-icon" href="/images/logo.png">
-</head>
-<body>
-
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-     CURSOR GLOW
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
-<div class="cursor-glow" id="cursorGlow"></div>
-
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-     NAVBAR
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
-<nav class="nav" id="nav">
-    <a href="index.html" class="nav-logo">
-        <svg viewBox="0 0 100 100" class="logo-svg">
-            <defs>
-                <linearGradient id="cuttify-nav-logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#FFFFFF" />
-                    <stop offset="100%" stop-color="var(--c-purple)" />
-                </linearGradient>
-            </defs>
-            <path d="M 5,95 L 50,5 L 95,95 L 50,95 M 50,5 L 50,95 M 27.5,50 L 27.5,95 L 5,95 M 27.5,50 L 50,95" 
-                  stroke="url(#cuttify-nav-logo-grad)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none" />
-        </svg>
-        <span>AHMED NAZIF</span>
-    </a>
-    <ul class="nav-links">
-        <li><a href="#features" class="nav-link">Features</a></li>
-        <li><a href="#screenshots" class="nav-link">Preview</a></li>
-        <li><a href="#install" class="nav-link">Install</a></li>
-        <li><a href="index.html" class="nav-link nav-back">&larr; Portfolio</a></li>
-    </ul>
-    <div class="nav-actions">
-        <a href="#support" class="nav-btn-support">
-            <i class="fa-solid fa-heart"></i>
-            <span>Support</span>
-        </a>
-        <a href="#download" class="nav-cta">
-            <i class="fa-solid fa-download"></i>
-            <span>Download Free</span>
-        </a>
-    </div>
-</nav>
-
-<!-- â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• 
-     HERO
-â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â•  -->
-<section class="hero" id="home">
-    <canvas id="particleCanvas"></canvas>
-    
-    <div class="hero-glow hero-glow-1"></div>
-    <div class="hero-glow hero-glow-2"></div>
-    <div class="hero-glow hero-glow-3"></div>
-
-    <div class="hero-inner">
-        <div class="hero-pill">
-            <span class="pill-dot"></span>
-            <span>Premiere Pro Automation &middot; By Ahmed Nazif</span>
-        </div>
-
-        <h1 class="hero-title">
-            <span class="title-line title-line-1">Edit</span>
-            <span class="title-line title-line-2">
-                <span class="text-gradient">Smarter.</span>
-            </span>
-            <span class="title-line title-line-3">Not harder.</span>
-        </h1>
-
-        <p class="hero-sub">
-            AI-powered tools that live <em>inside</em> your Premiere Pro timeline.<br>
-            No exports. No roundtrips. Just results &mdash; in seconds.
-        </p>
-
-        <!-- DOWNLOAD BUTTONS -->
-        <div class="download-block" id="download">
-            <a href="https://github.com/ahmednazief/anzs/releases/download/Cuttify/Cuttify-Setup-1.0.1.zip"
-               class="dl-btn dl-btn-primary" id="mainDownloadBtn">
-                <div class="dl-btn-shimmer"></div>
-                <div class="dl-btn-icon">
-                    <i class="fa-solid fa-download"></i>
-                </div>
-                <div class="dl-btn-text">
-                    <span class="dl-btn-main">Download Cuttify Free</span>
-                    <span class="dl-btn-sub">Version 1.0.1 &middot; Windows &middot; ~300MB</span>
-                </div>
-                <div class="dl-btn-arrow">
-                    <i class="fa-solid fa-arrow-right"></i>
-                </div>
-            </a>
-
-            <a href="#pricing" class="dl-btn dl-btn-ghost dl-btn-pro" id="proHeroBtn">
-                <div class="dl-btn-icon" style="color: #a78bfa;">
-                    <i class="fa-solid fa-gem"></i>
-                </div>
-                <div class="dl-btn-text">
-                    <span class="dl-btn-main">Get Cuttify Pro</span>
-                    <span class="dl-btn-sub">Instant License &middot; $14.99</span>
-                </div>
-                <div class="dl-btn-arrow">
-                    <i class="fa-solid fa-arrow-right"></i>
-                </div>
-            </a>
-        </div>
-
-        <div class="hero-trust">
-            <div class="trust-item">
-                <i class="fa-solid fa-circle-check"></i>
-                <span>Always Free</span>
-            </div>
-            <div class="trust-divider"></div>
-            <div class="trust-item">
-                <i class="fa-brands fa-windows"></i>
-                <span>Windows 10 / 11</span>
-            </div>
-            <div class="trust-divider"></div>
-            <div class="trust-item">
-                <i class="fa-solid fa-plug"></i>
-                <span>Premiere Pro 2022+</span>
-            </div>
-            <div class="trust-divider"></div>
-            <div class="trust-item">
-                <i class="fa-solid fa-box"></i>
-                <span>All-in-one installer</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- Floating App Preview -->
-    <div class="hero-preview">
-        <div class="preview-chrome">
-            <div class="chrome-bar">
-                <div class="chrome-dots">
-                    <span class="dot dot-red"></span>
-                    <span class="dot dot-yellow"></span>
-                    <span class="dot dot-green"></span>
-                </div>
-                <span class="chrome-title">&#10022; CUTTIFY &mdash; Studio v1.0</span>
-            </div>
-            <div class="preview-img-wrap">
-                <img src="images/cuttify_app1.png" alt="Cuttify Plugin Interface" class="preview-img" id="previewImg">
-                <div class="preview-overlay"></div>
-            </div>
-        </div>
-        <div class="preview-reflection"></div>
-    </div>
-
-    <div class="hero-scroll-hint">
-        <span>Scroll to explore</span>
-        <div class="scroll-arrow">
-            <i class="fa-solid fa-chevron-down"></i>
-        </div>
-    </div>
-</section>
-
-<!-- â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• 
-     STATS BAR
-â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â•  -->
-<div class="stats-bar">
-    <div class="stats-inner">
-        <div class="stat-item">
-            <span class="stat-num" data-target="10">0</span>
-            <span class="stat-suffix">&times;</span>
-            <span class="stat-label">Faster Editing</span>
-        </div>
-        <div class="stat-sep"></div>
-        <div class="stat-item">
-            <span class="stat-num" data-target="100">0</span>
-            <span class="stat-suffix">%</span>
-            <span class="stat-label">Inside Premiere</span>
-        </div>
-        <div class="stat-sep"></div>
-        <div class="stat-item">
-            <span class="stat-num" data-target="2">0</span>
-            <span class="stat-suffix"></span>
-            <span class="stat-label">AI-Powered Tools</span>
-        </div>
-        <div class="stat-sep"></div>
-        <div class="stat-item">
-            <span class="stat-num" data-target="0">0</span>
-            <span class="stat-suffix"></span>
-            <span class="stat-label">Exports Required</span>
-        </div>
-    </div>
-</div>
-
-<!-- â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• 
-     FEATURES
-â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â•  -->
-<section class="features" id="features">
-    <div class="section-header">
-        <div class="eyebrow">What it does</div>
-        <h2 class="section-title">Two tools.<br><span class="text-gradient">Endless time saved.</span></h2>
-        <p class="section-desc">Every feature is built to eliminate the boring parts of editing and let you focus on what matters &mdash; your story.</p>
-    </div>
-
-    <div class="features-grid">
-
-        <!-- Feature 1 &mdash; Big Card -->
-        <div class="feat-card feat-card-big reveal">
-            <div class="feat-card-glow"></div>
-            <div class="feat-icon feat-icon-purple">
-                <i class="fa-solid fa-scissors"></i>
-            </div>
-            <div class="feat-badge feat-badge-ai"><i class="fa-solid fa-wand-magic-sparkles"></i> AI-Powered</div>
-            <h3 class="feat-title">Remove Silences</h3>
-            <p class="feat-desc">Our AI voice-activity detection pinpoints dead air with frame-accurate precision and makes the cuts <em>directly inside</em> your Premiere timeline. Select entire timeline, In/Out points, or individual clips &mdash; your choice.</p>
-            <ul class="feat-list">
-                <li><i class="fa-solid fa-check"></i> Adjustable silence threshold</li>
-                <li><i class="fa-solid fa-check"></i> Per-track audio selection</li>
-                <li><i class="fa-solid fa-check"></i> Timeline, In/Out, or clip mode</li>
-                <li><i class="fa-solid fa-check"></i> Frame-accurate cuts</li>
-            </ul>
-            <div class="feat-preview-mini">
-                <img src="images/cuttify_app1.png" alt="Remove Silences UI">
-            </div>
-        </div>
-
-        <!-- Feature 2 &mdash; Big Card -->
-        <div class="feat-card feat-card-big reveal">
-            <div class="feat-card-glow feat-card-glow-teal"></div>
-            <div class="feat-icon feat-icon-teal">
-                <i class="fa-solid fa-film"></i>
-            </div>
-            <div class="feat-badge feat-badge-smart"><i class="fa-solid fa-microchip"></i> Smart</div>
-            <h3 class="feat-title">Frame Decimation</h3>
-            <p class="feat-desc">Intelligently scan and remove near-duplicate or matching frames from your footage for a cleaner, optimized video sequence. Perfect for screen recordings, gameplay, and time-lapses.</p>
-            <ul class="feat-list">
-                <li><i class="fa-solid fa-check"></i> Near-duplicate detection</li>
-                <li><i class="fa-solid fa-check"></i> Adjustable similarity threshold</li>
-                <li><i class="fa-solid fa-check"></i> Optimized video output</li>
-                <li><i class="fa-solid fa-check"></i> No re-encoding required</li>
-            </ul>
-            <div class="feat-preview-mini">
-                <img src="images/cuttify_app2.png" alt="Frame Decimation UI">
-            </div>
-        </div>
-
-        <!-- Small perks row -->
-        <div class="feat-card feat-card-sm reveal">
-            <div class="feat-icon feat-icon-sm feat-icon-blue">
-                <i class="fa-solid fa-bolt"></i>
-            </div>
-            <h4>Lightning Fast</h4>
-            <p>Process entire timelines in seconds, not minutes.</p>
-        </div>
-
-        <div class="feat-card feat-card-sm reveal">
-            <div class="feat-icon feat-icon-sm feat-icon-green">
-                <i class="fa-solid fa-plug"></i>
-            </div>
-            <h4>Zero Setup</h4>
-            <p>Python, Node.js & FFmpeg are bundled. One installer does everything.</p>
-        </div>
-
-        <div class="feat-card feat-card-sm reveal">
-            <div class="feat-icon feat-icon-sm feat-icon-orange">
-                <i class="fa-solid fa-puzzle-piece"></i>
-            </div>
-            <h4>Native Integration</h4>
-            <p>Lives inside Premiere Pro's Extensions panel. No switching apps.</p>
-        </div>
-
-    </div>
-</section>
-
-<!-- â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• 
-     CUTTIFY PRO &mdash; CINEMATIC REVEAL SECTION
-â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â•  -->
-<section class="pro-reveal" id="pricing">
-
-    <!-- AMBIENT AURA -->
-    <div class="pro-aura pro-aura-1"></div>
-    <div class="pro-aura pro-aura-2"></div>
-    <div class="pro-aura pro-aura-3"></div>
-
-    <!-- â”€â”€ ANNOUNCEMENT HEADER â”€â”€ -->
-    <div class="pro-announce reveal">
-        <div class="pro-announce-badge">
-            <span class="badge-pulse"></span>
-            <i class="fa-solid fa-gem"></i>
-            <span>Cuttify Pro &mdash; Now Available</span>
-        </div>
-        <h2 class="pro-headline">
-            The <span class="pro-grad-text">professional</span> toolkit<br>
-            editors actually need.
-        </h2>
-        <p class="pro-sub">Everything in Free, plus AI captions, beat sync, local LLMs &amp; priority support. One payment. Yours forever.</p>
-        <div class="pro-price-chip">
-            <span class="pro-price-num">$14.99</span>
-            <div class="pro-price-meta">
-                <span class="pro-price-tag">One-time payment</span>
-                <span class="pro-price-note">No subscriptions &middot; Instant license key</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- â”€â”€ FEATURE NAVIGATOR â”€â”€ -->
-    <div class="pro-feature-nav reveal">
-        <div class="pfn-sidebar">
-            <div class="pfn-label">Exclusive Pro Features</div>
-            <button class="pfn-item pfn-active" data-feat="0">
-                <div class="pfn-item-icon"><i class="fa-solid fa-closed-captioning"></i></div>
-                <div class="pfn-item-text">
-                    <strong>AI Auto-Captions</strong>
-                    <span>Whisper + Nile-Chat 4B</span>
-                </div>
-                <i class="fa-solid fa-chevron-right pfn-arrow"></i>
-            </button>
-            <button class="pfn-item" data-feat="1">
-                <div class="pfn-item-icon"><i class="fa-solid fa-music"></i></div>
-                <div class="pfn-item-text">
-                    <strong>Cut to Music</strong>
-                    <span>Beat &amp; onset sync</span>
-                </div>
-                <i class="fa-solid fa-chevron-right pfn-arrow"></i>
-            </button>
-            <button class="pfn-item" data-feat="2">
-                <div class="pfn-item-icon"><i class="fa-solid fa-scissors"></i></div>
-                <div class="pfn-item-text">
-                    <strong>Silence Removal</strong>
-                    <span>Frame-accurate VAD</span>
-                </div>
-                <i class="fa-solid fa-chevron-right pfn-arrow"></i>
-            </button>
-            <button class="pfn-item" data-feat="3">
-                <div class="pfn-item-icon"><i class="fa-solid fa-film"></i></div>
-                <div class="pfn-item-text">
-                    <strong>Frame Decimation</strong>
-                    <span>Near-duplicate removal</span>
-                </div>
-                <i class="fa-solid fa-chevron-right pfn-arrow"></i>
-            </button>
-            <button class="pfn-item" data-feat="4">
-                <div class="pfn-item-icon"><i class="fa-solid fa-plug"></i></div>
-                <div class="pfn-item-text">
-                    <strong>Native CEP Panel</strong>
-                    <span>Inside Premiere Pro</span>
-                </div>
-                <i class="fa-solid fa-chevron-right pfn-arrow"></i>
-            </button>
-            <button class="pfn-item" data-feat="5">
-                <div class="pfn-item-icon"><i class="fa-solid fa-key"></i></div>
-                <div class="pfn-item-text">
-                    <strong>License Activation</strong>
-                    <span>Instant validation</span>
-                </div>
-                <i class="fa-solid fa-chevron-right pfn-arrow"></i>
-            </button>
-        </div>
-
-        <div class="pfn-stage">
-            <!-- Feature 0 -->
-            <div class="pfn-panel pfn-panel-active" data-panel="0">
-                <div class="pfn-screen">
-                    <div class="pfn-screen-bar"><span></span><span></span><span></span><span class="pfn-screen-title">AI Auto-Captions &mdash; Whisper Engine</span></div>
-                    <img src="images/pro_1.png" alt="AI Auto-Captions UI" loading="lazy">
-                </div>
-                <div class="pfn-detail">
-                    <div class="pfn-detail-tag">Local AI &middot; 100% Private</div>
-                    <h3>AI Auto-Captions</h3>
-                    <p>Offline speech-to-text powered by OpenAI Whisper, running entirely on your machine. Full Egyptian Arabic dialect recognition using the exclusive Nile-Chat 4B model &mdash; no cloud API keys needed.</p>
-                    <ul class="pfn-feats">
-                        <li><i class="fa-solid fa-circle-check"></i> 100% local &mdash; nothing leaves your PC</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Egyptian Arabic dialect (Nile-Chat 4B)</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Integrated model downloader</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Multi-language transcription support</li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Feature 1 -->
-            <div class="pfn-panel" data-panel="1">
-                <div class="pfn-screen">
-                    <div class="pfn-screen-bar"><span></span><span></span><span></span><span class="pfn-screen-title">Cut to Music &mdash; Beat Sync Engine</span></div>
-                    <img src="images/pro_2.png" alt="Beat Sync UI" loading="lazy">
-                </div>
-                <div class="pfn-detail">
-                    <div class="pfn-detail-tag">Audio Analysis &middot; Beat Detection</div>
-                    <h3>Cut to Music</h3>
-                    <p>Analyze musical energy and beat-onset peaks to automatically slice your timeline clips or place audio markers in perfect rhythm. Make cinematic edits in seconds, not hours.</p>
-                    <ul class="pfn-feats">
-                        <li><i class="fa-solid fa-circle-check"></i> Peak transient onset algorithms</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Synchronizes cuts to beat-onsets</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Marker or auto-cut mode</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Works on any audio track</li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Feature 2 -->
-            <div class="pfn-panel" data-panel="2">
-                <div class="pfn-screen">
-                    <div class="pfn-screen-bar"><span></span><span></span><span></span><span class="pfn-screen-title">Remove Silences &mdash; VAD Engine</span></div>
-                    <img src="images/pro_4.png" alt="Silence Removal UI" loading="lazy">
-                </div>
-                <div class="pfn-detail">
-                    <div class="pfn-detail-tag">Audio Processing &middot; AI-Powered</div>
-                    <h3>Silence Removal</h3>
-                    <p>AI voice-activity detection pinpoints dead air with frame-accurate precision and makes the cuts directly inside your Premiere timeline. Configure thresholds, select tracks, and let it run.</p>
-                    <ul class="pfn-feats">
-                        <li><i class="fa-solid fa-circle-check"></i> Adjustable noise floor thresholds</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Timeline, In/Out, or clip mode</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Per-track audio selection</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Frame-accurate silence trimming</li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Feature 3 -->
-            <div class="pfn-panel" data-panel="3">
-                <div class="pfn-screen">
-                    <div class="pfn-screen-bar"><span></span><span></span><span></span><span class="pfn-screen-title">Frame Decimation &mdash; Duplicate Scanner</span></div>
-                    <img src="images/pro_3.png" alt="Frame Decimation UI" loading="lazy">
-                </div>
-                <div class="pfn-detail">
-                    <div class="pfn-detail-tag">Footage Optimization &middot; Smart</div>
-                    <h3>Frame Decimation</h3>
-                    <p>Intelligently scan and strip near-duplicate or frozen frames from your footage. Perfect for screen recordings, gameplay clips, and time-lapses &mdash; optimizes sequences in seconds.</p>
-                    <ul class="pfn-feats">
-                        <li><i class="fa-solid fa-circle-check"></i> Near-duplicate frame comparison</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Adjustable similarity threshold</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Bundled FFmpeg &mdash; no re-encoding</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Optimizes in seconds</li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Feature 4 -->
-            <div class="pfn-panel" data-panel="4">
-                <div class="pfn-screen">
-                    <div class="pfn-screen-bar"><span></span><span></span><span></span><span class="pfn-screen-title">Cuttify Pro &mdash; Native Premiere CEP Panel</span></div>
-                    <img src="images/pro_5.png" alt="Premiere CEP Panel" loading="lazy">
-                </div>
-                <div class="pfn-detail">
-                    <div class="pfn-detail-tag">Workspace Sync &middot; Native UI</div>
-                    <h3>Native CEP Extension</h3>
-                    <p>A native CEP extension panel built with React, perfectly styled to match Premiere Pro 2026's dark workspace. All tools accessible in one unified side panel &mdash; never leave your editor.</p>
-                    <ul class="pfn-feats">
-                        <li><i class="fa-solid fa-circle-check"></i> Matches Premiere Pro dark theme</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Live connection status indicator</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Fully responsive sidebar docking</li>
-                        <li><i class="fa-solid fa-circle-check"></i> All tools in one unified panel</li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Feature 5 -->
-            <div class="pfn-panel" data-panel="5">
-                <div class="pfn-screen">
-                    <div class="pfn-screen-bar"><span></span><span></span><span></span><span class="pfn-screen-title">License Key &mdash; Activation Portal</span></div>
-                    <img src="images/pro_6.png" alt="Activation Portal" loading="lazy">
-                </div>
-                <div class="pfn-detail">
-                    <div class="pfn-detail-tag">Licensing &middot; Instant Unlock</div>
-                    <h3>License Activation</h3>
-                    <p>Purchase on Payhip, receive your unique license key instantly by email, paste it into the activation screen and all Pro features unlock immediately. No waiting, no manual steps.</p>
-                    <ul class="pfn-feats">
-                        <li><i class="fa-solid fa-circle-check"></i> Instant license delivery via email</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Secure online key validation</li>
-                        <li><i class="fa-solid fa-circle-check"></i> One purchase &mdash; one machine</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Automatic updates included</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- â”€â”€ FREE vs PRO COMPARISON STRIP â”€â”€ -->
-    <div class="compare-strip reveal">
-        <div class="cs-header">
-            <div class="eyebrow">What's included</div>
-            <h3>Free vs <span class="text-gradient">Pro</span></h3>
-        </div>
-        <div class="cs-table">
-            <div class="cs-col cs-col-free">
-                <div class="cs-col-head">
-                    <span class="cs-plan-name">Cuttify Free</span>
-                    <span class="cs-plan-price">$0</span>
-                </div>
-                <ul>
-                    <li class="yes"><i class="fa-solid fa-check"></i> Remove Silences</li>
-                    <li class="yes"><i class="fa-solid fa-check"></i> Frame Decimation</li>
-                    <li class="yes"><i class="fa-solid fa-check"></i> Premiere Pro Panel</li>
-                    <li class="no"><i class="fa-solid fa-xmark"></i> AI Auto-Captions</li>
-                    <li class="no"><i class="fa-solid fa-xmark"></i> Cut to Music</li>
-                    <li class="no"><i class="fa-solid fa-xmark"></i> Local LLMs (Ollama)</li>
-                    <li class="no"><i class="fa-solid fa-xmark"></i> Egyptian Arabic dialect</li>
-                </ul>
-                <a href="https://github.com/ahmednazief/anzs/releases/download/Cuttify/Cuttify-Setup-1.0.1.zip" class="cs-btn cs-btn-free">
-                    <i class="fa-solid fa-download"></i> Download Free
-                </a>
-            </div>
-            <div class="cs-divider"><span>vs</span></div>
-            <div class="cs-col cs-col-pro">
-                <div class="cs-glow-border"></div>
-                <div class="cs-col-head">
-                    <span class="cs-plan-name">Cuttify Pro</span>
-                    <span class="cs-plan-price cs-pro-price">$14.99 <em>one-time</em></span>
-                </div>
-                <ul>
-                    <li class="yes"><i class="fa-solid fa-check"></i> Remove Silences</li>
-                    <li class="yes"><i class="fa-solid fa-check"></i> Frame Decimation</li>
-                    <li class="yes"><i class="fa-solid fa-check"></i> Premiere Pro Panel</li>
-                    <li class="yes pro-only"><i class="fa-solid fa-gem"></i> AI Auto-Captions</li>
-                    <li class="yes pro-only"><i class="fa-solid fa-gem"></i> Cut to Music</li>
-                    <li class="yes pro-only"><i class="fa-solid fa-gem"></i> Local LLMs (Ollama)</li>
-                    <li class="yes pro-only"><i class="fa-solid fa-gem"></i> Egyptian Arabic dialect</li>
-                </ul>
-                <a href="#buy-pro" class="cs-btn cs-btn-pro">
-                    <div class="cs-btn-shimmer"></div>
-                    <i class="fa-solid fa-gem"></i> Get Cuttify Pro &mdash; $14.99
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- â”€â”€ BUY BAND â”€â”€ -->
-    <div class="buy-band" id="buy-pro">
-        <div class="buy-band-glow"></div>
-        <div class="buy-band-grid-lines"></div>
-        <div class="buy-band-inner">
-            <div class="buy-left">
-                <div class="buy-tag"><i class="fa-solid fa-gem"></i> Cuttify Pro</div>
-                <h2 class="buy-title">Ready to unlock<br><span class="pro-grad-text">the full suite?</span></h2>
-                <p class="buy-sub">One payment. Instant license key delivered to your inbox. No subscriptions, no renewals, no nonsense.</p>
-                <div class="buy-trust">
-                    <div class="buy-trust-item"><i class="fa-solid fa-shield-halved"></i> Secure via Payhip</div>
-                    <div class="buy-trust-item"><i class="fa-brands fa-paypal"></i> PayPal &amp; Card</div>
-                    <div class="buy-trust-item"><i class="fa-solid fa-envelope"></i> Instant delivery</div>
-                </div>
-            </div>
-            <div class="buy-right">
-                <div class="buy-card">
-                    <div class="buy-card-badge">One-time payment</div>
-                    <div class="buy-card-price">
-                        <span class="buy-price-val">$14.99</span>
-                        <span class="buy-price-note">USD &middot; No recurring fees</span>
-                    </div>
-                    <p class="buy-hook">Want a <span>&times;100 better app?</span></p>
-                    <a href="#" class="buy-cta" id="buyProBtn">
-                        <div class="buy-cta-shine"></div>
-                        <i class="fa-solid fa-gem"></i>
-                        <span>Buy Cuttify Pro</span>
-                        <i class="fa-solid fa-arrow-right buy-cta-arrow"></i>
-                    </a>
-                    <p class="buy-note"><i class="fa-solid fa-circle-info"></i> Purchase link will be live when Pro launches</p>
-                    <div class="buy-includes">
-                        <div class="buy-inc-item"><i class="fa-solid fa-key"></i> License key via email</div>
-                        <div class="buy-inc-item"><i class="fa-solid fa-box-open"></i> Full installer bundle</div>
-                        <div class="buy-inc-item"><i class="fa-solid fa-rotate"></i> Future updates</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</section>
-
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-     SCREENSHOT SHOWCASE
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
-<section class="screenshots" id="screenshots">
-    <div class="section-header">
-        <div class="eyebrow">Inside the plugin</div>
-        <h2 class="section-title">A closer <span class="text-gradient">look.</span></h2>
-        <p class="section-desc">A clean, beautiful interface that feels like it belongs inside Premiere Pro.</p>
-    </div>
-
-    <div class="screenshot-tabs">
-        <button class="tab-btn tab-active" data-img="images/cuttify_app1.png" data-label="Remove Silences Panel">
-            <i class="fa-solid fa-scissors"></i> Remove Silences
-        </button>
-        <button class="tab-btn" data-img="images/cuttify_app2.png" data-label="App Dashboard">
-            <i class="fa-solid fa-house"></i> Dashboard
-        </button>
-    </div>
-
-    <div class="screenshot-stage">
-        <div class="stage-chrome">
-            <div class="stage-bar">
-                <div class="stage-dots">
-                    <span></span><span></span><span></span>
-                </div>
-                <span class="stage-title" id="stageLabel">Remove Silences Panel</span>
-            </div>
-            <div class="stage-img-wrap">
-                <img src="images/cuttify_app1.png" alt="App Screenshot" id="stageImg">
-                <div class="stage-shine"></div>
-            </div>
-        </div>
-        <div class="stage-glow"></div>
-    </div>
-</section>
-
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-     HOW TO INSTALL
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
-<section class="install" id="install">
-    <div class="section-header">
-        <div class="eyebrow">Setup</div>
-        <h2 class="section-title">Up & running in <span class="text-gradient">3 steps.</span></h2>
-        <p class="section-desc">From zero to your first automated cut in under 5 minutes.</p>
-    </div>
-
-    <div class="screenshot-tabs" style="justify-content: center; margin-bottom: 3rem; gap: 1rem;">
-        <button class="tab-btn tab-active" id="installTabFree">
-            <i class="fa-solid fa-gift"></i> Free Edition Setup
-        </button>
-        <button class="tab-btn" id="installTabPro">
-            <i class="fa-solid fa-gem"></i> Pro Edition Setup
-        </button>
-    </div>
-
-    <!-- Free Edition Steps -->
-    <div class="steps" id="stepsFree">
-        <div class="step reveal">
-            <div class="step-num-wrap">
-                <div class="step-num">01</div>
-                <div class="step-line"></div>
-            </div>
-            <div class="step-content">
-                <div class="step-icon-wrap step-icon-blue">
-                    <i class="fa-solid fa-download"></i>
-                </div>
-                <div class="step-text">
-                    <h3>Download the Installer</h3>
-                    <p>Click the download button and save <code>Cuttify-Setup-1.0.1.zip</code>. Extract the zip file and run the installer inside. If Windows SmartScreen appears, click <strong>More Info &larr; Run Anyway</strong> &mdash; the app is safe and unsigned.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="step reveal">
-            <div class="step-num-wrap">
-                <div class="step-num">02</div>
-                <div class="step-line"></div>
-            </div>
-            <div class="step-content">
-                <div class="step-icon-wrap step-icon-purple">
-                    <i class="fa-solid fa-box-open"></i>
-                </div>
-                <div class="step-text">
-                    <h3>Run the Installer</h3>
-                    <p>The installer automatically sets up Python, Node.js, and FFmpeg. No manual configuration required. Just click through and let it do its thing.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="step reveal">
-            <div class="step-num-wrap">
-                <div class="step-num">03</div>
-            </div>
-            <div class="step-content">
-                <div class="step-icon-wrap step-icon-green">
-                    <i class="fa-solid fa-wand-magic-sparkles"></i>
-                </div>
-                <div class="step-text">
-                    <h3>Open in Premiere Pro</h3>
-                    <p>Go to <strong>Window &larr; Extensions &larr; Cuttify</strong> inside Premiere Pro. The panel opens, Premiere connects, and you're ready to start cutting.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Pro Edition Steps -->
-    <div class="steps" id="stepsPro" style="display: none;">
-        <div class="step reveal">
-            <div class="step-num-wrap">
-                <div class="step-num">01</div>
-                <div class="step-line"></div>
-            </div>
-            <div class="step-content">
-                <div class="step-icon-wrap step-icon-blue">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                </div>
-                <div class="step-text">
-                    <h3>Purchase & Get License</h3>
-                    <p>Purchase Cuttify Pro on <a href="#buy-pro" class="text-gradient" style="font-weight: 700;">Payhip</a>. Once payment is processed, you will automatically receive an activation license key sent straight to your email.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="step reveal">
-            <div class="step-num-wrap">
-                <div class="step-num">02</div>
-                <div class="step-line"></div>
-            </div>
-            <div class="step-content">
-                <div class="step-icon-wrap step-icon-purple">
-                    <i class="fa-solid fa-key"></i>
-                </div>
-                <div class="step-text">
-                    <h3>Run & Activate Wizard</h3>
-                    <p>Run the premium Cuttify Pro setup wizard. During installation, paste the license code you received into the activation screen to unlock all system features.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="step reveal">
-            <div class="step-num-wrap">
-                <div class="step-num">03</div>
-            </div>
-            <div class="step-content">
-                <div class="step-icon-wrap step-icon-green">
-                    <i class="fa-solid fa-plug"></i>
-                </div>
-                <div class="step-text">
-                    <h3>Connect in Premiere Pro</h3>
-                    <p>Launch Adobe Premiere Pro and navigate to <strong>Window &larr; Extensions &larr; Cuttify Pro</strong>. Click <strong>Connect App</strong> to sync with your activated backend instantly.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Bundled deps -->
-    <div class="bundled-wrap reveal">
-        <div class="bundled-label"><i class="fa-solid fa-circle-check"></i> All-in-one installer includes:</div>
-        <div class="bundled-chips">
-            <div class="dep-chip">
-                <i class="fa-brands fa-python"></i>
-                <span>Python 3.10</span>
-                <span class="chip-tag">Bundled</span>
-            </div>
-            <div class="dep-chip">
-                <i class="fa-brands fa-node-js"></i>
-                <span>Node.js 18</span>
-                <span class="chip-tag">Bundled</span>
-            </div>
-            <div class="dep-chip">
-                <i class="fa-solid fa-terminal"></i>
-                <span>FFmpeg</span>
-                <span class="chip-tag">Bundled</span>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-     SUPPORT / DONATION SECTION
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
-<section class="support-section" id="support">
-    <div class="support-glow"></div>
-    <div class="section-header">
-        <div class="eyebrow">Support the project</div>
-        <h2 class="section-title">Keep Cuttify <span class="text-gradient">growing.</span></h2>
-        <p class="section-desc">Cuttify is free and open-source. If it helps you cut down editing time, consider supporting its development!</p>
-    </div>
-
-    <div class="support-grid">
-        <!-- Card 1: Outside Egypt -->
-        <div class="support-card reveal">
-            <div class="support-card-glow support-card-glow-purple"></div>
-            <div class="support-card-header">
-                <div class="support-icon">
-                    <i class="fa-solid fa-globe"></i>
-                </div>
-                <h3>International Support</h3>
-                <p>For supporters outside Egypt. Donate securely using PayPal or Card via Ko-fi, or transfer directly through PayPal.</p>
-            </div>
-            <div class="support-actions">
-                <a href="https://ko-fi.com/ahmednazif" target="_blank" class="support-btn support-btn-kofi">
-                    <i class="fa-solid fa-mug-hot"></i>
-                    <span>Donate via Ko-fi</span>
-                </a>
-                <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=ahmednazief@gmail.com&item_name=Support+Cuttify+Development&currency_code=USD" target="_blank" class="support-btn support-btn-paypal">
-                    <i class="fa-brands fa-paypal"></i>
-                    <span>Donate via PayPal</span>
-                </a>
-            </div>
-        </div>
-
-        <!-- Card 2: Inside Egypt -->
-        <div class="support-card reveal">
-            <div class="support-card-glow support-card-glow-green"></div>
-            <div class="support-card-header">
-                <div class="support-icon">
-                    <i class="fa-solid fa-landmark"></i>
-                </div>
-                <h3>Local Support (Egypt)</h3>
-                <p>For supporters in Egypt. Send payments instantly using your InstaPay account.</p>
-            </div>
-            <div class="support-actions">
-                <a href="https://ipn.eg/S/ahmednazeif/instapay/55EXL4" target="_blank" class="support-btn support-btn-instapay">
-                    <i class="fa-solid fa-bolt"></i>
-                    <span>Transfer via InstaPay</span>
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-     FINAL CTA
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
-<section class="cta-section">
-    <div class="cta-glow"></div>
-    <div class="cta-grid-bg"></div>
-    <div class="cta-inner">
-        <div class="cta-tag">Free forever</div>
-        <h2 class="cta-title">Stop wasting time<br>on the boring parts.</h2>
-        <p class="cta-sub">Download Cuttify and get back to creating.</p>
-
-        <div class="cta-btns">
-            <a href="https://github.com/ahmednazief/anzs/releases/download/Cuttify/Cuttify-Setup-1.0.1.zip"
-               class="dl-btn dl-btn-primary dl-btn-lg">
-                <div class="dl-btn-shimmer"></div>
-                <div class="dl-btn-icon">
-                    <i class="fa-solid fa-download"></i>
-                </div>
-                <div class="dl-btn-text">
-                    <span class="dl-btn-main">Download for Windows</span>
-                    <span class="dl-btn-sub">Version 1.0.1 &middot; Free</span>
-                </div>
-            </a>
-
-            <a href="#pricing" class="dl-btn dl-btn-ghost dl-btn-pro">
-                <div class="dl-btn-icon" style="color: #a78bfa;">
-                    <i class="fa-solid fa-gem"></i>
-                </div>
-                <div class="dl-btn-text">
-                    <span class="dl-btn-main">Get Cuttify Pro</span>
-                    <span class="dl-btn-sub">Instant License &middot; $14.99</span>
-                </div>
-                <div class="dl-btn-arrow">
-                    <i class="fa-solid fa-arrow-right"></i>
-                </div>
-            </a>
-        </div>
-
-        <p class="cta-note">
-            <i class="fa-solid fa-shield-halved"></i>
-            Requires Adobe Premiere Pro 2022 or later &middot; Windows 10 / 11
-        </p>
-    </div>
-</section>
-
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-     FOOTER
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
-<footer class="site-footer">
-    <div class="footer-left">
-        <a href="index.html" class="footer-logo">
-            <svg viewBox="0 0 100 100" class="logo-svg">
-                <defs>
-                    <linearGradient id="cuttify-ft-logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#FFFFFF" />
-                        <stop offset="100%" stop-color="var(--c-purple)" />
-                    </linearGradient>
-                </defs>
-                <path d="M 5,95 L 50,5 L 95,95 L 50,95 M 50,5 L 50,95 M 27.5,50 L 27.5,95 L 5,95 M 27.5,50 L 50,95" 
-                      stroke="url(#cuttify-ft-logo-grad)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none" />
-            </svg>
-            <span>AHMED NAZIF</span>
-        </a>
-        <p>Ahmed Nazif &middot; Cuttify Studio v1.0 Â© <span id="footYear"></span></p>
-    </div>
-    <div class="footer-right">
-        <a href="https://www.youtube.com/@Plains" target="_blank" class="f-link"><i class="fa-brands fa-youtube"></i></a>
-        <a href="mailto:ahmednazief@gmail.com" class="f-link"><i class="fa-solid fa-envelope"></i></a>
-        <a href="#support" class="f-link f-link-heart" title="Support Cuttify"><i class="fa-solid fa-heart"></i></a>
-        <a href="index.html" class="f-link"><i class="fa-solid fa-house"></i></a>
-    </div>
-</footer>
-
-
-<script src="cuttify.js?v=6.1"></script>
-</body>
-</html>
-

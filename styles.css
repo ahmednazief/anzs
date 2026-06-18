@@ -14,8 +14,8 @@
 
     --purple:    #a78bfa;
     --purple-d:  #7c3aed;
-    --gold:      #f59e0b;
-    --gold-d:    #d97706;
+    --gold:      #C9A227;
+    --gold-d:    #A0831E;
     --teal:      #2dd4bf;
     --green:     #34d399;
     --cyan:      #38bdf8;
@@ -867,7 +867,7 @@ body:hover .cursor { opacity: 1; }
     padding: 0.2rem 0.6rem; border-radius: var(--r-pill);
     text-transform: uppercase; letter-spacing: 0.5px;
 }
-.vc-badge-gold { background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.3); color: var(--gold); }
+.vc-badge-gold { background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.3); color: var(--gold); }
 .vc-badge-purple { background: rgba(167,139,250,0.15); border: 1px solid rgba(167,139,250,0.3); color: var(--purple); }
 .vc-badge-teal { background: rgba(45,212,191,0.15); border: 1px solid rgba(45,212,191,0.3); color: var(--teal); }
 .vc-time {
@@ -884,8 +884,8 @@ body:hover .cursor { opacity: 1; }
     font-family: var(--fm); font-size: 0.62rem;
     text-transform: uppercase; letter-spacing: 1px;
     padding: 0.15rem 0.55rem;
-    background: rgba(245,158,11,0.1);
-    border: 1px solid rgba(245,158,11,0.2);
+    background: rgba(212,175,55,0.1);
+    border: 1px solid rgba(212,175,55,0.2);
     color: var(--gold);
     border-radius: var(--r-pill);
     margin-bottom: 0.6rem;
@@ -1405,5 +1405,70 @@ html[lang="ar"] h6 {
 }
 html[lang="ar"] p {
     line-height: 1.8 !important;
+}
+
+
+/* ═══════════════════════════════════════════════════
+   PORTFOLIO GOLD UPGRADE v7.0
+   ═══════════════════════════════════════════════════ */
+
+:root {
+    --gold-1: #D4AF37;
+    --gold-2: #C9A227;
+    --gold-3: #EDD87A;
+    --gold-dark: #8B6914;
+    --gold-glow: rgba(212,175,55,0.35);
+}
+
+/* Scrollbar → gold */
+::-webkit-scrollbar-thumb { background: var(--gold-2) !important; border-radius: 99px; }
+
+/* Cursor dot → gold */
+.cursor-dot { background: var(--gold-1) !important; }
+.cursor { border-color: rgba(212,175,55,0.55) !important; }
+
+/* ── CUTTIFY CTA SECTION: Premium gold treatment ── */
+.plugin-cta,
+.cta-band,
+section[class*="cta"],
+.cutify-cta,
+.cuttify-cta {
+    background: linear-gradient(135deg,
+        rgba(60, 35, 8, 0.6) 0%,
+        rgba(20, 12, 2, 0.8) 50%,
+        rgba(60, 35, 8, 0.6) 100%
+    ) !important;
+    border-color: rgba(212,175,55,0.2) !important;
+    position: relative;
+}
+
+/* Cuttify CTA btn on portfolio */
+a[href*="cuttify"].btn-primary,
+.cta-band .btn-primary,
+.plugin-cta .btn-primary {
+    background: linear-gradient(135deg,
+        #8B6914, #C9A227, #D4AF37, #EDD87A, #D4AF37, #C9A227, #8B6914
+    ) !important;
+    background-size: 300% 300% !important;
+    animation: portfolioGoldFlow 4s ease infinite !important;
+    color: #1A0F00 !important;
+    font-weight: 800 !important;
+    border: none !important;
+    box-shadow: 0 6px 30px rgba(212,175,55,0.45),
+                0 0 0 1px rgba(212,175,55,0.3) !important;
+}
+@keyframes portfolioGoldFlow {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Gold gradient text for Cuttify mentions on portfolio */
+.grad-text[class],
+.text-gradient {
+    background: linear-gradient(135deg, #D4AF37 0%, #EDD87A 45%, #C9A227 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
 }
 
