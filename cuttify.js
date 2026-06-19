@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* ── Hero Preview image cycling ── */
     const previewImg = document.getElementById('previewImg');
-    const previewImages = ['images/cuttify_app1.png', 'images/cuttify_app2.png'];
+    const previewImages = ['images/remove-silences.png', 'images/simple-home-ui.png'];
     if (previewImg) {
         let idx = 0;
         setInterval(() => {
