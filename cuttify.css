@@ -2416,299 +2416,281 @@ img { max-width: 100%; display: block; }
 
 
 /* ═══════════════════════════════════════════════════════════════
-   PREMIUM GOLD SYSTEM v7.0 — Complete override of button styles
+   PREMIUM GOLD SYSTEM v8.0 — Seamless Theme & Metallic Gold Overrides
    ═══════════════════════════════════════════════════════════════ */
 
-/* Updated gold tokens */
 :root {
-    --gold-1:       #D4AF37;
-    --gold-2:       #C9A227;
-    --gold-3:       #EDD87A;
-    --gold-dark:    #8B6914;
-    --gold-deep:    #5C3D0A;
+    --gold-1:       #c5a059;
+    --gold-2:       #d4af37;
+    --gold-3:       #fdf0cd;
+    --gold-dark:    #a67c1e;
+    --gold-deep:    #5c3d0a;
     --gold-glow:    rgba(212, 175, 55, 0.4);
-    --gold-text:    #1A0F00;
+    --gold-text:    #120B02;
+    --gold-metallic: linear-gradient(135deg, #c5a059 0%, #fdf0cd 30%, #d4af37 50%, #f3e5ab 70%, #a67c1e 100%);
+    --gold-text-grad: linear-gradient(135deg, #fdf0cd 0%, #d4af37 60%, #c5a059 100%);
 }
 
-/* Scrollbar → gold */
-::-webkit-scrollbar-thumb { background: var(--gold-2) !important; }
+/* ── Smooth Page Theme Transition Overrides ── */
+body {
+    transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1), color 0.8s ease;
+}
 
-/* ── Pro section: distinct warm-dark background ── */
+body.gold-theme {
+    --c-bg:         #070504;
+    --c-bg-2:       #0A0705;
+    --c-bg-3:       #0F0B08;
+    --c-border:     rgba(212, 175, 55, 0.12);
+    --c-border-h:   rgba(212, 175, 55, 0.45);
+    --c-purple:     #d4af37;
+    --c-purple-2:   #c5a059;
+    --c-cyan:       #fdf0cd;
+    --c-teal:       #f3e5ab;
+    background-color: #070504 !important;
+}
+
+/* Smooth transit for common components */
+.nav, .feat-card, .tab-btn, .dl-btn, .pro-feature-nav, .cs-table, .buy-card, .buy-band, .nav-cta, .cursor-glow {
+    transition: background 0.8s ease, background-color 0.8s ease, border-color 0.8s ease, box-shadow 0.8s ease, transform 0.4s var(--ease-out);
+}
+
+/* Webkit scrollbar dynamic color */
+body.gold-theme ::-webkit-scrollbar-thumb {
+    background: var(--gold-2) !important;
+}
+
+/* Scrolled navigation override in gold theme */
+body.gold-theme .nav.scrolled {
+    background: rgba(7, 5, 4, 0.88) !important;
+    border-bottom-color: rgba(212, 175, 55, 0.15) !important;
+}
+
+/* ── Transparent Section Shell ── */
 .pro-reveal {
-    background: linear-gradient(180deg,
-        #070504 0%,
-        #060403 50%,
-        #050303 100%
-    ) !important;
+    position: relative;
+    padding: 8rem 8% 0;
+    overflow: hidden;
+    z-index: 10;
+    background: transparent !important; /* Inherit transitioned body background */
 }
+
 .pro-reveal::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 8%; right: 8%;
+    height: 1px;
     background: linear-gradient(90deg,
         transparent 0%,
-        rgba(212,175,55,0.25) 20%,
-        #D4AF37 50%,
-        rgba(212,175,55,0.25) 80%,
+        rgba(212, 175, 55, 0.25) 20%,
+        var(--gold-2) 50%,
+        rgba(212, 175, 55, 0.25) 80%,
         transparent 100%
     ) !important;
-    box-shadow: 0 0 40px rgba(212,175,55,0.3), 0 0 100px rgba(212,175,55,0.1) !important;
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.3), 0 0 100px rgba(212, 175, 55, 0.15) !important;
+    pointer-events: none;
 }
 
-/* ── PREMIUM "Get Cuttify Pro" HERO BUTTON ── */
-.dl-btn-pro {
-    background: linear-gradient(135deg,
-        #3D2B1F 0%,
-        #8B6914 10%,
-        #C9A227 22%,
-        #D4AF37 35%,
-        #EDD87A 48%,
-        #F0DF82 52%,
-        #EDD87A 56%,
-        #D4AF37 68%,
-        #C9A227 80%,
-        #8B6914 92%,
-        #3D2B1F 100%
-    ) !important;
-    background-size: 400% 400% !important;
-    border-color: rgba(212,175,55,0.5) !important;
-    border-width: 1px !important;
-    animation: premiumGoldFlow 5s ease-in-out infinite !important;
-    box-shadow:
-        0 0 0 1px rgba(212,175,55,0.35),
-        0 6px 30px rgba(212,175,55,0.45),
-        0 18px 60px rgba(212,175,55,0.2),
-        inset 0 1px 0 rgba(255,255,255,0.18) !important;
+/* ── Pro link scroll animation ── */
+.pro-scroll-link {
+    transition: all 0.3s var(--ease-out);
     position: relative;
     overflow: hidden;
+}
+.pro-scroll-link::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--r-pill);
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+.pro-scroll-link:hover {
+    color: var(--c-text) !important;
+    border-color: rgba(212, 175, 55, 0.35) !important;
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.2), inset 0 1px 0 rgba(255,255,255,0.03) !important;
+    transform: translateY(-2px);
+    background: rgba(212, 175, 55, 0.03) !important;
+}
+.pro-scroll-link:hover::before {
+    opacity: 1;
+}
+.pro-scroll-link:hover span {
+    border-bottom-color: rgba(212, 175, 55, 0.8) !important;
+}
+
+/* ── Dynamic Nav CTA Pro styles ── */
+.nav-cta.nav-cta-pro {
+    background: var(--gold-metallic) !important;
+    background-size: 200% 200% !important;
+    animation: goldBtnGlow 4s ease infinite !important;
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.45) !important;
+    color: var(--gold-text) !important;
+}
+.nav-cta.nav-cta-pro:hover {
+    background-position: right center !important;
+    box-shadow: 0 5px 35px rgba(212, 175, 55, 0.7) !important;
+    transform: translateY(-2.5px) !important;
+}
+.nav-cta.nav-cta-pro i, .nav-cta.nav-cta-pro span {
+    color: var(--gold-text) !important;
+}
+
+/* ── PREMIUM "Get Cuttify Pro" PREVIEW BUTTON ── */
+.dl-btn-pro {
+    background: var(--gold-metallic) !important;
+    background-size: 200% 200% !important;
+    border-color: rgba(212, 175, 55, 0.5) !important;
+    border-width: 1px !important;
+    animation: goldBtnGlow 4s ease infinite !important;
+    box-shadow:
+        0 0 0 1px rgba(212, 175, 55, 0.35),
+        0 6px 30px rgba(212, 175, 55, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+    position: relative;
+    overflow: hidden;
+    color: var(--gold-text) !important;
 }
 .dl-btn-pro::after {
     content: '';
     position: absolute;
     top: -50%; left: -60%;
     width: 40%; height: 200%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
     transform: skewX(-20deg);
     animation: proShine 3s ease-in-out infinite;
 }
+.dl-btn-pro:hover {
+    transform: translateY(-4px) scale(1.01) !important;
+    box-shadow:
+        0 0 0 2px rgba(212, 175, 55, 0.5),
+        0 12px 40px rgba(212, 175, 55, 0.65),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+}
+
+/* ── PREMIUM BUY CARD CTA BUTTON ── */
+.buy-cta {
+    background: var(--gold-metallic) !important;
+    background-size: 200% 200% !important;
+    color: var(--gold-text) !important;
+    font-weight: 900 !important;
+    font-size: 1.05rem !important;
+    letter-spacing: 0.03em !important;
+    border: 1px solid rgba(212, 175, 55, 0.4) !important;
+    border-radius: var(--r-pill) !important;
+    box-shadow:
+        0 0 0 1px rgba(212, 175, 55, 0.4),
+        0 6px 30px rgba(212, 175, 55, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
+    animation: goldBtnGlow 4s ease infinite !important;
+    transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out) !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.2) !important;
+}
+.buy-cta:hover {
+    transform: translateY(-5px) scale(1.02) !important;
+    box-shadow:
+        0 0 0 2px rgba(212, 175, 55, 0.55),
+        0 12px 45px rgba(212, 175, 55, 0.7),
+        inset 0 1px 0 rgba(255, 255, 255, 0.45) !important;
+}
+.buy-cta i, .buy-cta span, .buy-cta .buy-cta-arrow { color: var(--gold-text) !important; }
+
+@keyframes goldBtnGlow {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 @keyframes proShine {
     0%   { left: -60%; opacity: 0; }
     15%  { opacity: 1; }
     45%  { left: 160%; opacity: 0; }
     100% { left: 160%; opacity: 0; }
 }
-.dl-btn-pro .dl-btn-main {
-    background: linear-gradient(135deg, #1A0F00, #2C1A00, #1A0F00) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    background-clip: text !important;
-    font-weight: 900 !important;
-    font-size: 1.08rem !important;
-    letter-spacing: 0.01em !important;
-}
-.dl-btn-pro .dl-btn-sub {
-    color: rgba(26, 15, 0, 0.65) !important;
-}
-.dl-btn-pro .dl-btn-icon {
-    background: rgba(0,0,0,0.18) !important;
-    color: #1A0F00 !important;
-    border: 1px solid rgba(255,255,255,0.12) !important;
-}
-.dl-btn-pro .dl-btn-arrow i { color: #1A0F00 !important; }
-.dl-btn-pro:hover {
-    transform: translateY(-5px) scale(1.01) !important;
-    box-shadow:
-        0 0 0 2px rgba(212,175,55,0.5),
-        0 12px 50px rgba(212,175,55,0.65),
-        0 30px 90px rgba(212,175,55,0.25),
-        inset 0 1px 0 rgba(255,255,255,0.22) !important;
-}
 
-/* ── "Want a ×100 better app?" HOOK TEXT ── */
-.buy-hook {
-    text-align: center;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: rgba(212,175,55,0.75);
-    margin-bottom: 0.9rem;
-    letter-spacing: 0.02em;
-    font-style: italic;
-}
-.buy-hook span {
-    background: linear-gradient(135deg, #D4AF37, #EDD87A, #D4AF37);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-weight: 900;
-    font-style: normal;
-    font-size: 0.95rem;
-    letter-spacing: 0.01em;
-}
-
-/* ── PREMIUM BUY CARD CTA BUTTON ── */
-.buy-cta {
-    background: linear-gradient(135deg,
-        #3D2B1F 0%,
-        #8B6914 8%,
-        #C9A227 20%,
-        #D4AF37 32%,
-        #EDD87A 44%,
-        #F0DF82 50%,
-        #EDD87A 56%,
-        #D4AF37 68%,
-        #C9A227 82%,
-        #8B6914 94%,
-        #3D2B1F 100%
-    ) !important;
-    background-size: 400% 400% !important;
-    color: #1A0F00 !important;
-    font-weight: 900 !important;
-    font-size: 1.02rem !important;
-    letter-spacing: 0.03em !important;
-    border: 1px solid rgba(212,175,55,0.4) !important;
-    border-radius: var(--r-pill) !important;
-    box-shadow:
-        0 0 0 1px rgba(212,175,55,0.4),
-        0 6px 30px rgba(212,175,55,0.5),
-        0 18px 60px rgba(212,175,55,0.2),
-        inset 0 1px 0 rgba(255,255,255,0.2),
-        inset 0 -1px 0 rgba(0,0,0,0.15) !important;
-    animation: premiumGoldFlow 5s ease-in-out infinite !important;
-    transition: transform 0.3s cubic-bezier(0.16,1,0.3,1),
-                box-shadow 0.3s cubic-bezier(0.16,1,0.3,1) !important;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.2) !important;
-}
-@keyframes premiumGoldFlow {
-    0%   { background-position: 0% 50%; }
-    50%  { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-@keyframes heroBtnGoldFlow {
-    0%   { background-position: 0% 50%; }
-    50%  { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-.buy-cta:hover {
-    transform: translateY(-5px) scale(1.02) !important;
-    box-shadow:
-        0 0 0 2px rgba(212,175,55,0.55),
-        0 12px 50px rgba(212,175,55,0.7),
-        0 30px 90px rgba(212,175,55,0.3),
-        inset 0 1px 0 rgba(255,255,255,0.25) !important;
-}
-.buy-cta .buy-cta-shine {
-    background: linear-gradient(105deg,
-        transparent 20%,
-        rgba(255,255,255,0.25) 50%,
-        transparent 80%
-    ) !important;
-}
-.buy-cta i, .buy-cta span { color: #1A0F00 !important; }
-.buy-cta .buy-cta-arrow { color: #1A0F00 !important; }
-
-/* ── COMPARE STRIP PRO BUTTON ── */
-.cs-btn-pro {
-    background: linear-gradient(135deg,
-        #8B6914, #C9A227, #D4AF37, #EDD87A, #D4AF37, #C9A227, #8B6914
-    ) !important;
-    background-size: 300% 300% !important;
-    color: #1A0F00 !important;
-    font-weight: 900 !important;
-    animation: premiumGoldFlow 4s ease infinite !important;
-    box-shadow: 0 6px 25px rgba(212,175,55,0.45) !important;
-}
-.cs-btn-pro:hover {
-    transform: translateY(-3px) !important;
-    box-shadow: 0 12px 40px rgba(212,175,55,0.65) !important;
-}
-
-/* ── PRO SIDEBAR ACTIVE STATE ── */
+/* ── Pro Sidebar Active State ── */
 .pfn-item.pfn-active .pfn-item-icon {
-    background: rgba(212,175,55,0.18) !important;
-    border-color: rgba(212,175,55,0.45) !important;
-    color: #D4AF37 !important;
-    box-shadow: 0 0 20px rgba(212,175,55,0.3) !important;
+    background: rgba(212, 175, 55, 0.15) !important;
+    border-color: rgba(212, 175, 55, 0.4) !important;
+    color: var(--gold-2) !important;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.25) !important;
 }
-.pfn-item.pfn-active .pfn-item-text strong { color: #D4AF37 !important; }
-.pfn-item.pfn-active .pfn-arrow { color: #D4AF37 !important; }
+.pfn-item.pfn-active .pfn-item-text strong { color: var(--gold-2) !important; }
+.pfn-item.pfn-active .pfn-arrow { color: var(--gold-2) !important; }
 .pfn-item::before {
-    background: linear-gradient(180deg, #D4AF37, #C9A227) !important;
+    background: var(--gold-text-grad) !important;
 }
 
-/* ── PRO BADGE ── */
+/* ── Pro Badge ── */
 .pro-announce-badge {
-    background: rgba(212,175,55,0.08) !important;
-    border-color: rgba(212,175,55,0.35) !important;
-    color: #D4AF37 !important;
+    background: rgba(212, 175, 55, 0.08) !important;
+    border-color: rgba(212, 175, 55, 0.3) !important;
+    color: var(--gold-2) !important;
 }
-.badge-pulse { background: #D4AF37 !important; }
-@keyframes badgePulseAnim {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(212,175,55,0.6); }
-    50%       { box-shadow: 0 0 0 9px rgba(212,175,55,0); }
-}
+.badge-pulse { background: var(--gold-2) !important; }
 
-/* ── PRO GRADIENT TEXT ── */
+/* ── Pro Gradient Text ── */
 .pro-grad-text {
-    background: linear-gradient(135deg,
-        #D4AF37 0%, #EDD87A 40%, #C9A227 70%, #D4AF37 100%
-    ) !important;
+    background: var(--gold-text-grad) !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
     background-clip: text !important;
+    text-shadow: 0 2px 20px rgba(212, 175, 55, 0.15);
 }
 
-/* ── BUY BAND GOLD DECOR ── */
+/* ── Buy Band Gold Decor ── */
 .buy-band {
-    border-color: rgba(212,175,55,0.22) !important;
-    background: linear-gradient(160deg,
-        rgba(30, 18, 4, 0.95) 0%,
-        rgba(12, 8, 2, 0.98) 100%
-    ) !important;
+    border-color: rgba(212, 175, 55, 0.2) !important;
+    background: linear-gradient(160deg, rgba(22, 14, 4, 0.95) 0%, rgba(8, 5, 2, 0.98) 100%) !important;
 }
 .buy-band-grid-lines {
     background-image:
-        linear-gradient(rgba(212,175,55,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(212,175,55,0.04) 1px, transparent 1px) !important;
+        linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px) !important;
 }
 .buy-tag {
-    background: rgba(212,175,55,0.1) !important;
-    border-color: rgba(212,175,55,0.3) !important;
-    color: #D4AF37 !important;
+    background: rgba(212, 175, 55, 0.08) !important;
+    border-color: rgba(212, 175, 55, 0.25) !important;
+    color: var(--gold-2) !important;
 }
 .buy-price-val {
-    background: linear-gradient(135deg, #D4AF37 0%, #EDD87A 50%, #C9A227 100%) !important;
+    background: var(--gold-text-grad) !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
     background-clip: text !important;
 }
 .buy-card {
-    border-color: rgba(212,175,55,0.28) !important;
+    border-color: rgba(212, 175, 55, 0.25) !important;
+    background: rgba(12, 8, 4, 0.75) !important;
     box-shadow:
-        0 0 0 1px rgba(212,175,55,0.08),
-        0 20px 60px rgba(0,0,0,0.6),
-        0 0 80px rgba(212,175,55,0.08) !important;
+        0 0 0 1px rgba(212, 175, 55, 0.06),
+        0 25px 70px rgba(0,0,0,0.7),
+        0 0 80px rgba(212, 175, 55, 0.05) !important;
 }
 .buy-card-badge {
-    background: rgba(212,175,55,0.1) !important;
-    border-color: rgba(212,175,55,0.28) !important;
-    color: #D4AF37 !important;
+    background: rgba(212, 175, 55, 0.08) !important;
+    border-color: rgba(212, 175, 55, 0.25) !important;
+    color: var(--gold-2) !important;
 }
-.buy-inc-item i { color: #C9A227 !important; }
+.buy-inc-item i { color: var(--gold-2) !important; }
 .pfn-detail-tag {
-    background: rgba(212,175,55,0.08) !important;
-    border-color: rgba(212,175,55,0.22) !important;
-    color: #D4AF37 !important;
+    background: rgba(212, 175, 55, 0.06) !important;
+    border-color: rgba(212, 175, 55, 0.2) !important;
+    color: var(--gold-2) !important;
 }
 .pfn-detail h3 {
-    background: linear-gradient(140deg, #fff 25%, #D4AF37) !important;
+    background: linear-gradient(140deg, #ffffff 35%, var(--gold-2)) !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
     background-clip: text !important;
 }
 
-/* ── PRO SECTION EYEBROW ── */
 .pro-reveal .eyebrow {
-    background: rgba(212,175,55,0.1);
-    border: 1px solid rgba(212,175,55,0.25);
-    color: #D4AF37;
-    padding: 0.3rem 0.9rem;
+    background: rgba(212, 175, 55, 0.08);
+    border: 1px solid rgba(212, 175, 55, 0.22);
+    color: var(--gold-2);
+    padding: 0.35rem 0.95rem;
     border-radius: var(--r-pill);
     font-size: 0.72rem;
     font-weight: 700;
@@ -2718,12 +2700,12 @@ img { max-width: 100%; display: block; }
     font-family: var(--f-mono);
 }
 
-/* ── AURA COLORS ── */
-.pro-aura-1 { background: radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 70%) !important; }
-.pro-aura-2 { background: radial-gradient(circle, rgba(212,175,55,0.06) 0%, transparent 70%) !important; }
-.pro-aura-3 { background: radial-gradient(circle, rgba(194,159,47,0.06) 0%, transparent 70%) !important; }
+/* ── AURA COLORS OVERRIDE ── */
+.pro-aura-1 { background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, transparent 70%) !important; }
+.pro-aura-2 { background: radial-gradient(circle, rgba(212, 175, 55, 0.06) 0%, transparent 70%) !important; }
+.pro-aura-3 { background: radial-gradient(circle, rgba(194, 159, 47, 0.06) 0%, transparent 70%) !important; }
 
-/* ── SCREENSHOT DISPLAY FIX ── */
+/* ── Screenshot fix for crispness ── */
 .pfn-stage { min-height: 480px; }
 .pfn-screen { overflow: auto; }
 .pfn-screen img {
@@ -2733,116 +2715,44 @@ img { max-width: 100%; display: block; }
     object-fit: contain !important;
     object-position: top center !important;
     display: block !important;
-    background: rgba(0,0,0,0.25) !important;
+    background: rgba(0,0,0,0.2) !important;
 }
 
-/* ── CS-COL PRO ITEMS ── */
-.cs-col ul li.yes.pro-only .fa-gem { color: #D4AF37 !important; }
-.cs-col ul li.yes.pro-only { color: #F5F0DC !important; }
+/* ── Comparison Table Updates ── */
+.cs-table {
+    border-color: rgba(212, 175, 55, 0.12) !important;
+}
+.cs-col-pro {
+    background: rgba(212, 175, 55, 0.02) !important;
+    border-left: 1px solid rgba(212, 175, 55, 0.12) !important;
+}
+.cs-col ul li.yes.pro-only .fa-gem { color: var(--gold-2) !important; }
+.cs-col ul li.yes.pro-only { color: #fefef5 !important; }
 .cs-glow-border {
-    box-shadow: 0 0 0 1px rgba(212,175,55,0.25),
-                0 0 60px rgba(212,175,55,0.06) !important;
+    box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.2), 0 0 60px rgba(212, 175, 55, 0.04) !important;
+}
+.cs-btn-pro {
+    background: var(--gold-metallic) !important;
+    background-size: 200% 200% !important;
+    color: var(--gold-text) !important;
+    font-weight: 900 !important;
+    animation: goldBtnGlow 4s ease infinite !important;
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35) !important;
+}
+.cs-btn-pro:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 12px 35px rgba(212, 175, 55, 0.55) !important;
+}
+.cs-btn-free:hover {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
 }
 
-/* ── PFEIFEN NAVIGATOR BORDER ── */
-.pro-feature-nav {
-    border-color: rgba(212,175,55,0.16) !important;
-    box-shadow:
-        0 40px 120px rgba(0,0,0,0.7),
-        0 0 0 1px rgba(212,175,55,0.06),
-        0 0 80px rgba(212,175,55,0.05) !important;
-}
-
-/* ── RESPONSIVE FIX: pfn-screen image mobile ── */
+/* ── Screen controls in mobile ── */
 @media (max-width: 900px) {
     .pfn-screen img { max-height: 240px !important; }
     .pfn-stage { min-height: auto; }
     .pfn-panel { position: relative !important; }
 }
 
-/* ── PRO DEDICATED HERO ── */
-.pro-hero {
-    position: relative;
-    padding: 12rem 8% 6rem;
-    overflow: hidden;
-    z-index: 10;
-    text-align: center;
-    background: radial-gradient(circle at top, rgba(212,175,55,0.06) 0%, transparent 60%);
-}
-.pro-hero-glow {
-    position: absolute;
-    top: -100px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 600px;
-    height: 300px;
-    background: radial-gradient(ellipse, rgba(212,175,55,0.08) 0%, transparent 70%);
-    filter: blur(50px);
-    pointer-events: none;
-    z-index: 0;
-}
-.pro-hero-inner {
-    position: relative;
-    z-index: 5;
-    max-width: 900px;
-    margin: 0 auto;
-}
-.pro-hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.55rem;
-    padding: 0.45rem 1.1rem;
-    border-radius: var(--r-pill);
-    background: rgba(212,175,55,0.08);
-    border: 1px solid rgba(212,175,55,0.3);
-    color: #D4AF37;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    font-family: var(--f-mono);
-    margin-bottom: 2rem;
-}
-.pro-hero-title {
-    font-family: var(--f-display);
-    font-size: clamp(2.8rem, 6vw, 4.8rem);
-    font-weight: 900;
-    line-height: 1.05;
-    margin-bottom: 1.5rem;
-    letter-spacing: -0.02em;
-    color: var(--c-text);
-}
-.pro-hero-desc {
-    color: var(--c-muted);
-    font-size: 1.2rem;
-    line-height: 1.7;
-    max-width: 680px;
-    margin: 0 auto 3rem;
-}
-.pro-hero-actions {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.8rem;
-}
-.pro-hero-note {
-    font-size: 0.8rem;
-    color: var(--c-subtle);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.4rem;
-}
-
-@media (max-width: 768px) {
-    .pro-hero {
-        padding: 9rem 5% 4rem;
-    }
-    .pro-hero-title {
-        font-size: clamp(2.2rem, 8vw, 3.2rem);
-    }
-    .pro-hero-desc {
-        font-size: 1.05rem;
-        margin-bottom: 2rem;
-    }
-}
 

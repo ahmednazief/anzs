@@ -20,11 +20,40 @@ document.addEventListener('DOMContentLoaded', () => {
     const yr = document.getElementById('footYear');
     if (yr) yr.textContent = new Date().getFullYear();
 
-    /* ── Navbar scroll class ── */
+    /* ── Navbar scroll class & Theme Toggle ── */
     const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-        nav.classList.toggle('scrolled', window.scrollY > 40);
-    }, { passive: true });
+    const navCta = document.querySelector('.nav-cta');
+    const pricingSection = document.getElementById('pricing');
+
+    const updateScrollStates = () => {
+        const scrollY = window.scrollY;
+        nav.classList.toggle('scrolled', scrollY > 40);
+
+        if (pricingSection) {
+            const rect = pricingSection.getBoundingClientRect();
+            const triggerOffset = window.innerHeight * 0.6;
+            const isGold = rect.top < triggerOffset;
+            
+            if (isGold) {
+                document.body.classList.add('gold-theme');
+                if (navCta && !navCta.classList.contains('nav-cta-pro')) {
+                    navCta.innerHTML = '<i class="fa-solid fa-gem"></i> <span>Get Pro</span>';
+                    navCta.setAttribute('href', '#pricing');
+                    navCta.classList.add('nav-cta-pro');
+                }
+            } else {
+                document.body.classList.remove('gold-theme');
+                if (navCta && navCta.classList.contains('nav-cta-pro')) {
+                    navCta.innerHTML = '<i class="fa-solid fa-download"></i> <span>Download Free</span>';
+                    navCta.setAttribute('href', '#download');
+                    navCta.classList.remove('nav-cta-pro');
+                }
+            }
+        }
+    };
+
+    window.addEventListener('scroll', updateScrollStates, { passive: true });
+    updateScrollStates(); // run once on init
 
     /* ── Cursor glow ── */
     const glow = document.getElementById('cursorGlow');
@@ -55,10 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
         resize();
         window.addEventListener('resize', resize, { passive: true });
 
-        const isPro = document.body.classList.contains('pro-page') || window.location.pathname.includes('cuttify-pro');
-        const COLORS = isPro 
-            ? ['rgba(212,175,55,', 'rgba(201,162,39,', 'rgba(237,216,122,']
-            : ['rgba(123,97,255,', 'rgba(0,245,255,', 'rgba(0,229,195,'];
+        const COLORS_FREE = ['rgba(123,97,255,', 'rgba(0,245,255,', 'rgba(0,229,195,'];
+        const COLORS_PRO = ['rgba(212,175,55,', 'rgba(201,162,39,', 'rgba(237,216,122,'];
 
         class Particle {
             constructor() { this.reset(true); }
@@ -71,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.alpha = 0;
                 this.maxAlpha = Math.random() * 0.5 + 0.15;
                 this.fadeIn = true;
-                this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
+                this.colorIdx = Math.floor(Math.random() * 3);
                 this.life = 0;
                 this.maxLife = Math.random() * 300 + 200;
             }
@@ -90,8 +117,10 @@ document.addEventListener('DOMContentLoaded', () => {
             draw() {
                 ctx.save();
                 ctx.globalAlpha = Math.max(0, this.alpha);
-                ctx.fillStyle = this.color + this.alpha + ')';
-                ctx.shadowColor = this.color + '0.8)';
+                const useProColors = document.body.classList.contains('gold-theme');
+                const baseColor = useProColors ? COLORS_PRO[this.colorIdx] : COLORS_FREE[this.colorIdx];
+                ctx.fillStyle = baseColor + this.alpha + ')';
+                ctx.shadowColor = baseColor + '0.8)';
                 ctx.shadowBlur = 6;
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
