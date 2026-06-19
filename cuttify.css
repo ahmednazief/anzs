@@ -1218,6 +1218,10 @@ img { max-width: 100%; display: block; }
 
     gap: 0;
 
+    max-width: 1300px;
+
+    margin: 0 auto;
+
     background: var(--c-surface);
 
     border: 1px solid var(--c-border);
@@ -2800,15 +2804,25 @@ img { max-width: 100%; display: block; }
 
     display: flex;
 
-    flex-direction: column;
+    flex-direction: row;
 
-    align-items: center;
+    align-items: stretch;
 
-    gap: 1rem;
+    justify-content: center;
 
-    max-width: 420px;
+    gap: 1.5rem;
+
+    max-width: 720px;
+
+    width: 100%;
 
     margin: 0 auto 1.5rem;
+
+}
+
+.cta-btns .dl-btn {
+
+    flex: 1;
 
 }
 
@@ -3043,6 +3057,8 @@ img { max-width: 100%; display: block; }
     .install { padding: 5rem 6%; }
 
     .cta-section { padding: 7rem 6%; }
+
+    .cta-btns { flex-direction: column; max-width: 360px; }
 
     .site-footer { padding: 2rem 6%; }
 
@@ -4896,21 +4912,7 @@ body.gold-theme .nav.scrolled {
     background: transparent !important; /* Inherit transitioned body background */
 }
 
-.pro-reveal::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 8%; right: 8%;
-    height: 1px;
-    background: linear-gradient(90deg,
-        transparent 0%,
-        rgba(212, 175, 55, 0.25) 20%,
-        var(--gold-2) 50%,
-        rgba(212, 175, 55, 0.25) 80%,
-        transparent 100%
-    ) !important;
-    box-shadow: 0 0 40px rgba(212, 175, 55, 0.3), 0 0 100px rgba(212, 175, 55, 0.15) !important;
-    pointer-events: none;
-}
+
 
 /* ── Pro link — reworked as premium pill button ── */
 .pro-scroll-link {
