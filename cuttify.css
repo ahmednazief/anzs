@@ -312,6 +312,10 @@ img { max-width: 100%; display: block; }
 
     padding: 90px 6% 80px;
 
+    max-width: 1300px;
+
+    margin: 0 auto;
+
     position: relative;
 
     overflow: hidden;
@@ -490,9 +494,9 @@ img { max-width: 100%; display: block; }
 
     font-weight: 900;
 
-    line-height: 1.02;
+    line-height: 1.15;
 
-    letter-spacing: -3px;
+    letter-spacing: -2px;
 
     margin-bottom: 1.5rem;
 
