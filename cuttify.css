@@ -812,7 +812,8 @@ img { max-width: 100%; display: block; }
 
 }
 
-.dl-btn-primary:hover .dl-btn-icon { transform: translateY(3px); }
+.dl-btn-primary:hover .dl-btn-icon,
+.dl-btn-pro:hover .dl-btn-icon { transform: translateY(3px); }
 
 .dl-icon-locked { background: rgba(255,255,255,0.04); color: var(--c-muted); }
 
@@ -889,6 +890,14 @@ img { max-width: 100%; display: block; }
     transform: translateX(4px);
 
     background: rgba(255,255,255,0.2);
+
+}
+
+.dl-btn-pro:hover .dl-btn-arrow {
+
+    transform: translateX(4px);
+
+    background: rgba(0,0,0,0.15) !important;
 
 }
 
