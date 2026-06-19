@@ -55,7 +55,10 @@ document.addEventListener('DOMContentLoaded', () => {
         resize();
         window.addEventListener('resize', resize, { passive: true });
 
-        const COLORS = ['rgba(123,97,255,', 'rgba(0,245,255,', 'rgba(0,229,195,'];
+        const isPro = document.body.classList.contains('pro-page') || window.location.pathname.includes('cuttify-pro');
+        const COLORS = isPro 
+            ? ['rgba(212,175,55,', 'rgba(201,162,39,', 'rgba(237,216,122,']
+            : ['rgba(123,97,255,', 'rgba(0,245,255,', 'rgba(0,229,195,'];
 
         class Particle {
             constructor() { this.reset(true); }
