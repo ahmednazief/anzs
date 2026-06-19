@@ -3984,6 +3984,8 @@ img { max-width: 100%; display: block; }
 
     flex: 1;
 
+    width: 50%;
+
     display: flex;
 
     flex-direction: column;
@@ -5197,4 +5199,43 @@ body.gold-theme .nav-logo span {
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
     background-clip: text !important;
+}
+
+/* Smooth Dynamic Nav CTA transitions */
+.nav-cta {
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-cta-free-state {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-cta-pro-state {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) translateY(15px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    width: max-content;
+}
+
+.nav-cta.nav-cta-pro .nav-cta-free-state {
+    opacity: 0;
+    transform: translateY(-15px);
+    pointer-events: none;
+}
+
+.nav-cta.nav-cta-pro .nav-cta-pro-state {
+    opacity: 1;
+    transform: translate(-50%, -50%) translateY(0);
+    pointer-events: auto;
 }
