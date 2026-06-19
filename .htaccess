@@ -6,10 +6,10 @@ AddDefaultCharset UTF-8
 RewriteEngine On
 
 # Redirect legacy Cutify (single t) URLs to Cuttify (double t)
-RewriteRule ^cutify$ /cuttify [R=301,L,NC]
-RewriteRule ^cutify\.html$ /cuttify [R=301,L,NC]
-RewriteRule ^cutify-ar$ /cuttify [R=301,L,NC]
-RewriteRule ^cutify-ar\.html$ /cuttify [R=301,L,NC]
+RewriteRule ^cutify/?$ https://ahmednazif.com/cuttify [R=301,L,NC]
+RewriteRule ^cutify\.html$ https://ahmednazif.com/cuttify [R=301,L,NC]
+RewriteRule ^cutify-ar/?$ https://ahmednazif.com/cuttify [R=301,L,NC]
+RewriteRule ^cutify-ar\.html$ https://ahmednazif.com/cuttify [R=301,L,NC]
 
 # 1. Redirect /cuttify.html to /cuttify (clean URLs)
 RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
