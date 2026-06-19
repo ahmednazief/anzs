@@ -305,7 +305,7 @@ body:hover .cursor { opacity: 1; }
 }
 
 /* ── UTILITIES ── */
-.wrap { max-width: 1180px; margin: 0 auto; padding: 0 6%; }
+.wrap { max-width: 1380px; margin: 0 auto; padding: 0 3%; }
 .eyebrow {
     font-family: var(--fm); font-size: 0.72rem; letter-spacing: 3px;
     text-transform: uppercase; color: var(--purple); margin-bottom: 1rem;
@@ -400,7 +400,7 @@ body:hover .cursor { opacity: 1; }
     position: relative; z-index: 1;
     display: grid; grid-template-columns: 1fr 1fr;
     align-items: center; gap: 5rem;
-    max-width: 1180px; margin: 0 auto; width: 100%;
+    max-width: 1380px; margin: 0 auto; width: 100%;
 }
 
 /* Hero Left */

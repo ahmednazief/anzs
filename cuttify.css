@@ -310,7 +310,7 @@ img { max-width: 100%; display: block; }
 
     gap: 4rem;
 
-    padding: 120px 8% 80px;
+    padding: 90px 6% 80px;
 
     position: relative;
 
@@ -420,7 +420,7 @@ img { max-width: 100%; display: block; }
 
     z-index: 1;
 
-    max-width: 650px;
+    max-width: 760px;
 
 }
 
@@ -1384,6 +1384,10 @@ img { max-width: 100%; display: block; }
 
     gap: 1.5rem;
 
+    max-width: 1300px;
+
+    margin: 0 auto;
+
 }
 
 
@@ -2164,11 +2168,11 @@ img { max-width: 100%; display: block; }
 
 .bundled-wrap {
 
-    max-width: 780px;
+    max-width: 860px;
 
     margin: 0 auto;
 
-    padding: 1.8rem 2rem;
+    padding: 1.4rem 2rem;
 
     background: var(--c-surface);
 
@@ -2180,7 +2184,9 @@ img { max-width: 100%; display: block; }
 
     align-items: center;
 
-    gap: 2rem;
+    justify-content: center;
+
+    gap: 1.2rem;
 
     flex-wrap: wrap;
 
@@ -4268,15 +4274,13 @@ img { max-width: 100%; display: block; }
 
     margin-top: 6rem;
 
-    border-radius: var(--r-xl) var(--r-xl) 0 0;
+    border-radius: var(--r-xl);
 
-    overflow: hidden;
+    overflow: visible;
 
     background: linear-gradient(160deg, rgba(28,16,0,0.92) 0%, rgba(10,6,0,0.98) 100%);
 
     border: 1px solid rgba(212,175,55,0.2);
-
-    border-bottom: none;
 
 }
 
@@ -4332,11 +4336,11 @@ img { max-width: 100%; display: block; }
 
     align-items: center;
 
-    max-width: 1200px;
+    max-width: 1100px;
 
     margin: 0 auto;
 
-    padding: 5rem 8%;
+    padding: 4rem 5%;
 
 }
 
@@ -4904,34 +4908,41 @@ body.gold-theme .nav.scrolled {
     pointer-events: none;
 }
 
-/* ── Pro link scroll animation ── */
+/* ── Pro link — reworked as premium pill button ── */
 .pro-scroll-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.6rem 1.4rem;
+    background: rgba(212,175,55,0.07);
+    border: 1px solid rgba(212,175,55,0.28);
+    border-radius: var(--r-pill);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: rgba(212,175,55,0.85);
     transition: all 0.3s var(--ease-out);
     position: relative;
     overflow: hidden;
+    letter-spacing: 0.2px;
 }
 .pro-scroll-link::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: var(--r-pill);
-    background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, transparent 70%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 0;
+    content: '✦';
+    font-size: 0.6rem;
+    color: rgba(212,175,55,0.7);
+}
+.pro-scroll-link span {
+    color: #E8C84A;
+    font-weight: 700;
 }
 .pro-scroll-link:hover {
-    color: var(--c-text) !important;
-    border-color: rgba(212, 175, 55, 0.35) !important;
-    box-shadow: 0 0 25px rgba(212, 175, 55, 0.2), inset 0 1px 0 rgba(255,255,255,0.03) !important;
+    background: rgba(212,175,55,0.13);
+    border-color: rgba(212,175,55,0.5);
+    color: #E8C84A;
     transform: translateY(-2px);
-    background: rgba(212, 175, 55, 0.03) !important;
+    box-shadow: 0 4px 20px rgba(212,175,55,0.18);
 }
 .pro-scroll-link:hover::before {
     opacity: 1;
-}
-.pro-scroll-link:hover span {
-    border-bottom-color: rgba(212, 175, 55, 0.8) !important;
 }
 
 /* ── Dynamic Nav CTA Pro styles ── */
