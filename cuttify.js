@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (pricingSection) {
             const rect = pricingSection.getBoundingClientRect();
             const triggerOffset = window.innerHeight * 0.6;
-            const isGold = rect.top < triggerOffset;
+            const isGold = rect.top < triggerOffset && rect.bottom > triggerOffset;
             
             if (isGold) {
                 document.body.classList.add('gold-theme');

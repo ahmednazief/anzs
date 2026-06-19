@@ -5187,3 +5187,14 @@ body.gold-theme .nav.scrolled {
 body.gold-theme .eyebrow {
     color: var(--gold-2) !important;
 }
+
+body.gold-theme #cuttify-nav-logo-grad stop:last-child {
+    stop-color: var(--gold-2) !important;
+}
+
+body.gold-theme .nav-logo span {
+    background: linear-gradient(135deg, #fff 30%, var(--gold-2) 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
