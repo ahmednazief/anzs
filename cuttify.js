@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const updateScrollStates = () => {
         const scrollY = window.scrollY;
-        nav.classList.toggle('scrolled', scrollY > 40);
+        if (nav) nav.classList.toggle('scrolled', scrollY > 40);
 
         if (pricingSection) {
             const rect = pricingSection.getBoundingClientRect();
