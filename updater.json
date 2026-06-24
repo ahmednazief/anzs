@@ -1,0 +1,11 @@
+{
+  "version": "1.1.4",
+  "notes": "Initial release with auto-updater support.",
+  "pub_date": "2026-06-24T00:00:00Z",
+  "platforms": {
+    "windows-x86_64": {
+      "signature": "CONTENT_OF_THE_SIG_FILE_FROM_GITHUB_RELEASES",
+      "url": "https://github.com/ahmednazief/anzs/releases/download/v1.1.4/cutify-tauri_1.1.4_x64.exe.zip"
+    }
+  }
+}
