@@ -149,6 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Let the download proceed naturally in the background, then show modal
             setTimeout(() => {
                 downloadModal.classList.add('active');
+                if (canvas) canvas.style.display = 'none';
                 if (ssReplica) ssReplica.classList.remove('expanded');
             }, 150);
         });
@@ -156,6 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const closeModal = () => {
         if (downloadModal) downloadModal.classList.remove('active');
+        if (canvas && window.innerWidth > 900) canvas.style.display = 'block';
     };
 
     if (modalCloseX) modalCloseX.addEventListener('click', closeModal);
