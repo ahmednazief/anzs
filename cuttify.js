@@ -29,79 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateScrollStates();
 
 
-    /* ── Floating Canvas Particles ── */
-    const canvas = document.getElementById('particleCanvas');
-    if (canvas) {
-        if (window.innerWidth <= 900) {
-            canvas.style.display = 'none';
-        } else {
-            const ctx = canvas.getContext('2d');
-            let W, H, particles = [];
 
-            const resize = () => {
-                W = canvas.width  = canvas.offsetWidth;
-                H = canvas.height = canvas.offsetHeight;
-            };
-            resize();
-            window.addEventListener('resize', resize, { passive: true });
-
-            const COLORS = ['rgba(123,97,255,', 'rgba(0,245,255,', 'rgba(0,229,195,'];
-
-            class Particle {
-                constructor() { this.reset(true); }
-                reset(initial = false) {
-                    this.x = Math.random() * W;
-                    this.y = initial ? Math.random() * H : H + 10;
-                    this.size = Math.random() * 1.5 + 0.3;
-                    this.speedY = -(Math.random() * 0.35 + 0.08);
-                    this.speedX = (Math.random() - 0.5) * 0.15;
-                    this.alpha = 0;
-                    this.maxAlpha = Math.random() * 0.4 + 0.1;
-                    this.fadeIn = true;
-                    this.colorIdx = Math.floor(Math.random() * 3);
-                    this.life = 0;
-                    this.maxLife = Math.random() * 350 + 200;
-                }
-                update() {
-                    this.x += this.speedX;
-                    this.y += this.speedY;
-                    this.life++;
-                    if (this.fadeIn) {
-                        this.alpha += 0.008;
-                        if (this.alpha >= this.maxAlpha) this.fadeIn = false;
-                    } else {
-                        this.alpha -= 0.002;
-                    }
-                    if (this.alpha <= 0 || this.life > this.maxLife || this.y < -10) this.reset();
-                }
-                draw() {
-                    const baseColor = COLORS[this.colorIdx];
-                    const activeAlpha = Math.max(0, this.alpha);
-
-                    // Draw outer halo glow
-                    ctx.beginPath();
-                    ctx.fillStyle = baseColor + (activeAlpha * 0.15) + ')';
-                    ctx.arc(this.x, this.y, this.size * 3.5, 0, Math.PI * 2);
-                    ctx.fill();
-
-                    // Draw inner solid core
-                    ctx.beginPath();
-                    ctx.fillStyle = baseColor + activeAlpha + ')';
-                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-            }
-
-            for (let i = 0; i < 45; i++) particles.push(new Particle());
-
-            const drawParticles = () => {
-                ctx.clearRect(0, 0, W, H);
-                particles.forEach(p => { p.update(); p.draw(); });
-                requestAnimationFrame(drawParticles);
-            };
-            drawParticles();
-        }
-    }
 
     /* ── Smooth Scroll for Links ── */
     document.querySelectorAll('a[href^="#"]').forEach(a => {
@@ -149,7 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // Let the download proceed naturally in the background, then show modal
             setTimeout(() => {
                 downloadModal.classList.add('active');
-                if (canvas) canvas.style.display = 'none';
                 if (ssReplica) ssReplica.classList.remove('expanded');
             }, 150);
         });
@@ -157,7 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const closeModal = () => {
         if (downloadModal) downloadModal.classList.remove('active');
-        if (canvas && window.innerWidth > 900) canvas.style.display = 'block';
     };
 
     if (modalCloseX) modalCloseX.addEventListener('click', closeModal);
