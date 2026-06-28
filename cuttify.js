@@ -44,53 +44,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    /* ── Hero Preview Image Cycling ── */
-    const previewImg = document.getElementById('previewImg');
-    const previewImages = ['images/remove-silences.png', 'images/simple-home-ui.png'];
-    if (previewImg) {
-        let idx = 0;
-        setInterval(() => {
-            idx = (idx + 1) % previewImages.length;
-            previewImg.style.opacity = '0.4';
-            setTimeout(() => {
-                previewImg.src = previewImages[idx];
-                previewImg.style.opacity = '1';
-            }, 400);
-        }, 6000);
-        previewImg.style.transition = 'opacity 0.4s ease';
-    }
-
-    /* ── Download Thank-You & SmartScreen Modal Handler ── */
-    const heroDownloadBtn = document.getElementById('heroDownloadBtn');
-    const downloadModal = document.getElementById('downloadModal');
-    const modalCloseX = document.getElementById('modalCloseX');
-    const modalCloseBtn = document.getElementById('modalCloseBtn');
+    /* ── Interactive SmartScreen replica expander ── */
     const ssReplica = document.getElementById('ssReplica');
     const ssMoreInfo = document.getElementById('ssMoreInfo');
     const stepLinkMoreInfo = document.getElementById('stepLinkMoreInfo');
     const ssRunBtn = document.getElementById('ssRunBtn');
     const ssCancelBtn = document.getElementById('ssCancelBtn');
     const ssCloseMockBtn = document.getElementById('ssCloseMockBtn');
-
-    if (heroDownloadBtn && downloadModal) {
-        heroDownloadBtn.addEventListener('click', (e) => {
-            // Let the download proceed naturally in the background, then show modal
-            setTimeout(() => {
-                downloadModal.classList.add('active');
-                if (ssReplica) ssReplica.classList.remove('expanded');
-            }, 150);
-        });
-    }
-
-    const closeModal = () => {
-        if (downloadModal) downloadModal.classList.remove('active');
-    };
-
-    if (modalCloseX) modalCloseX.addEventListener('click', closeModal);
-    if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
-    if (ssRunBtn) ssRunBtn.addEventListener('click', closeModal);
-    if (ssCancelBtn) ssCancelBtn.addEventListener('click', closeModal);
-    if (ssCloseMockBtn) ssCloseMockBtn.addEventListener('click', closeModal);
 
     const expandSmartScreen = (e) => {
         if (e) e.preventDefault();
@@ -99,6 +59,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (ssMoreInfo) ssMoreInfo.addEventListener('click', expandSmartScreen);
     if (stepLinkMoreInfo) stepLinkMoreInfo.addEventListener('click', expandSmartScreen);
+
+    // Close mock triggers redirect back to homepage
+    const returnToHome = () => {
+        window.location.href = "cuttify.html";
+    };
+    if (ssRunBtn) ssRunBtn.addEventListener('click', returnToHome);
+    if (ssCancelBtn) ssCancelBtn.addEventListener('click', returnToHome);
+    if (ssCloseMockBtn) ssCloseMockBtn.addEventListener('click', returnToHome);
 
 });
 

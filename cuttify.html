@@ -68,7 +68,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="cuttify.css?v=10.0">
+    <link rel="stylesheet" href="cuttify.css?v=11.0">
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
@@ -128,7 +128,7 @@
             </p>
 
             <div style="margin-bottom: 2rem;">
-                <a href="https://github.com/ahmednazief/anzs/releases/download/Cuttify/Cuttify-Setup-v1.1.3.exe" class="btn-primary" id="heroDownloadBtn">
+                <a href="cuttify-success.html" class="btn-primary" id="heroDownloadBtn">
                     <div class="btn-shimmer"></div>
                     <i class="fa-solid fa-download"></i>
                     <span>Download Cuttify Free</span>
@@ -355,79 +355,6 @@
         </div>
     </footer>
 
-    <!-- DOWNLOAD MODAL (THANK YOU + SMARTSCREEN BYPASS GUIDE) -->
-    <div class="modal-overlay" id="downloadModal">
-        <div class="modal-card">
-            <button class="modal-close-btn" id="modalCloseX" aria-label="Close modal">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-
-            <div class="modal-header">
-                <div class="success-icon-wrap">
-                    <i class="fa-solid fa-circle-check"></i>
-                </div>
-                <h2>Thank you for downloading!</h2>
-                <p>Your download should start in a moment. If it hasn't, <a href="https://github.com/ahmednazief/anzs/releases/download/Cuttify/Cuttify-Setup-v1.1.3.exe" class="restart-download">click here to restart</a>.</p>
-            </div>
-
-            <!-- EXPLANATION OF Defender WARNING -->
-            <div class="explanation-box">
-                <i class="fa-solid fa-triangle-exclamation"></i>
-                <div class="explanation-text">
-                    <h4>Why is Windows Defender showing a warning?</h4>
-                    <p>Because Cuttify is a new, indie open-source application, it does not yet have a paid Microsoft Signature Certificate (which costs $350+ annually). Windows automatically warns about all unsigned setups, but we assure you the installer is completely secure, safe, and transparent.</p>
-                </div>
-            </div>
-
-            <h3 style="font-family: var(--f-display); font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; text-align: left;">How to bypass Microsoft SmartScreen (2 Steps):</h3>
-
-            <!-- INTERACTIVE SMARTSCREEN MOCKUP GRAPHIC -->
-            <div class="smartscreen-replica" id="ssReplica">
-                <div class="ss-titlebar">
-                    <span>Windows protected your PC</span>
-                    <i class="fa-solid fa-xmark ss-close" id="ssCloseMockBtn"></i>
-                </div>
-                <div class="ss-content">
-                    <h3 class="ss-headline">Microsoft Defender SmartScreen prevented an unrecognized app from starting. Running this app might put your PC at risk.</h3>
-                    
-                    <a class="ss-moreinfo-link" id="ssMoreInfo">More info</a>
-
-                    <div class="ss-details">
-                        <span class="ss-details-label">App:</span>
-                        <span class="ss-details-value">Cuttify-Setup-v1.1.3.exe</span>
-                        
-                        <span class="ss-details-label">Publisher:</span>
-                        <span class="ss-details-value">Unknown publisher</span>
-                    </div>
-                </div>
-                <div class="ss-footer">
-                    <button class="ss-btn ss-btn-primary ss-btn-run" id="ssRunBtn">Run anyway</button>
-                    <button class="ss-btn ss-btn-secondary" id="ssCancelBtn">Don't run</button>
-                </div>
-            </div>
-
-            <!-- STEP BY STEP GUIDE -->
-            <div class="guide-steps">
-                <div class="g-step">
-                    <span class="g-step-badge">1</span>
-                    <div class="g-step-text">
-                        <p>Click <strong class="ss-pointer-link" id="stepLinkMoreInfo">More info</strong> in the blue Windows Protected dialog (try clicking it in the interactive preview above!).</p>
-                    </div>
-                </div>
-                <div class="g-step">
-                    <span class="g-step-badge">2</span>
-                    <div class="g-step-text">
-                        <p>Click the newly revealed <strong style="color: #4da3ff;">Run anyway</strong> button to launch the installer safely.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="modal-actions">
-                <button class="btn-modal-close" id="modalCloseBtn">Got it, close guide</button>
-            </div>
-        </div>
-    </div>
-
-    <script src="cuttify.js?v=10.0"></script>
+    <script src="cuttify.js?v=11.0"></script>
 </body>
 </html>
