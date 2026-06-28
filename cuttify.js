@@ -1,7 +1,7 @@
-/* ═══════════════════════════════════════════════════
-   Cuttify Page — Script v5.0
+/* ==========================================================================
+   Cuttify Page — Streamlined Logic
    Ahmed Nazif
-═══════════════════════════════════════════════════ */
+   ========================================================================== */
 
 // Clean tracking parameters from URL
 try {
@@ -20,42 +20,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const yr = document.getElementById('footYear');
     if (yr) yr.textContent = new Date().getFullYear();
 
-    /* ── Navbar scroll class & Theme Toggle ── */
+    /* ── Navbar scroll class ── */
     const nav = document.getElementById('nav');
-    const navCta = document.querySelector('.nav-cta');
-    const pricingSection = document.getElementById('pricing');
-
     const updateScrollStates = () => {
-        const scrollY = window.scrollY;
-        if (nav) nav.classList.toggle('scrolled', scrollY > 40);
-
-        if (pricingSection) {
-            const rect = pricingSection.getBoundingClientRect();
-            const triggerOffset = window.innerHeight * 0.6;
-            const isGold = rect.top < triggerOffset && rect.bottom > triggerOffset;
-            
-            if (isGold) {
-                document.body.classList.add('gold-theme');
-                if (navCta && !navCta.classList.contains('nav-cta-pro')) {
-                    navCta.innerHTML = '<i class="fa-solid fa-gem"></i> <span>Get Pro</span>';
-                    navCta.setAttribute('href', '#pricing');
-                    navCta.classList.add('nav-cta-pro');
-                }
-            } else {
-                document.body.classList.remove('gold-theme');
-                if (navCta && navCta.classList.contains('nav-cta-pro')) {
-                    navCta.innerHTML = '<i class="fa-solid fa-download"></i> <span>Download Free</span>';
-                    navCta.setAttribute('href', '#download');
-                    navCta.classList.remove('nav-cta-pro');
-                }
-            }
-        }
+        if (nav) nav.classList.toggle('scrolled', window.scrollY > 40);
     };
-
     window.addEventListener('scroll', updateScrollStates, { passive: true });
-    updateScrollStates(); // run once on init
+    updateScrollStates();
 
-    /* ── Cursor glow ── */
+    /* ── Cursor glow tracking ── */
     const glow = document.getElementById('cursorGlow');
     if (glow) {
         let mx = window.innerWidth / 2, my = window.innerHeight / 2;
@@ -71,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         animCursor();
     }
 
-    /* ── Particle Canvas ── */
+    /* ── Floating Canvas Particles ── */
     const canvas = document.getElementById('particleCanvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
@@ -84,8 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
         resize();
         window.addEventListener('resize', resize, { passive: true });
 
-        const COLORS_FREE = ['rgba(123,97,255,', 'rgba(0,245,255,', 'rgba(0,229,195,'];
-        const COLORS_PRO = ['rgba(212,175,55,', 'rgba(201,162,39,', 'rgba(237,216,122,'];
+        const COLORS = ['rgba(123,97,255,', 'rgba(0,245,255,', 'rgba(0,229,195,'];
 
         class Particle {
             constructor() { this.reset(true); }
@@ -93,14 +65,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.x = Math.random() * W;
                 this.y = initial ? Math.random() * H : H + 10;
                 this.size = Math.random() * 1.5 + 0.3;
-                this.speedY = -(Math.random() * 0.4 + 0.1);
-                this.speedX = (Math.random() - 0.5) * 0.2;
+                this.speedY = -(Math.random() * 0.35 + 0.08);
+                this.speedX = (Math.random() - 0.5) * 0.15;
                 this.alpha = 0;
-                this.maxAlpha = Math.random() * 0.5 + 0.15;
+                this.maxAlpha = Math.random() * 0.4 + 0.1;
                 this.fadeIn = true;
                 this.colorIdx = Math.floor(Math.random() * 3);
                 this.life = 0;
-                this.maxLife = Math.random() * 300 + 200;
+                this.maxLife = Math.random() * 350 + 200;
             }
             update() {
                 this.x += this.speedX;
@@ -110,18 +82,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     this.alpha += 0.008;
                     if (this.alpha >= this.maxAlpha) this.fadeIn = false;
                 } else {
-                    this.alpha -= 0.003;
+                    this.alpha -= 0.002;
                 }
                 if (this.alpha <= 0 || this.life > this.maxLife || this.y < -10) this.reset();
             }
             draw() {
                 ctx.save();
                 ctx.globalAlpha = Math.max(0, this.alpha);
-                const useProColors = document.body.classList.contains('gold-theme');
-                const baseColor = useProColors ? COLORS_PRO[this.colorIdx] : COLORS_FREE[this.colorIdx];
+                const baseColor = COLORS[this.colorIdx];
                 ctx.fillStyle = baseColor + this.alpha + ')';
-                ctx.shadowColor = baseColor + '0.8)';
-                ctx.shadowBlur = 6;
+                ctx.shadowColor = baseColor + '0.6)';
+                ctx.shadowBlur = 4;
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
@@ -129,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        for (let i = 0; i < 80; i++) particles.push(new Particle());
+        for (let i = 0; i < 60; i++) particles.push(new Particle());
 
         const drawParticles = () => {
             ctx.clearRect(0, 0, W, H);
@@ -139,74 +110,12 @@ document.addEventListener('DOMContentLoaded', () => {
         drawParticles();
     }
 
-    /* ── Scroll Reveal ── */
-    const reveals = document.querySelectorAll('.reveal');
-    const revealObs = new IntersectionObserver((entries) => {
-        entries.forEach((entry, i) => {
-            if (entry.isIntersecting) {
-                const delay = entry.target.dataset.delay || 0;
-                setTimeout(() => {
-                    entry.target.classList.add('visible');
-                }, delay);
-                revealObs.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-    reveals.forEach((el, i) => {
-        el.dataset.delay = (i % 4) * 80;
-        revealObs.observe(el);
-    });
-
-    /* ── Stats Counter ── */
-    const counters = document.querySelectorAll('.stat-num');
-    const counterObs = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const el = entry.target;
-                const target = parseInt(el.dataset.target, 10);
-                const duration = 1400;
-                const start = performance.now();
-                const animate = (now) => {
-                    const elapsed = now - start;
-                    const progress = Math.min(elapsed / duration, 1);
-                    // Ease out quad
-                    const eased = 1 - Math.pow(1 - progress, 3);
-                    el.textContent = Math.round(eased * target);
-                    if (progress < 1) requestAnimationFrame(animate);
-                };
-                requestAnimationFrame(animate);
-                counterObs.unobserve(el);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    counters.forEach(c => counterObs.observe(c));
-
-    /* ── Screenshot Tabs ── */
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    const stageImg = document.getElementById('stageImg');
-    const stageLabel = document.getElementById('stageLabel');
-
-    tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            tabBtns.forEach(b => b.classList.remove('tab-active'));
-            btn.classList.add('tab-active');
-            if (stageImg) {
-                stageImg.style.opacity = '0';
-                setTimeout(() => {
-                    stageImg.src = btn.dataset.img;
-                    stageImg.style.opacity = '1';
-                }, 200);
-            }
-            if (stageLabel) stageLabel.textContent = btn.dataset.label;
-        });
-    });
-
-    /* ── Smooth scroll for anchor links ── */
+    /* ── Smooth Scroll for Links ── */
     document.querySelectorAll('a[href^="#"]').forEach(a => {
         a.addEventListener('click', e => {
-            const target = document.querySelector(a.getAttribute('href'));
+            const href = a.getAttribute('href');
+            if (href === '#') return;
+            const target = document.querySelector(href);
             if (target) {
                 e.preventDefault();
                 target.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -214,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    /* ── Hero Preview image cycling ── */
+    /* ── Hero Preview Image Cycling ── */
     const previewImg = document.getElementById('previewImg');
     const previewImages = ['images/remove-silences.png', 'images/simple-home-ui.png'];
     if (previewImg) {
@@ -226,91 +135,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 previewImg.src = previewImages[idx];
                 previewImg.style.opacity = '1';
             }, 400);
-        }, 5000);
+        }, 6000);
         previewImg.style.transition = 'opacity 0.4s ease';
     }
 
-    /* ── Pro Feature Navigator ── */
-    const pfnItems = document.querySelectorAll('.pfn-item');
-    const pfnPanels = document.querySelectorAll('.pfn-panel');
-
-    if (pfnItems.length > 0 && pfnPanels.length > 0) {
-        let activeFeat = 0;
-
-        const showFeat = (idx) => {
-            activeFeat = idx;
-
-            pfnItems.forEach((item, i) => {
-                item.classList.toggle('pfn-active', i === idx);
-            });
-
-            pfnPanels.forEach((panel, i) => {
-                panel.classList.toggle('pfn-panel-active', i === idx);
-            });
-        };
-
-        pfnItems.forEach((item, i) => {
-            item.addEventListener('click', () => showFeat(i));
-        });
-
-        // Auto-rotate through features every 5 seconds (pause on hover)
-        let autoFeatTimer;
-        const pfnNav = document.querySelector('.pro-feature-nav');
-
-        const startAutoRotate = () => {
-            autoFeatTimer = setInterval(() => {
-                showFeat((activeFeat + 1) % pfnItems.length);
-            }, 5000);
-        };
-
-        const stopAutoRotate = () => clearInterval(autoFeatTimer);
-
-        startAutoRotate();
-        if (pfnNav) {
-            pfnNav.addEventListener('mouseenter', stopAutoRotate);
-            pfnNav.addEventListener('mouseleave', startAutoRotate);
-        }
-    }
-
-    /* ── Installer Tab Toggle ── */
-    const installTabFree = document.getElementById('installTabFree');
-    const installTabPro  = document.getElementById('installTabPro');
-    const stepsFree      = document.getElementById('stepsFree');
-    const stepsPro       = document.getElementById('stepsPro');
-
-    if (installTabFree && installTabPro && stepsFree && stepsPro) {
-        const toggleInstallTab = (type) => {
-            if (type === 'free') {
-                installTabFree.classList.add('tab-active');
-                installTabPro.classList.remove('tab-active');
-                stepsFree.style.display = 'flex';
-                stepsPro.style.display  = 'none';
-            } else {
-                installTabFree.classList.remove('tab-active');
-                installTabPro.classList.add('tab-active');
-                stepsFree.style.display = 'none';
-                stepsPro.style.display  = 'flex';
-            }
-        };
-
-        installTabFree.addEventListener('click', () => toggleInstallTab('free'));
-        installTabPro.addEventListener('click',  () => toggleInstallTab('pro'));
-    }
-
-    /* ── Buy Pro button placeholder (link will be set once Payhip is live) ── */
-    const buyProBtn = document.getElementById('buyProBtn');
-    if (buyProBtn) {
-        buyProBtn.addEventListener('click', (e) => {
-            const href = buyProBtn.getAttribute('href');
-            if (!href || href === '#') {
-                e.preventDefault();
-                // Subtle shake + tooltip to indicate coming soon
-                buyProBtn.style.animation = 'none';
-                buyProBtn.offsetHeight; // reflow
-                buyProBtn.style.animation = 'buyShake 0.4s ease';
-            }
-        });
-    }
-
 });
-
