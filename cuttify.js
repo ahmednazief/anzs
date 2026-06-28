@@ -28,21 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', updateScrollStates, { passive: true });
     updateScrollStates();
 
-    /* ── Cursor glow tracking ── */
-    const glow = document.getElementById('cursorGlow');
-    if (glow) {
-        let mx = window.innerWidth / 2, my = window.innerHeight / 2;
-        let cx = mx, cy = my;
-        document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-        const animCursor = () => {
-            cx += (mx - cx) * 0.08;
-            cy += (my - cy) * 0.08;
-            glow.style.left = cx + 'px';
-            glow.style.top  = cy + 'px';
-            requestAnimationFrame(animCursor);
-        };
-        animCursor();
-    }
 
     /* ── Floating Canvas Particles ── */
     const canvas = document.getElementById('particleCanvas');
@@ -139,4 +124,45 @@ document.addEventListener('DOMContentLoaded', () => {
         previewImg.style.transition = 'opacity 0.4s ease';
     }
 
+    /* ── Download Thank-You & SmartScreen Modal Handler ── */
+    const heroDownloadBtn = document.getElementById('heroDownloadBtn');
+    const downloadModal = document.getElementById('downloadModal');
+    const modalCloseX = document.getElementById('modalCloseX');
+    const modalCloseBtn = document.getElementById('modalCloseBtn');
+    const ssReplica = document.getElementById('ssReplica');
+    const ssMoreInfo = document.getElementById('ssMoreInfo');
+    const stepLinkMoreInfo = document.getElementById('stepLinkMoreInfo');
+    const ssRunBtn = document.getElementById('ssRunBtn');
+    const ssCancelBtn = document.getElementById('ssCancelBtn');
+    const ssCloseMockBtn = document.getElementById('ssCloseMockBtn');
+
+    if (heroDownloadBtn && downloadModal) {
+        heroDownloadBtn.addEventListener('click', (e) => {
+            // Let the download proceed naturally in the background, then show modal
+            setTimeout(() => {
+                downloadModal.classList.add('active');
+                if (ssReplica) ssReplica.classList.remove('expanded');
+            }, 150);
+        });
+    }
+
+    const closeModal = () => {
+        if (downloadModal) downloadModal.classList.remove('active');
+    };
+
+    if (modalCloseX) modalCloseX.addEventListener('click', closeModal);
+    if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
+    if (ssRunBtn) ssRunBtn.addEventListener('click', closeModal);
+    if (ssCancelBtn) ssCancelBtn.addEventListener('click', closeModal);
+    if (ssCloseMockBtn) ssCloseMockBtn.addEventListener('click', closeModal);
+
+    const expandSmartScreen = (e) => {
+        if (e) e.preventDefault();
+        if (ssReplica) ssReplica.classList.add('expanded');
+    };
+
+    if (ssMoreInfo) ssMoreInfo.addEventListener('click', expandSmartScreen);
+    if (stepLinkMoreInfo) stepLinkMoreInfo.addEventListener('click', expandSmartScreen);
+
 });
+
