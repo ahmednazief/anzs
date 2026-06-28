@@ -72,6 +72,8 @@ ul { list-style: none; }
     z-index: 2;
     pointer-events: none;
     opacity: 0.15;
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
 }
 .glow-purple {
     top: -20vw; right: -10vw;
@@ -95,6 +97,8 @@ ul { list-style: none; }
     -webkit-backdrop-filter: blur(16px);
     border-radius: var(--r-md);
     transition: border-color 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out), transform 0.4s var(--ease-out);
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
 }
 
 /* --- TYPOGRAPHY UTILITIES --- */
@@ -748,6 +752,7 @@ ul { list-style: none; }
     pointer-events: none;
     transition: opacity 0.4s var(--ease-out);
     padding: 2rem 5%;
+    will-change: opacity;
 }
 .modal-overlay.active {
     opacity: 1;
@@ -769,6 +774,7 @@ ul { list-style: none; }
     transition: transform 0.4s var(--ease-out);
     scrollbar-width: thin;
     scrollbar-color: rgba(255,255,255,0.1) transparent;
+    will-change: transform;
 }
 .modal-overlay.active .modal-card {
     transform: scale(1) translateY(0);

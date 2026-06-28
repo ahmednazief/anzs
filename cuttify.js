@@ -72,20 +72,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (this.alpha <= 0 || this.life > this.maxLife || this.y < -10) this.reset();
             }
             draw() {
-                ctx.save();
-                ctx.globalAlpha = Math.max(0, this.alpha);
                 const baseColor = COLORS[this.colorIdx];
-                ctx.fillStyle = baseColor + this.alpha + ')';
-                ctx.shadowColor = baseColor + '0.6)';
-                ctx.shadowBlur = 4;
+                const activeAlpha = Math.max(0, this.alpha);
+
+                // Draw outer halo glow
                 ctx.beginPath();
+                ctx.fillStyle = baseColor + (activeAlpha * 0.15) + ')';
+                ctx.arc(this.x, this.y, this.size * 3.5, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Draw inner solid core
+                ctx.beginPath();
+                ctx.fillStyle = baseColor + activeAlpha + ')';
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
-                ctx.restore();
             }
         }
 
-        for (let i = 0; i < 60; i++) particles.push(new Particle());
+        for (let i = 0; i < 45; i++) particles.push(new Particle());
 
         const drawParticles = () => {
             ctx.clearRect(0, 0, W, H);
