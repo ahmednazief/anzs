@@ -139,6 +139,31 @@ ul { list-style: none; }
 .logo-svg {
     width: 28px; height: 28px;
 }
+.nav-logo-separator {
+    margin: 0 0.2rem;
+    color: var(--c-subtle);
+    font-size: 0.95rem;
+    opacity: 0.45;
+    font-weight: 300;
+}
+.cuttify-logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+.cuttify-logo-img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    border-radius: 4px;
+}
+.cuttify-name {
+    font-family: var(--f-display);
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+    color: var(--c-text);
+}
 
 .nav-links {
     display: flex;
@@ -283,11 +308,10 @@ ul { list-style: none; }
     border-radius: var(--r-md);
     overflow: hidden;
     box-shadow: 0 25px 70px rgba(0,0,0,0.65), 0 0 40px rgba(123, 97, 255, 0.04);
-    transform: perspective(1000px) rotateX(4deg);
     transition: transform 0.5s var(--ease-out);
 }
 .preview-window:hover {
-    transform: perspective(1000px) rotateX(1deg) translateY(-4px);
+    transform: translateY(-4px);
 }
 .window-bar {
     height: 38px;
@@ -501,51 +525,146 @@ ul { list-style: none; }
     transform: translateY(0);
 }
 
-/* --- INSTALLATION TIMELINE --- */
-.install-steps {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 1rem;
-}
-.step-card {
-    padding: 2rem;
+/* --- INSTALLATION TIMELINE FLOW GRAPH --- */
+.setup-flow-graph {
     position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2.5rem;
+    max-width: 1000px;
+    margin: 3.5rem auto 1.5rem;
+    padding: 0 1rem;
 }
-.step-num {
+.flow-path-line {
     position: absolute;
-    top: 1.5rem; right: 2rem;
-    font-family: var(--f-display);
-    font-size: 3rem;
-    font-weight: 800;
-    color: rgba(255,255,255,0.03);
-    line-height: 1;
-    user-select: none;
+    top: 40px; /* Aligns with vertical center of 80px nodes */
+    left: 12%;
+    right: 12%;
+    height: 4px;
+    z-index: 5;
+    pointer-events: none;
 }
-.step-card:hover .step-num {
-    color: rgba(123, 97, 255, 0.05);
+.path-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
 }
-.step-icon {
-    width: 42px; height: 42px;
-    background: rgba(123, 97, 255, 0.05);
-    border-radius: var(--r-md);
+.dash-flow-anim {
+    animation: flowDashes 30s linear infinite;
+}
+@keyframes flowDashes {
+    to {
+        stroke-dashoffset: -1000;
+    }
+}
+
+.flow-node-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 10;
+}
+.flow-node {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--c-purple);
-    font-size: 1.1rem;
-    margin-bottom: 1.25rem;
+    font-size: 1.6rem;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.08);
+    transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
 }
-.step-card h3 {
+.flow-node-item:hover .flow-node {
+    transform: scale(1.08);
+}
+.node-num {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #05060b;
+    font-family: var(--f-mono);
+    font-size: 0.78rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Custom glowing nodes */
+.node-purple {
+    background: linear-gradient(135deg, var(--c-purple) 0%, #9061FF 100%);
+    box-shadow: 0 10px 30px rgba(123, 97, 255, 0.25);
+    border-color: rgba(123, 97, 255, 0.4);
+}
+.flow-node-item:hover .node-purple {
+    box-shadow: 0 15px 40px rgba(123, 97, 255, 0.45);
+}
+.node-gold {
+    background: linear-gradient(135deg, var(--c-gold) 0%, #ffde6a 100%);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+    border-color: rgba(212, 175, 55, 0.3);
+}
+.flow-node-item:hover .node-gold {
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+}
+.node-cyan {
+    background: linear-gradient(135deg, var(--c-cyan) 0%, #00f5ff 100%);
+    box-shadow: 0 10px 30px rgba(0, 245, 255, 0.2);
+    border-color: rgba(0, 245, 255, 0.3);
+}
+.flow-node-item:hover .node-cyan {
+    box-shadow: 0 15px 40px rgba(0, 245, 255, 0.4);
+}
+
+.flow-content {
+    background: rgba(10, 12, 22, 0.4);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-md);
+    padding: 1.5rem;
+    transition: all 0.3s;
+    width: 100%;
+}
+.flow-node-item:hover .flow-content {
+    background: rgba(10, 12, 22, 0.65);
+    border-color: rgba(255, 255, 255, 0.12);
+    transform: translateY(-2px);
+}
+.flow-content h3 {
     font-family: var(--f-display);
     font-size: 1.15rem;
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.6rem;
+    color: var(--c-text);
 }
-.step-card p {
-    font-size: 0.9rem;
+.flow-content p {
+    font-size: 0.88rem;
     color: var(--c-muted);
     line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+    .setup-flow-graph {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    .flow-path-line {
+        display: none;
+    }
+    .flow-node {
+        margin-bottom: 1rem;
+    }
 }
 
 /* --- SUPPORT GRID --- */
