@@ -51,10 +51,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const ssRunBtn = document.getElementById('ssRunBtn');
     const ssCancelBtn = document.getElementById('ssCancelBtn');
     const ssCloseMockBtn = document.getElementById('ssCloseMockBtn');
+    const pointerMoreInfo = document.getElementById('pointerMoreInfo');
+    const pointerRunBtn = document.getElementById('pointerRunBtn');
 
     const expandSmartScreen = (e) => {
         if (e) e.preventDefault();
         if (ssReplica) ssReplica.classList.add('expanded');
+        if (pointerMoreInfo) pointerMoreInfo.style.display = 'none';
+        if (pointerRunBtn) pointerRunBtn.style.display = 'flex';
     };
 
     if (ssMoreInfo) ssMoreInfo.addEventListener('click', expandSmartScreen);
