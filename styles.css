@@ -1226,6 +1226,8 @@ body:hover .cursor { opacity: 1; }
 }
 .ft-left p { font-size: 0.82rem; color: var(--muted); }
 .ft-copy { font-family: var(--fm); font-size: 0.72rem; color: var(--subtle); margin-top: 0.3rem; }
+.ft-copy a { color: var(--subtle); text-decoration: none; margin: 0 0.25rem; transition: color 0.2s; }
+.ft-copy a:hover { color: var(--purple); }
 .ft-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
 .ft-links a { font-size: 0.875rem; color: var(--muted); transition: color 0.2s; }
 .ft-links a:hover { color: var(--text); }
