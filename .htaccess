@@ -14,17 +14,21 @@ AddDefaultCharset UTF-8
 
 RewriteEngine On
 
-# Redirect legacy Cutify (single t) URLs to Cuttify (double t)
-RewriteRule ^/?cutify/?$ https://ahmednazif.com/cuttify [R=301,L,NC]
-RewriteRule ^/?cutify\.html$ https://ahmednazif.com/cuttify [R=301,L,NC]
-RewriteRule ^/?cutify-ar/?$ https://ahmednazif.com/cuttify [R=301,L,NC]
-RewriteRule ^/?cutify-ar\.html$ https://ahmednazif.com/cuttify [R=301,L,NC]
+# Redirect Cuttify and legacy Cutify variants to the new subdomain
+RewriteRule ^/?cuttify/?$ https://cuttify.anvum.com/ [R=301,L,NC]
+RewriteRule ^/?cuttify\.html$ https://cuttify.anvum.com/ [R=301,L,NC]
+RewriteRule ^/?cuttify-success/?$ https://cuttify.anvum.com/success [R=301,L,NC]
+RewriteRule ^/?cuttify-success\.html$ https://cuttify.anvum.com/success [R=301,L,NC]
+RewriteRule ^/?cutify/?$ https://cuttify.anvum.com/ [R=301,L,NC]
+RewriteRule ^/?cutify\.html$ https://cuttify.anvum.com/ [R=301,L,NC]
+RewriteRule ^/?cutify-ar/?$ https://cuttify.anvum.com/ [R=301,L,NC]
+RewriteRule ^/?cutify-ar\.html$ https://cuttify.anvum.com/ [R=301,L,NC]
 
-# 1. Redirect /cuttify.html to /cuttify (clean URLs)
+# 1. Redirect standard .html extensions to clean URLs
 RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
 RewriteRule ^ %1 [R=301,L]
 
-# 2. Internally map /cuttify to /cuttify.html
+# 2. Internally map clean URLs to .html files (if they exist)
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.html -f
 RewriteRule ^(.*)$ $1.html [NC,L]
