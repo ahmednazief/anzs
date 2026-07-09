@@ -448,6 +448,27 @@ body:hover .cursor { opacity: 1; }
     margin-bottom: 2.5rem;
 }
 .hero-desc strong { color: var(--text); }
+.hero-desc a {
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+}
+.hero-desc a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background: linear-gradient(135deg, #D4AF37 0%, #EDD87A 45%, #C9A227 100%);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+.hero-desc a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
 
 .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
 

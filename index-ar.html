@@ -83,173 +83,116 @@
     <script type="application/ld+json">
 
     {
-
       "@context": "https://schema.org",
-
-      "@type": "ProfessionalService",
-
-      "name": "أحمد نظيف",
-
-      "image": "https://ahmednazif.com/profile.jpg",
-
-      "@id": "https://ahmednazif.com/#service",
-
-      "url": "https://ahmednazif.com/",
-
-      "description": "أحمد نظيف — صناعة وتحرير فيديوهات ألعاب بمستوى سينمائي، وهندسة زيادة تفاعل واحتفاظ الجمهور، ومؤثرات بصرية متقدمة. التحرير للعالم من قلب مصر.",
-
-      "knowsAbout": [
-
-        "تحرير الفيديو",
-
-        "مرحلة ما بعد الإنتاج",
-
-        "المؤثرات البصرية",
-
-        "محتوى الألعاب",
-
-        "الاحتفاظ بجمهور يوتيوب",
-
-        "تطوير ملحقات بريمير برو",
-
-        "تصميم الصوت",
-
-        "تصحيح الألوان"
-
-      ],
-
-      "address": {
-
-        "@type": "PostalAddress",
-
-        "addressCountry": "EG"
-
-      },
-
-      "geo": {
-
-        "@type": "GeoCoordinates",
-
-        "latitude": 26.8206,
-
-        "longitude": 30.8025
-
-      },
-
-      "openingHoursSpecification": {
-
-        "@type": "OpeningHoursSpecification",
-
-        "dayOfWeek": [
-
-          "Monday",
-
-          "Tuesday",
-
-          "Wednesday",
-
-          "Thursday",
-
-          "Friday",
-
-          "Saturday",
-
-          "Sunday"
-
-        ],
-
-        "opens": "00:00",
-
-        "closes": "23:59"
-
-      },
-
-      "sameAs": [
-
-        "https://www.youtube.com/@Plains"
-
-      ],
-
-      "priceRange": "$$",
-
-      "hasOfferCatalog": {
-
-        "@type": "OfferCatalog",
-
-        "name": "خدمات إنتاج وتحسين الفيديو",
-
-        "itemListElement": [
-
-          {
-
-            "@type": "Offer",
-
-            "itemOffered": {
-
-              "@type": "Service",
-
-              "name": "مونتاج فيديو متقدم وسينمائي",
-
-              "description": "مونتاج احترافي متقدم، وضبط ألوان سينمائي، وضبط إيقاع وسرد القصة — مصمم خصيصاً لجذب انتباه المشاهدين."
-
-            }
-
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://ahmednazif.com/#person",
+          "name": "أحمد نظيف",
+          "url": "https://ahmednazif.com/",
+          "image": "https://ahmednazif.com/profile.jpg",
+          "jobTitle": "Founder",
+          "worksFor": {
+            "@type": "Organization",
+            "name": "ANVUM",
+            "url": "https://anvum.com"
           },
-
-          {
-
-            "@type": "Offer",
-
-            "itemOffered": {
-
-              "@type": "Service",
-
-              "name": "هندسة زيادة الاحتفاظ بالمشاهدين",
-
-              "description": "دراسة إحصائيات الاحتفاظ بالجمهور، وتصميم اللحظات الأكثر جذباً، وضبط سرعة تدفق المشاهد لزيادة وقت المشاهدة لأقصى حد."
-
-            }
-
+          "sameAs": [
+            "https://www.youtube.com/@Plains",
+            "https://anvum.com"
+          ]
+        },
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://ahmednazif.com/#service",
+          "name": "أحمد نظيف",
+          "image": "https://ahmednazif.com/profile.jpg",
+          "url": "https://ahmednazif.com/",
+          "description": "أحمد نظيف — صناعة وتحرير فيديوهات ألعاب بمستوى سينمائي، وهندسة زيادة تفاعل واحتفاظ الجمهور، ومؤثرات بصرية متقدمة. التحرير للعالم من قلب مصر.",
+          "knowsAbout": [
+            "تحرير الفيديو",
+            "مرحلة ما بعد الإنتاج",
+            "المؤثرات البصرية",
+            "محتوى الألعاب",
+            "الاحتفاظ بجمهور يوتيوب",
+            "تطوير ملحقات بريمير برو",
+            "تصميم الصوت",
+            "تصحيح الألوان"
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "EG"
           },
-
-          {
-
-            "@type": "Offer",
-
-            "itemOffered": {
-
-              "@type": "Service",
-
-              "name": "مؤثرات بصرية ورسوم متحركة للألعاب",
-
-              "description": "رسوم متحركة إبداعية، ونصوص متحركة، وانتقالات مخصصة، ومؤثرات احترافية تميز محتواك عن الآخرين."
-
-            }
-
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 26.8206,
+            "longitude": 30.8025
           },
-
-          {
-
-            "@type": "Offer",
-
-            "itemOffered": {
-
-              "@type": "Service",
-
-              "name": "هندسة وتصميم الصوت الاحترافي",
-
-              "description": "عزل الضوضاء، وموازنة الصوت الديناميكية، وإضافة المؤثرات الصوتية والموسيقى التصويرية لخلق تجربة صوتية سينمائية نقية."
-
-            }
-
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday"
+            ],
+            "opens": "00:00",
+            "closes": "23:59"
+          },
+          "priceRange": "$$",
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "خدمات إنتاج وتحسين الفيديو",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "مونتاج فيديو متقدم وسينمائي",
+                  "description": "مونتاج احترافي متقدم، وضبط ألوان سينمائي، وضبط إيقاع وسرد القصة — مصمم خصيصاً لجذب انتباه المشاهدين."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "هندسة زيادة الاحتفاظ بالمشاهدين",
+                  "description": "دراسة إحصائيات الاحتفاظ بالجمهور، وتصميم اللحظات الأكثر جذباً، وضبط سرعة تدفق المشاهد لزيادة وقت المشاهدة لأقصى حد."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "مؤثرات بصرية ورسوم متحركة للألعاب",
+                  "description": "رسوم متحركة إبداعية، ونصوص متحركة، وانتقالات مخصصة، ومؤثرات احترافية تميز محتواك عن الآخرين."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "هندسة وتصميم الصوت الاحترافي",
+                  "description": "عزل الضوضاء، وموازنة الصوت الديناميكية، وإضافة المؤثرات الصوتية والموسيقى التصويرية لخلق تجربة صوتية سينمائية نقية."
+                }
+              }
+            ]
           }
-
-        ]
-
-      }
-
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://anvum.com/#organization",
+          "name": "ANVUM",
+          "url": "https://anvum.com",
+          "founder": {
+            "@id": "https://ahmednazif.com/#person"
+          }
+        }
+      ]
     }
-
     </script>
 
 
@@ -472,7 +415,7 @@
 
             <p class="hero-desc" data-aos data-aos-delay="200">
 
-                أنا <strong>أحمد نظيف</strong> — المونتير خلف قناة <strong>@Plains</strong>. 
+                أنا <strong>أحمد نظيف</strong> — المونتير خلف قناة <strong>@Plains</strong> ومؤسس <strong><a href="https://anvum.com" target="_blank" class="text-gradient">ANVUM</a></strong>. 
 
                 أقوم ببناء مقاطع فيديو ألعاب سريعة الوتيرة ومهندسة للاحتفاظ بالجمهور، تجذب المشاهدين في أول 3 ثوانٍ ولا تتركهم أبدًا.
 
@@ -659,6 +602,8 @@
                 </p>
 
                 <div class="about-pills" data-aos data-aos-delay="240">
+
+                    <span class="pill">🚀 مؤسس ANVUM</span>
 
                     <span class="pill">🎮 تحرير ألعاب</span>
 

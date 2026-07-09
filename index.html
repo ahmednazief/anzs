@@ -130,247 +130,326 @@
       "@context": "https://schema.org",
 
 
-      "@type": "ProfessionalService",
+      "@graph": [
 
 
-      "name": "Ahmed Nazif",
+        {
 
 
-      "image": "https://ahmednazif.com/profile.jpg",
+          "@type": "Person",
 
 
-      "@id": "https://ahmednazif.com/#service",
+          "@id": "https://ahmednazif.com/#person",
 
 
-      "url": "https://ahmednazif.com/",
+          "name": "Ahmed Nazif",
 
 
-      "description": "Ahmed Nazif — Cinema-grade video editing, retention engineering, and VFX for gaming creators. Based in Egypt, editing for the world.",
+          "url": "https://ahmednazif.com/",
 
 
-      "knowsAbout": [
+          "image": "https://ahmednazif.com/profile.jpg",
 
 
-        "Video Editing",
+          "jobTitle": "Founder",
 
 
-        "Post-Production",
+          "worksFor": {
 
 
-        "VFX",
+            "@type": "Organization",
 
 
-        "Gaming Content",
+            "name": "ANVUM",
 
 
-        "YouTube Retention",
-
-
-        "Premiere Pro Plugin Development",
-
-
-        "Sound Design",
-
-
-        "Color Grading"
-
-
-      ],
-
-
-      "address": {
-
-
-        "@type": "PostalAddress",
-
-
-        "addressCountry": "EG"
-
-
-      },
-
-
-      "geo": {
-
-
-        "@type": "GeoCoordinates",
-
-
-        "latitude": 26.8206,
-
-
-        "longitude": 30.8025
-
-
-      },
-
-
-      "openingHoursSpecification": {
-
-
-        "@type": "OpeningHoursSpecification",
-
-
-        "dayOfWeek": [
-
-
-          "Monday",
-
-
-          "Tuesday",
-
-
-          "Wednesday",
-
-
-          "Thursday",
-
-
-          "Friday",
-
-
-          "Saturday",
-
-
-          "Sunday"
-
-
-        ],
-
-
-        "opens": "00:00",
-
-
-        "closes": "23:59"
-
-
-      },
-
-
-      "sameAs": [
-
-
-        "https://www.youtube.com/@Plains"
-
-
-      ],
-
-
-      "priceRange": "$$",
-
-
-      "hasOfferCatalog": {
-
-
-        "@type": "OfferCatalog",
-
-
-        "name": "Video Production & Optimization Services",
-
-
-        "itemListElement": [
-
-
-          {
-
-
-            "@type": "Offer",
-
-
-            "itemOffered": {
-
-
-              "@type": "Service",
-
-
-              "name": "Advanced Video Editing",
-
-
-              "description": "Premium timing manipulation, color mapping, structural pacing, and narrative assembly — built for competitive content that retains viewers."
-
-
-            }
+            "url": "https://anvum.com"
 
 
           },
 
 
-          {
+          "sameAs": [
 
 
-            "@type": "Offer",
+            "https://www.youtube.com/@Plains",
 
 
-            "itemOffered": {
+            "https://anvum.com"
 
 
-              "@type": "Service",
+          ]
 
 
-              "name": "Retention Optimization",
+        },
 
 
-              "description": "Analytics-based pacing audits, hook design, visual speed adjustments, and audience curve optimization to maximize watch time."
+        {
 
 
-            }
+          "@type": "ProfessionalService",
+
+
+          "@id": "https://ahmednazif.com/#service",
+
+
+          "name": "Ahmed Nazif",
+
+
+          "image": "https://ahmednazif.com/profile.jpg",
+
+
+          "url": "https://ahmednazif.com/",
+
+
+          "description": "Ahmed Nazif — Cinema-grade video editing, retention engineering, and VFX for gaming creators. Based in Egypt, editing for the world.",
+
+
+          "knowsAbout": [
+
+
+            "Video Editing",
+
+
+            "Post-Production",
+
+
+            "VFX",
+
+
+            "Gaming Content",
+
+
+            "YouTube Retention",
+
+
+            "Premiere Pro Plugin Development",
+
+
+            "Sound Design",
+
+
+            "Color Grading"
+
+
+          ],
+
+
+          "address": {
+
+
+            "@type": "PostalAddress",
+
+
+            "addressCountry": "EG"
 
 
           },
 
 
-          {
+          "geo": {
 
 
-            "@type": "Offer",
+            "@type": "GeoCoordinates",
 
 
-            "itemOffered": {
+            "latitude": 26.8206,
 
 
-              "@type": "Service",
-
-
-              "name": "Esports VFX & Graphics",
-
-
-              "description": "Comedic motion graphics, animated subtitles, custom transitions, and professional overlays that make your content stand out."
-
-
-            }
+            "longitude": 30.8025
 
 
           },
 
 
-          {
+          "openingHoursSpecification": {
 
 
-            "@type": "Offer",
+            "@type": "OpeningHoursSpecification",
 
 
-            "itemOffered": {
+            "dayOfWeek": [
 
 
-              "@type": "Service",
+              "Monday",
 
 
-              "name": "Pro Audio Engineering",
+              "Tuesday",
 
 
-              "description": "Voice denoising, dynamic compression, SFX boosting, soundtrack pacing, and spatial ambient layers for cinematic clarity."
+              "Wednesday",
 
 
-            }
+              "Thursday",
+
+
+              "Friday",
+
+
+              "Saturday",
+
+
+              "Sunday"
+
+
+            ],
+
+
+            "opens": "00:00",
+
+
+            "closes": "23:59"
+
+
+          },
+
+
+          "priceRange": "$$",
+
+
+          "hasOfferCatalog": {
+
+
+            "@type": "OfferCatalog",
+
+
+            "name": "Video Production & Optimization Services",
+
+
+            "itemListElement": [
+
+
+              {
+
+
+                "@type": "Offer",
+
+
+                "itemOffered": {
+
+
+                  "@type": "Service",
+
+
+                  "name": "Advanced Video Editing",
+
+
+                  "description": "Premium timing manipulation, color mapping, structural pacing, and narrative assembly — built for competitive content that retains viewers."
+
+
+                }
+
+
+              },
+
+
+              {
+
+
+                "@type": "Offer",
+
+
+                "itemOffered": {
+
+
+                  "@type": "Service",
+
+
+                  "name": "Retention Optimization",
+
+
+                  "description": "Analytics-based pacing audits, hook design, visual speed adjustments, and audience curve optimization to maximize watch time."
+
+
+                }
+
+
+              },
+
+
+              {
+
+
+                "@type": "Offer",
+
+
+                "itemOffered": {
+
+
+                  "@type": "Service",
+
+
+                  "name": "Esports VFX & Graphics",
+
+
+                  "description": "Comedic motion graphics, animated subtitles, custom transitions, and professional overlays that make your content stand out."
+
+
+                }
+
+
+              },
+
+
+              {
+
+
+                "@type": "Offer",
+
+
+                "itemOffered": {
+
+
+                  "@type": "Service",
+
+
+                  "name": "Pro Audio Engineering",
+
+
+                  "description": "Voice denoising, dynamic compression, SFX boosting, soundtrack pacing, and spatial ambient layers for cinematic clarity."
+
+
+                }
+
+
+              }
+
+
+            ]
 
 
           }
 
 
-        ]
+        },
 
 
-      }
+        {
+
+
+          "@type": "Organization",
+
+
+          "@id": "https://anvum.com/#organization",
+
+
+          "name": "ANVUM",
+
+
+          "url": "https://anvum.com",
+
+
+          "founder": {
+
+
+            "@id": "https://ahmednazif.com/#person"
+          }
+
+
+        }
+
+
+      ]
 
 
     }
@@ -709,7 +788,7 @@
             <p class="hero-desc" data-aos data-aos-delay="200">
 
 
-                I'm <strong>Ahmed Nazif</strong> — the editor behind <strong>@Plains</strong>.
+                I'm <strong>Ahmed Nazif</strong> — the editor behind <strong>@Plains</strong> and founder of <strong><a href="https://anvum.com" target="_blank" class="text-gradient">ANVUM</a></strong>.
 
 
                 I build fast-paced, retention-engineered gaming videos that hook viewers
@@ -1010,6 +1089,9 @@
 
 
                 <div class="about-pills" data-aos data-aos-delay="240">
+
+
+                    <span class="pill">🚀 Founder of ANVUM</span>
 
 
                     <span class="pill">🎮 Gaming Editing</span>
