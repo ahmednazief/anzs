@@ -296,7 +296,7 @@
             border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: var(--radius-md);
             padding: 6px;
-            min-width: 170px;
+            min-width: 175px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.7);
             display: none;
             flex-direction: column;
@@ -779,11 +779,11 @@
 
                     <!-- Dropdown Quality Menu -->
                     <div class="quality-menu" id="qualityMenu">
-                        <button class="quality-option active" data-src="voral-stream.mp4" data-label="1080P Fast">
+                        <button class="quality-option active" data-src="/voral-stream.mp4" data-label="1080P Fast">
                             <span>⚡ 1080p Fast Stream</span>
                             <span class="tag">Instant</span>
                         </button>
-                        <button class="quality-option" data-src="voral-test.mp4" data-label="Master (67MB)">
+                        <button class="quality-option" data-src="/voral-test.mp4" data-label="Master (67MB)">
                             <span>💎 Master Render</span>
                             <span class="tag">67MB</span>
                         </button>
@@ -797,9 +797,8 @@
 
             <!-- Viewport & Video -->
             <div class="video-viewport" id="viewport">
-                <video id="mainVideo" playsinline preload="metadata">
-                    <!-- Default to fast web-optimized stream -->
-                    <source src="voral-stream.mp4" type="video/mp4">
+                <video id="mainVideo" playsinline webkit-playsinline preload="auto" src="/voral-stream.mp4">
+                    <source src="/voral-stream.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
 
@@ -846,7 +845,7 @@
 
         <!-- BIG DOWNLOAD BUTTON (ALWAYS DOWNLOADS MASTER RENDER) -->
         <div class="actions-section">
-            <a href="voral-test.mp4" download="Voral_Test_Edit_AhmedNazif.mp4" class="btn-download-master" id="downloadBtn">
+            <a href="/voral-test.mp4" download="Voral_Test_Edit_AhmedNazif.mp4" class="btn-download-master" id="downloadBtn">
                 <div class="dl-icon">
                     <i class="fa-solid fa-arrow-down-to-bracket"></i>
                 </div>
@@ -907,10 +906,12 @@
         const speeds = [1.0, 1.25, 1.5, 2.0];
         let speedIdx = 0;
 
-        // Toggle Play / Pause
         function togglePlay() {
             if (video.paused || video.ended) {
-                video.play();
+                const p = video.play();
+                if (p !== undefined) {
+                    p.catch(err => console.log('Playback error:', err));
+                }
             } else {
                 video.pause();
             }
@@ -919,7 +920,7 @@
         viewport.addEventListener('click', (e) => {
             qualityMenu.classList.remove('show');
             centerBtn.classList.remove('pulse-pop');
-            void centerBtn.offsetWidth; // trigger reflow
+            void centerBtn.offsetWidth;
             centerBtn.classList.add('pulse-pop');
             togglePlay();
         });
@@ -948,7 +949,6 @@
             clearTimeout(hideTimeout);
         });
 
-        // Time updates & progress
         video.addEventListener('timeupdate', () => {
             if (!video.duration) return;
             const pct = (video.currentTime / video.duration) * 100;
@@ -975,7 +975,6 @@
             centerIcon.className = 'fa-solid fa-rotate-right';
         });
 
-        // Seeker click / drag
         let isSeeking = false;
         seeker.addEventListener('click', seek);
         seeker.addEventListener('mousedown', () => isSeeking = true);
@@ -991,7 +990,6 @@
             video.currentTime = pos * video.duration;
         }
 
-        // Mute toggle
         muteBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             video.muted = !video.muted;
@@ -1008,7 +1006,6 @@
             }
         }
 
-        // Quality Switcher
         qualityToggleBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             qualityMenu.classList.toggle('show');
@@ -1020,18 +1017,21 @@
                 const newSrc = opt.getAttribute('data-src');
                 const label = opt.getAttribute('data-label');
 
-                if (video.src.endsWith(newSrc)) {
+                if (video.src.endsWith(newSrc) || video.currentSrc.endsWith(newSrc)) {
                     qualityMenu.classList.remove('show');
                     return;
                 }
 
-                // Preserve playback state
                 const currentTime = video.currentTime;
                 const isPlaying = !video.paused;
 
                 video.src = newSrc;
+                video.load();
                 video.currentTime = currentTime;
-                if (isPlaying) video.play();
+                if (isPlaying) {
+                    const p = video.play();
+                    if (p !== undefined) p.catch(err => console.log(err));
+                }
 
                 document.querySelectorAll('.quality-option').forEach(o => o.classList.remove('active'));
                 opt.classList.add('active');
@@ -1048,7 +1048,6 @@
             }
         });
 
-        // Speed toggle
         speedBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             speedIdx = (speedIdx + 1) % speeds.length;
@@ -1057,7 +1056,6 @@
             speedBtn.textContent = newSpeed.toFixed(1) + 'x';
         });
 
-        // Fullscreen
         fsBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             if (!document.fullscreenElement) {
@@ -1077,7 +1075,6 @@
             }
         });
 
-        // Auto-hide controls when playing
         function resetHideTimer() {
             clearTimeout(hideTimeout);
             player.classList.remove('hide-controls');
@@ -1091,7 +1088,6 @@
         player.addEventListener('mousemove', resetHideTimer);
         player.addEventListener('touchstart', resetHideTimer, { passive: true });
 
-        // Helper format time
         function formatTime(s) {
             if (isNaN(s)) return '0:00';
             const mins = Math.floor(s / 60);
@@ -1099,7 +1095,6 @@
             return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
         }
 
-        // Copy Link
         function copyLink() {
             navigator.clipboard.writeText(window.location.href).then(() => {
                 showToast("Link copied to clipboard!");

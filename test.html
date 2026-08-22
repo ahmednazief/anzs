@@ -295,7 +295,7 @@
             border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: var(--radius-md);
             padding: 6px;
-            min-width: 170px;
+            min-width: 175px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.7);
             display: none;
             flex-direction: column;
@@ -782,7 +782,7 @@
             </div>
 
             <div class="video-viewport" id="viewport">
-                <video id="mainVideo" playsinline preload="metadata">
+                <video id="mainVideo" playsinline webkit-playsinline preload="auto" src="/voral-stream.mp4">
                     <source src="/voral-stream.mp4" type="video/mp4" id="videoSource">
                     Your browser does not support the video tag.
                 </video>
@@ -917,7 +917,10 @@
 
         function togglePlay() {
             if (video.paused || video.ended) {
-                video.play();
+                const p = video.play();
+                if (p !== undefined) {
+                    p.catch(err => console.log('Playback error:', err));
+                }
             } else {
                 video.pause();
             }
@@ -1023,7 +1026,7 @@
                 const newSrc = opt.getAttribute('data-src');
                 const label = opt.getAttribute('data-label');
 
-                if (video.src.endsWith(newSrc)) {
+                if (video.src.endsWith(newSrc) || video.currentSrc.endsWith(newSrc)) {
                     qualityMenu.classList.remove('show');
                     return;
                 }
@@ -1032,8 +1035,12 @@
                 const isPlaying = !video.paused;
 
                 video.src = newSrc;
+                video.load();
                 video.currentTime = currentTime;
-                if (isPlaying) video.play();
+                if (isPlaying) {
+                    const p = video.play();
+                    if (p !== undefined) p.catch(err => console.log(err));
+                }
 
                 document.querySelectorAll('.quality-option').forEach(o => o.classList.remove('active'));
                 opt.classList.add('active');
