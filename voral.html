@@ -368,51 +368,46 @@
             transform: scale(1.08);
         }
 
-        /* Big Play/Pause Center Icon (TikTok/Reel Style) */
+        /* ── Big Play Center Icon (Reels/TikTok Style) ── */
         .play-center-btn {
             position: absolute;
-            width: 64px;
-            height: 64px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.7);
+            width: 68px;
+            height: 68px;
             border-radius: 50%;
-            background: rgba(13, 16, 26, 0.7);
+            background: rgba(13, 16, 26, 0.75);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1.5px solid rgba(255, 255, 255, 0.25);
             box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 25px var(--purple-glow);
             color: #ffffff;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             display: flex;
             align-items: center;
             justify-content: center;
             pointer-events: none;
             z-index: 15;
-            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s var(--ease);
             opacity: 0;
-            transform: scale(0.7);
+            transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.22s var(--ease);
         }
 
         .play-center-btn i {
-            margin-left: 3px;
+            margin-left: 4px; /* Optical center for triangle */
         }
 
-        .play-center-btn.is-pause i {
-            margin-left: 0;
-        }
-
+        /* When PAUSED: Show big play button */
         .custom-player.paused .play-center-btn {
             opacity: 1;
-            transform: scale(1);
+            transform: translate(-50%, -50%) scale(1);
         }
 
-        .play-center-btn.pulse-pop {
-            opacity: 1 !important;
-            animation: popFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        @keyframes popFade {
-            0% { transform: scale(0.8); opacity: 0.9; }
-            50% { transform: scale(1.2); opacity: 1; }
-            100% { transform: scale(1.4); opacity: 0; }
+        /* When PLAYING: Completely disappear */
+        .custom-player.playing .play-center-btn {
+            opacity: 0 !important;
+            transform: translate(-50%, -50%) scale(0.6) !important;
+            pointer-events: none;
         }
 
         /* Floating Bespoke Bottom Control Bar */
@@ -766,7 +761,7 @@
             </div>
         </div>
 
-        <!-- BESPOKE 9:16 VERTICAL VIDEO PLAYER WITH QUALITY SWITCHER -->
+        <!-- BESPOKE 9:16 VERTICAL VIDEO PLAYER -->
         <div class="custom-player paused" id="player">
             <!-- Top Overlay: Quality Switcher & Mute -->
             <div class="player-top-overlay">
@@ -802,7 +797,7 @@
                     Your browser does not support the video tag.
                 </video>
 
-                <!-- Center Play/Pause Ripple Button -->
+                <!-- Center Play Triangle Icon (Shows only when paused) -->
                 <div class="play-center-btn" id="centerBtn">
                     <i class="fa-solid fa-play" id="centerIcon"></i>
                 </div>
@@ -886,8 +881,6 @@
         const viewport = document.getElementById('viewport');
         const playBtn = document.getElementById('playBtn');
         const playIcon = document.getElementById('playIcon');
-        const centerBtn = document.getElementById('centerBtn');
-        const centerIcon = document.getElementById('centerIcon');
         const muteBtn = document.getElementById('muteBtn');
         const muteIcon = document.getElementById('muteIcon');
         const speedBtn = document.getElementById('speedBtn');
@@ -906,6 +899,7 @@
         const speeds = [1.0, 1.25, 1.5, 2.0];
         let speedIdx = 0;
 
+        // Toggle Play / Pause
         function togglePlay() {
             if (video.paused || video.ended) {
                 const p = video.play();
@@ -919,9 +913,6 @@
 
         viewport.addEventListener('click', (e) => {
             qualityMenu.classList.remove('show');
-            centerBtn.classList.remove('pulse-pop');
-            void centerBtn.offsetWidth;
-            centerBtn.classList.add('pulse-pop');
             togglePlay();
         });
 
@@ -934,8 +925,6 @@
             player.classList.remove('paused');
             player.classList.add('playing');
             playIcon.className = 'fa-solid fa-pause';
-            centerIcon.className = 'fa-solid fa-pause';
-            centerBtn.classList.add('is-pause');
             resetHideTimer();
         });
 
@@ -944,8 +933,6 @@
             player.classList.add('paused');
             player.classList.remove('hide-controls');
             playIcon.className = 'fa-solid fa-play';
-            centerIcon.className = 'fa-solid fa-play';
-            centerBtn.classList.remove('is-pause');
             clearTimeout(hideTimeout);
         });
 
@@ -972,9 +959,9 @@
             player.classList.add('paused');
             player.classList.remove('hide-controls');
             playIcon.className = 'fa-solid fa-rotate-right';
-            centerIcon.className = 'fa-solid fa-rotate-right';
         });
 
+        // Seeker drag & click
         let isSeeking = false;
         seeker.addEventListener('click', seek);
         seeker.addEventListener('mousedown', () => isSeeking = true);
@@ -990,6 +977,7 @@
             video.currentTime = pos * video.duration;
         }
 
+        // Mute
         muteBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             video.muted = !video.muted;
@@ -1006,6 +994,7 @@
             }
         }
 
+        // Quality Switcher
         qualityToggleBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             qualityMenu.classList.toggle('show');
@@ -1048,6 +1037,7 @@
             }
         });
 
+        // Speed
         speedBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             speedIdx = (speedIdx + 1) % speeds.length;
@@ -1056,6 +1046,7 @@
             speedBtn.textContent = newSpeed.toFixed(1) + 'x';
         });
 
+        // Fullscreen
         fsBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             if (!document.fullscreenElement) {
@@ -1075,19 +1066,21 @@
             }
         });
 
+        // Auto-hide controls when playing
         function resetHideTimer() {
             clearTimeout(hideTimeout);
             player.classList.remove('hide-controls');
             if (!video.paused && !qualityMenu.classList.contains('show')) {
                 hideTimeout = setTimeout(() => {
                     player.classList.add('hide-controls');
-                }, 2200);
+                }, 1800);
             }
         }
 
         player.addEventListener('mousemove', resetHideTimer);
         player.addEventListener('touchstart', resetHideTimer, { passive: true });
 
+        // Helper format time
         function formatTime(s) {
             if (isNaN(s)) return '0:00';
             const mins = Math.floor(s / 60);
@@ -1095,6 +1088,7 @@
             return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
         }
 
+        // Copy Link
         function copyLink() {
             navigator.clipboard.writeText(window.location.href).then(() => {
                 showToast("Link copied to clipboard!");
