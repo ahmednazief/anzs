@@ -373,7 +373,7 @@ function cfTransmit() {
     const body = encodeURIComponent(
         `${isAr ? 'الاسم' : 'Name'}: ${cfData.name}\n${isAr ? 'البريد الإلكتروني' : 'Email'}: ${cfData.email}\n${isAr ? 'المشروع' : 'Project'}: ${cfData.type}\n\n${cfData.msg}`
     );
-    window.location.href = `mailto:ahmednazief@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:contact@ahmednazif.com?subject=${subject}&body=${body}`;
     const sent = document.getElementById('cfSent');
     const launch = document.getElementById('cfLaunch');
     if (sent)   { sent.style.display   = 'flex'; }
