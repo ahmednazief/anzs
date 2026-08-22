@@ -160,7 +160,6 @@
             box-shadow: 0 0 8px #34d399;
         }
 
-        /* ── TITLE ── */
         .title-section {
             text-align: center;
             margin-top: 14px;
@@ -244,23 +243,104 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            z-index: 10;
+            z-index: 25;
             pointer-events: none;
             transition: opacity 0.3s var(--ease);
         }
 
-        .resolution-chip {
-            background: rgba(0, 0, 0, 0.55);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+        .quality-wrapper {
+            position: relative;
+            pointer-events: auto;
+        }
+
+        .quality-toggle-btn {
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             color: #fff;
             font-family: var(--font-mono);
             font-size: 0.68rem;
             font-weight: 600;
-            padding: 4px 10px;
+            padding: 5px 12px;
             border-radius: var(--radius-pill);
-            letter-spacing: 0.04em;
+            letter-spacing: 0.03em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s var(--ease);
+        }
+
+        .quality-toggle-btn:hover {
+            background: rgba(139, 92, 246, 0.3);
+            border-color: var(--purple-light);
+        }
+
+        .quality-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #34d399;
+            box-shadow: 0 0 6px #34d399;
+        }
+
+        .quality-menu {
+            position: absolute;
+            top: 34px;
+            left: 0;
+            background: rgba(10, 14, 22, 0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: var(--radius-md);
+            padding: 6px;
+            min-width: 170px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            z-index: 30;
+        }
+
+        .quality-menu.show {
+            display: flex;
+        }
+
+        .quality-option {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 8px 10px;
+            border-radius: 8px;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.15s var(--ease);
+        }
+
+        .quality-option:hover {
+            background: rgba(139, 92, 246, 0.2);
+            color: #fff;
+        }
+
+        .quality-option.active {
+            color: #fff;
+            background: rgba(139, 92, 246, 0.35);
+            font-weight: 700;
+        }
+
+        .quality-option span.tag {
+            font-size: 0.6rem;
+            color: var(--text-dim);
+        }
+
+        .quality-option.active span.tag {
+            color: var(--purple-light);
         }
 
         .sound-indicator {
@@ -670,22 +750,40 @@
             <h1 class="title">
                 <span class="client-name" id="clientName">Voral</span> — Test Edit
             </h1>
-            <div class="specs-line" id="specsLine">
+            <div class="specs-line">
                 9:16 VERTICAL SHORT • 30 FPS • MASTER RENDER
             </div>
         </div>
 
         <div class="custom-player paused" id="player">
             <div class="player-top-overlay">
-                <div class="resolution-chip">1080P • 30FPS</div>
+                <div class="quality-wrapper">
+                    <button class="quality-toggle-btn" id="qualityToggleBtn" title="Change Video Quality">
+                        <div class="quality-dot"></div>
+                        <span id="curQualityLabel">1080P Fast</span>
+                        <i class="fa-solid fa-chevron-down" style="font-size: 0.55rem; opacity: 0.7;"></i>
+                    </button>
+
+                    <div class="quality-menu" id="qualityMenu">
+                        <button class="quality-option active" data-src="/voral-stream.mp4" data-label="1080P Fast">
+                            <span>⚡ 1080p Fast Stream</span>
+                            <span class="tag">Instant</span>
+                        </button>
+                        <button class="quality-option" data-src="/voral-test.mp4" data-label="Master (67MB)">
+                            <span>💎 Master Render</span>
+                            <span class="tag">67MB</span>
+                        </button>
+                    </div>
+                </div>
+
                 <button class="sound-indicator" id="muteBtn" title="Toggle Sound">
                     <i class="fa-solid fa-volume-high" id="muteIcon"></i>
                 </button>
             </div>
 
             <div class="video-viewport" id="viewport">
-                <video id="mainVideo" playsinline preload="auto">
-                    <source src="/voral-test.mp4" type="video/mp4" id="videoSource">
+                <video id="mainVideo" playsinline preload="metadata">
+                    <source src="/voral-stream.mp4" type="video/mp4" id="videoSource">
                     Your browser does not support the video tag.
                 </video>
 
@@ -733,7 +831,7 @@
                 </div>
                 <div class="dl-content">
                     <span class="dl-title">Download The Test Video</span>
-                    <span class="dl-sub" id="downloadSub">MP4 • 9:16 Vertical Short • 30 FPS • 67.4 MB</span>
+                    <span class="dl-sub" id="downloadSub">MP4 • 9:16 Vertical Short • 30 FPS • 67.4 MB Master</span>
                 </div>
             </a>
 
@@ -756,7 +854,7 @@
 
     <div id="toast" class="toast">
         <i class="fa-solid fa-check" style="color: #34d399;"></i>
-        <span>Link copied to clipboard!</span>
+        <span id="toastMsg">Link copied to clipboard!</span>
     </div>
 
     <script>
@@ -777,6 +875,9 @@
         const bufferBar = document.getElementById('bufferBar');
         const curTime = document.getElementById('curTime');
         const durTime = document.getElementById('durTime');
+        const qualityToggleBtn = document.getElementById('qualityToggleBtn');
+        const qualityMenu = document.getElementById('qualityMenu');
+        const curQualityLabel = document.getElementById('curQualityLabel');
 
         let hideTimeout;
         const speeds = [1.0, 1.25, 1.5, 2.0];
@@ -785,8 +886,8 @@
         document.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const client = urlParams.get('client') || urlParams.get('c') || "Voral";
-            const videoParam = urlParams.get('video') || urlParams.get('v') || "/voral-test.mp4";
-            const downloadParam = urlParams.get('download') || urlParams.get('d') || videoParam;
+            const videoParam = urlParams.get('video') || urlParams.get('v') || "/voral-stream.mp4";
+            const downloadParam = urlParams.get('download') || urlParams.get('d') || "/voral-test.mp4";
             const yt = urlParams.get('yt') || urlParams.get('youtube');
 
             document.getElementById('clientName').textContent = client;
@@ -823,6 +924,7 @@
         }
 
         viewport.addEventListener('click', (e) => {
+            qualityMenu.classList.remove('show');
             centerBtn.classList.remove('pulse-pop');
             void centerBtn.offsetWidth;
             centerBtn.classList.add('pulse-pop');
@@ -910,6 +1012,44 @@
             }
         }
 
+        qualityToggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            qualityMenu.classList.toggle('show');
+        });
+
+        document.querySelectorAll('.quality-option').forEach(opt => {
+            opt.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const newSrc = opt.getAttribute('data-src');
+                const label = opt.getAttribute('data-label');
+
+                if (video.src.endsWith(newSrc)) {
+                    qualityMenu.classList.remove('show');
+                    return;
+                }
+
+                const currentTime = video.currentTime;
+                const isPlaying = !video.paused;
+
+                video.src = newSrc;
+                video.currentTime = currentTime;
+                if (isPlaying) video.play();
+
+                document.querySelectorAll('.quality-option').forEach(o => o.classList.remove('active'));
+                opt.classList.add('active');
+                curQualityLabel.textContent = label;
+                qualityMenu.classList.remove('show');
+
+                showToast(`Switched to ${label}`);
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!qualityMenu.contains(e.target) && e.target !== qualityToggleBtn) {
+                qualityMenu.classList.remove('show');
+            }
+        });
+
         speedBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             speedIdx = (speedIdx + 1) % speeds.length;
@@ -940,7 +1080,7 @@
         function resetHideTimer() {
             clearTimeout(hideTimeout);
             player.classList.remove('hide-controls');
-            if (!video.paused) {
+            if (!video.paused && !qualityMenu.classList.contains('show')) {
                 hideTimeout = setTimeout(() => {
                     player.classList.add('hide-controls');
                 }, 2200);
@@ -959,10 +1099,15 @@
 
         function copyLink() {
             navigator.clipboard.writeText(window.location.href).then(() => {
-                const toast = document.getElementById('toast');
-                toast.classList.add('show');
-                setTimeout(() => toast.classList.remove('show'), 2500);
+                showToast("Link copied to clipboard!");
             });
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2500);
         }
     </script>
 </body>
