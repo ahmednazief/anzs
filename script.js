@@ -1,6 +1,5 @@
 /* ═══════════════════════════════════════════════════
-   Ahmed Nazif Portfolio — Script v5.0
-   Ahmed Nazif
+   Ahmed Nazif Portfolio — Script v7.5
 ═══════════════════════════════════════════════════ */
 
 // Clean tracking parameters from URL
@@ -29,50 +28,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const mnClose = document.getElementById('mnClose');
 
     window.addEventListener('scroll', () => {
-        nav.classList.toggle('scrolled', window.scrollY > 50);
+        if (nav) nav.classList.toggle('scrolled', window.scrollY > 50);
     }, { passive: true });
 
-    burger && burger.addEventListener('click', () => mNav.classList.add('open'));
-    mnClose && mnClose.addEventListener('click', () => mNav.classList.remove('open'));
-    mNav.querySelectorAll('.mn-link').forEach(l => l.addEventListener('click', () => mNav.classList.remove('open')));
-
-    /* ════════════════════════════════
-       LUT COMPARE SLIDER
-    ════════════════════════════════ */
-    const compare  = document.getElementById('pcCompare');
-    const divider  = document.getElementById('pcDivider');
-    const graded   = document.getElementById('pcGraded');
-
-    if (compare && divider && graded) {
-        let dragging = false;
-        let pos = 50; // %
-
-        const setPos = (x) => {
-            const rect = compare.getBoundingClientRect();
-            pos = Math.min(100, Math.max(0, ((x - rect.left) / rect.width) * 100));
-            divider.style.left = pos + '%';
-            graded.style.clipPath = `inset(0 0 0 ${pos}%)`;
-        };
-
-        setPos(compare.getBoundingClientRect().left + compare.offsetWidth * 0.5);
-
-        compare.addEventListener('mousedown',  () => dragging = true);
-        compare.addEventListener('touchstart', () => dragging = true, { passive: true });
-        window.addEventListener('mouseup',   () => dragging = false);
-        window.addEventListener('touchend',  () => dragging = false);
-
-        window.addEventListener('mousemove', e => { if (dragging) setPos(e.clientX); });
-        window.addEventListener('touchmove', e => { if (dragging) setPos(e.touches[0].clientX); }, { passive: true });
-
-        // Auto-animate when not interacting
-        let autoDir = 1, autoPos = 50;
-        setInterval(() => {
-            if (!dragging) {
-                autoPos += autoDir * 0.3;
-                if (autoPos > 75 || autoPos < 25) autoDir *= -1;
-                setPos(compare.getBoundingClientRect().left + compare.offsetWidth * (autoPos / 100));
-            }
-        }, 16);
+    if (burger && mNav) burger.addEventListener('click', () => mNav.classList.add('open'));
+    if (mnClose && mNav) mnClose.addEventListener('click', () => mNav.classList.remove('open'));
+    if (mNav) {
+        mNav.querySelectorAll('.mn-link').forEach(l => l.addEventListener('click', () => mNav.classList.remove('open')));
     }
 
     /* ════════════════════════════════
@@ -90,62 +52,28 @@ document.addEventListener('DOMContentLoaded', () => {
     aosEls.forEach(el => aosObs.observe(el));
 
     /* ════════════════════════════════
-       STAT COUNTERS
-    ════════════════════════════════ */
-    const formatNum = (n) => {
-        if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
-        if (n >= 1000)    return (n / 1000).toFixed(0)   + 'K';
-        return n.toString();
-    };
-
-    const counters = document.querySelectorAll('.sg-num[data-target]');
-    const cntObs = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const el = entry.target;
-                const target = parseInt(el.dataset.target, 10);
-                const prefix = el.dataset.prefix || '';
-                const suffix = el.dataset.suffix || '';
-                const duration = 1600;
-                const start = performance.now();
-                const tick = (now) => {
-                    const t = Math.min((now - start) / duration, 1);
-                    const eased = 1 - Math.pow(1 - t, 4);
-                    el.textContent = prefix + formatNum(Math.round(eased * target)) + suffix;
-                    if (t < 1) requestAnimationFrame(tick);
-                };
-                requestAnimationFrame(tick);
-                cntObs.unobserve(el);
-            }
-        });
-    }, { threshold: 0.5 });
-    counters.forEach(c => cntObs.observe(c));
-
-        /* ════════════════════════════════
        POLISHED CINEMA VIDEO CONTROLLER
     ════════════════════════════════ */
-    const heroVideo       = document.getElementById('heroVideo');
-    const heroFrame       = document.getElementById('heroFrame');
-    const heroControls    = document.getElementById('heroControls');
-    const heroPlayPauseBtn= document.getElementById('heroPlayPauseBtn');
-    const heroPlayPauseIcon=document.getElementById('heroPlayPauseIcon');
-    const heroCenterPlay  = document.getElementById('heroCenterPlay');
-    const heroRipple      = document.getElementById('heroRipple');
-    const heroRippleIcon  = document.getElementById('heroRippleIcon');
-    const heroSoundBtn    = document.getElementById('heroSoundBtn');
-    const heroSoundIcon   = document.getElementById('heroSoundIcon');
-    const heroVolSlider   = document.getElementById('heroVolSlider');
-    const heroVolWrap     = document.getElementById('heroVolWrap');
-    const heroCurTime     = document.getElementById('heroCurTime');
-    const heroDurTime     = document.getElementById('heroDurTime');
-    const heroSeeker      = document.getElementById('heroSeeker');
-    const heroSeekerTrack = document.getElementById('heroSeekerTrack');
-    const heroProg        = document.getElementById('heroProg');
-    const heroBuffer      = document.getElementById('heroBuffer');
-    const heroSeekerTip   = document.getElementById('heroSeekerTip');
-    const heroFsBtn       = document.getElementById('heroFsBtn');
-    const heroFsIcon      = document.getElementById('heroFsIcon');
-    const heroFullBtn     = document.getElementById('heroFullBtn');
+    const heroVideo        = document.getElementById('heroVideo');
+    const heroFrame        = document.getElementById('heroFrame');
+    const heroPlayPauseBtn = document.getElementById('heroPlayPauseBtn');
+    const heroPlayPauseIcon= document.getElementById('heroPlayPauseIcon');
+    const heroCenterPlay   = document.getElementById('heroCenterPlay');
+    const heroRipple       = document.getElementById('heroRipple');
+    const heroRippleIcon   = document.getElementById('heroRippleIcon');
+    const heroSoundBtn     = document.getElementById('heroSoundBtn');
+    const heroSoundIcon    = document.getElementById('heroSoundIcon');
+    const heroVolSlider    = document.getElementById('heroVolSlider');
+    const heroCurTime      = document.getElementById('heroCurTime');
+    const heroDurTime      = document.getElementById('heroDurTime');
+    const heroSeeker       = document.getElementById('heroSeeker');
+    const heroSeekerTrack  = document.getElementById('heroSeekerTrack');
+    const heroProg         = document.getElementById('heroProg');
+    const heroBuffer       = document.getElementById('heroBuffer');
+    const heroSeekerTip    = document.getElementById('heroSeekerTip');
+    const heroFsBtn        = document.getElementById('heroFsBtn');
+    const heroFsIcon       = document.getElementById('heroFsIcon');
+    const heroFullBtn      = document.getElementById('heroFullBtn');
 
     const formatTime = (seconds) => {
         if (!seconds || isNaN(seconds)) return '00:00';
@@ -159,7 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
         let controlsTimer = null;
         let lastVolume = 0.85;
 
-        // Auto-hide controls
         const resetControlsTimer = () => {
             heroFrame.classList.remove('controls-hidden');
             clearTimeout(controlsTimer);
@@ -180,7 +107,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Visual feedback ripple in center
         const triggerRipple = (isPlay) => {
             if (!heroRipple || !heroRippleIcon) return;
             heroRippleIcon.className = isPlay ? 'fa-solid fa-play' : 'fa-solid fa-pause';
@@ -218,7 +144,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        // Frame / Center / Button click listeners
         heroVideo.addEventListener('click', (e) => {
             e.stopPropagation();
             toggleHeroPlay();
@@ -238,7 +163,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Time updates & Buffer
         heroVideo.addEventListener('timeupdate', () => {
             if (!isDraggingSeeker && heroVideo.duration) {
                 const pct = (heroVideo.currentTime / heroVideo.duration) * 100;
@@ -260,7 +184,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // High precision seeker with hover tooltip & drag scrubbing
         const seekByClientX = (clientX) => {
             if (!heroSeekerTrack) return;
             const rect = heroSeekerTrack.getBoundingClientRect();
@@ -306,7 +229,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Volume slider & mute control
         const updateVolUI = (vol, isMuted) => {
             if (heroVolSlider) heroVolSlider.value = isMuted ? 0 : vol;
             if (heroSoundIcon) {
@@ -343,7 +265,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Fullscreen Toggle
         const toggleFullscreen = () => {
             if (!document.fullscreenElement) {
                 if (heroFrame.requestFullscreen) {
@@ -369,7 +290,6 @@ document.addEventListener('DOMContentLoaded', () => {
             heroFrame.classList.toggle('is-fullscreen', isFs);
         });
 
-        // Full Project in Cinema Modal
         if (heroFullBtn) {
             heroFullBtn.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -379,7 +299,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Keyboard navigation for video
         window.addEventListener('keydown', (e) => {
             if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
             const rect = heroFrame.getBoundingClientRect();
@@ -409,6 +328,7 @@ document.addEventListener('DOMContentLoaded', () => {
         heroVideo.addEventListener('play', () => updatePlayState(true));
         heroVideo.addEventListener('pause', () => updatePlayState(false));
     }
+
     /* ════════════════════════════════
        WORK SECTION FEATURED CONTROLS
     ════════════════════════════════ */
@@ -419,8 +339,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e) { e.preventDefault(); e.stopPropagation(); }
         openLB('video', 'boise-renderhouse.mp4', { vertical: false });
     };
-    vcsBoiseThumb && vcsBoiseThumb.addEventListener('click', openBoiseFilm);
-    vcsWatchBtn && vcsWatchBtn.addEventListener('click', openBoiseFilm);
+    if (vcsBoiseThumb) vcsBoiseThumb.addEventListener('click', openBoiseFilm);
+    if (vcsWatchBtn)   vcsWatchBtn.addEventListener('click', openBoiseFilm);
 
     // 2. Voral Media 9:16 Vertical Reel Card
     const vcvVideo       = document.getElementById('vcvVideo');
@@ -430,10 +350,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const vcvSoundIcon   = document.getElementById('vcvSoundIcon');
 
     if (vcvVideo && vcvWrap) {
+        const updateVcvSoundIcon = () => {
+            if (vcvSoundIcon) {
+                vcvSoundIcon.className = vcvVideo.muted ? 'fa-solid fa-volume-xmark' : 'fa-solid fa-volume-high';
+            }
+        };
+
         const toggleVcv = () => {
             if (vcvVideo.paused) {
+                // Pause hero video so audio doesn't clash
+                if (heroVideo && !heroVideo.paused) heroVideo.pause();
                 vcvVideo.play().then(() => {
                     if (vcvPlayOverlay) vcvPlayOverlay.style.opacity = '0';
+                    updateVcvSoundIcon();
                 }).catch(() => {});
             } else {
                 vcvVideo.pause();
@@ -442,7 +371,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         vcvWrap.addEventListener('click', (e) => {
-            // don't toggle if clicking sound button
+            e.stopPropagation();
             if (e.target.closest('#vcvSoundBtn')) return;
             toggleVcv();
         });
@@ -451,14 +380,13 @@ document.addEventListener('DOMContentLoaded', () => {
             vcvSoundBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 vcvVideo.muted = !vcvVideo.muted;
-                if (vcvSoundIcon) {
-                    vcvSoundIcon.className = vcvVideo.muted ? 'fa-solid fa-volume-xmark' : 'fa-solid fa-volume-high';
-                }
+                updateVcvSoundIcon();
             });
         }
 
         vcvVideo.addEventListener('play', () => {
             if (vcvPlayOverlay) vcvPlayOverlay.style.opacity = '0';
+            updateVcvSoundIcon();
         });
         vcvVideo.addEventListener('pause', () => {
             if (vcvPlayOverlay) vcvPlayOverlay.style.opacity = '1';
@@ -468,14 +396,17 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ════════════════════════════════
        PORTFOLIO FILTER
     ════════════════════════════════ */
-    const pfBtns   = document.querySelectorAll('.pf-btn');
-    const allCards = document.querySelectorAll('.vc, .vc-spotlight, .vc-vertical-card');
+    const pfBtns       = document.querySelectorAll('.pf-btn');
+    const featuredGrid = document.querySelector('.work-grid-featured');
+    const ytGrid       = document.getElementById('videoGrid');
+    const allCards     = document.querySelectorAll('.vc, .vc-spotlight');
 
     pfBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             pfBtns.forEach(b => b.classList.remove('pf-active'));
             btn.classList.add('pf-active');
             const filter = btn.dataset.filter;
+
             allCards.forEach(card => {
                 const cat = card.dataset.cat;
                 if (filter === 'all' || cat === filter) {
@@ -486,11 +417,29 @@ document.addEventListener('DOMContentLoaded', () => {
                     card.style.display = 'none';
                 }
             });
+
+            if (featuredGrid) {
+                if (filter === 'youtube') {
+                    featuredGrid.style.display = 'none';
+                } else if (filter === 'commercial' || filter === 'shorts') {
+                    featuredGrid.style.display = 'grid';
+                    featuredGrid.style.gridTemplateColumns = '1fr';
+                    featuredGrid.style.justifyItems = 'center';
+                } else {
+                    featuredGrid.style.display = '';
+                    featuredGrid.style.gridTemplateColumns = '';
+                    featuredGrid.style.justifyItems = '';
+                }
+            }
+
+            if (ytGrid) {
+                ytGrid.style.display = (filter === 'commercial' || filter === 'shorts') ? 'none' : '';
+            }
         });
     });
 
     /* ════════════════════════════════
-       LIGHTBOX (ENHANCED FOR YOUTUBE & MP4)
+       LIGHTBOX (YOUTUBE & MP4)
     ════════════════════════════════ */
     const lb      = document.getElementById('lightbox');
     const lbBg    = document.getElementById('lbBg');
@@ -502,10 +451,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const openLB = (type, src, options = {}) => {
         if (!lb) return;
 
-        // Pause hero video to prevent overlapping audio
+        // Pause inline videos to prevent overlapping audio
         if (heroVideo && !heroVideo.paused) {
             heroVideo.dataset.wasPlaying = 'true';
             heroVideo.pause();
+        }
+        if (vcvVideo && !vcvVideo.paused) {
+            vcvVideo.pause();
         }
 
         if (type === 'youtube') {
@@ -524,11 +476,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 lbVideo.play().catch(() => {});
             }
             if (lbBox) {
-                if (options.vertical) {
-                    lbBox.classList.add('is-vertical');
-                } else {
-                    lbBox.classList.remove('is-vertical');
-                }
+                lbBox.classList.toggle('is-vertical', !!options.vertical);
             }
         }
 
@@ -544,7 +492,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (lbBox) lbBox.classList.remove('is-vertical');
         document.body.style.overflow = '';
 
-        // Resume hero video if it was playing
         if (heroVideo && heroVideo.dataset.wasPlaying === 'true') {
             heroVideo.play().catch(() => {});
             delete heroVideo.dataset.wasPlaying;
@@ -561,19 +508,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Spotlight Local Video Clicks (Render House & Voral Media)
-    document.querySelectorAll('.vc-spotlight[data-video]').forEach(card => {
-        card.addEventListener('click', (e) => {
-            if (card.classList.contains('filtered-out')) return;
-            if (e.target.closest('button') || e.target.closest('a')) return;
-            const src = card.dataset.video;
-            const isVert = card.classList.contains('vc-vertical-spotlight');
-            if (src) openLB('video', src, { vertical: isVert });
-        });
-    });
-
-    lbBg    && lbBg.addEventListener('click',    closeLB);
-    lbClose && lbClose.addEventListener('click', closeLB);
+    if (lbBg)    lbBg.addEventListener('click', closeLB);
+    if (lbClose) lbClose.addEventListener('click', closeLB);
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLB(); });
 
     /* ════════════════════════════════
@@ -581,7 +517,9 @@ document.addEventListener('DOMContentLoaded', () => {
     ════════════════════════════════ */
     document.querySelectorAll('a[href^="#"]').forEach(a => {
         a.addEventListener('click', e => {
-            const target = document.querySelector(a.getAttribute('href'));
+            const href = a.getAttribute('href');
+            if (!href || href === '#') return;
+            const target = document.querySelector(href);
             if (target) {
                 e.preventDefault();
                 target.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -601,13 +539,12 @@ const CF_TOTAL = 5;
 function cfShowStep(n) {
     document.querySelectorAll('.cf-step').forEach(s => s.classList.remove('active'));
     const s = document.getElementById('cfs' + n);
-    if (s) { s.classList.add('active'); }
+    if (s) s.classList.add('active');
 
     const pct = ((n + 1) / CF_TOTAL) * 100;
     const bar = document.getElementById('cfProgBar');
     if (bar) bar.style.width = pct + '%';
 
-    // Auto-focus
     setTimeout(() => {
         const input = s && s.querySelector('input, textarea');
         if (input) input.focus();
@@ -637,7 +574,7 @@ function cfSelectType(btn) {
     document.querySelectorAll('.cft-btn').forEach(b => b.classList.remove('selected'));
     btn.classList.add('selected');
     cfData.type = btn.dataset.val;
-    setTimeout(() => { cfCurrent = 3; cfShowStep(3); }, 280);
+    setTimeout(() => { cfCurrent = 3; cfShowStep(3); }, 250);
 }
 
 function cfSkip() {
@@ -668,8 +605,8 @@ function cfTransmit() {
     window.location.href = `mailto:contact@ahmednazif.com?subject=${subject}&body=${body}`;
     const sent = document.getElementById('cfSent');
     const launch = document.getElementById('cfLaunch');
-    if (sent)   { sent.style.display   = 'flex'; }
-    if (launch) { launch.style.display = 'none'; }
+    if (sent)   sent.style.display   = 'flex';
+    if (launch) launch.style.display = 'none';
 }
 
 function cfRestart() {
@@ -680,15 +617,14 @@ function cfRestart() {
     document.getElementById('cf-msg').value   = '';
     const sent = document.getElementById('cfSent');
     const launch = document.getElementById('cfLaunch');
-    if (sent)   { sent.style.display   = 'none'; }
-    if (launch) { launch.style.display = ''; }
+    if (sent)   sent.style.display   = 'none';
+    if (launch) launch.style.display = '';
     cfShowStep(0);
 }
 
-// Enter key support
 document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', e => {
-        if (e.key !== 'Enter') return;
+        if (e.key !== 'Enter' || e.target.tagName === 'TEXTAREA') return;
         const active = document.querySelector('.cf-step.active');
         if (!active) return;
         const btn = active.querySelector('.cf-next');
