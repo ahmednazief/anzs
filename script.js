@@ -229,36 +229,121 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.5 });
     counters.forEach(c => cntObs.observe(c));
 
-        /* ════════════════════════════════
-       HERO VIDEO CONTROLS
+    /* ════════════════════════════════
+       HERO VIDEO CONTROLS (PLAY/PAUSE, SOUND, SEEKER)
     ════════════════════════════════ */
-    const heroVideo     = document.getElementById('heroVideo');
-    const heroSoundBtn  = document.getElementById('heroSoundBtn');
-    const heroSoundIcon = document.getElementById('heroSoundIcon');
-    const heroSoundText = document.getElementById('heroSoundText');
-    const heroFullBtn   = document.getElementById('heroFullBtn');
+    const heroVideo         = document.getElementById('heroVideo');
+    const heroFrame         = document.getElementById('heroFrame');
+    const heroPlayPauseBtn  = document.getElementById('heroPlayPauseBtn');
+    const heroPlayPauseIcon = document.getElementById('heroPlayPauseIcon');
+    const heroPlayPauseText = document.getElementById('heroPlayPauseText');
+    const heroCenterPlay    = document.getElementById('heroCenterPlay');
+    const heroSoundBtn      = document.getElementById('heroSoundBtn');
+    const heroSoundIcon     = document.getElementById('heroSoundIcon');
+    const heroSoundText     = document.getElementById('heroSoundText');
+    const heroFullBtn       = document.getElementById('heroFullBtn');
+    const heroProg          = document.getElementById('heroProg');
+    const heroSeeker        = document.getElementById('heroSeeker');
 
-    if (heroVideo && heroSoundBtn) {
-        heroSoundBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            heroVideo.muted = !heroVideo.muted;
-            if (heroVideo.muted) {
-                if (heroSoundIcon) heroSoundIcon.className = 'fa-solid fa-volume-xmark';
-                if (heroSoundText) heroSoundText.textContent = heroSoundText.dataset.unmute || 'Sound';
-            } else {
-                if (heroSoundIcon) heroSoundIcon.className = 'fa-solid fa-volume-high';
-                if (heroSoundText) heroSoundText.textContent = heroSoundText.dataset.mute || 'Mute';
-            }
-        });
-    }
+    const updatePlayState = (isPlaying) => {
+        const isAr = document.documentElement.lang === 'ar';
+        if (heroPlayPauseIcon) {
+            heroPlayPauseIcon.className = isPlaying ? 'fa-solid fa-pause' : 'fa-solid fa-play';
+        }
+        if (heroPlayPauseText) {
+            heroPlayPauseText.textContent = isPlaying ? (isAr ? 'إيقاف' : 'Pause') : (isAr ? 'تشغيل' : 'Play');
+        }
+        if (heroCenterPlay) {
+            heroCenterPlay.classList.toggle('show', !isPlaying);
+        }
+        if (heroFrame) {
+            heroFrame.classList.toggle('is-paused', !isPlaying);
+        }
+    };
 
-    if (heroFullBtn) {
-        heroFullBtn.addEventListener('click', (e) => {
-            e.preventDefault();
+    const toggleHeroPlay = () => {
+        if (!heroVideo) return;
+        if (heroVideo.paused) {
+            heroVideo.play().then(() => updatePlayState(true)).catch(() => {});
+        } else {
+            heroVideo.pause();
+            updatePlayState(false);
+        }
+    };
+
+    if (heroVideo) {
+        // Click video to toggle play/pause
+        heroVideo.addEventListener('click', (e) => {
             e.stopPropagation();
-            const src = heroFullBtn.dataset.video || 'boise-renderhouse.mp4';
-            openLB('video', src, { vertical: false });
+            toggleHeroPlay();
         });
+
+        // Dedicated play/pause button
+        if (heroPlayPauseBtn) {
+            heroPlayPauseBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleHeroPlay();
+            });
+        }
+
+        // Center circle overlay click
+        if (heroCenterPlay) {
+            heroCenterPlay.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleHeroPlay();
+            });
+        }
+
+        // Live progress bar update
+        if (heroProg) {
+            heroVideo.addEventListener('timeupdate', () => {
+                if (heroVideo.duration) {
+                    const pct = (heroVideo.currentTime / heroVideo.duration) * 100;
+                    heroProg.style.width = pct + '%';
+                }
+            });
+        }
+
+        // Click on seeker to scrub
+        if (heroSeeker) {
+            heroSeeker.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const rect = heroSeeker.getBoundingClientRect();
+                const pos = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+                if (heroVideo.duration) {
+                    heroVideo.currentTime = pos * heroVideo.duration;
+                }
+            });
+        }
+
+        // Sound toggle button
+        if (heroSoundBtn) {
+            heroSoundBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                heroVideo.muted = !heroVideo.muted;
+                const isAr = document.documentElement.lang === 'ar';
+                if (heroVideo.muted) {
+                    if (heroSoundIcon) heroSoundIcon.className = 'fa-solid fa-volume-xmark';
+                    if (heroSoundText) heroSoundText.textContent = isAr ? 'الصوت' : 'Sound';
+                } else {
+                    if (heroSoundIcon) heroSoundIcon.className = 'fa-solid fa-volume-high';
+                    if (heroSoundText) heroSoundText.textContent = isAr ? 'كتم' : 'Mute';
+                }
+            });
+        }
+
+        // Watch full project in cinema modal
+        if (heroFullBtn) {
+            heroFullBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const src = heroFullBtn.dataset.video || 'boise-renderhouse.mp4';
+                openLB('video', src, { vertical: false });
+            });
+        }
+
+        heroVideo.addEventListener('play', () => updatePlayState(true));
+        heroVideo.addEventListener('pause', () => updatePlayState(false));
     }
 
     /* ════════════════════════════════
