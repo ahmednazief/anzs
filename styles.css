@@ -1618,12 +1618,12 @@ html[lang="ar"] .hsc-fb-bottom {
 ═══════════════════════════════════ */
 .work-grid-featured {
     display: grid;
-    grid-template-columns: 1.35fr 1fr;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
 }
 
-/* Spotlight 16:9 Card (Render House) */
+/* Spotlight Card (Render House & Voral Media) */
 .vc-spotlight {
     position: relative;
     background: var(--surf);
@@ -1639,6 +1639,11 @@ html[lang="ar"] .hsc-fb-bottom {
     transform: translateY(-5px);
     box-shadow: 0 25px 60px rgba(167, 139, 250, 0.15);
 }
+.vc-spotlight.vc-vertical-spotlight:hover {
+    border-color: rgba(56, 189, 248, 0.45);
+    box-shadow: 0 25px 60px rgba(56, 189, 248, 0.15);
+}
+
 .vcs-thumb {
     position: relative;
     aspect-ratio: 16 / 9;
@@ -1670,15 +1675,15 @@ html[lang="ar"] .hsc-fb-bottom {
     background: rgba(0, 0, 0, 0.15);
 }
 .vcs-play-btn {
-    width: 64px;
-    height: 64px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.95);
     color: #000;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 30px var(--purple-glow);
     transition: all 0.3s var(--spring);
 }
@@ -1687,6 +1692,85 @@ html[lang="ar"] .hsc-fb-bottom {
     background: #fff;
     color: var(--purple);
 }
+
+/* Vertical 9:16 Reel Showcase Inside Spotlight Card */
+.vcs-vertical-thumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: #06080d;
+}
+.vcv-ambient-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('images/voral_thumb.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(28px) brightness(0.28);
+    transform: scale(1.2);
+    pointer-events: none;
+}
+.vcv-phone-frame {
+    position: relative;
+    height: 84%;
+    aspect-ratio: 9 / 16;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #000;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 25px rgba(56, 189, 248, 0.2);
+    z-index: 2;
+    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+.vc-spotlight:hover .vcv-phone-frame {
+    transform: scale(1.04);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.9), 0 0 35px rgba(56, 189, 248, 0.35);
+}
+.vcv-phone-frame .vcv-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.vcv-phone-frame .vcv-play-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+.vcv-phone-frame .vcv-play-overlay .vcs-play-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 0.95rem;
+}
+.vcv-phone-frame .vcv-sound-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #fff;
+    font-size: 0.68rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 5;
+    transition: all 0.2s;
+}
+.vcv-phone-frame .vcv-sound-btn:hover {
+    background: var(--purple);
+    transform: scale(1.1);
+}
+
 .vcs-badge-row {
     position: absolute;
     top: 14px;
@@ -1699,7 +1783,7 @@ html[lang="ar"] .hsc-fb-bottom {
     pointer-events: none;
 }
 .vcs-client-badge {
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.75);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -1745,6 +1829,11 @@ html[lang="ar"] .hsc-fb-bottom {
     color: var(--purple);
     border: 1px solid rgba(167, 139, 250, 0.25);
 }
+.vc-vertical-spotlight .vcs-tag {
+    background: rgba(56, 189, 248, 0.1);
+    color: var(--cyan);
+    border-color: rgba(56, 189, 248, 0.25);
+}
 .vcs-title {
     font-family: var(--fd);
     font-size: 1.25rem;
@@ -1767,6 +1856,7 @@ html[lang="ar"] .hsc-fb-bottom {
 }
 .vcs-stats {
     display: flex;
+    align-items: center;
     gap: 1rem;
     font-family: var(--fm);
     font-size: 0.75rem;
@@ -1776,6 +1866,25 @@ html[lang="ar"] .hsc-fb-bottom {
     display: flex;
     align-items: center;
     gap: 5px;
+}
+.vcs-review-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--fm);
+    font-size: 0.7rem;
+    color: var(--teal);
+    text-decoration: none;
+    padding: 3px 8px;
+    border-radius: var(--r-pill);
+    background: rgba(45, 212, 191, 0.08);
+    border: 1px solid rgba(45, 212, 191, 0.25);
+    transition: all 0.2s;
+}
+.vcs-review-pill:hover {
+    color: #fff;
+    border-color: var(--teal);
+    background: rgba(45, 212, 191, 0.2);
 }
 .vcs-watch-btn {
     display: inline-flex;
@@ -1796,123 +1905,13 @@ html[lang="ar"] .hsc-fb-bottom {
     color: #fff;
     transform: scale(1.05);
 }
-
-/* Vertical 9:16 Short Player Card (Voral Media) */
-.vc-vertical-card {
-    position: relative;
-    background: var(--surf);
-    border: 1px solid var(--border);
-    border-radius: var(--r-xl);
-    overflow: hidden;
-    transition: all 0.35s var(--ease);
-    display: flex;
-    gap: 1.3rem;
-    padding: 1.3rem;
+.vc-vertical-spotlight .vcs-watch-btn {
+    background: rgba(56, 189, 248, 0.15);
+    border-color: rgba(56, 189, 248, 0.4);
 }
-.vc-vertical-card:hover {
-    border-color: rgba(56, 189, 248, 0.45);
-    box-shadow: 0 25px 60px rgba(56, 189, 248, 0.12);
-    transform: translateY(-5px);
-}
-.vcv-player-wrap {
-    width: 175px;
-    aspect-ratio: 9 / 16;
-    border-radius: 14px;
-    overflow: hidden;
-    position: relative;
-    background: #000;
-    flex-shrink: 0;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
-}
-.vcv-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-.vcv-play-overlay {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.3);
-    cursor: pointer;
-    transition: opacity 0.2s;
-}
-.vcv-play-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.95);
+.vc-vertical-spotlight .vcs-watch-btn:hover {
+    background: var(--cyan);
     color: #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    transition: transform 0.2s;
-}
-.vcv-player-wrap:hover .vcv-play-icon {
-    transform: scale(1.1);
-}
-.vcv-sound-btn {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.65);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #fff;
-    font-size: 0.7rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 5;
-    transition: all 0.2s;
-}
-.vcv-sound-btn:hover {
-    background: var(--purple);
-    transform: scale(1.1);
-}
-.vcv-details {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex-grow: 1;
-}
-.vcv-details .vcs-title {
-    font-size: 1.15rem;
-}
-.vcv-actions-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-top: 10px;
-}
-.vcv-review-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 12px;
-    border-radius: var(--r-pill);
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--border);
-    font-family: var(--fm);
-    font-size: 0.72rem;
-    color: var(--teal);
-    text-decoration: none;
-    transition: all 0.2s;
-}
-.vcv-review-link:hover {
-    color: #fff;
-    border-color: var(--teal);
-    background: rgba(45, 212, 191, 0.1);
 }
 
 /* Lightbox Enhancements */

@@ -310,7 +310,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <link rel="stylesheet" href="styles.css?v=6.5">
+    <link rel="stylesheet" href="styles.css?v=6.6">
 
     <link rel="icon" href="/favicon.ico" sizes="any">
 
@@ -844,13 +844,11 @@
 
                             <span class="vcs-tag">3D Tracking</span>
 
-                            <span class="vcs-tag">60 FPS</span>
-
                         </div>
 
                         <h3 class="vcs-title">Boise 2027 — Everything New & Coming Soon</h3>
 
-                        <p class="vcs-desc">High-production commercial real estate overview for Render House (USA). Features 3D motion tracking, kinetic typography, architectural pacing, and cinema-grade color mapping.</p>
+                        <p class="vcs-desc">High-production commercial real estate showcase for Render House (USA). Features 3D motion tracking, architectural pacing, kinetic typography, and broadcast color grading.</p>
 
                     </div>
 
@@ -876,35 +874,53 @@
 
             </div>
 
-            <!-- Card 2: Voral Media (UAE) - 9:16 Vertical Short Player Card -->
+            <!-- Card 2: Voral Media (UAE) - Vertical Reel Card -->
 
-            <div class="vc-vertical-card" data-cat="shorts" data-aos data-aos-delay="100">
+            <div class="vc-spotlight vc-vertical-spotlight" data-cat="shorts" data-video="voral-reel.mp4" data-aos data-aos-delay="100">
 
-                <div class="vcv-player-wrap" id="vcvWrap">
+                <div class="vcs-thumb vcs-vertical-thumb" id="vcvWrap">
 
-                    <video id="vcvVideo" class="vcv-video" src="voral-reel.mp4" poster="images/voral_thumb.jpg" loop playsinline preload="metadata"></video>
+                    <div class="vcv-ambient-bg"></div>
 
-                    <div class="vcv-play-overlay" id="vcvPlayBtn">
+                    <div class="vcv-phone-frame">
 
-                        <div class="vcv-play-icon"><i class="fa-solid fa-play"></i></div>
+                        <video id="vcvVideo" class="vcv-video" src="voral-reel.mp4" poster="images/voral_thumb.jpg" loop playsinline preload="metadata"></video>
+
+                        <div class="vcv-play-overlay" id="vcvPlayBtn">
+
+                            <div class="vcs-play-btn"><i class="fa-solid fa-play"></i></div>
+
+                        </div>
+
+                        <button class="vcv-sound-btn" id="vcvSoundBtn" title="Toggle Sound">
+
+                            <i class="fa-solid fa-volume-xmark" id="vcvSoundIcon"></i>
+
+                        </button>
 
                     </div>
 
-                    <button class="vcv-sound-btn" id="vcvSoundBtn" title="Toggle Sound">
+                    <div class="vcs-badge-row">
 
-                        <i class="fa-solid fa-volume-xmark" id="vcvSoundIcon"></i>
+                        <span class="vcs-client-badge">
 
-                    </button>
+                            <i class="fa-solid fa-bolt-lightning" style="color:var(--cyan);"></i> Voral Media &bull; UAE
+
+                        </span>
+
+                        <span class="vcs-time-badge"><i class="fa-solid fa-mobile-screen"></i> 9:16 Reel</span>
+
+                    </div>
 
                 </div>
 
-                <div class="vcv-details">
+                <div class="vcs-info">
 
                     <div>
 
                         <div class="vcs-tags">
 
-                            <span class="vcs-tag" style="color:var(--cyan); border-color:rgba(56,189,248,0.3); background:rgba(56,189,248,0.1);">9:16 Short</span>
+                            <span class="vcs-tag">Vertical Short</span>
 
                             <span class="vcs-tag">Viral Pacing</span>
 
@@ -912,37 +928,27 @@
 
                         </div>
 
-                        <h3 class="vcs-title">Voral Media — Viral Short-Form Edit</h3>
+                        <h3 class="vcs-title">Voral Media — High-Retention Commercial Reel</h3>
 
-                        <p class="vcs-desc">Engineered for Dubai-based Voral Media (UAE). Aggressive 3-second hook design, kinetic animated subtitle styling, punchy sound effects, and micro-zooms tailored for Instagram Reels, YouTube Shorts & TikTok.</p>
+                        <p class="vcs-desc">Retention-engineered vertical reel for Dubai agency Voral Media. Precision 3-second hook structure, kinetic subtitle choreography, and sound design optimized for Reels & TikTok.</p>
 
                     </div>
 
-                    <div>
+                    <div class="vcs-footer">
 
-                        <div class="vcv-actions-row">
-
-                            <button class="vcs-watch-btn" id="vcvWatchBtn" style="background:linear-gradient(135deg, #0284c7, #6366f1); border-color:rgba(56,189,248,0.5);">
-
-                                <i class="fa-solid fa-expand"></i> Full Screen 9:16
-
-                            </button>
-
-                            <a href="/voral.html" target="_blank" class="vcv-review-link">
-
-                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Client Review Page
-
-                            </a>
-
-                        </div>
-
-                        <div class="vcs-stats" style="margin-top: 10px;">
+                        <div class="vcs-stats">
 
                             <span><i class="fa-solid fa-location-dot" style="color:var(--cyan);"></i> Dubai, UAE</span>
 
-                            <span><i class="fa-solid fa-fire" style="color:#f59e0b;"></i> High Retention</span>
+                            <a href="/voral.html" target="_blank" class="vcs-review-pill"><i class="fa-solid fa-arrow-up-right-from-square"></i> Review Page</a>
 
                         </div>
+
+                        <button class="vcs-watch-btn" id="vcvWatchBtn">
+
+                            <i class="fa-solid fa-play"></i> Watch Reel
+
+                        </button>
 
                     </div>
 
@@ -1550,7 +1556,7 @@
 
 </div>
 
-<script src="script.js?v=6.5"></script>
+<script src="script.js?v=6.6"></script>
 
 </body>
 

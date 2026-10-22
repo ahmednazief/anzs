@@ -484,12 +484,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Spotlight Local Video Clicks (Render House)
+    // Spotlight Local Video Clicks (Render House & Voral Media)
     document.querySelectorAll('.vc-spotlight[data-video]').forEach(card => {
         card.addEventListener('click', (e) => {
             if (card.classList.contains('filtered-out')) return;
+            if (e.target.closest('button') || e.target.closest('a')) return;
             const src = card.dataset.video;
-            if (src) openLB('video', src, { vertical: false });
+            const isVert = card.classList.contains('vc-vertical-spotlight');
+            if (src) openLB('video', src, { vertical: isVert });
         });
     });
 
