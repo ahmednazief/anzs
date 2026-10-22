@@ -407,27 +407,7 @@ body:hover .cursor { opacity: 1; }
     width: 100%;
 }
 
-.hero-tag {
-    display: inline-flex; align-items: center; gap: 0.6rem;
-    padding: 0.45rem 1.1rem;
-    border: 1px solid rgba(167,139,250,0.25);
-    background: rgba(167,139,250,0.08);
-    border-radius: var(--r-pill);
-    font-family: var(--fm); font-size: 0.75rem;
-    letter-spacing: 1.5px; text-transform: uppercase;
-    color: var(--purple);
-    margin-bottom: 2rem;
-}
-.tag-dot { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; box-shadow: 0 0 8px var(--teal); animation: dotPulse 2s ease-in-out infinite; }
-.tag-live {
-    padding: 0.15rem 0.55rem;
-    background: rgba(52,211,153,0.15);
-    border: 1px solid rgba(52,211,153,0.3);
-    border-radius: var(--r-pill);
-    font-size: 0.65rem;
-    color: var(--green);
-    letter-spacing: 2px;
-}
+
 
 .hero-heading {
     font-family: var(--fd);
@@ -848,15 +828,7 @@ html[lang="ar"] .pillar-row:hover {
     backdrop-filter: blur(4px);
     display: flex; align-items: center; gap: 0.3rem;
 }
-.vc-badge {
-    position: absolute; top: 10px; right: 10px;
-    font-family: var(--fm); font-size: 0.62rem; font-weight: 700;
-    padding: 0.2rem 0.6rem; border-radius: var(--r-pill);
-    text-transform: uppercase; letter-spacing: 0.5px;
-}
-.vc-badge-gold { background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.3); color: var(--gold); }
-.vc-badge-purple { background: rgba(167,139,250,0.15); border: 1px solid rgba(167,139,250,0.3); color: var(--purple); }
-.vc-badge-teal { background: rgba(45,212,191,0.15); border: 1px solid rgba(45,212,191,0.3); color: var(--teal); }
+
 .vc-time {
     position: absolute; bottom: 10px; right: 10px;
     font-family: var(--fm); font-size: 0.65rem;
@@ -866,19 +838,7 @@ html[lang="ar"] .pillar-row:hover {
 }
 
 .vc-meta { padding: 1.3rem; }
-.vc-tag {
-    display: inline-block;
-    font-family: var(--fm); font-size: 0.62rem;
-    text-transform: uppercase; letter-spacing: 1px;
-    padding: 0.15rem 0.55rem;
-    background: rgba(212,175,55,0.1);
-    border: 1px solid rgba(212,175,55,0.2);
-    color: var(--gold);
-    border-radius: var(--r-pill);
-    margin-bottom: 0.6rem;
-}
-.vc-tag-purple { background: rgba(167,139,250,0.1); border-color: rgba(167,139,250,0.2); color: var(--purple); }
-.vc-tag-teal { background: rgba(45,212,191,0.1); border-color: rgba(45,212,191,0.2); color: var(--teal); }
+
 .vc-meta h3 { font-family: var(--fd); font-size: 0.975rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.3; }
 .vc-meta p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; margin-bottom: 0.8rem; }
 .vc-stats { display: flex; gap: 1rem; flex-wrap: wrap; }
@@ -1030,26 +990,12 @@ html[lang="ar"] .pillar-row:hover {
     margin-bottom: 1.4rem;
 }
 
-.proc-phase-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+.proc-phase-tag {
     font-family: var(--fm);
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    color: #fff;
-    padding: 4px 12px;
-    border-radius: var(--r-pill);
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.proc-pulse-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
 }
 
 .proc-index {
@@ -2003,14 +1949,7 @@ html[lang="ar"] .hsc-meta {
     box-shadow: 0 6px 20px rgba(139, 92, 246, 0.55);
     color: #fff;
 }
-html[lang="ar"] .hsc-fb-top {
-    right: auto !important;
-    left: -16px !important;
-}
-html[lang="ar"] .hsc-fb-bottom {
-    left: auto !important;
-    right: -16px !important;
-}
+
 
 /* ═══════════════════════════════════
    WORK / PORTFOLIO SPOTLIGHT & SHORTS
@@ -2211,28 +2150,7 @@ html[lang="ar"] .hsc-fb-bottom {
     justify-content: space-between;
     flex-grow: 1;
 }
-.vcs-tags {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-    margin-bottom: 0.6rem;
-}
-.vcs-tag {
-    font-family: var(--fm);
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    padding: 3px 8px;
-    border-radius: var(--r-pill);
-    background: rgba(167, 139, 250, 0.1);
-    color: var(--purple);
-    border: 1px solid rgba(167, 139, 250, 0.25);
-}
-.vc-vertical-spotlight .vcs-tag {
-    background: rgba(56, 189, 248, 0.1);
-    color: var(--cyan);
-    border-color: rgba(56, 189, 248, 0.25);
-}
+
 .vcs-title {
     font-family: var(--fd);
     font-size: 1.25rem;
