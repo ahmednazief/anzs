@@ -618,51 +618,99 @@ body:hover .cursor { opacity: 1; }
 @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
 /* ═══════════════════════════════════
-   ABOUT
+   ABOUT / EDITORIAL CRAFT SECTION
 ═══════════════════════════════════ */
-.about { padding: 9rem 0; }
-.about-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start;
+.about {
+    padding: 7rem 0 6rem;
+    position: relative;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
-.about-text h2 {
-    font-family: var(--fd); font-size: clamp(2rem,3.5vw,3rem);
-    font-weight: 900; letter-spacing: -2px; line-height: 1.1;
-    margin-bottom: 1.2rem;
+.about-editorial {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
 }
-.about-text p { font-size: 0.975rem; line-height: 1.8; color: var(--muted); margin-bottom: 1rem; }
-.about-pills { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
-.pill {
-    padding: 0.4rem 0.9rem;
-    background: var(--surf);
-    border: 1px solid var(--border);
-    border-radius: var(--r-pill);
-    font-size: 0.82rem; color: var(--muted);
-    transition: all 0.2s;
+.about-head {
+    max-width: 900px;
 }
-.pill:hover { border-color: var(--border-h); color: var(--text); background: rgba(167,139,250,0.06); }
-.about-cards {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+.about-head h2 {
+    font-family: var(--fd);
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1.15;
+    margin-top: 0.8rem;
+    color: #fff;
 }
-.ac {
-    padding: 1.5rem;
-    background: var(--surf);
-    border: 1px solid var(--border);
-    border-radius: var(--r-lg);
-    transition: all 0.3s var(--ease);
+.about-body {
+    display: grid;
+    grid-template-columns: 1.15fr 0.95fr;
+    gap: 5rem;
+    align-items: start;
 }
-.ac:hover { border-color: var(--border-h); transform: translateY(-4px); background: rgba(167,139,250,0.04); }
-.ac-icon {
-    width: 40px; height: 40px;
-    border-radius: var(--r);
-    background: var(--ib);
-    border: 1px solid rgba(255,255,255,0.08);
-    display: flex; align-items: center; justify-content: center;
-    color: var(--ic);
-    font-size: 1rem;
-    margin-bottom: 1rem;
+.about-bio {
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
 }
-.ac h4 { font-family: var(--fd); font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
-.ac p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
+.about-bio .lead-text {
+    font-size: 1.12rem;
+    line-height: 1.8;
+    color: #f1f5f9;
+    font-weight: 500;
+}
+.about-bio p {
+    font-size: 0.98rem;
+    line-height: 1.85;
+    color: var(--muted);
+    margin: 0;
+}
+.about-bio p strong {
+    color: #fff;
+    font-weight: 600;
+}
+.about-pillars {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.pillar-row {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 1.2rem;
+    padding: 1.35rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    transition: all 0.25s var(--ease);
+}
+.pillar-row:hover {
+    padding-left: 0.5rem;
+    background: rgba(167, 139, 250, 0.02);
+}
+html[lang="ar"] .pillar-row:hover {
+    padding-left: 0;
+    padding-right: 0.5rem;
+}
+.pillar-idx {
+    font-family: var(--fm);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--purple);
+    letter-spacing: 1px;
+    padding-top: 2px;
+}
+.pillar-content h4 {
+    font-family: var(--fd);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.35rem;
+}
+.pillar-content p {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0;
+}
 
 /* ═══════════════════════════════════
    STATS
@@ -1263,7 +1311,7 @@ body:hover .cursor { opacity: 1; }
     .hero-stats { flex-wrap: wrap; justify-content: center; }
     .hs-sep { display: none; }
     .hero-scroll { display: none; }
-    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .about-grid, .about-body { grid-template-columns: 1fr; gap: 3rem; }
     .svc-grid { grid-template-columns: 1fr 1fr; }
     .stats-grid { grid-template-columns: 1fr; }
     .sg-item { border-right: none; border-bottom: 1px solid var(--border); }
