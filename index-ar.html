@@ -310,7 +310,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <link rel="stylesheet" href="styles.css?v=6.9">
+    <link rel="stylesheet" href="styles.css?v=7.0">
 
     <link rel="icon" href="/favicon.ico" sizes="any">
 
@@ -422,8 +422,6 @@
 
         <li><a href="#process"   class="nl">مراحل العمل</a></li>
 
-        <li><a href="https://anvum.com" target="_blank" class="nl nl-special"><i class="fa-solid fa-cubes"></i> ANVUM</a></li>
-
         <li><a href="#contact"   class="nav-cta">تواصل معي</a></li>
 
     </ul>
@@ -449,8 +447,6 @@
         <li><a href="#work"     class="mn-link">أعمالي</a></li>
 
         <li><a href="#process"  class="mn-link">مراحل العمل</a></li>
-
-        <li><a href="https://anvum.com" target="_blank" class="mn-link mn-special"><i class="fa-solid fa-cubes"></i> ANVUM</a></li>
 
         <li><a href="#contact"  class="mn-link mn-cta">تواصل معي</a></li>
 
@@ -1378,65 +1374,21 @@
 
     <div class="wrap">
 
-        <div class="contact-grid">
+        <div class="contact-wrap">
 
-            <div class="contact-left">
+            <div class="contact-head" data-aos>
 
-                <div class="eyebrow" data-aos>لنعمل معًا</div>
+                <div class="eyebrow">تواصل معي</div>
 
-                <h2 data-aos data-aos-delay="80">
+                <h2>جاهز لبدء<br><span class="grad-text">مشروعك القادم؟</span></h2>
 
-                    هل أنت مستعد لبناء<br>
-
-                    <span class="grad-text">شيء رائع؟</span>
-
-                </h2>
-
-                <p data-aos data-aos-delay="160">سواء كنت ستوديو إنتاج عقاري وتجاري، أو علامة تجارية تبحث عن مونتاج بمستوى سينمائي، أو صانع محتوى يريد شورتس وفيديوهات فيروسية — يسعدني التعاون معك.</p>
-
-                <div class="contact-info" data-aos data-aos-delay="200">
-
-                    <a href="mailto:contact@ahmednazif.com" class="ci-link">
-
-                        <div class="ci-icon"><i class="fa-solid fa-envelope"></i></div>
-
-                        <div>
-
-                            <span class="ci-label">البريد الإلكتروني</span>
-
-                            <span class="ci-val">contact@ahmednazif.com</span>
-
-                        </div>
-
-                    </a>
-
-                    <a href="https://www.youtube.com/@Plains" target="_blank" class="ci-link">
-
-                        <div class="ci-icon"><i class="fa-brands fa-youtube"></i></div>
-
-                        <div>
-
-                            <span class="ci-label">يوتيوب</span>
-
-                            <span class="ci-val">youtube.com/@Plains</span>
-
-                        </div>
-
-                    </a>
-
-                    <div class="ci-status">
-
-                        <span class="ci-dot"></span>
-
-                        <span>متاح حاليًا للمشاريع الجديدة</span>
-
-                    </div>
-
-                </div>
+                <p>سواء كنت تمثل وكالة إعلانية، ستوديو عقارات، أو صانع محتوى يبحث عن مونتاج فائق الجاذبية — شاركني تفاصيل مشروعك بالأسفل.</p>
 
             </div>
 
-            <div class="contact-form" data-aos data-aos-delay="100">
+            <!-- Centered Form -->
+
+            <div class="contact-form-center" data-aos data-aos-delay="100">
 
                 <div class="cf-card">
 
@@ -1454,11 +1406,11 @@
 
                             <div class="cf-prompt">
 
-                                <span class="cf-arrow">&gt;_</span> من الذي يتواصل معي؟
+                                <span class="cf-arrow">&gt;_</span> ما هو اسمك أو جهة العمل؟
 
                             </div>
 
-                            <input type="text" class="cf-input" id="cf-name" placeholder="اسمك أو جهة العمل..." maxlength="60" autocomplete="off">
+                            <input type="text" class="cf-input" id="cf-name" placeholder="اسمك أو اسم الشركة / القناة..." maxlength="60" autocomplete="off">
 
                             <div class="cf-actions">
 
@@ -1480,7 +1432,7 @@
 
                             <div class="cf-prompt">
 
-                                <span class="cf-arrow">&gt;_</span> <span id="cf-name-echo"></span>، أين يمكنني التواصل معك؟
+                                <span class="cf-arrow">&gt;_</span> مرحباً <span id="cf-name-echo"></span>، أين يمكنني الرد عليك؟
 
                             </div>
 
@@ -1506,19 +1458,19 @@
 
                             <div class="cf-prompt">
 
-                                <span class="cf-arrow">&gt;_</span> ما هو نوع المشروع؟
+                                <span class="cf-arrow">&gt;_</span> ما هو تصنيف المشروع المطلوب؟
 
                             </div>
 
                             <div class="cf-type-grid" id="cfTypeGrid">
 
-                                <button class="cft-btn" data-val="Gaming Edit" onclick="cfSelectType(this)">🎮 ألعاب</button>
+                                <button class="cft-btn" data-val="عقارات وإعلانات تجارية" onclick="cfSelectType(this)">🏢 عقارات وإعلانات تجارية</button>
 
-                                <button class="cft-btn" data-val="Cinematic Edit" onclick="cfSelectType(this)">🎬 سينمائي</button>
+                                <button class="cft-btn" data-val="شورتس وريلز (9:16)" onclick="cfSelectType(this)">📱 شورتس وريلز (9:16)</button>
 
-                                <button class="cft-btn" data-val="Music Video" onclick="cfSelectType(this)">🎵 فيديو موسيقي</button>
+                                <button class="cft-btn" data-val="يوتيوب مطول" onclick="cfSelectType(this)">🎬 يوتيوب مطول</button>
 
-                                <button class="cft-btn" data-val="Other Project" onclick="cfSelectType(this)">⚡ آخر</button>
+                                <button class="cft-btn" data-val="مشروع إبداعي آخر" onclick="cfSelectType(this)">⚡ مشروع إبداعي آخر</button>
 
                             </div>
 
@@ -1530,11 +1482,11 @@
 
                             <div class="cf-prompt">
 
-                                <span class="cf-arrow">&gt;_</span> أي شيء آخر يجب أن أعرفه؟
+                                <span class="cf-arrow">&gt;_</span> هل تود إضافة أي تفاصيل أخرى؟
 
                             </div>
 
-                            <textarea class="cf-input cf-textarea" id="cf-msg" placeholder="الميزانية، الموعد النهائي، المراجع... (اختياري)" rows="3"></textarea>
+                            <textarea class="cf-input cf-textarea" id="cf-msg" placeholder="الميزانية المتوقعة، الموعد النهائي، مراجع بصرية... (اختياري)" rows="3"></textarea>
 
                             <div class="cf-actions">
 
@@ -1556,7 +1508,7 @@
 
                             <div class="cf-prompt">
 
-                                <span class="cf-arrow">&gt;_</span> هل أنت جاهز للإرسال؟
+                                <span class="cf-arrow">&gt;_</span> جاهز للإرسال؟
 
                             </div>
 
@@ -1566,13 +1518,13 @@
 
                                 <button class="cf-launch" id="cfLaunch" onclick="cfTransmit()">
 
-                                    إرسال <i class="fa-solid fa-paper-plane"></i>
+                                    إرسال الطلب <i class="fa-solid fa-paper-plane"></i>
 
                                 </button>
 
                                 <button class="cf-edit" onclick="cfRestart()">
 
-                                    <i class="fa-solid fa-rotate-left"></i> تعديل
+                                    <i class="fa-solid fa-rotate-left"></i> تعديل البيانات
 
                                 </button>
 
@@ -1580,13 +1532,67 @@
 
                             <div class="cf-sent" id="cfSent">
 
-                                <i class="fa-solid fa-circle-check"></i>
+                                <i class="fa-solid fa-circle-check" style="color:var(--green);font-size:1.4rem;"></i>
 
-                                <span>تم إرسال الإشارة. سأرد عليك قريبًا.</span>
+                                <div>
+
+                                    <strong>تم فتح برنامج البريد الخاص بك!</strong>
+
+                                    <p>اضغط إرسال من تطبيق البريد، أو تواصل مباشرة على <a href="mailto:contact@ahmednazif.com">contact@ahmednazif.com</a>.</p>
+
+                                </div>
 
                             </div>
 
                         </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Direct Contact Info Cards Underneath Form -->
+
+            <div class="contact-footer-cards" data-aos data-aos-delay="200">
+
+                <a href="mailto:contact@ahmednazif.com" class="cfc-item">
+
+                    <div class="cfc-icon"><i class="fa-solid fa-envelope"></i></div>
+
+                    <div class="cfc-text">
+
+                        <span class="cfc-label">البريد المباشر</span>
+
+                        <span class="cfc-val">contact@ahmednazif.com</span>
+
+                    </div>
+
+                </a>
+
+                <a href="https://www.youtube.com/@Plains" target="_blank" class="cfc-item">
+
+                    <div class="cfc-icon"><i class="fa-brands fa-youtube"></i></div>
+
+                    <div class="cfc-text">
+
+                        <span class="cfc-label">قناة يوتيوب</span>
+
+                        <span class="cfc-val">youtube.com/@Plains</span>
+
+                    </div>
+
+                </a>
+
+                <div class="cfc-item cfc-status-item">
+
+                    <div class="cfc-icon"><span class="ci-dot"></span></div>
+
+                    <div class="cfc-text">
+
+                        <span class="cfc-label">الحالة الحالية</span>
+
+                        <span class="cfc-val">متاح للمشاريع الجديدة</span>
 
                     </div>
 
@@ -1690,7 +1696,7 @@
 
 </div>
 
-<script src="script.js?v=6.9"></script>
+<script src="script.js?v=7.0"></script>
 
 </body>
 
