@@ -310,7 +310,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <link rel="stylesheet" href="styles.css?v=7.1">
+    <link rel="stylesheet" href="styles.css?v=7.2">
 
     <link rel="icon" href="/favicon.ico" sizes="any">
 
@@ -330,61 +330,9 @@
 
 <body>
 
-<!-- CURSOR -->
-
-<div class="cursor" id="cursor"></div>
-
-<div class="cursor-dot" id="cursorDot"></div>
-
 <!-- NOISE TEXTURE OVERLAY -->
 
 <div class="noise"></div>
-
-<!-- ═══════ PRELOADER ═══════ -->
-
-<div class="preloader" id="preloader">
-
-    <div class="pl-inner">
-
-        <svg viewBox="0 0 100 100" class="pl-logo-svg">
-
-            <defs>
-
-                <linearGradient id="pl-logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-
-                    <stop offset="0%" stop-color="#FFFFFF" />
-
-                    <stop offset="100%" stop-color="var(--purple)" />
-
-                </linearGradient>
-
-            </defs>
-
-            <path d="M 5,95 L 50,5 L 95,95 L 50,95 M 50,5 L 50,95 M 27.5,50 L 27.5,95 L 5,95 M 27.5,50 L 50,95" 
-
-                  stroke="url(#pl-logo-grad)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none" />
-
-        </svg>
-
-        <div class="pl-logo">AHMED NAZIF</div>
-
-        <div class="pl-bar-wrap">
-
-            <div class="pl-bar" id="plBar"></div>
-
-        </div>
-
-        <div class="pl-foot">
-
-            <span class="pl-label">INITIALIZING</span>
-
-            <span class="pl-pct" id="plPct">0%</span>
-
-        </div>
-
-    </div>
-
-</div>
 
 <nav class="nav" id="nav">
 
@@ -458,14 +406,6 @@
 
 <section class="hero" id="home">
 
-    <canvas id="heroCanvas"></canvas>
-
-    <div class="hero-blob b1"></div>
-
-    <div class="hero-blob b2"></div>
-
-    <div class="hero-blob b3"></div>
-
     <div class="hero-content">
 
         <h1 class="hero-heading" data-aos>
@@ -485,8 +425,6 @@
         <div class="hero-btns" data-aos data-aos-delay="300">
 
             <a href="#work" class="btn-primary">
-
-                <span class="btn-shimmer"></span>
 
                 <i class="fa-solid fa-play"></i>
 
@@ -546,84 +484,78 @@
 
         </div>
 
-        <!-- Grand Cinema Showcase Player Below The Text -->
-
-        <div class="hero-showcase" data-aos data-aos-delay="400">
-
+                <!-- Grand Cinema Showcase Player Below The Text -->
+        <div class="hero-showcase" data-aos data-aos-delay="200">
             <div class="hsc-glow"></div>
-
-            <div class="hsc-frame" id="heroFrame" title="Click to Play / Pause">
-
+            <div class="hsc-frame" id="heroFrame" tabindex="0" role="region" aria-label="Boise 2027 Cinema Player">
                 <video id="heroVideo" class="hsc-video" src="boise-preview.mp4" poster="images/renderhouse_thumb.jpg" autoplay loop muted playsinline preload="auto"></video>
+                
+                <!-- Quick visual feedback ripple for play/pause -->
+                <div class="hsc-ripple" id="heroRipple"><i class="fa-solid fa-play" id="heroRippleIcon"></i></div>
 
+                <!-- Center play button overlay when paused -->
                 <div class="hsc-center-overlay" id="heroCenterPlay">
-
-                    <div class="hsc-center-circle">
-
+                    <button class="hsc-center-circle" aria-label="Play Video">
                         <i class="fa-solid fa-play"></i>
-
-                    </div>
-
+                    </button>
                 </div>
 
-                <div class="hsc-seeker" id="heroSeeker" title="Click to seek">
-
-                    <div class="hsc-seeker-track">
-
-                        <div class="hsc-seeker-prog" id="heroProg"></div>
-
+                <!-- Custom Cinema Controls Bar -->
+                <div class="hsc-controls-wrap" id="heroControls">
+                    <!-- High-Precision Scrubber with Buffer, Knob, & Time Tooltip -->
+                    <div class="hsc-seeker" id="heroSeeker" role="slider" aria-label="Seek video" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                        <div class="hsc-seeker-track" id="heroSeekerTrack">
+                            <div class="hsc-seeker-buffer" id="heroBuffer"></div>
+                            <div class="hsc-seeker-prog" id="heroProg">
+                                <span class="hsc-seeker-knob"></span>
+                            </div>
+                        </div>
+                        <div class="hsc-seeker-tooltip" id="heroSeekerTip">00:00</div>
                     </div>
 
-                </div>
+                    <div class="hsc-bottom-bar">
+                        <div class="hsc-bar-left">
+                            <button class="hsc-ctrl-btn hsc-play-btn" id="heroPlayPauseBtn" aria-label="Play or Pause" title="Play / Pause (Space)">
+                                <i class="fa-solid fa-pause" id="heroPlayPauseIcon"></i>
+                            </button>
 
-                <div class="hsc-bottom-bar">
+                            <!-- Volume Control with expand-on-hover slider -->
+                            <div class="hsc-vol-wrap" id="heroVolWrap">
+                                <button class="hsc-ctrl-btn hsc-vol-btn" id="heroSoundBtn" aria-label="Toggle Sound" title="Mute / Unmute (M)">
+                                    <i class="fa-solid fa-volume-xmark" id="heroSoundIcon"></i>
+                                </button>
+                                <div class="hsc-vol-slider-wrap">
+                                    <input type="range" class="hsc-vol-slider" id="heroVolSlider" min="0" max="1" step="0.05" value="0" aria-label="Volume Slider">
+                                </div>
+                            </div>
 
-                    <div class="hsc-meta">
-
-                        <div class="hsc-title">
-
-                            <span class="hsc-dot"></span>
-
-                            <span>Boise 2027 Infrastructure &bull; <strong class="hsc-client-name">Render House (USA)</strong></span>
-
+                            <div class="hsc-time-display">
+                                <span id="heroCurTime">00:00</span>
+                                <span class="hsc-time-sep">/</span>
+                                <span id="heroDurTime">03:38</span>
+                            </div>
                         </div>
 
-                        <div class="hsc-sub">Real Estate &bull; 3D Motion Graphics &bull; 60 FPS Master</div>
+                        <div class="hsc-bar-center">
+                            <div class="hsc-title-line">
+                                <span class="hsc-dot"></span>
+                                <span class="hsc-title-text">Boise 2027 Infrastructure &bull; <strong class="hsc-client-name">Render House (USA)</strong></span>
+                            </div>
+                        </div>
 
+                        <div class="hsc-bar-right">
+                            <button class="hsc-ctrl-btn hsc-icon-only" id="heroFsBtn" aria-label="Toggle Fullscreen" title="Fullscreen (F)">
+                                <i class="fa-solid fa-expand" id="heroFsIcon"></i>
+                            </button>
+
+                            <button class="hsc-ctrl-btn hsc-btn-primary" id="heroFullBtn" data-video="boise-renderhouse.mp4" aria-label="Watch Full Video in Cinema Lightbox">
+                                <i class="fa-solid fa-film"></i>
+                                <span>Full Project (3:38)</span>
+                            </button>
+                        </div>
                     </div>
-
-                    <div class="hsc-actions">
-
-                        <button class="hsc-ctrl-btn" id="heroPlayPauseBtn" aria-label="Play or Pause">
-
-                            <i class="fa-solid fa-pause" id="heroPlayPauseIcon"></i>
-
-                            <span id="heroPlayPauseText">Pause</span>
-
-                        </button>
-
-                        <button class="hsc-ctrl-btn" id="heroSoundBtn" aria-label="Toggle Sound">
-
-                            <i class="fa-solid fa-volume-xmark" id="heroSoundIcon"></i>
-
-                            <span id="heroSoundText" data-unmute="Sound" data-mute="Mute">Sound</span>
-
-                        </button>
-
-                        <button class="hsc-ctrl-btn hsc-btn-primary" id="heroFullBtn" data-video="boise-renderhouse.mp4" aria-label="Watch Full Video in Cinema Lightbox">
-
-                            <i class="fa-solid fa-expand"></i>
-
-                            <span>Full Project (3:38)</span>
-
-                        </button>
-
-                    </div>
-
                 </div>
-
             </div>
-
         </div>
 
     </div>
@@ -859,6 +791,8 @@
                     <div class="vcv-ambient-bg"></div>
 
                     <div class="vcv-phone-frame">
+
+                        <div class="vcv-progress-track"><div class="vcv-progress-bar" id="vcvProg"></div></div>
 
                         <video id="vcvVideo" class="vcv-video" src="voral-reel.mp4" poster="images/voral_thumb.jpg" loop playsinline preload="metadata"></video>
 
@@ -1624,7 +1558,7 @@
 
 </div>
 
-<script src="script.js?v=7.1"></script>
+<script src="script.js?v=7.2"></script>
 
 </body>
 
