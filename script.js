@@ -409,38 +409,43 @@ document.addEventListener('DOMContentLoaded', () => {
         heroVideo.addEventListener('play', () => updatePlayState(true));
         heroVideo.addEventListener('pause', () => updatePlayState(false));
     }
-/* ════════════════════════════════
-       VORAL VERTICAL SHORT REEL CONTROLS
+    /* ════════════════════════════════
+       WORK SECTION FEATURED CONTROLS
     ════════════════════════════════ */
-    const vcvVideo     = document.getElementById('vcvVideo');
-    const vcvPlayBtn   = document.getElementById('vcvPlayBtn');
-    const vcvSoundBtn  = document.getElementById('vcvSoundBtn');
-    const vcvSoundIcon = document.getElementById('vcvSoundIcon');
-    const vcvWatchBtn  = document.getElementById('vcvWatchBtn');
-    const vcvWrap      = document.getElementById('vcvWrap');
+    // 1. Render House Commercial Card
+    const vcsBoiseThumb = document.getElementById('vcsBoiseThumb');
+    const vcsWatchBtn   = document.getElementById('vcsWatchBtn');
+    const openBoiseFilm = (e) => {
+        if (e) { e.preventDefault(); e.stopPropagation(); }
+        openLB('video', 'boise-renderhouse.mp4', { vertical: false });
+    };
+    vcsBoiseThumb && vcsBoiseThumb.addEventListener('click', openBoiseFilm);
+    vcsWatchBtn && vcsWatchBtn.addEventListener('click', openBoiseFilm);
 
-    if (vcvVideo && vcvPlayBtn) {
+    // 2. Voral Media 9:16 Vertical Reel Card
+    const vcvVideo       = document.getElementById('vcvVideo');
+    const vcvWrap        = document.getElementById('vcvWrap');
+    const vcvPlayOverlay = document.getElementById('vcvPlayOverlay');
+    const vcvSoundBtn    = document.getElementById('vcvSoundBtn');
+    const vcvSoundIcon   = document.getElementById('vcvSoundIcon');
+
+    if (vcvVideo && vcvWrap) {
         const toggleVcv = () => {
             if (vcvVideo.paused) {
-                vcvVideo.play();
-                vcvPlayBtn.style.opacity = '0';
+                vcvVideo.play().then(() => {
+                    if (vcvPlayOverlay) vcvPlayOverlay.style.opacity = '0';
+                }).catch(() => {});
             } else {
                 vcvVideo.pause();
-                vcvPlayBtn.style.opacity = '1';
+                if (vcvPlayOverlay) vcvPlayOverlay.style.opacity = '1';
             }
         };
-        vcvPlayBtn.addEventListener('click', (e) => { e.stopPropagation(); toggleVcv(); });
-        vcvWrap && vcvWrap.addEventListener('click', toggleVcv);
 
-        const vcvProg = document.getElementById('vcvProg');
-        if (vcvProg) {
-            vcvVideo.addEventListener('timeupdate', () => {
-                if (vcvVideo.duration) {
-                    const p = (vcvVideo.currentTime / vcvVideo.duration) * 100;
-                    vcvProg.style.width = p + '%';
-                }
-            });
-        }
+        vcvWrap.addEventListener('click', (e) => {
+            // don't toggle if clicking sound button
+            if (e.target.closest('#vcvSoundBtn')) return;
+            toggleVcv();
+        });
 
         if (vcvSoundBtn) {
             vcvSoundBtn.addEventListener('click', (e) => {
@@ -451,13 +456,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }
-    }
 
-    if (vcvWatchBtn) {
-        vcvWatchBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            openLB('video', 'voral-reel.mp4', { vertical: true });
+        vcvVideo.addEventListener('play', () => {
+            if (vcvPlayOverlay) vcvPlayOverlay.style.opacity = '0';
+        });
+        vcvVideo.addEventListener('pause', () => {
+            if (vcvPlayOverlay) vcvPlayOverlay.style.opacity = '1';
         });
     }
 

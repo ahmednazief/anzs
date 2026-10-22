@@ -310,7 +310,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <link rel="stylesheet" href="styles.css?v=7.2">
+    <link rel="stylesheet" href="styles.css?v=7.3">
 
     <link rel="icon" href="/favicon.ico" sizes="any">
 
@@ -403,175 +403,125 @@
 </div>
 
 <!-- ═══════ HERO ═══════ -->
-
 <section class="hero" id="home">
-
-    <div class="hero-content">
-
-        <h1 class="hero-heading" data-aos>
-
-            مونتاج وبوست برودكشن سينمائي<br>
-
-            <span class="hh-gradient">عالي التأثير والاحتفاظ.</span>
-
-        </h1>
-
-        <p class="hero-desc" data-aos data-aos-delay="200">
-
-            أنا <strong>أحمد نظيف</strong> — مونتير ومصمم بوست برودكشن محترف. أتعاون مع كبرى الشركات والستوديوهات وصناع المحتوى عالمياً، من بينهم <strong>Render House (أمريكا)</strong> و <strong>Voral Media (الإمارات)</strong>. متخصص في فيديوهات الريل ستيت والموشن جرافيكس السينمائي، والشورتس الرأسية سريعة الانتشار.
-
-        </p>
-
-        <div class="hero-btns" data-aos data-aos-delay="300">
-
-            <a href="#work" class="btn-primary">
-
-                <i class="fa-solid fa-play"></i>
-
-                استعرض المشاريع
-
-            </a>
-
-            <a href="#contact" class="btn-ghost">
-
-                ابدأ مشروعك
-
-                <i class="fa-solid fa-arrow-left"></i>
-
-            </a>
-
-        </div>
-
-        <div class="hero-stats" data-aos data-aos-delay="350">
-
-            <div class="hs">
-
-                <strong>500K<span>+</span></strong>
-
-                <span>نصف مليون مشاهدة يوتيوب</span>
-
-            </div>
-
-            <div class="hs-sep"></div>
-
-            <div class="hs">
-
-                <strong>10K<span>+</span></strong>
-
-                <span>مشترك في القناة</span>
-
-            </div>
-
-            <div class="hs-sep"></div>
-
-            <div class="hs">
-
-                <strong>أمريكا والإمارات</strong>
-
-                <span>ستوديوهات وعملاء دوليون</span>
-
-            </div>
-
-            <div class="hs-sep"></div>
-
-            <div class="hs">
-
-                <strong>+50%</strong>
-
-                <span>زيادة معدل الاحتفاظ والـ Retention</span>
-
-            </div>
-
-        </div>
-
-                <!-- Grand Cinema Showcase Player Below The Text -->
-        <div class="hero-showcase" data-aos data-aos-delay="200">
-            <div class="hsc-glow"></div>
-            <div class="hsc-frame" id="heroFrame" tabindex="0" role="region" aria-label="مشغل فيديو سينمائي">
-                <video id="heroVideo" class="hsc-video" src="boise-preview.mp4" poster="images/renderhouse_thumb.jpg" autoplay loop muted playsinline preload="auto"></video>
-                
-                <!-- Quick visual feedback ripple for play/pause -->
-                <div class="hsc-ripple" id="heroRipple"><i class="fa-solid fa-play" id="heroRippleIcon"></i></div>
-
-                <!-- Center play button overlay when paused -->
-                <div class="hsc-center-overlay" id="heroCenterPlay">
-                    <button class="hsc-center-circle" aria-label="تشغيل الفيديو">
+    <div class="wrap hero-wrap">
+        <div class="hero-grid">
+            <div class="hero-left" data-aos>
+                <h1 class="hero-heading">
+                    مونتاج وبوست برودكشن سينمائي<br>
+                    <span class="hh-gradient">عالي التأثير والاحتفاظ.</span>
+                </h1>
+                <p class="hero-desc">
+                    أنا <strong>أحمد نظيف</strong> — مونتير ومصمم بوست برودكشن محترف. أتعاون مع كبرى الشركات والستوديوهات وصناع المحتوى عالمياً، من بينهم <strong>Render House (أمريكا)</strong> و <strong>Voral Media (الإمارات)</strong>. متخصص في فيديوهات الريل ستيت والموشن جرافيكس السينمائي، والشورتس الرأسية سريعة الانتشار.
+                </p>
+                <div class="hero-btns">
+                    <a href="#work" class="btn-primary">
                         <i class="fa-solid fa-play"></i>
-                    </button>
+                        استعرض المشاريع
+                    </a>
+                    <a href="#contact" class="btn-ghost">
+                        ابدأ مشروعك
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </a>
                 </div>
-
-                <!-- Custom Cinema Controls Bar -->
-                <div class="hsc-controls-wrap" id="heroControls">
-                    <!-- High-Precision Scrubber with Buffer, Knob, & Time Tooltip -->
-                    <div class="hsc-seeker" id="heroSeeker" role="slider" aria-label="تقديم وتأخير الفيديو" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                        <div class="hsc-seeker-track" id="heroSeekerTrack">
-                            <div class="hsc-seeker-buffer" id="heroBuffer"></div>
-                            <div class="hsc-seeker-prog" id="heroProg">
-                                <span class="hsc-seeker-knob"></span>
-                            </div>
-                        </div>
-                        <div class="hsc-seeker-tooltip" id="heroSeekerTip">00:00</div>
+                <div class="hero-stats">
+                    <div class="hs">
+                        <strong>500K<span>+</span></strong>
+                        <span>مشاهدات يوتيوب</span>
                     </div>
+                    <div class="hs-sep"></div>
+                    <div class="hs">
+                        <strong>10K<span>+</span></strong>
+                        <span>مشترك</span>
+                    </div>
+                    <div class="hs-sep"></div>
+                    <div class="hs">
+                        <strong>أمريكا والإمارات</strong>
+                        <span>ستوديوهات عالمية</span>
+                    </div>
+                    <div class="hs-sep"></div>
+                    <div class="hs">
+                        <strong>+50%</strong>
+                        <span>زيادة الاستبقاء</span>
+                    </div>
+                </div>
+            </div>
 
-                    <div class="hsc-bottom-bar">
-                        <div class="hsc-bar-left">
-                            <button class="hsc-ctrl-btn hsc-play-btn" id="heroPlayPauseBtn" aria-label="تشغيل أو إيقاف" title="تشغيل / إيقاف (مسافة)">
-                                <i class="fa-solid fa-pause" id="heroPlayPauseIcon"></i>
+            <div class="hero-right" data-aos data-aos-delay="150">
+                <div class="hero-showcase">
+                    <div class="hsc-glow"></div>
+                    <div class="hsc-frame" id="heroFrame" tabindex="0" role="region" aria-label="مشغل فيديو سينمائي">
+                        <video id="heroVideo" class="hsc-video" src="boise-preview.mp4" poster="images/renderhouse_thumb.jpg" autoplay loop muted playsinline preload="auto"></video>
+                        
+                        <div class="hsc-ripple" id="heroRipple"><i class="fa-solid fa-play" id="heroRippleIcon"></i></div>
+
+                        <div class="hsc-center-overlay" id="heroCenterPlay">
+                            <button class="hsc-center-circle" aria-label="تشغيل الفيديو">
+                                <i class="fa-solid fa-play"></i>
                             </button>
+                        </div>
 
-                            <!-- Volume Control with expand-on-hover slider -->
-                            <div class="hsc-vol-wrap" id="heroVolWrap">
-                                <button class="hsc-ctrl-btn hsc-vol-btn" id="heroSoundBtn" aria-label="التحكم في الصوت" title="كتم / تشغيل الصوت (M)">
-                                    <i class="fa-solid fa-volume-xmark" id="heroSoundIcon"></i>
-                                </button>
-                                <div class="hsc-vol-slider-wrap">
-                                    <input type="range" class="hsc-vol-slider" id="heroVolSlider" min="0" max="1" step="0.05" value="0" aria-label="مستوى الصوت">
+                        <div class="hsc-controls-wrap" id="heroControls">
+                            <div class="hsc-seeker" id="heroSeeker" role="slider" aria-label="تقديم وتأخير الفيديو" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                                <div class="hsc-seeker-track" id="heroSeekerTrack">
+                                    <div class="hsc-seeker-buffer" id="heroBuffer"></div>
+                                    <div class="hsc-seeker-prog" id="heroProg">
+                                        <span class="hsc-seeker-knob"></span>
+                                    </div>
+                                </div>
+                                <div class="hsc-seeker-tooltip" id="heroSeekerTip">00:00</div>
+                            </div>
+
+                            <div class="hsc-bottom-bar">
+                                <div class="hsc-bar-left">
+                                    <button class="hsc-ctrl-btn hsc-play-btn" id="heroPlayPauseBtn" aria-label="تشغيل أو إيقاف" title="تشغيل / إيقاف (مسافة)">
+                                        <i class="fa-solid fa-pause" id="heroPlayPauseIcon"></i>
+                                    </button>
+
+                                    <div class="hsc-vol-wrap" id="heroVolWrap">
+                                        <button class="hsc-ctrl-btn hsc-vol-btn" id="heroSoundBtn" aria-label="التحكم في الصوت" title="كتم / تشغيل الصوت (M)">
+                                            <i class="fa-solid fa-volume-xmark" id="heroSoundIcon"></i>
+                                        </button>
+                                        <div class="hsc-vol-slider-wrap">
+                                            <input type="range" class="hsc-vol-slider" id="heroVolSlider" min="0" max="1" step="0.05" value="0" aria-label="مستوى الصوت">
+                                        </div>
+                                    </div>
+
+                                    <div class="hsc-time-display">
+                                        <span id="heroCurTime">00:00</span>
+                                        <span class="hsc-time-sep">/</span>
+                                        <span id="heroDurTime">03:38</span>
+                                    </div>
+                                </div>
+
+                                <div class="hsc-bar-center">
+                                    <div class="hsc-title-line">
+                                        <span class="hsc-dot"></span>
+                                        <span class="hsc-title-text">بويسي 2027 &bull; <strong class="hsc-client-name">Render House</strong></span>
+                                    </div>
+                                </div>
+
+                                <div class="hsc-bar-right">
+                                    <button class="hsc-ctrl-btn hsc-icon-only" id="heroFsBtn" aria-label="ملء الشاشة" title="ملء الشاشة (F)">
+                                        <i class="fa-solid fa-expand" id="heroFsIcon"></i>
+                                    </button>
+
+                                    <button class="hsc-ctrl-btn hsc-btn-primary" id="heroFullBtn" data-video="boise-renderhouse.mp4" aria-label="مشاهدة المشروع كاملاً">
+                                        <i class="fa-solid fa-film"></i>
+                                        <span>المشروع كاملاً (3:38)</span>
+                                    </button>
                                 </div>
                             </div>
-
-                            <div class="hsc-time-display">
-                                <span id="heroCurTime">00:00</span>
-                                <span class="hsc-time-sep">/</span>
-                                <span id="heroDurTime">03:38</span>
-                            </div>
-                        </div>
-
-                        <div class="hsc-bar-center">
-                            <div class="hsc-title-line">
-                                <span class="hsc-dot"></span>
-                                <span class="hsc-title-text">مشروع بويسي 2027 &bull; <strong class="hsc-client-name">Render House (أمريكا)</strong></span>
-                            </div>
-                        </div>
-
-                        <div class="hsc-bar-right">
-                            <button class="hsc-ctrl-btn hsc-icon-only" id="heroFsBtn" aria-label="ملء الشاشة" title="ملء الشاشة (F)">
-                                <i class="fa-solid fa-expand" id="heroFsIcon"></i>
-                            </button>
-
-                            <button class="hsc-ctrl-btn hsc-btn-primary" id="heroFullBtn" data-video="boise-renderhouse.mp4" aria-label="مشاهدة المشروع بجودة سينمائية كاملة">
-                                <i class="fa-solid fa-film"></i>
-                                <span>المشروع بالكامل (3:38)</span>
-                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
-
     <div class="hero-scroll">
-
-        <span>تمرير</span>
-
-        <div class="hs-arrow">
-
-            <i class="fa-solid fa-chevron-down"></i>
-
-        </div>
-
+        <span>Scroll</span>
+        <div class="hs-arrow"><i class="fa-solid fa-chevron-down"></i></div>
     </div>
-
 </section>
 
 <!-- ═══════ ABOUT ═══════ -->
@@ -688,422 +638,180 @@
 
 </section>
 
-<!-- ═══════ PORTFOLIO ═══════ -->
-
+<!-- ═══════ PORTFOLIO / WORK ═══════ -->
 <section class="work" id="work">
-
     <div class="wrap">
-
         <div class="section-head" data-aos>
-
-            <div class="eyebrow">أعمال مختارة</div>
-
-            <h2>مشاريع العملاء و<br><span class="grad-text">المحتوى عالي التأثير.</span></h2>
-
-            <p>من العروض العقارية السينمائية والتجارية الفاخرة، إلى الريلز الفيروسية والشورتس الرأسية ومحتوى يوتيوب الطويل.</p>
-
+            <div class="eyebrow">الأعمال المختارة / تجاري وصناع محتوى</div>
+            <h2>تأثير مثبت بالأرقام.<br><span class="grad-text">مونتاج مُهندس لأعلى درجات الاستبقاء.</span></h2>
+            <p>من عروض الموشن جرافيكس العقارية الضخمة لكبرى الشركات الأمريكية، وحتى حملات الريلز الفيروسية وسلاسل اليوتيوب التي حققت أكثر من نصف مليون مشاهدة.</p>
         </div>
 
-        <!-- Filter -->
-
-        <div class="pf-filter" data-aos>
-
-            <button class="pf-btn pf-active" data-filter="all">كل المشاريع</button>
-
-            <button class="pf-btn" data-filter="commercial">ريل ستيت وإعلانات تجارية</button>
-
-            <button class="pf-btn" data-filter="shorts">شورتس وريلز رأسية (9:16)</button>
-
-            <button class="pf-btn" data-filter="youtube">محتوى يوتيوب الطويل</button>
-
+        <div class="portfolio-filter" data-aos>
+            <button class="pf-btn pf-active" data-filter="all">جميع الأعمال</button>
+            <button class="pf-btn" data-filter="commercial">إعلانات وتتبع 3D (أمريكا)</button>
+            <button class="pf-btn" data-filter="shorts">ريلز رأسية 9:16 (الإمارات)</button>
+            <button class="pf-btn" data-filter="youtube">سلاسل يوتيوب</button>
         </div>
 
-        <!-- Featured Spotlight & Vertical Short Cards -->
-
+        <!-- Featured Asymmetric Bento: 16:9 Commercial + 9:16 Vertical Reel -->
         <div class="work-grid-featured">
-
-            <!-- Card 1: Render House (USA) -->
-
+            <!-- Card 1: Render House (USA) — 16:9 Commercial Showcase -->
             <div class="vc-spotlight" data-cat="commercial" data-video="boise-renderhouse.mp4" data-aos>
-
-                <div class="vcs-thumb">
-
-                    <img loading="lazy" src="images/renderhouse_thumb.jpg" alt="Render House - Boise 2027 Real Estate Project">
-
+                <div class="vcs-thumb" id="vcsBoiseThumb">
+                    <img loading="lazy" src="images/renderhouse_thumb.jpg" alt="Render House - Boise 2027 Infrastructure">
                     <div class="vcs-overlay">
-
                         <div class="vcs-play-btn"><i class="fa-solid fa-play"></i></div>
-
                     </div>
-
-                    <div class="vcs-badge-row">
-
-                        <span class="vcs-client-badge">
-
-                            <i class="fa-solid fa-building-circle-check" style="color:#34d399;"></i> Render House &bull; أمريكا
-
-                        </span>
-
-                        <span class="vcs-time-badge"><i class="fa-solid fa-clock"></i> 03:38</span>
-
-                    </div>
-
                 </div>
-
                 <div class="vcs-info">
-
-                    <div>
-
-                        <h3 class="vcs-title">Boise 2027 — نظرة شاملة وتفاصيل المشاريع</h3>
-
-                        <p class="vcs-desc">عرض عقاري وتسويقي متكامل لصالح شركة Render House الأمريكية. يتضمن تتبع حركة ثلاثي الأبعاد، خطوط ونصوص متحركة، وإيقاع سردي وتدريج لوني فخم.</p>
-
+                    <div class="vcs-info-text">
+                        <h3 class="vcs-title">مشروع تطوير بويسي 2027</h3>
+                        <div class="vcs-meta-line"><strong>Render House (أمريكا)</strong> &bull; عقارات تجارية وتتبع حركة ثلاثي الأبعاد &bull; 03:38</div>
                     </div>
-
-                    <div class="vcs-footer">
-
-                        <div class="vcs-stats">
-
-                            <span><i class="fa-solid fa-location-dot" style="color:var(--purple);"></i> بويسي، أيداهو (أمريكا)</span>
-
-                            <span><i class="fa-solid fa-sliders"></i> ماستر 60FPS</span>
-
-                        </div>
-
-                        <button class="vcs-watch-btn">
-
-                            <i class="fa-solid fa-play"></i> مشاهدة المشروع
-
-                        </button>
-
-                    </div>
-
+                    <button class="vcs-action-btn vcs-action-primary" id="vcsWatchBtn" data-video="boise-renderhouse.mp4">
+                        <i class="fa-solid fa-film"></i> مشاهدة المشروع
+                    </button>
                 </div>
-
             </div>
 
-            <!-- Card 2: Voral Media (UAE) - Vertical Reel Card -->
-
+            <!-- Card 2: Voral Media (UAE) — Authentic 9:16 Vertical Reel -->
             <div class="vc-spotlight vc-vertical-spotlight" data-cat="shorts" data-video="voral-reel.mp4" data-aos data-aos-delay="100">
-
-                <div class="vcs-thumb vcs-vertical-thumb" id="vcvWrap">
-
-                    <div class="vcv-ambient-bg"></div>
-
-                    <div class="vcv-phone-frame">
-
-                        <div class="vcv-progress-track"><div class="vcv-progress-bar" id="vcvProg"></div></div>
-
-                        <video id="vcvVideo" class="vcv-video" src="voral-reel.mp4" poster="images/voral_thumb.jpg" loop playsinline preload="metadata"></video>
-
-                        <div class="vcv-play-overlay" id="vcvPlayBtn">
-
-                            <div class="vcs-play-btn"><i class="fa-solid fa-play"></i></div>
-
-                        </div>
-
-                        <button class="vcv-sound-btn" id="vcvSoundBtn" title="كتم / تشغيل الصوت">
-
-                            <i class="fa-solid fa-volume-xmark" id="vcvSoundIcon"></i>
-
-                        </button>
-
+                <div class="vcs-vertical-wrap" id="vcvWrap">
+                    <video id="vcvVideo" class="vcv-video-full" src="voral-reel.mp4" poster="images/voral_thumb.jpg" loop playsinline preload="metadata"></video>
+                    <span class="vcs-format-badge"><i class="fa-solid fa-mobile-screen"></i> ريل 9:16</span>
+                    <button class="vcv-sound-float" id="vcvSoundBtn" title="كتم / تشغيل الصوت" aria-label="تبديل الصوت">
+                        <i class="fa-solid fa-volume-xmark" id="vcvSoundIcon"></i>
+                    </button>
+                    <div class="vcs-overlay" id="vcvPlayOverlay">
+                        <div class="vcs-play-btn"><i class="fa-solid fa-play"></i></div>
                     </div>
-
-                    <div class="vcs-badge-row">
-
-                        <span class="vcs-client-badge">
-
-                            <i class="fa-solid fa-bolt-lightning" style="color:var(--cyan);"></i> Voral Media &bull; الإمارات
-
-                        </span>
-
-                        <span class="vcs-time-badge"><i class="fa-solid fa-mobile-screen"></i> ريل 9:16</span>
-
-                    </div>
-
                 </div>
-
                 <div class="vcs-info">
-
-                    <div>
-
-                        <h3 class="vcs-title">Voral Media — حملة ريلز فيروسية سريعة</h3>
-
-                        <p class="vcs-desc">مونتاج رأسي عالي الاستبقاء لصالح وكالة Voral Media في دبي. هندسة خطاف الـ 3 ثواني، نصوص متحركة متزامنة، ومؤثرات صوتية غامرة لمنصات إنستغرام وتيك توك وشورتس.</p>
-
+                    <div class="vcs-info-text">
+                        <h3 class="vcs-title">ريل Voral Media التجاري</h3>
+                        <div class="vcs-meta-line"><strong>Voral Media (دبي، الإمارات)</strong> &bull; حملة فيديوهات رأسية سريعة الانتشار</div>
                     </div>
-
-                    <div class="vcs-footer">
-
-                        <div class="vcs-stats">
-
-                            <span><i class="fa-solid fa-location-dot" style="color:var(--cyan);"></i> دبي، الإمارات</span>
-
-                            <a href="/voral.html" target="_blank" class="vcs-review-pill"><i class="fa-solid fa-arrow-up-right-from-square"></i> صفحة المشروع</a>
-
-                        </div>
-
-                        <button class="vcs-watch-btn" id="vcvWatchBtn">
-
-                            <i class="fa-solid fa-play"></i> مشاهدة الريل
-
-                        </button>
-
-                    </div>
-
+                    <a href="/voral.html" target="_blank" class="vcs-action-btn">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> صفحة المشروع
+                    </a>
                 </div>
-
             </div>
-
         </div>
 
-        <!-- YouTube Long-Form Grid -->
-
+        <!-- YouTube Long-Form Creator Series -->
         <div class="video-grid" id="videoGrid">
-
-            <!-- Video 1: Chinese Server (New Hit 97K) -->
-
+            <!-- Video 1 -->
             <div class="vc" data-cat="youtube" data-vid="jjlwfERLaqE" data-aos>
-
                 <div class="vc-thumb">
-
                     <img loading="lazy" src="https://img.youtube.com/vi/jjlwfERLaqE/maxresdefault.jpg" alt="مصري متخفي في سيرفر الصين في فالورانت" onerror="this.src='https://img.youtube.com/vi/jjlwfERLaqE/hqdefault.jpg'">
-
-                    <div class="vc-overlay">
-
-                        <div class="vc-play"><i class="fa-solid fa-play"></i></div>
-
-                    </div>
-
+                    <div class="vc-overlay"><div class="vc-play"><i class="fa-solid fa-play"></i></div></div>
                     <div class="vc-views"><i class="fa-solid fa-fire"></i> 97K</div>
-
                     <div class="vc-time">09:25</div>
-
                 </div>
-
                 <div class="vc-meta">
-
                     <h3>مصري متخفي في سيرفر الصين في فالورانت</h3>
-
-                    <p>سرد كوميدي مشوق داخل السيرفر الصيني مع إيقاع سريع، كابشن ديناميكي متحرك، وهندسة استبقاء المشاهدين.</p>
-
                     <div class="vc-stats">
-
                         <span><i class="fa-solid fa-eye"></i> 97 ألف مشاهدة</span>
-
                         <span><i class="fa-solid fa-crown"></i> المركز الأول</span>
-
                     </div>
-
                 </div>
-
             </div>
 
-            <!-- Video 2: Pro Coach (82K) -->
-
+            <!-- Video 2 -->
             <div class="vc" data-cat="youtube" data-vid="WgmfFzcpOmc" data-aos data-aos-delay="80">
-
                 <div class="vc-thumb">
-
                     <img loading="lazy" src="https://img.youtube.com/vi/WgmfFzcpOmc/maxresdefault.jpg" alt="تحدي مدرب فالورانت" onerror="this.src='https://img.youtube.com/vi/WgmfFzcpOmc/hqdefault.jpg'">
-
-                    <div class="vc-overlay">
-
-                        <div class="vc-play"><i class="fa-solid fa-play"></i></div>
-
-                    </div>
-
+                    <div class="vc-overlay"><div class="vc-play"><i class="fa-solid fa-play"></i></div></div>
                     <div class="vc-views"><i class="fa-solid fa-eye"></i> 82K</div>
-
                     <div class="vc-time">10:38</div>
-
                 </div>
-
                 <div class="vc-meta">
-
                     <h3>دفعت 1,000 لمدرب فالورانت .. والنتيجة غير متوقعة</h3>
-
-                    <p>تحدي عالي الإثارة والكوميديا مع ميكس مؤثرات صوتية مكثفة وإيقاع مشوق يدفع للمشاهدة المتكررة.</p>
-
                     <div class="vc-stats">
-
                         <span><i class="fa-solid fa-eye"></i> 82 ألف مشاهدة</span>
-
                         <span><i class="fa-solid fa-fire"></i> استبقاء عالي</span>
-
                     </div>
-
                 </div>
-
             </div>
 
-            <!-- Video 3: US Server (62K) -->
-
+            <!-- Video 3 -->
             <div class="vc" data-cat="youtube" data-vid="1Myr-s_QAhA" data-aos data-aos-delay="160">
-
                 <div class="vc-thumb">
-
                     <img loading="lazy" src="https://img.youtube.com/vi/1Myr-s_QAhA/maxresdefault.jpg" alt="مصري متخفي في سيرفر أمريكا" onerror="this.src='https://img.youtube.com/vi/1Myr-s_QAhA/hqdefault.jpg'">
-
-                    <div class="vc-overlay">
-
-                        <div class="vc-play"><i class="fa-solid fa-play"></i></div>
-
-                    </div>
-
+                    <div class="vc-overlay"><div class="vc-play"><i class="fa-solid fa-play"></i></div></div>
                     <div class="vc-views"><i class="fa-solid fa-eye"></i> 62K</div>
-
                     <div class="vc-time">10:29</div>
-
                 </div>
-
                 <div class="vc-meta">
-
                     <h3>مصري متخفي في سيرفر أمريكا في فالورانت</h3>
-
-                    <p>قصة كوميدية ممتعة مع نصوص كيناتيكية متحركة، زومات ديناميكية، وإيقاع مونتاج مشدود حتى النهاية.</p>
-
                     <div class="vc-stats">
-
                         <span><i class="fa-solid fa-eye"></i> 62 ألف مشاهدة</span>
-
                         <span><i class="fa-solid fa-star"></i> مفضل للجمهور</span>
-
                     </div>
-
                 </div>
-
             </div>
 
-            <!-- Video 4: Anime Girls VFX (61K) -->
-
+            <!-- Video 4 -->
             <div class="vc" data-cat="youtube" data-vid="3VohVmtUpXE" data-start="243" data-aos data-aos-delay="0">
-
                 <div class="vc-thumb">
-
                     <img loading="lazy" src="https://img.youtube.com/vi/3VohVmtUpXE/maxresdefault.jpg" alt="البحث عن فتيات الأنمي" onerror="this.src='https://img.youtube.com/vi/3VohVmtUpXE/hqdefault.jpg'">
-
-                    <div class="vc-overlay">
-
-                        <div class="vc-play"><i class="fa-solid fa-play"></i></div>
-
-                    </div>
-
+                    <div class="vc-overlay"><div class="vc-play"><i class="fa-solid fa-play"></i></div></div>
                     <div class="vc-views"><i class="fa-solid fa-eye"></i> 61K</div>
-
                     <div class="vc-time">08:50</div>
-
                 </div>
-
                 <div class="vc-meta">
-
                     <h3>البحث عن فتيات الأنمي في فالورانت</h3>
-
-                    <p>استعراض للمؤثرات البصرية وتتبع الحركة والاهتزازات السينمائية المنسقة مع النكات والتوقيت الكوميدي.</p>
-
                     <div class="vc-stats">
-
                         <span><i class="fa-solid fa-eye"></i> 61 ألف مشاهدة</span>
-
                         <span><i class="fa-solid fa-wand-magic-sparkles"></i> VFX مكثف</span>
-
                     </div>
-
                 </div>
-
             </div>
 
-            <!-- Video 5: Rich Server (41K) -->
-
+            <!-- Video 5 -->
             <div class="vc" data-cat="youtube" data-vid="tPQExFt0rD4" data-aos data-aos-delay="80">
-
                 <div class="vc-thumb">
-
                     <img loading="lazy" src="https://img.youtube.com/vi/tPQExFt0rD4/maxresdefault.jpg" alt="السيرفر اللي هيخليك غني" onerror="this.src='https://img.youtube.com/vi/tPQExFt0rD4/hqdefault.jpg'">
-
-                    <div class="vc-overlay">
-
-                        <div class="vc-play"><i class="fa-solid fa-play"></i></div>
-
-                    </div>
-
+                    <div class="vc-overlay"><div class="vc-play"><i class="fa-solid fa-play"></i></div></div>
                     <div class="vc-views"><i class="fa-solid fa-eye"></i> 41K</div>
-
                     <div class="vc-time">09:15</div>
-
                 </div>
-
                 <div class="vc-meta">
-
                     <h3>السيرفر اللي هيخليك غني في فالورانت</h3>
-
-                    <p>تقطيع حواري سريع ودقيق مع مؤثرات صوتية دقيقة ومحاور كوميدية تشد المتابع من الثانية الأولى.</p>
-
                     <div class="vc-stats">
-
                         <span><i class="fa-solid fa-eye"></i> 41 ألف مشاهدة</span>
-
                         <span><i class="fa-solid fa-bolt"></i> إيقاع سريع</span>
-
                     </div>
-
                 </div>
-
             </div>
 
-            <!-- Video 6: Australian Server (36K) -->
-
+            <!-- Video 6 -->
             <div class="vc" data-cat="youtube" data-vid="1UQBT9-h-Es" data-start="195" data-aos data-aos-delay="160">
-
                 <div class="vc-thumb">
-
                     <img loading="lazy" src="https://img.youtube.com/vi/1UQBT9-h-Es/maxresdefault.jpg" alt="سيرفر استراليا" onerror="this.src='https://img.youtube.com/vi/1UQBT9-h-Es/hqdefault.jpg'">
-
-                    <div class="vc-overlay">
-
-                        <div class="vc-play"><i class="fa-solid fa-play"></i></div>
-
-                    </div>
-
+                    <div class="vc-overlay"><div class="vc-play"><i class="fa-solid fa-play"></i></div></div>
                     <div class="vc-views"><i class="fa-solid fa-eye"></i> 36K</div>
-
                     <div class="vc-time">10:24</div>
-
                 </div>
-
                 <div class="vc-meta">
-
                     <h3>مصري متخفي في سيرفر استراليا في فالورانت</h3>
-
-                    <p>حلقة مميزة في سيرفر استراليا مع انتقالات سريعة وسرد متصل وتفاعل كوميدي مشوق.</p>
-
                     <div class="vc-stats">
-
                         <span><i class="fa-solid fa-eye"></i> 36 ألف مشاهدة</span>
-
                         <span><i class="fa-solid fa-earth-americas"></i> انتشار عالمي</span>
-
                     </div>
-
                 </div>
-
             </div>
-
         </div>
 
         <div class="work-cta" data-aos>
-
             <a href="https://www.youtube.com/@Plains" target="_blank" class="btn-yt">
-
-                <i class="fa-brands fa-youtube"></i> تصفح قناة @Plains على يوتيوب
-
+                <i class="fa-brands fa-youtube"></i>
+                زيارة القناة الكاملة (@Plains)
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
             </a>
-
         </div>
-
     </div>
-
 </section>
 
 <!-- ═══════ PROCESS ═══════ -->
@@ -1558,7 +1266,7 @@
 
 </div>
 
-<script src="script.js?v=7.2"></script>
+<script src="script.js?v=7.3"></script>
 
 </body>
 
