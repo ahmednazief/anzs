@@ -914,44 +914,76 @@ html[lang="ar"] .pillar-row:hover {
 @keyframes tickRev { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
 
 /* ═══════════════════════════════════
-   PROCESS
+   PROCESS / WORKFLOW
 ═══════════════════════════════════ */
-.process { padding: 9rem 0; }
-.proc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.process {
+    padding: 8rem 0;
+    position: relative;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+.proc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.8rem;
+}
 .proc-card {
-    padding: 2.5rem;
+    padding: 2.2rem;
     background: var(--surf);
     border: 1px solid var(--border);
     border-radius: var(--r-xl);
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     transition: all 0.35s var(--ease);
 }
-.proc-card:hover { border-color: var(--border-h); transform: translateY(-6px); box-shadow: 0 20px 50px rgba(167,139,250,0.1); }
-.proc-num {
-    font-family: var(--fd); font-size: 6rem; font-weight: 900;
-    line-height: 1; color: var(--purple); opacity: 0.07;
-    position: absolute; top: 1.5rem; right: 1.5rem;
+.proc-card:hover {
+    border-color: rgba(167, 139, 250, 0.4);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
 }
-.proc-icon {
-    width: 52px; height: 52px;
-    border-radius: var(--r);
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
-    display: flex; align-items: center; justify-content: center;
-    color: var(--ic); font-size: 1.3rem;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 0 20px color-mix(in srgb, var(--ic) 20%, transparent);
+.proc-step-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.3rem;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
-.proc-card h3 { font-family: var(--fd); font-size: 1.2rem; font-weight: 700; margin-bottom: 0.8rem; }
-.proc-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.75; margin-bottom: 1.5rem; }
-.proc-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.proc-tags span {
-    font-family: var(--fm); font-size: 0.62rem; letter-spacing: 1px;
-    text-transform: uppercase; color: var(--purple);
-    padding: 0.2rem 0.6rem;
-    border: 1px solid rgba(167,139,250,0.2);
-    border-radius: var(--r-pill);
-    background: rgba(167,139,250,0.06);
+.proc-phase {
+    font-family: var(--fm);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--purple);
+}
+.proc-card:nth-child(2) .proc-phase {
+    color: var(--cyan);
+}
+.proc-card:nth-child(3) .proc-phase {
+    color: var(--teal);
+}
+.proc-num-badge {
+    font-family: var(--fd);
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #fff;
+    opacity: 0.35;
+}
+.proc-card h3 {
+    font-family: var(--fd);
+    font-size: 1.22rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.85rem;
+    line-height: 1.35;
+}
+.proc-card p {
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin: 0;
 }
 
 /* ═══════════════════════════════════
@@ -1271,7 +1303,7 @@ html[lang="ar"] .btn-ghost,
 html[lang="ar"] .nav-cta,
 html[lang="ar"] .mn-link,
 html[lang="ar"] .vc-stats span,
-html[lang="ar"] .proc-tags span,
+
 
 html[lang="ar"] .ci-label,
 html[lang="ar"] .cf-prompt,
