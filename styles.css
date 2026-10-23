@@ -371,28 +371,31 @@ html[lang="ar"] .mobile-nav {
 }
 .hero-grid {
     display: grid;
-    grid-template-columns: 1fr 1.15fr;
-    align-items: center;
-    gap: 3.5rem;
+    grid-template-columns: 0.94fr 1.06fr;
+    align-items: stretch;
+    column-gap: 3.25rem;
+    row-gap: 2.15rem;
     width: 100%;
 }
 .hero-left {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: flex-start;
     text-align: left;
     min-width: 0;
+    height: 100%;
 }
 html[lang="ar"] .hero-left {
     text-align: right;
 }
 .hero-heading {
     font-family: var(--fd);
-    font-size: clamp(2.2rem, 3.6vw, 3.55rem);
+    font-size: clamp(2rem, 2.85vw, 2.95rem);
     font-weight: 900;
-    line-height: 1.14;
-    letter-spacing: -1.5px;
-    margin: 0 0 1.35rem;
+    line-height: 1.15;
+    letter-spacing: -1.2px;
+    margin: -3px 0 0;
     color: #fff;
 }
 .hh-gradient {
@@ -402,11 +405,11 @@ html[lang="ar"] .hero-left {
     background-clip: text;
 }
 .hero-desc {
-    font-size: clamp(0.96rem, 1.15vw, 1.08rem);
-    line-height: 1.75;
+    font-size: clamp(0.95rem, 1.08vw, 1.04rem);
+    line-height: 1.72;
     color: var(--muted);
-    margin: 0 0 2rem;
-    max-width: 560px;
+    margin: 0;
+    max-width: 100%;
 }
 .hero-desc strong {
     color: #fff;
@@ -417,47 +420,62 @@ html[lang="ar"] .hero-left {
     align-items: center;
     gap: 0.9rem;
     flex-wrap: wrap;
-    margin: 0 0 2.2rem;
+    margin: 0;
 }
 
-/* Clean Structured Stat Bar (No Warped Pill Wrapping) */
+/* Full-Width Symmetric Stat Bar Across Entire Hero */
 .hero-stats {
+    grid-column: 1 / -1;
     display: grid;
-    grid-template-columns: repeat(4, auto);
+    grid-template-columns: repeat(4, 1fr);
     align-items: center;
-    gap: 1.25rem;
-    padding: 1rem 1.4rem;
-    background: rgba(14, 18, 28, 0.65);
+    gap: 0;
+    padding: 1.25rem 1.5rem;
+    background: rgba(14, 18, 28, 0.72);
     border: 1px solid var(--border);
     border-radius: var(--r-lg);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     width: 100%;
-    max-width: 580px;
-    justify-content: space-between;
+    max-width: none;
 }
 .hs {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 3px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 4px;
+    padding: 0.15rem 1.25rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+.hs:last-child {
+    border-right: none;
+}
+html[lang="ar"] .hs {
+    border-right: none;
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+html[lang="ar"] .hs:last-child {
+    border-left: none;
 }
 .hs strong {
     font-family: var(--fd);
-    font-size: 1.2rem;
+    font-size: 1.35rem;
     font-weight: 800;
     color: #fff;
-    line-height: 1.1;
+    line-height: 1.15;
+    white-space: nowrap;
 }
 .hs strong span {
     color: var(--purple-light);
-    font-size: 0.95rem;
+    font-size: 1rem;
 }
 .hs span {
-    font-size: 0.66rem;
+    font-size: 0.68rem;
     color: var(--muted);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.6px;
     font-family: var(--fm);
     line-height: 1.25;
     white-space: nowrap;
@@ -469,6 +487,9 @@ html[lang="ar"] .hero-left {
 .hero-right {
     min-width: 0;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .hero-scroll {
     position: absolute;
@@ -2103,11 +2124,14 @@ html[lang="ar"] .mn-close {
 @media (max-width: 1100px) {
     .hero-grid {
         grid-template-columns: 1fr;
-        gap: 2.5rem;
+        gap: 2.25rem;
     }
     .hero-left {
         align-items: center;
         text-align: center;
+        justify-content: flex-start;
+        gap: 1.4rem;
+        height: auto;
     }
     html[lang="ar"] .hero-left {
         align-items: center;
@@ -2116,6 +2140,7 @@ html[lang="ar"] .mn-close {
     .hero-desc {
         margin-left: auto;
         margin-right: auto;
+        max-width: 620px;
     }
     .hero-btns {
         justify-content: center;
@@ -2168,7 +2193,13 @@ html[lang="ar"] .mn-close {
     }
     .hero-stats {
         grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
+        gap: 1.15rem;
+        padding: 1.15rem 1rem;
+    }
+    .hs,
+    html[lang="ar"] .hs {
+        border: none;
+        padding: 0.25rem 0.5rem;
     }
     .hsc-bar-center {
         display: none;
