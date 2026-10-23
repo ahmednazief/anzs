@@ -100,8 +100,8 @@ strong {
     left: 0;
     right: 0;
     z-index: 500;
-    height: 74px;
-    padding: 0 5%;
+    height: 76px;
+    padding: 0 max(5%, calc((100% - 1860px) / 2));
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -256,9 +256,10 @@ html[lang="ar"] .mobile-nav {
    UTILITIES & BUTTONS
 ═══════════════════════════════════ */
 .wrap {
-    max-width: 1360px;
+    width: min(90%, 1860px);
+    max-width: 1860px;
     margin: 0 auto;
-    padding: 0 4%;
+    padding: 0;
 }
 .eyebrow {
     font-family: var(--fm);
@@ -355,8 +356,8 @@ html[lang="ar"] .mobile-nav {
    HERO (2-COLUMN SPLIT CINEMATIC LAYOUT)
 ═══════════════════════════════════ */
 .hero {
-    min-height: min(100vh, 920px);
-    padding: 115px 0 70px;
+    min-height: min(100vh, 960px);
+    padding: 120px 0 80px;
     display: flex;
     align-items: center;
     position: relative;
@@ -364,17 +365,17 @@ html[lang="ar"] .mobile-nav {
     background: radial-gradient(circle at 68% 38%, rgba(124, 58, 237, 0.08) 0%, rgba(56, 189, 248, 0.03) 45%, transparent 70%);
 }
 .hero-wrap {
-    width: 100%;
-    max-width: 1400px;
+    width: min(90%, 1860px);
+    max-width: 1860px;
     margin: 0 auto;
-    padding: 0 4%;
+    padding: 0;
 }
 .hero-grid {
     display: grid;
-    grid-template-columns: 0.94fr 1.06fr;
+    grid-template-columns: 0.9fr 1.1fr;
     align-items: stretch;
-    column-gap: 3.25rem;
-    row-gap: 2.15rem;
+    column-gap: 4.5rem;
+    row-gap: 3rem;
     width: 100%;
 }
 .hero-left {
@@ -385,17 +386,19 @@ html[lang="ar"] .mobile-nav {
     text-align: left;
     min-width: 0;
     height: 100%;
+    gap: 1.75rem;
+    padding: 0.35rem 0;
 }
 html[lang="ar"] .hero-left {
     text-align: right;
 }
 .hero-heading {
     font-family: var(--fd);
-    font-size: clamp(2rem, 2.85vw, 2.95rem);
+    font-size: clamp(1.9rem, 2.25vw, 2.65rem);
     font-weight: 900;
-    line-height: 1.15;
-    letter-spacing: -1.2px;
-    margin: -3px 0 0;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    margin: 0;
     color: #fff;
 }
 .hh-gradient {
@@ -405,11 +408,11 @@ html[lang="ar"] .hero-left {
     background-clip: text;
 }
 .hero-desc {
-    font-size: clamp(0.95rem, 1.08vw, 1.04rem);
-    line-height: 1.72;
+    font-size: clamp(0.98rem, 1.06vw, 1.1rem);
+    line-height: 1.82;
     color: var(--muted);
     margin: 0;
-    max-width: 100%;
+    max-width: 660px;
 }
 .hero-desc strong {
     color: #fff;
@@ -418,7 +421,7 @@ html[lang="ar"] .hero-left {
 .hero-btns {
     display: flex;
     align-items: center;
-    gap: 0.9rem;
+    gap: 1.05rem;
     flex-wrap: wrap;
     margin: 0;
 }
@@ -430,7 +433,7 @@ html[lang="ar"] .hero-left {
     grid-template-columns: repeat(4, 1fr);
     align-items: center;
     gap: 0;
-    padding: 1.25rem 1.5rem;
+    padding: 1.45rem 2rem;
     background: rgba(14, 18, 28, 0.72);
     border: 1px solid var(--border);
     border-radius: var(--r-lg);
