@@ -305,7 +305,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <link rel="stylesheet" href="styles.css?v=7.8">
+    <link rel="stylesheet" href="styles.css?v=7.9">
 
     <link rel="icon" href="/favicon.ico" sizes="any">
 
@@ -497,14 +497,19 @@
                                 </div>
 
                                 <div class="hsc-bar-right">
+                                    <button type="button" class="hsc-ctrl-btn hsc-copy-btn" data-copy-slug="boise" aria-label="نسخ رابط الفيديو" title="نسخ رابط الفيديو للمشاركة">
+                                        <i class="fa-solid fa-link"></i>
+                                        <span>نسخ الرابط</span>
+                                    </button>
+
                                     <button class="hsc-ctrl-btn hsc-icon-only" id="heroFsBtn" aria-label="ملء الشاشة" title="ملء الشاشة (F)">
                                         <i class="fa-solid fa-expand" id="heroFsIcon"></i>
                                     </button>
 
-                                    <button class="hsc-ctrl-btn hsc-btn-primary" id="heroFullBtn" data-video="boise-renderhouse.mp4" aria-label="مشاهدة المشروع كاملاً">
-                                        <i class="fa-solid fa-film"></i>
-                                        <span>المشروع كاملاً (3:38)</span>
-                                    </button>
+                                    <a href="/boise.html" class="hsc-ctrl-btn hsc-btn-primary" id="heroFullBtn" aria-label="فتح صفحة المشاهدة والتحميل">
+                                        <i class="fa-solid fa-circle-play"></i>
+                                        <span>مشاهدة وتحميل</span>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -539,20 +544,25 @@
         <div class="work-grid-featured">
             <!-- Card 1: Render House (USA) — 16:9 Commercial Showcase -->
             <div class="vc-spotlight" data-cat="commercial" data-video="boise-renderhouse.mp4" data-aos>
-                <div class="vcs-thumb" id="vcsBoiseThumb">
+                <a href="/boise.html" class="vcs-thumb" id="vcsBoiseThumb">
                     <img loading="lazy" src="images/renderhouse_thumb.jpg" alt="Render House - Boise 2027 Infrastructure">
                     <div class="vcs-overlay">
                         <div class="vcs-play-btn"><i class="fa-solid fa-play"></i></div>
                     </div>
-                </div>
+                </a>
                 <div class="vcs-info">
                     <div class="vcs-info-text">
                         <h3 class="vcs-title">مشروع تطوير بويسي 2027</h3>
                         <div class="vcs-meta-line"><strong>Render House (أمريكا)</strong> &bull; عقارات تجارية وتتبع حركة ثلاثي الأبعاد &bull; 03:38</div>
                     </div>
-                    <button class="vcs-action-btn vcs-action-primary" id="vcsWatchBtn" data-video="boise-renderhouse.mp4">
-                        <i class="fa-solid fa-film"></i> مشاهدة المشروع
-                    </button>
+                    <div class="vcs-actions-group">
+                        <button type="button" class="vcs-action-btn vcs-copy-btn" data-copy-slug="boise" title="نسخ رابط الفيديو المباشر">
+                            <i class="fa-solid fa-link"></i> <span>نسخ الرابط</span>
+                        </button>
+                        <a href="/boise.html" class="vcs-action-btn vcs-action-primary">
+                            <i class="fa-solid fa-circle-play"></i> <span>مشاهدة وتحميل</span>
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -573,9 +583,14 @@
                         <h3 class="vcs-title">ريل Voral Media التجاري</h3>
                         <div class="vcs-meta-line"><strong>Voral Media (دبي، الإمارات)</strong> &bull; حملة فيديوهات رأسية سريعة الانتشار</div>
                     </div>
-                    <a href="/voral.html" target="_blank" class="vcs-action-btn">
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i> صفحة المشروع
-                    </a>
+                    <div class="vcs-actions-group">
+                        <button type="button" class="vcs-action-btn vcs-copy-btn" data-copy-slug="voral" title="نسخ رابط الفيديو المباشر">
+                            <i class="fa-solid fa-link"></i> <span>نسخ الرابط</span>
+                        </button>
+                        <a href="/voral.html" class="vcs-action-btn vcs-action-primary">
+                            <i class="fa-solid fa-circle-play"></i> <span>مشاهدة وتحميل</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1261,7 +1276,9 @@
 
 </div>
 
-<script src="script.js?v=7.8"></script>
+<div id="copyToast" class="copy-toast"><i class="fa-solid fa-circle-check"></i><span id="copyToastText">تم نسخ رابط الفيديو!</span></div>
+
+<script src="script.js?v=7.9"></script>
 
 </body>
 

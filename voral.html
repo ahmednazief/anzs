@@ -12,13 +12,25 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Voral — Test Edit | Ahmed Nazif</title>
-    <meta name="robots" content="noindex, nofollow">
+    <title id="pageTitle">Voral Media — High-Retention Commercial Reel | Ahmed Nazif Studio</title>
+    <meta name="description" content="Watch and download the 9:16 vertical commercial reel produced by Ahmed Nazif for Voral Media (Dubai, UAE).">
+    <link rel="canonical" href="https://ahmednazif.com/voral">
+
+    <!-- Open Graph / Social Preview (WhatsApp, Discord, LinkedIn, Slack) -->
+    <meta property="og:type" content="video.other">
+    <meta property="og:url" content="https://ahmednazif.com/voral">
+    <meta property="og:title" content="Voral Media — High-Retention Commercial Reel | Ahmed Nazif">
+    <meta property="og:description" content="Watch and download the 9:16 vertical commercial reel produced by Ahmed Nazif for Voral Media (Dubai, UAE).">
+    <meta property="og:image" content="https://ahmednazif.com/images/voral_thumb.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Voral Media — High-Retention Commercial Reel | Ahmed Nazif">
+    <meta name="twitter:description" content="Watch and download the 9:16 vertical commercial reel produced by Ahmed Nazif for Voral Media (Dubai, UAE).">
+    <meta name="twitter:image" content="https://ahmednazif.com/images/voral_thumb.jpg">
 
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <!-- Favicons -->
@@ -27,31 +39,37 @@
 
     <style>
         :root {
-            --bg: #06070a;
-            --surface: rgba(18, 22, 32, 0.6);
-            --border: rgba(255, 255, 255, 0.1);
-            --border-hover: rgba(167, 139, 250, 0.45);
-            
-            --purple: #8b5cf6;
-            --purple-light: #a78bfa;
-            --purple-glow: rgba(139, 92, 246, 0.35);
-            
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --text-dim: #64748b;
-            
-            --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
-            
-            --radius-md: 14px;
-            --radius-phone: 28px;
-            --radius-pill: 9999px;
-            
+            --bg: #06080d;
+            --bg-elevated: #0c1018;
+            --bg-card: rgba(16, 21, 32, 0.78);
+            --bg-hover: rgba(255, 255, 255, 0.06);
+            --border: rgba(255, 255, 255, 0.09);
+            --border-h: rgba(167, 139, 250, 0.42);
+
+            --purple: #a78bfa;
+            --purple-light: #c4b5fd;
+            --purple-dark: #7c3aed;
+            --purple-glow: rgba(139, 92, 246, 0.32);
+            --cyan: #38bdf8;
+            --green: #34d399;
+
+            --text: #f8fafc;
+            --muted: #94a3b8;
+            --dim: #64748b;
+
+            --fd: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            --fb: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --fm: 'JetBrains Mono', monospace;
+
+            --r-sm: 10px;
+            --r-md: 14px;
+            --r-lg: 18px;
+            --r-xl: 22px;
+            --r-pill: 9999px;
             --ease: cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        * {
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -60,33 +78,17 @@
 
         body {
             background-color: var(--bg);
-            color: var(--text-main);
-            font-family: var(--font-body);
+            color: var(--text);
+            font-family: var(--fb);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
             overflow-x: hidden;
-            background-image: 
-                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(139, 92, 246, 0.18), transparent 70%),
-                radial-gradient(ellipse 60% 40% at 50% 120%, rgba(56, 189, 248, 0.08), transparent 70%);
+            background-image:
+                radial-gradient(ellipse 75% 45% at 35% 0%, rgba(124, 58, 237, 0.13), transparent 70%),
+                radial-gradient(ellipse 60% 45% at 85% 90%, rgba(56, 189, 248, 0.07), transparent 70%);
             background-attachment: fixed;
             -webkit-font-smoothing: antialiased;
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-            background-size: 40px 40px;
-            pointer-events: none;
-            z-index: 0;
-            mask-image: radial-gradient(circle at 50% 40%, black 40%, transparent 80%);
-            -webkit-mask-image: radial-gradient(circle at 50% 40%, black 40%, transparent 80%);
         }
 
         a {
@@ -94,152 +96,200 @@
             color: inherit;
         }
 
-        .wrapper {
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px 16px 36px;
-            position: relative;
-            z-index: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* ── HEADER ── */
-        .header {
-            width: 100%;
+        /* ══════════════════════════════════════════
+           TOP YOUTUBE-STYLE STUDIO NAVBAR
+        ══════════════════════════════════════════ */
+        .yt-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            height: 66px;
+            padding: 0 28px;
+            background: rgba(6, 8, 13, 0.86);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--border);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 12px 0 32px;
+            gap: 16px;
         }
 
-        .brand-link {
+        .yt-nav-left {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: 1.05rem;
-            color: var(--text-main);
-            opacity: 0.9;
-            transition: opacity 0.2s var(--ease);
+            gap: 14px;
         }
 
-        .brand-link:hover {
-            opacity: 1;
-        }
-
-        .brand-avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            border: 1.5px solid var(--purple-light);
-            object-fit: cover;
-        }
-
-        .client-tag {
+        .back-pill {
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            padding: 7px 14px;
+            border-radius: var(--r-pill);
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid var(--border);
-            padding: 6px 12px;
-            border-radius: var(--radius-pill);
-            font-family: var(--font-mono);
-            font-size: 0.72rem;
-            color: var(--text-muted);
-            letter-spacing: 0.02em;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--muted);
+            transition: all 0.2s var(--ease);
+        }
+        .back-pill:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.09);
+            border-color: rgba(255, 255, 255, 0.22);
         }
 
-        .client-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: #34d399;
-            box-shadow: 0 0 8px #34d399;
-        }
-
-        /* ── TITLE ── */
-        .title-section {
-            text-align: center;
-            margin-top: 14px;
-            margin-bottom: 24px;
-        }
-
-        .title {
-            font-family: var(--font-display);
-            font-size: clamp(1.6rem, 5vw, 2.2rem);
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--fd);
             font-weight: 800;
-            letter-spacing: -0.02em;
-            color: #ffffff;
-            margin-bottom: 4px;
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
+            color: #fff;
+        }
+        .brand-logo img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1.5px solid var(--purple);
+        }
+        .studio-badge {
+            font-family: var(--fm);
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            padding: 3px 9px;
+            border-radius: var(--r-pill);
+            background: rgba(167, 139, 250, 0.12);
+            border: 1px solid rgba(167, 139, 250, 0.3);
+            color: var(--purple-light);
         }
 
-        .client-name {
-            background: linear-gradient(135deg, #ffffff 30%, var(--purple-light) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .yt-nav-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .specs-line {
-            font-family: var(--font-mono);
-            font-size: 0.78rem;
-            color: var(--text-dim);
-            letter-spacing: 0.04em;
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: var(--r-pill);
+            font-family: var(--fb);
+            font-size: 0.83rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s var(--ease);
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+        }
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--border-h);
+        }
+        .nav-btn-primary {
+            background: #ffffff;
+            color: #06080d;
+            border-color: #ffffff;
+            font-weight: 700;
+        }
+        .nav-btn-primary:hover {
+            background: var(--purple-light);
+            border-color: var(--purple-light);
+            color: #06080d;
         }
 
         /* ══════════════════════════════════════════
-           CUSTOM BESPOKE 9:16 VIDEO PLAYER
+           YOUTUBE-STYLE 2-COLUMN WATCH CONTAINER
         ══════════════════════════════════════════ */
-        .custom-player {
+        .watch-container {
             width: 100%;
-            max-width: 380px;
-            position: relative;
-            border-radius: var(--radius-md);
-            background: #000;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.95), 0 0 45px -8px var(--purple-glow);
-            overflow: hidden;
-            margin-bottom: 22px;
-            user-select: none;
-            -webkit-user-select: none;
-            transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+            max-width: 1560px;
+            margin: 0 auto;
+            padding: 24px 28px 60px;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 390px;
+            gap: 28px;
+            align-items: start;
+            flex: 1;
         }
 
-        .custom-player:hover {
-            border-color: var(--border-hover);
-            box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 1), 0 0 55px -5px rgba(139, 92, 246, 0.45);
+        body.theater-mode .watch-container {
+            grid-template-columns: minmax(0, 1fr);
+            max-width: 1360px;
+        }
+
+        /* ── LEFT / MAIN COLUMN ── */
+        .watch-main {
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        /* ── CINEMA VIDEO PLAYER STAGE ── */
+        .player-stage {
+            position: relative;
+            width: 100%;
+            border-radius: var(--r-lg);
+            background: #030407;
+            border: 1px solid rgba(255, 255, 255, 0.11);
+            box-shadow: 0 28px 75px -15px rgba(0, 0, 0, 0.9), 0 0 60px -15px rgba(139, 92, 246, 0.22);
+            overflow: hidden;
+            user-select: none;
+            -webkit-user-select: none;
         }
 
         .video-viewport {
-            width: 100%;
-            aspect-ratio: 9 / 16;
-            background: #000;
             position: relative;
-            cursor: pointer;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #000;
             display: flex;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
             overflow: hidden;
+        }
+
+        /* When playing a 9:16 Vertical Reel on Desktop, present it cleanly inside a dark cinema stage */
+        .player-stage.is-vertical .video-viewport {
+            aspect-ratio: auto;
+            height: min(76vh, 720px);
+            background: radial-gradient(circle at 50% 50%, rgba(124, 58, 237, 0.16) 0%, #030407 75%);
+        }
+
+        .player-stage.is-vertical video#mainVideo {
+            width: auto;
+            height: 100%;
+            aspect-ratio: 9 / 16;
+            max-width: 100%;
+            object-fit: contain;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.85);
         }
 
         video#mainVideo {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             background: #000;
             display: block;
         }
 
-        /* Top Overlay Chips & Quality Selector */
-        .player-top-overlay {
+        /* Top Player Overlay */
+        .player-top-bar {
             position: absolute;
-            top: 14px;
-            left: 14px;
-            right: 14px;
+            top: 16px;
+            left: 18px;
+            right: 18px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -248,192 +298,164 @@
             transition: opacity 0.3s var(--ease);
         }
 
-        .quality-wrapper {
+        .player-badge {
+            pointer-events: auto;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 13px;
+            border-radius: var(--r-pill);
+            background: rgba(6, 8, 13, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            font-family: var(--fm);
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: #fff;
+        }
+        .player-badge .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 8px var(--green);
+        }
+
+        .quality-wrap {
             position: relative;
             pointer-events: auto;
         }
-
-        .quality-toggle-btn {
-            background: rgba(0, 0, 0, 0.65);
+        .quality-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 6px 13px;
+            border-radius: var(--r-pill);
+            background: rgba(6, 8, 13, 0.78);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.18);
             color: #fff;
-            font-family: var(--font-mono);
-            font-size: 0.68rem;
+            font-family: var(--fm);
+            font-size: 0.72rem;
             font-weight: 600;
-            padding: 5px 12px;
-            border-radius: var(--radius-pill);
-            letter-spacing: 0.03em;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 6px;
             transition: all 0.2s var(--ease);
         }
-
-        .quality-toggle-btn:hover {
-            background: rgba(139, 92, 246, 0.3);
-            border-color: var(--purple-light);
+        .quality-btn:hover {
+            border-color: var(--purple);
+            background: rgba(124, 58, 237, 0.28);
         }
 
-        .quality-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: #34d399;
-            box-shadow: 0 0 6px #34d399;
-        }
-
-        /* Quality Dropdown Menu */
         .quality-menu {
             position: absolute;
-            top: 34px;
-            left: 0;
-            background: rgba(10, 14, 22, 0.95);
+            top: calc(100% + 8px);
+            right: 0;
+            min-width: 215px;
+            background: rgba(10, 14, 22, 0.96);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: var(--radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: var(--r-md);
             padding: 6px;
-            min-width: 175px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75);
             display: none;
             flex-direction: column;
             gap: 4px;
-            z-index: 30;
+            z-index: 40;
         }
-
         .quality-menu.show {
             display: flex;
         }
-
-        .quality-option {
+        .quality-opt {
             background: transparent;
             border: none;
-            color: var(--text-muted);
-            padding: 8px 10px;
-            border-radius: 8px;
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
+            color: var(--muted);
+            padding: 9px 12px;
+            border-radius: 9px;
+            font-family: var(--fm);
+            font-size: 0.73rem;
             text-align: left;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            transition: all 0.15s var(--ease);
+            gap: 10px;
+            transition: all 0.15s;
         }
-
-        .quality-option:hover {
-            background: rgba(139, 92, 246, 0.2);
+        .quality-opt:hover {
+            background: rgba(167, 139, 250, 0.16);
             color: #fff;
         }
-
-        .quality-option.active {
+        .quality-opt.active {
+            background: rgba(167, 139, 250, 0.28);
             color: #fff;
-            background: rgba(139, 92, 246, 0.35);
             font-weight: 700;
         }
-
-        .quality-option span.tag {
-            font-size: 0.6rem;
-            color: var(--text-dim);
-        }
-
-        .quality-option.active span.tag {
+        .quality-opt .q-tag {
+            font-size: 0.64rem;
             color: var(--purple-light);
         }
 
-        .sound-indicator {
-            pointer-events: auto;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: rgba(0, 0, 0, 0.55);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: all 0.2s var(--ease);
-        }
-
-        .sound-indicator:hover {
-            background: rgba(139, 92, 246, 0.6);
-            border-color: var(--purple-light);
-            transform: scale(1.08);
-        }
-
-        /* ── Big Play Center Icon (Reels/TikTok Style) ── */
-        .play-center-btn {
+        /* Big Center Play Button */
+        .center-play-btn {
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%) scale(0.7);
-            width: 68px;
-            height: 68px;
+            transform: translate(-50%, -50%) scale(0.85);
+            width: 74px;
+            height: 74px;
             border-radius: 50%;
-            background: rgba(13, 16, 26, 0.75);
+            background: rgba(12, 16, 26, 0.82);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1.5px solid rgba(255, 255, 255, 0.25);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 25px var(--purple-glow);
-            color: #ffffff;
-            font-size: 1.6rem;
+            border: 1.5px solid rgba(255, 255, 255, 0.28);
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.7), 0 0 30px var(--purple-glow);
+            color: #fff;
+            font-size: 1.65rem;
             display: flex;
             align-items: center;
             justify-content: center;
             pointer-events: none;
             z-index: 15;
             opacity: 0;
-            transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.22s var(--ease);
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.22s var(--ease);
         }
-
-        .play-center-btn i {
-            margin-left: 4px; /* Optical center for triangle */
+        .center-play-btn i {
+            margin-left: 4px;
         }
-
-        /* When PAUSED: Show big play button */
-        .custom-player.paused .play-center-btn {
+        .player-stage.paused .center-play-btn {
             opacity: 1;
             transform: translate(-50%, -50%) scale(1);
         }
 
-        /* When PLAYING: Completely disappear */
-        .custom-player.playing .play-center-btn {
-            opacity: 0 !important;
-            transform: translate(-50%, -50%) scale(0.6) !important;
-            pointer-events: none;
-        }
-
-        /* Floating Bespoke Bottom Control Bar */
+        /* Bottom Controls Bar */
         .player-controls {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 16px 14px 14px;
-            background: linear-gradient(to top, rgba(5, 7, 10, 0.95) 0%, rgba(5, 7, 10, 0.6) 70%, transparent 100%);
+            padding: 28px 18px 14px;
+            background: linear-gradient(to top, rgba(4, 6, 10, 0.95) 0%, rgba(4, 6, 10, 0.6) 65%, transparent 100%);
             z-index: 20;
             display: flex;
             flex-direction: column;
             gap: 10px;
-            transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+            transition: opacity 0.3s var(--ease);
         }
 
-        .custom-player.playing.hide-controls .player-controls,
-        .custom-player.playing.hide-controls .player-top-overlay {
+        .player-stage.playing.hide-controls .player-controls,
+        .player-stage.playing.hide-controls .player-top-bar {
             opacity: 0;
             pointer-events: none;
-            transform: translateY(6px);
+        }
+        .player-stage.playing.hide-controls .video-viewport {
+            cursor: none;
         }
 
-        /* Sleek Timeline Seeker Bar */
-        .seeker-container {
+        /* Seeker Bar */
+        .seeker-wrap {
             width: 100%;
             height: 18px;
             display: flex;
@@ -441,457 +463,908 @@
             cursor: pointer;
             position: relative;
         }
-
         .seeker-track {
             width: 100%;
             height: 4px;
-            background: rgba(255, 255, 255, 0.18);
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 99px;
             position: relative;
-            overflow: visible;
-            transition: height 0.15s var(--ease);
+            transition: height 0.15s;
         }
-
-        .seeker-container:hover .seeker-track {
+        .seeker-wrap:hover .seeker-track {
             height: 6px;
         }
-
-        .seeker-buffer {
+        .seeker-buf {
             position: absolute;
             left: 0;
             top: 0;
             height: 100%;
             width: 0%;
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.28);
             border-radius: 99px;
-            pointer-events: none;
         }
-
-        .seeker-progress {
+        .seeker-prog {
             position: absolute;
             left: 0;
             top: 0;
             height: 100%;
             width: 0%;
             background: linear-gradient(90deg, #7c3aed 0%, #a78bfa 100%);
-            box-shadow: 0 0 10px rgba(167, 139, 250, 0.7);
             border-radius: 99px;
-            pointer-events: none;
         }
-
-        .seeker-thumb {
+        .seeker-knob {
             position: absolute;
             right: -6px;
             top: 50%;
             transform: translateY(-50%) scale(0);
-            width: 12px;
-            height: 12px;
-            background: #ffffff;
+            width: 13px;
+            height: 13px;
+            background: #fff;
             border-radius: 50%;
             box-shadow: 0 0 10px #a78bfa;
-            transition: transform 0.15s var(--ease);
+            transition: transform 0.15s;
         }
-
-        .seeker-container:hover .seeker-thumb {
+        .seeker-wrap:hover .seeker-knob {
             transform: translateY(-50%) scale(1);
         }
+        .seeker-tip {
+            position: absolute;
+            bottom: 22px;
+            transform: translateX(-50%);
+            background: rgba(8, 11, 18, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+            font-family: var(--fm);
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            border-radius: 6px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.15s;
+            white-space: nowrap;
+        }
+        .seeker-wrap:hover .seeker-tip {
+            opacity: 1;
+        }
 
-        /* Controls Bottom Row */
-        .controls-row {
+        .ctrl-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .ctrl-left, .ctrl-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .c-btn {
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 5px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.9;
+            transition: all 0.2s;
+        }
+        .c-btn:hover {
+            opacity: 1;
+            color: var(--purple-light);
+            transform: scale(1.08);
+        }
+
+        .vol-group {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .vol-slider {
+            width: 72px;
+            height: 4px;
+            accent-color: var(--purple);
+            cursor: pointer;
+        }
+
+        .time-code {
+            font-family: var(--fm);
+            font-size: 0.76rem;
+            color: var(--muted);
+        }
+        .time-code strong {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .pill-ctrl {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+            font-family: var(--fm);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: var(--r-pill);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .pill-ctrl:hover {
+            background: var(--purple-dark);
+            border-color: var(--purple-light);
+        }
+
+        /* ══════════════════════════════════════════
+           YOUTUBE-STYLE TITLE, CHANNEL & ACTION BAR
+        ══════════════════════════════════════════ */
+        .video-header-block {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .video-main-title {
+            font-family: var(--fd);
+            font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.02em;
+            line-height: 1.25;
+        }
+
+        .video-actions-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* Creator Info (Left) */
+        .creator-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .creator-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--purple);
+        }
+        .creator-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .creator-name {
+            font-family: var(--fd);
+            font-weight: 700;
+            font-size: 1rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .creator-name i {
+            color: var(--purple-light);
+            font-size: 0.85rem;
+        }
+        .creator-sub {
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        /* Action Buttons (Right) */
+        .action-pills {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn-yt-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 11px 22px;
+            border-radius: var(--r-pill);
+            background: linear-gradient(135deg, #7c3aed 0%, #6366f1 100%);
+            color: #ffffff;
+            font-family: var(--fd);
+            font-weight: 700;
+            font-size: 0.92rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 25px rgba(124, 58, 237, 0.38);
+            cursor: pointer;
+            transition: all 0.25s var(--ease);
+        }
+        .btn-yt-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(124, 58, 237, 0.58);
+            border-color: rgba(255, 255, 255, 0.35);
+        }
+        .btn-yt-download .dl-size-tag {
+            font-family: var(--fm);
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: var(--r-pill);
+            background: rgba(0, 0, 0, 0.28);
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .btn-yt-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 18px;
+            border-radius: var(--r-pill);
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
+            color: #ffffff;
+            font-family: var(--fb);
+            font-size: 0.86rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s var(--ease);
+        }
+        .btn-yt-pill:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: var(--border-h);
+            transform: translateY(-1px);
+        }
+        .btn-yt-pill.copied {
+            border-color: var(--green);
+            color: var(--green);
+            background: rgba(52, 211, 153, 0.1);
+        }
+
+        /* ── DESCRIPTION & TECHNICAL SPECS CARD ── */
+        .video-desc-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-md);
+            padding: 18px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .specs-strip {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .spec-chip {
+            font-family: var(--fm);
+            font-size: 0.73rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            padding: 4px 11px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .spec-chip i {
+            color: var(--purple-light);
+            font-size: 0.7rem;
+        }
+
+        .desc-body {
+            font-size: 0.92rem;
+            line-height: 1.7;
+            color: var(--muted);
+        }
+        .desc-body strong {
+            color: #fff;
+        }
+
+        /* Direct Share URL Box inside Description */
+        .share-url-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 10px 14px;
+            border-radius: var(--r-sm);
+            background: rgba(6, 8, 13, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            margin-top: 4px;
+        }
+        .share-url-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 0;
+            font-family: var(--fm);
+            font-size: 0.78rem;
+            color: var(--purple-light);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .share-url-copy {
+            background: rgba(167, 139, 250, 0.15);
+            border: 1px solid rgba(167, 139, 250, 0.35);
+            color: #fff;
+            font-family: var(--fb);
+            font-size: 0.76rem;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 7px;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: all 0.2s;
+        }
+        .share-url-copy:hover {
+            background: var(--purple);
+            color: #06080d;
+        }
+
+        /* ══════════════════════════════════════════
+           RIGHT SIDEBAR (UP NEXT / MORE VIDEOS)
+        ══════════════════════════════════════════ */
+        .watch-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .sidebar-heading {
+            font-family: var(--fd);
+            font-size: 1.02rem;
+            font-weight: 800;
+            color: #fff;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
-
-        .controls-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .controls-right {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .ctrl-btn {
-            background: transparent;
-            border: none;
-            color: #ffffff;
-            cursor: pointer;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 4px;
-            transition: all 0.2s var(--ease);
-            opacity: 0.88;
-        }
-
-        .ctrl-btn:hover {
-            opacity: 1;
-            color: var(--purple-light);
-            transform: scale(1.1);
-        }
-
-        .ctrl-btn:active {
-            transform: scale(0.95);
-        }
-
-        .time-display {
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            letter-spacing: 0.03em;
-        }
-
-        .time-display .current {
-            color: #ffffff;
-            font-weight: 600;
-        }
-
-        /* Speed Badge Button */
-        .speed-toggle {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: #ffffff;
-            font-family: var(--font-mono);
+        .sidebar-heading span {
+            font-family: var(--fm);
             font-size: 0.68rem;
-            font-weight: 700;
-            padding: 3px 8px;
-            border-radius: var(--radius-pill);
-            cursor: pointer;
-            transition: all 0.2s var(--ease);
+            color: var(--muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
         }
 
-        .speed-toggle:hover {
-            background: var(--purple);
-            border-color: var(--purple-light);
-            color: #ffffff;
-        }
-
-        /* ── ACTIONS (BIG DOWNLOAD BUTTON) ── */
-        .actions-section {
-            width: 100%;
-            max-width: 380px;
+        .upnext-list {
             display: flex;
             flex-direction: column;
-            align-items: center;
             gap: 12px;
         }
 
-        .btn-download-master {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 14px;
-            padding: 16px 24px;
-            background: linear-gradient(135deg, #7c3aed 0%, #6366f1 100%);
-            color: #ffffff;
-            border-radius: var(--radius-md);
-            font-family: var(--font-display);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
+        .upnext-card {
+            display: grid;
+            grid-template-columns: 150px minmax(0, 1fr);
+            gap: 12px;
+            padding: 10px;
+            border-radius: var(--r-md);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            transition: all 0.22s var(--ease);
             cursor: pointer;
-            transition: all 0.25s var(--ease);
             position: relative;
-            overflow: hidden;
         }
-
-        .btn-download-master:hover {
+        .upnext-card:hover {
+            border-color: var(--border-h);
+            background: rgba(24, 30, 46, 0.85);
             transform: translateY(-2px);
-            box-shadow: 0 12px 35px rgba(124, 58, 237, 0.6);
-            border-color: rgba(255, 255, 255, 0.3);
-            color: #ffffff;
+        }
+        .upnext-card.active {
+            border-color: var(--purple);
+            background: rgba(124, 58, 237, 0.11);
         }
 
-        .btn-download-master:active {
-            transform: translateY(0);
+        .un-thumb {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 9px;
+            overflow: hidden;
+            background: #000;
+        }
+        .un-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .un-time {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            background: rgba(4, 6, 10, 0.86);
+            color: #fff;
+            font-family: var(--fm);
+            font-size: 0.64rem;
+            font-weight: 600;
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+        .un-now-playing {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            background: var(--purple-dark);
+            color: #fff;
+            font-family: var(--fm);
+            font-size: 0.6rem;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 4px;
+            display: none;
+        }
+        .upnext-card.active .un-now-playing {
+            display: inline-block;
         }
 
-        .dl-icon {
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .dl-content {
+        .un-info {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            line-height: 1.2;
+            justify-content: space-between;
+            min-width: 0;
         }
-
-        .dl-title {
-            font-size: 1.15rem;
+        .un-title {
+            font-family: var(--fd);
+            font-size: 0.9rem;
             font-weight: 700;
-            letter-spacing: -0.01em;
+            color: #fff;
+            line-height: 1.3;
+            margin-bottom: 3px;
         }
-
-        .dl-sub {
-            font-family: var(--font-mono);
-            font-size: 0.74rem;
-            color: rgba(255, 255, 255, 0.75);
-            margin-top: 3px;
+        .un-client {
+            font-size: 0.75rem;
+            color: var(--muted);
         }
-
-        .sub-actions {
+        .un-actions {
             display: flex;
             align-items: center;
-            gap: 10px;
-            width: 100%;
-            justify-content: center;
+            gap: 6px;
+            margin-top: 6px;
         }
-
-        .btn-ghost {
-            background: transparent;
-            border: 1px solid var(--border);
-            color: var(--text-muted);
-            padding: 8px 14px;
-            border-radius: var(--radius-pill);
-            font-size: 0.78rem;
-            font-weight: 500;
+        .un-mini-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #e2e8f0;
+            font-family: var(--fb);
+            font-size: 0.68rem;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 6px;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            transition: all 0.2s var(--ease);
+            gap: 4px;
+            transition: all 0.15s;
+        }
+        .un-mini-btn:hover {
+            background: var(--purple);
+            color: #06080d;
+            border-color: var(--purple);
         }
 
-        .btn-ghost:hover {
+        /* Studio CTA Card in Sidebar */
+        .sidebar-cta-card {
+            margin-top: 6px;
+            padding: 18px;
+            border-radius: var(--r-md);
+            background: linear-gradient(145deg, rgba(124, 58, 237, 0.14) 0%, rgba(16, 21, 32, 0.85) 100%);
+            border: 1px solid rgba(167, 139, 250, 0.25);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .sidebar-cta-card h4 {
+            font-family: var(--fd);
+            font-size: 0.98rem;
+            font-weight: 800;
             color: #fff;
-            border-color: var(--border-hover);
-            background: rgba(255, 255, 255, 0.03);
+        }
+        .sidebar-cta-card p {
+            font-size: 0.8rem;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+        .sidebar-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: var(--r-pill);
+            background: #fff;
+            color: #06080d;
+            font-weight: 700;
+            font-size: 0.82rem;
+            transition: all 0.2s;
+        }
+        .sidebar-cta-btn:hover {
+            background: var(--purple-light);
         }
 
-        /* ── FOOTER ── */
-        .footer {
-            width: 100%;
-            padding: 20px 0 24px;
-            text-align: center;
-            font-size: 0.78rem;
-            color: var(--text-dim);
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-            position: relative;
-            z-index: 1;
-        }
-
-        .footer a {
-            color: var(--text-muted);
-            transition: color 0.2s var(--ease);
-        }
-
-        .footer a:hover {
-            color: var(--purple-light);
-        }
-
-        /* Toast */
+        /* Toast Notification */
         .toast {
             position: fixed;
-            bottom: 24px;
-            background: #181c26;
+            bottom: 26px;
+            left: 50%;
+            transform: translate(-50%, 60px);
+            background: #141926;
             color: #fff;
-            border: 1px solid var(--purple-light);
-            padding: 10px 18px;
-            border-radius: var(--radius-pill);
-            font-size: 0.82rem;
-            font-weight: 500;
+            border: 1px solid var(--purple);
+            padding: 11px 20px;
+            border-radius: var(--r-pill);
+            font-size: 0.85rem;
+            font-weight: 600;
             display: flex;
             align-items: center;
-            gap: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-            transform: translateY(60px);
+            gap: 9px;
+            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.75);
             opacity: 0;
             transition: all 0.25s var(--ease);
             z-index: 999;
             pointer-events: none;
         }
-
         .toast.show {
-            transform: translateY(0);
+            transform: translate(-50%, 0);
             opacity: 1;
         }
 
-        @media (max-width: 480px) {
-            .wrapper {
-                padding: 14px 12px 28px;
+        @media (max-width: 1100px) {
+            .watch-container {
+                grid-template-columns: minmax(0, 1fr);
+                padding: 18px 18px 48px;
             }
-            .custom-player {
-                max-width: 100%;
-                border-radius: var(--radius-md);
+        }
+
+        @media (max-width: 640px) {
+            .yt-nav {
+                padding: 0 14px;
             }
-            .title {
-                font-size: 1.5rem;
+            .studio-badge, .brand-logo span {
+                display: none;
             }
-            .btn-download-master {
-                padding: 15px 20px;
+            .watch-container {
+                padding: 12px 12px 40px;
             }
-            .dl-title {
-                font-size: 1.05rem;
+            .video-actions-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .action-pills {
+                width: 100%;
+            }
+            .btn-yt-download, .btn-yt-pill {
+                flex: 1 1 auto;
+                justify-content: center;
+            }
+            .upnext-card {
+                grid-template-columns: 120px minmax(0, 1fr);
+            }
+            .vol-slider {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="wrapper">
-        <!-- TOP MINIMAL NAV -->
-        <header class="header">
-            <a href="https://ahmednazif.com" class="brand-link" title="Ahmed Nazif Portfolio">
-                <img src="/profile.jpg" alt="Ahmed Nazif" class="brand-avatar" onerror="this.src='/images/logo.png'">
-                <span>Ahmed Nazif</span>
+    <!-- TOP YOUTUBE-STYLE STUDIO NAVBAR -->
+    <nav class="yt-nav">
+        <div class="yt-nav-left">
+            <a href="/" class="back-pill">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Portfolio</span>
             </a>
-
-            <div class="client-tag">
-                <div class="client-dot"></div>
-                <span>TEST REVIEW • VORAL</span>
-            </div>
-        </header>
-
-        <!-- TITLE & SPECS -->
-        <div class="title-section">
-            <h1 class="title">
-                <span class="client-name">Voral</span> — Test Edit
-            </h1>
-            <div class="specs-line">
-                9:16 VERTICAL SHORT • 30 FPS • MASTER RENDER
-            </div>
+            <a href="/" class="brand-logo">
+                <img src="/profile.jpg" alt="Ahmed Nazif">
+                <span>AHMED NAZIF</span>
+            </a>
+            <span class="studio-badge">Studio Watch &amp; Download</span>
         </div>
 
-        <!-- BESPOKE 9:16 VERTICAL VIDEO PLAYER -->
-        <div class="custom-player paused" id="player">
-            <!-- Top Overlay: Quality Switcher & Mute -->
-            <div class="player-top-overlay">
-                <div class="quality-wrapper">
-                    <button class="quality-toggle-btn" id="qualityToggleBtn" title="Change Video Quality">
-                        <div class="quality-dot"></div>
-                        <span id="curQualityLabel">1080P Fast</span>
-                        <i class="fa-solid fa-chevron-down" style="font-size: 0.55rem; opacity: 0.7;"></i>
+        <div class="yt-nav-right">
+            <button class="nav-btn" id="navCopyBtn" onclick="copyCurrentVideoLink()">
+                <i class="fa-solid fa-link"></i>
+                <span>Copy Link</span>
+            </button>
+            <a href="/voral-test.mp4" download="Voral_Media_Reel_AhmedNazif.mp4" class="nav-btn nav-btn-primary" id="navDownloadBtn">
+                <i class="fa-solid fa-download"></i>
+                <span>Download MP4</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- MAIN YOUTUBE-STYLE WATCH LAYOUT -->
+    <main class="watch-container">
+
+        <!-- PRIMARY VIDEO & DETAILS COLUMN -->
+        <div class="watch-main">
+
+            <!-- CINEMA VIDEO PLAYER -->
+            <div class="player-stage paused is-vertical" id="playerStage">
+                <div class="player-top-bar">
+                    <div class="player-badge">
+                        <span class="dot"></span>
+                        <span id="playerBadgeText">9:16 VERTICAL REEL • 30 FPS • VORAL MEDIA (UAE)</span>
+                    </div>
+
+                    <div class="quality-wrap">
+                        <button class="quality-btn" id="qualityBtn" title="Switch Video Quality">
+                            <i class="fa-solid fa-sliders"></i>
+                            <span id="curQualityLabel">1080p Fast Stream</span>
+                            <i class="fa-solid fa-chevron-down" style="font-size: 0.6rem; opacity: 0.7;"></i>
+                        </button>
+                        <div class="quality-menu" id="qualityMenu">
+                            <!-- Populated dynamically per video -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-viewport" id="viewport">
+                    <video id="mainVideo" playsinline webkit-playsinline preload="auto" poster="/images/voral_thumb.jpg" src="/voral-stream.mp4"></video>
+                    <div class="center-play-btn" id="centerPlayBtn">
+                        <i class="fa-solid fa-play"></i>
+                    </div>
+                </div>
+
+                <div class="player-controls" id="controls">
+                    <div class="seeker-wrap" id="seeker">
+                        <div class="seeker-track">
+                            <div class="seeker-buf" id="bufferBar"></div>
+                            <div class="seeker-prog" id="progressBar">
+                                <div class="seeker-knob"></div>
+                            </div>
+                        </div>
+                        <div class="seeker-tip" id="seekerTip">0:00</div>
+                    </div>
+
+                    <div class="ctrl-row">
+                        <div class="ctrl-left">
+                            <button class="c-btn" id="playBtn" title="Play / Pause (Space)">
+                                <i class="fa-solid fa-play" id="playIcon"></i>
+                            </button>
+
+                            <div class="vol-group">
+                                <button class="c-btn" id="muteBtn" title="Mute / Unmute (M)">
+                                    <i class="fa-solid fa-volume-high" id="muteIcon"></i>
+                                </button>
+                                <input type="range" class="vol-slider" id="volSlider" min="0" max="1" step="0.05" value="1" aria-label="Volume">
+                            </div>
+
+                            <div class="time-code">
+                                <strong id="curTime">0:00</strong> / <span id="durTime">00:22</span>
+                            </div>
+                        </div>
+
+                        <div class="ctrl-right">
+                            <button class="pill-ctrl" id="speedBtn" title="Playback Speed">1.0x</button>
+                            <button class="c-btn" id="theaterBtn" title="Theater Mode (T)">
+                                <i class="fa-solid fa-tv"></i>
+                            </button>
+                            <button class="c-btn" id="fsBtn" title="Fullscreen (F)">
+                                <i class="fa-solid fa-expand" id="fsIcon"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIDEO TITLE + CREATOR + DOWNLOAD / SHARE BAR -->
+            <div class="video-header-block">
+                <h1 class="video-main-title" id="videoTitle">Voral Media — High-Retention Commercial Reel</h1>
+
+                <div class="video-actions-bar">
+                    <div class="creator-row">
+                        <img src="/profile.jpg" alt="Ahmed Nazif" class="creator-avatar">
+                        <div class="creator-meta">
+                            <div class="creator-name">
+                                <span>Ahmed Nazif</span>
+                                <i class="fa-solid fa-circle-check" title="Verified Post-Production Studio"></i>
+                            </div>
+                            <div class="creator-sub" id="clientSub">Client: Voral Media (Dubai, UAE) • Viral 9:16 Short-Form Production</div>
+                        </div>
+                    </div>
+
+                    <div class="action-pills">
+                        <a href="/voral-test.mp4" download="Voral_Media_Reel_AhmedNazif.mp4" class="btn-yt-download" id="mainDownloadBtn">
+                            <i class="fa-solid fa-download"></i>
+                            <span>Download Video</span>
+                            <span class="dl-size-tag" id="dlSizeTag">67.5 MB Master</span>
+                        </a>
+
+                        <button class="btn-yt-pill" id="mainCopyBtn" onclick="copyCurrentVideoLink()">
+                            <i class="fa-solid fa-link" id="mainCopyIcon"></i>
+                            <span id="mainCopyText">Copy Link</span>
+                        </button>
+
+                        <button class="btn-yt-pill" onclick="toggleTheaterMode()" title="Toggle Wide Theater View">
+                            <i class="fa-solid fa-expand"></i>
+                            <span>Theater View</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- YOUTUBE-STYLE DESCRIPTION & SPECS BOX -->
+            <div class="video-desc-card">
+                <div class="specs-strip" id="specsStrip">
+                    <!-- Populated dynamically -->
+                </div>
+
+                <p class="desc-body" id="videoDesc">High-retention vertical commercial reel produced for <strong>Voral Media (Dubai, UAE)</strong>. Built with a surgical 3-second hook, custom motion graphics, kinetic typography, multi-layered SFX, and dynamic color grading.</p>
+
+                <div class="share-url-bar">
+                    <div class="share-url-left">
+                        <i class="fa-solid fa-share-nodes"></i>
+                        <span id="shareUrlDisplay">https://ahmednazif.com/voral</span>
+                    </div>
+                    <button class="share-url-copy" onclick="copyCurrentVideoLink()">
+                        <i class="fa-regular fa-copy"></i> Copy Direct Link
                     </button>
-
-                    <!-- Dropdown Quality Menu -->
-                    <div class="quality-menu" id="qualityMenu">
-                        <button class="quality-option active" data-src="/voral-stream.mp4" data-label="1080P Fast">
-                            <span>⚡ 1080p Fast Stream</span>
-                            <span class="tag">Instant</span>
-                        </button>
-                        <button class="quality-option" data-src="/voral-test.mp4" data-label="Master (67MB)">
-                            <span>💎 Master Render</span>
-                            <span class="tag">67MB</span>
-                        </button>
-                    </div>
-                </div>
-
-                <button class="sound-indicator" id="muteBtn" title="Toggle Sound">
-                    <i class="fa-solid fa-volume-high" id="muteIcon"></i>
-                </button>
-            </div>
-
-            <!-- Viewport & Video -->
-            <div class="video-viewport" id="viewport">
-                <video id="mainVideo" playsinline webkit-playsinline preload="auto" src="/voral-stream.mp4">
-                    <source src="/voral-stream.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-
-                <!-- Center Play Triangle Icon (Shows only when paused) -->
-                <div class="play-center-btn" id="centerBtn">
-                    <i class="fa-solid fa-play" id="centerIcon"></i>
                 </div>
             </div>
 
-            <!-- Floating Custom Bottom Controls -->
-            <div class="player-controls" id="controls">
-                <!-- Seeker Bar -->
-                <div class="seeker-container" id="seeker">
-                    <div class="seeker-track">
-                        <div class="seeker-buffer" id="bufferBar"></div>
-                        <div class="seeker-progress" id="progressBar">
-                            <div class="seeker-thumb"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Buttons & Details -->
-                <div class="controls-row">
-                    <div class="controls-left">
-                        <button class="ctrl-btn" id="playBtn" title="Play/Pause">
-                            <i class="fa-solid fa-play" id="playIcon"></i>
-                        </button>
-
-                        <div class="time-display">
-                            <span class="current" id="curTime">0:00</span> / <span id="durTime">0:00</span>
-                        </div>
-                    </div>
-
-                    <div class="controls-right">
-                        <button class="speed-toggle" id="speedBtn" title="Playback Speed">1.0x</button>
-                        
-                        <button class="ctrl-btn" id="fsBtn" title="Fullscreen">
-                            <i class="fa-solid fa-expand" id="fsIcon"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
         </div>
 
-        <!-- BIG DOWNLOAD BUTTON (ALWAYS DOWNLOADS MASTER RENDER) -->
-        <div class="actions-section">
-            <a href="/voral-test.mp4" download="Voral_Test_Edit_AhmedNazif.mp4" class="btn-download-master" id="downloadBtn">
-                <div class="dl-icon">
-                    <i class="fa-solid fa-arrow-down-to-bracket"></i>
-                </div>
-                <div class="dl-content">
-                    <span class="dl-title">Download The Test Video</span>
-                    <span class="dl-sub">MP4 • 9:16 Vertical Short • 30 FPS • 67.4 MB Master</span>
-                </div>
-            </a>
+        <!-- RIGHT SIDEBAR: UP NEXT / UPLOADED PORTFOLIO VIDEOS -->
+        <aside class="watch-sidebar">
+            <div class="sidebar-heading">
+                Uploaded Portfolio Videos
+                <span>Watch &amp; Download</span>
+            </div>
 
-            <div class="sub-actions">
-                <button class="btn-ghost" onclick="copyLink()">
-                    <i class="fa-regular fa-copy"></i>
-                    <span>Copy Link</span>
-                </button>
-                <a href="mailto:contact@ahmednazif.com?subject=Feedback%20on%20Voral%20Test" class="btn-ghost">
-                    <i class="fa-regular fa-envelope"></i>
-                    <span>contact@ahmednazif.com</span>
+            <div class="upnext-list">
+                <!-- Video 1: Boise 2027 (Render House) -->
+                <div class="upnext-card" id="card-boise" onclick="loadProject('boise')">
+                    <div class="un-thumb">
+                        <img src="/images/renderhouse_thumb.jpg" alt="Boise 2027 — Render House">
+                        <span class="un-now-playing">NOW PLAYING</span>
+                        <span class="un-time">03:38</span>
+                    </div>
+                    <div class="un-info">
+                        <div>
+                            <div class="un-title">Boise 2027 — Everything New &amp; Coming Soon</div>
+                            <div class="un-client">Render House (USA) &bull; 16:9 Commercial</div>
+                        </div>
+                        <div class="un-actions" onclick="event.stopPropagation()">
+                            <button class="un-mini-btn" onclick="copySpecificLink('boise')">
+                                <i class="fa-solid fa-link"></i> Copy Link
+                            </button>
+                            <a href="/boise-renderhouse.mp4" download="Boise_2027_RenderHouse_AhmedNazif.mp4" class="un-mini-btn">
+                                <i class="fa-solid fa-download"></i> 42.8 MB
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 2: Voral Media (Dubai, UAE) -->
+                <div class="upnext-card" id="card-voral" onclick="loadProject('voral')">
+                    <div class="un-thumb">
+                        <img src="/images/voral_thumb.jpg" alt="Voral Media — Commercial Reel">
+                        <span class="un-now-playing">NOW PLAYING</span>
+                        <span class="un-time">00:22</span>
+                    </div>
+                    <div class="un-info">
+                        <div>
+                            <div class="un-title">Voral Media — High-Retention Commercial Reel</div>
+                            <div class="un-client">Voral Media (UAE) &bull; 9:16 Vertical Short</div>
+                        </div>
+                        <div class="un-actions" onclick="event.stopPropagation()">
+                            <button class="un-mini-btn" onclick="copySpecificLink('voral')">
+                                <i class="fa-solid fa-link"></i> Copy Link
+                            </button>
+                            <a href="/voral-test.mp4" download="Voral_Media_Reel_AhmedNazif.mp4" class="un-mini-btn">
+                                <i class="fa-solid fa-download"></i> 67.5 MB
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-cta-card">
+                <h4>Need Cinema-Grade Post-Production?</h4>
+                <p>Available for commercial real estate showcases, high-retention vertical reels, and YouTube production.</p>
+                <a href="/#contact" class="sidebar-cta-btn">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span>Start a Project</span>
                 </a>
             </div>
-        </div>
-    </div>
+        </aside>
 
-    <!-- MINIMAL FOOTER -->
-    <footer class="footer">
-        <p>Edited by <a href="https://ahmednazif.com">Ahmed Nazif</a> &bull; Post-Production Studio</p>
-    </footer>
+    </main>
 
     <!-- TOAST -->
     <div id="toast" class="toast">
-        <i class="fa-solid fa-check" style="color: #34d399;"></i>
+        <i class="fa-solid fa-circle-check" style="color: #34d399;"></i>
         <span id="toastMsg">Link copied to clipboard!</span>
     </div>
 
-    <!-- BESPOKE PLAYER LOGIC -->
     <script>
-        const player = document.getElementById('player');
+        const PROJECTS = {
+            boise: {
+                key: 'boise',
+                slug: 'boise',
+                title: 'Boise 2027 — Everything New & Coming Soon (Render House)',
+                clientSub: 'Client: Render House (USA) • Commercial Real Estate & 3D Motion',
+                badge: '16:9 COMMERCIAL • 60 FPS • RENDER HOUSE (USA)',
+                isVertical: false,
+                poster: '/images/renderhouse_thumb.jpg',
+                defaultSrc: '/boise-renderhouse.mp4',
+                defaultQualityLabel: '1080p Master (42.8 MB)',
+                downloadSrc: '/boise-renderhouse.mp4',
+                downloadName: 'Boise_2027_RenderHouse_AhmedNazif.mp4',
+                fileSize: '42.8 MB MP4',
+                duration: '03:38',
+                qualities: [
+                    { label: '1080p Master (42.8 MB)', src: '/boise-renderhouse.mp4', tag: 'Full Film' },
+                    { label: 'Fast Preview (6.2 MB)', src: '/boise-preview.mp4', tag: 'Instant' }
+                ],
+                specs: [
+                    { icon: 'fa-tv', text: '16:9 Widescreen HD' },
+                    { icon: 'fa-gauge-high', text: '60 FPS Smooth Motion' },
+                    { icon: 'fa-cube', text: '3D Camera Tracking & Callouts' },
+                    { icon: 'fa-building', text: 'Client: Render House (USA)' }
+                ],
+                desc: 'Full 3.5-minute commercial real estate & infrastructure showcase produced for <strong>Render House (USA)</strong>. Engineered with precision 3D camera tracking, architectural motion callouts, custom map animations, sound design, and broadcast color grading.'
+            },
+            voral: {
+                key: 'voral',
+                slug: 'voral',
+                title: 'Voral Media — High-Retention Commercial Reel',
+                clientSub: 'Client: Voral Media (Dubai, UAE) • Viral 9:16 Short-Form Production',
+                badge: '9:16 VERTICAL REEL • 30 FPS • VORAL MEDIA (UAE)',
+                isVertical: true,
+                poster: '/images/voral_thumb.jpg',
+                defaultSrc: '/voral-stream.mp4',
+                defaultQualityLabel: '1080p Fast Stream',
+                downloadSrc: '/voral-test.mp4',
+                downloadName: 'Voral_Media_Reel_AhmedNazif.mp4',
+                fileSize: '67.5 MB Master',
+                duration: '00:22',
+                qualities: [
+                    { label: '1080p Fast Stream', src: '/voral-stream.mp4', tag: 'Instant' },
+                    { label: 'Master Render (67.5 MB)', src: '/voral-test.mp4', tag: 'Uncompressed' }
+                ],
+                specs: [
+                    { icon: 'fa-mobile-screen', text: '9:16 Vertical (1080×1920)' },
+                    { icon: 'fa-bolt', text: 'Retention-Engineered Pacing' },
+                    { icon: 'fa-wand-magic-sparkles', text: 'Kinetic Typography & VFX' },
+                    { icon: 'fa-earth-americas', text: 'Client: Voral Media (Dubai, UAE)' }
+                ],
+                desc: 'High-retention vertical commercial reel produced for <strong>Voral Media (Dubai, UAE)</strong>. Built with a surgical 3-second hook, custom motion graphics, kinetic typography, multi-layered SFX, and dynamic color grading.'
+            }
+        };
+
+        let currentProjectKey = 'voral';
+        const playerStage = document.getElementById('playerStage');
         const video = document.getElementById('mainVideo');
         const viewport = document.getElementById('viewport');
         const playBtn = document.getElementById('playBtn');
         const playIcon = document.getElementById('playIcon');
         const muteBtn = document.getElementById('muteBtn');
         const muteIcon = document.getElementById('muteIcon');
+        const volSlider = document.getElementById('volSlider');
         const speedBtn = document.getElementById('speedBtn');
+        const theaterBtn = document.getElementById('theaterBtn');
         const fsBtn = document.getElementById('fsBtn');
         const fsIcon = document.getElementById('fsIcon');
         const seeker = document.getElementById('seeker');
         const progressBar = document.getElementById('progressBar');
         const bufferBar = document.getElementById('bufferBar');
+        const seekerTip = document.getElementById('seekerTip');
         const curTime = document.getElementById('curTime');
         const durTime = document.getElementById('durTime');
-        const qualityToggleBtn = document.getElementById('qualityToggleBtn');
+        const qualityBtn = document.getElementById('qualityBtn');
         const qualityMenu = document.getElementById('qualityMenu');
         const curQualityLabel = document.getElementById('curQualityLabel');
 
@@ -899,19 +1372,130 @@
         const speeds = [1.0, 1.25, 1.5, 2.0];
         let speedIdx = 0;
 
-        // Toggle Play / Pause
+        function getShareUrlForKey(key) {
+            const origin = window.location.origin && window.location.origin !== 'null'
+                ? window.location.origin
+                : 'https://ahmednazif.com';
+            if (origin.includes('ahmednazif.com')) {
+                return `${origin}/${key}`;
+            }
+            return `${origin}/${key}.html`;
+        }
+
+        function renderProjectUI(key, autoPlay = false) {
+            const p = PROJECTS[key] || PROJECTS.boise;
+            currentProjectKey = p.key;
+
+            document.title = `${p.title} | Ahmed Nazif Studio`;
+            document.getElementById('videoTitle').textContent = p.title;
+            document.getElementById('clientSub').textContent = p.clientSub;
+            document.getElementById('playerBadgeText').textContent = p.badge;
+            document.getElementById('videoDesc').innerHTML = p.desc;
+            durTime.textContent = p.duration;
+
+            playerStage.classList.toggle('is-vertical', p.isVertical);
+
+            // Update Download Buttons
+            const navDl = document.getElementById('navDownloadBtn');
+            const mainDl = document.getElementById('mainDownloadBtn');
+            navDl.href = p.downloadSrc;
+            navDl.setAttribute('download', p.downloadName);
+            mainDl.href = p.downloadSrc;
+            mainDl.setAttribute('download', p.downloadName);
+            document.getElementById('dlSizeTag').textContent = p.fileSize;
+
+            // Update Share URL Display
+            const shareUrl = getShareUrlForKey(p.key);
+            document.getElementById('shareUrlDisplay').textContent = shareUrl;
+
+            // Update Specs Strip
+            const specsStrip = document.getElementById('specsStrip');
+            specsStrip.innerHTML = p.specs.map(s =>
+                `<span class="spec-chip"><i class="fa-solid ${s.icon}"></i> ${s.text}</span>`
+            ).join('');
+
+            // Update Quality Menu
+            curQualityLabel.textContent = p.defaultQualityLabel;
+            qualityMenu.innerHTML = p.qualities.map((q, idx) => `
+                <button class="quality-opt ${idx === 0 ? 'active' : ''}" data-src="${q.src}" data-label="${q.label}">
+                    <span>${q.label}</span>
+                    <span class="q-tag">${q.tag}</span>
+                </button>
+            `).join('');
+
+            qualityMenu.querySelectorAll('.quality-opt').forEach(opt => {
+                opt.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const newSrc = opt.dataset.src;
+                    const label = opt.dataset.label;
+                    const t = video.currentTime;
+                    const wasPlaying = !video.paused;
+                    video.src = newSrc;
+                    video.load();
+                    video.currentTime = t;
+                    if (wasPlaying) video.play().catch(() => {});
+                    qualityMenu.querySelectorAll('.quality-opt').forEach(o => o.classList.remove('active'));
+                    opt.classList.add('active');
+                    curQualityLabel.textContent = label;
+                    qualityMenu.classList.remove('show');
+                    showToast(`Quality switched to ${label}`);
+                });
+            });
+
+            // Highlight active sidebar card
+            document.querySelectorAll('.upnext-card').forEach(c => c.classList.remove('active'));
+            const activeCard = document.getElementById(`card-${p.key}`);
+            if (activeCard) activeCard.classList.add('active');
+
+            // Load video
+            video.poster = p.poster;
+            video.src = p.defaultSrc;
+            video.load();
+            progressBar.style.width = '0%';
+            curTime.textContent = '0:00';
+
+            if (autoPlay) {
+                video.play().catch(() => {});
+            }
+        }
+
+        function loadProject(key) {
+            if (key === currentProjectKey) return;
+            renderProjectUI(key, true);
+            const targetPath = window.location.pathname.endsWith('.html') ? `/${key}.html` : `/${key}`;
+            try {
+                window.history.pushState({ key }, '', targetPath);
+            } catch (err) {}
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        window.addEventListener('popstate', (e) => {
+            if (e.state && e.state.key) {
+                renderProjectUI(e.state.key, false);
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const vParam = (params.get('v') || params.get('video') || '').toLowerCase();
+            if (vParam.includes('voral')) {
+                currentProjectKey = 'voral';
+            } else if (vParam.includes('boise') || vParam.includes('render')) {
+                currentProjectKey = 'boise';
+            }
+            renderProjectUI(currentProjectKey, false);
+        });
+
+        /* ── Player Controls Logic ── */
         function togglePlay() {
             if (video.paused || video.ended) {
-                const p = video.play();
-                if (p !== undefined) {
-                    p.catch(err => console.log('Playback error:', err));
-                }
+                video.play().catch(err => console.log(err));
             } else {
                 video.pause();
             }
         }
 
-        viewport.addEventListener('click', (e) => {
+        viewport.addEventListener('click', () => {
             qualityMenu.classList.remove('show');
             togglePlay();
         });
@@ -922,16 +1506,15 @@
         });
 
         video.addEventListener('play', () => {
-            player.classList.remove('paused');
-            player.classList.add('playing');
+            playerStage.classList.remove('paused');
+            playerStage.classList.add('playing');
             playIcon.className = 'fa-solid fa-pause';
             resetHideTimer();
         });
 
         video.addEventListener('pause', () => {
-            player.classList.remove('playing');
-            player.classList.add('paused');
-            player.classList.remove('hide-controls');
+            playerStage.classList.remove('playing', 'hide-controls');
+            playerStage.classList.add('paused');
             playIcon.className = 'fa-solid fa-play';
             clearTimeout(hideTimeout);
         });
@@ -944,154 +1527,186 @@
         });
 
         video.addEventListener('loadedmetadata', () => {
-            durTime.textContent = formatTime(video.duration);
+            if (video.duration) durTime.textContent = formatTime(video.duration);
         });
 
         video.addEventListener('progress', () => {
             if (video.buffered.length > 0 && video.duration) {
-                const bufEnd = video.buffered.end(video.buffered.length - 1);
-                bufferBar.style.width = (bufEnd / video.duration) * 100 + '%';
+                const end = video.buffered.end(video.buffered.length - 1);
+                bufferBar.style.width = ((end / video.duration) * 100) + '%';
             }
         });
 
         video.addEventListener('ended', () => {
-            player.classList.remove('playing');
-            player.classList.add('paused');
-            player.classList.remove('hide-controls');
+            playerStage.classList.remove('playing', 'hide-controls');
+            playerStage.classList.add('paused');
             playIcon.className = 'fa-solid fa-rotate-right';
         });
 
-        // Seeker drag & click
-        let isSeeking = false;
-        seeker.addEventListener('click', seek);
-        seeker.addEventListener('mousedown', () => isSeeking = true);
-        window.addEventListener('mouseup', () => isSeeking = false);
-        window.addEventListener('mousemove', (e) => {
-            if (isSeeking) seek(e);
-        });
-
-        function seek(e) {
+        /* Seeker */
+        let isDragging = false;
+        function updateSeek(e) {
             const rect = seeker.getBoundingClientRect();
             const pos = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
             progressBar.style.width = (pos * 100) + '%';
-            video.currentTime = pos * video.duration;
+            if (video.duration) video.currentTime = pos * video.duration;
         }
+        seeker.addEventListener('mousedown', (e) => { isDragging = true; updateSeek(e); });
+        window.addEventListener('mousemove', (e) => {
+            const rect = seeker.getBoundingClientRect();
+            if (e.clientX >= rect.left && e.clientX <= rect.right && video.duration) {
+                const pos = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+                seekerTip.style.left = (pos * 100) + '%';
+                seekerTip.textContent = formatTime(pos * video.duration);
+            }
+            if (isDragging) updateSeek(e);
+        });
+        window.addEventListener('mouseup', () => { isDragging = false; });
 
-        // Mute
+        /* Volume */
         muteBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             video.muted = !video.muted;
-            updateMuteUI();
+            updateVolUI();
         });
-
-        function updateMuteUI() {
+        volSlider.addEventListener('input', (e) => {
+            video.volume = parseFloat(e.target.value);
+            video.muted = video.volume === 0;
+            updateVolUI();
+        });
+        function updateVolUI() {
             if (video.muted || video.volume === 0) {
                 muteIcon.className = 'fa-solid fa-volume-xmark';
-                muteBtn.style.color = '#f87171';
+                volSlider.value = 0;
             } else {
-                muteIcon.className = 'fa-solid fa-volume-high';
-                muteBtn.style.color = '#ffffff';
+                muteIcon.className = video.volume < 0.5 ? 'fa-solid fa-volume-low' : 'fa-solid fa-volume-high';
+                volSlider.value = video.volume;
             }
         }
 
-        // Quality Switcher
-        qualityToggleBtn.addEventListener('click', (e) => {
+        /* Quality Menu */
+        qualityBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             qualityMenu.classList.toggle('show');
         });
-
-        document.querySelectorAll('.quality-option').forEach(opt => {
-            opt.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const newSrc = opt.getAttribute('data-src');
-                const label = opt.getAttribute('data-label');
-
-                if (video.src.endsWith(newSrc) || video.currentSrc.endsWith(newSrc)) {
-                    qualityMenu.classList.remove('show');
-                    return;
-                }
-
-                const currentTime = video.currentTime;
-                const isPlaying = !video.paused;
-
-                video.src = newSrc;
-                video.load();
-                video.currentTime = currentTime;
-                if (isPlaying) {
-                    const p = video.play();
-                    if (p !== undefined) p.catch(err => console.log(err));
-                }
-
-                document.querySelectorAll('.quality-option').forEach(o => o.classList.remove('active'));
-                opt.classList.add('active');
-                curQualityLabel.textContent = label;
-                qualityMenu.classList.remove('show');
-
-                showToast(`Switched to ${label}`);
-            });
-        });
-
         document.addEventListener('click', (e) => {
-            if (!qualityMenu.contains(e.target) && e.target !== qualityToggleBtn) {
+            if (!qualityMenu.contains(e.target) && e.target !== qualityBtn) {
                 qualityMenu.classList.remove('show');
             }
         });
 
-        // Speed
+        /* Speed */
         speedBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             speedIdx = (speedIdx + 1) % speeds.length;
-            const newSpeed = speeds[speedIdx];
-            video.playbackRate = newSpeed;
-            speedBtn.textContent = newSpeed.toFixed(1) + 'x';
+            video.playbackRate = speeds[speedIdx];
+            speedBtn.textContent = speeds[speedIdx].toFixed(1) + 'x';
         });
 
-        // Fullscreen
-        fsBtn.addEventListener('click', (e) => {
+        /* Theater Mode */
+        function toggleTheaterMode() {
+            document.body.classList.toggle('theater-mode');
+        }
+        theaterBtn.addEventListener('click', (e) => {
             e.stopPropagation();
+            toggleTheaterMode();
+        });
+
+        /* Fullscreen */
+        function toggleFullscreen() {
             if (!document.fullscreenElement) {
-                if (player.requestFullscreen) player.requestFullscreen();
-                else if (player.webkitRequestFullscreen) player.webkitRequestFullscreen();
+                if (playerStage.requestFullscreen) playerStage.requestFullscreen();
                 else if (video.webkitEnterFullscreen) video.webkitEnterFullscreen();
-                fsIcon.className = 'fa-solid fa-compress';
             } else {
                 if (document.exitFullscreen) document.exitFullscreen();
-                fsIcon.className = 'fa-solid fa-expand';
             }
+        }
+        fsBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleFullscreen();
         });
-
         document.addEventListener('fullscreenchange', () => {
-            if (!document.fullscreenElement) {
-                fsIcon.className = 'fa-solid fa-expand';
+            fsIcon.className = document.fullscreenElement ? 'fa-solid fa-compress' : 'fa-solid fa-expand';
+        });
+
+        /* Keyboard Shortcuts (YouTube style: Space/K, M, F, T, Arrow Left/Right) */
+        document.addEventListener('keydown', (e) => {
+            if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
+            if (e.code === 'Space' || e.code === 'KeyK') {
+                e.preventDefault();
+                togglePlay();
+            } else if (e.code === 'KeyM') {
+                video.muted = !video.muted;
+                updateVolUI();
+            } else if (e.code === 'KeyF') {
+                toggleFullscreen();
+            } else if (e.code === 'KeyT') {
+                toggleTheaterMode();
+            } else if (e.code === 'ArrowRight' && video.duration) {
+                video.currentTime = Math.min(video.duration, video.currentTime + 5);
+            } else if (e.code === 'ArrowLeft' && video.duration) {
+                video.currentTime = Math.max(0, video.currentTime - 5);
             }
         });
 
-        // Auto-hide controls when playing
         function resetHideTimer() {
             clearTimeout(hideTimeout);
-            player.classList.remove('hide-controls');
+            playerStage.classList.remove('hide-controls');
             if (!video.paused && !qualityMenu.classList.contains('show')) {
                 hideTimeout = setTimeout(() => {
-                    player.classList.add('hide-controls');
-                }, 1800);
+                    playerStage.classList.add('hide-controls');
+                }, 2200);
             }
         }
+        playerStage.addEventListener('mousemove', resetHideTimer);
+        playerStage.addEventListener('touchstart', resetHideTimer, { passive: true });
 
-        player.addEventListener('mousemove', resetHideTimer);
-        player.addEventListener('touchstart', resetHideTimer, { passive: true });
-
-        // Helper format time
         function formatTime(s) {
             if (isNaN(s)) return '0:00';
-            const mins = Math.floor(s / 60);
-            const secs = Math.floor(s % 60);
-            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            const m = Math.floor(s / 60);
+            const sec = Math.floor(s % 60);
+            return `${m}:${sec < 10 ? '0' : ''}${sec}`;
         }
 
-        // Copy Link
-        function copyLink() {
-            navigator.clipboard.writeText(window.location.href).then(() => {
-                showToast("Link copied to clipboard!");
+        function copyTextToClipboard(text) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                return navigator.clipboard.writeText(text);
+            }
+            return new Promise((resolve) => {
+                const ta = document.createElement('textarea');
+                ta.value = text;
+                ta.style.position = 'fixed';
+                ta.style.opacity = '0';
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+                resolve();
+            });
+        }
+
+        function copyCurrentVideoLink() {
+            const url = getShareUrlForKey(currentProjectKey);
+            copyTextToClipboard(url).then(() => {
+                const btn = document.getElementById('mainCopyBtn');
+                const icon = document.getElementById('mainCopyIcon');
+                const txt = document.getElementById('mainCopyText');
+                btn.classList.add('copied');
+                icon.className = 'fa-solid fa-check';
+                txt.textContent = 'Link Copied!';
+                showToast(`Copied: ${url}`);
+                setTimeout(() => {
+                    btn.classList.remove('copied');
+                    icon.className = 'fa-solid fa-link';
+                    txt.textContent = 'Copy Link';
+                }, 2200);
+            });
+        }
+
+        function copySpecificLink(key) {
+            const url = getShareUrlForKey(key);
+            copyTextToClipboard(url).then(() => {
+                showToast(`Copied: ${url}`);
             });
         }
 
@@ -1099,7 +1714,7 @@
             const toast = document.getElementById('toast');
             document.getElementById('toastMsg').textContent = msg;
             toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 2500);
+            setTimeout(() => toast.classList.remove('show'), 2600);
         }
     </script>
 </body>

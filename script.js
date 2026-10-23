@@ -292,10 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (heroFullBtn) {
             heroFullBtn.addEventListener('click', (e) => {
-                e.preventDefault();
                 e.stopPropagation();
-                const src = heroFullBtn.dataset.video || 'boise-renderhouse.mp4';
-                openLB('video', src, { vertical: false });
             });
         }
 
@@ -332,15 +329,71 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ════════════════════════════════
        WORK SECTION FEATURED CONTROLS
     ════════════════════════════════ */
-    // 1. Render House Commercial Card
-    const vcsBoiseThumb = document.getElementById('vcsBoiseThumb');
-    const vcsWatchBtn   = document.getElementById('vcsWatchBtn');
-    const openBoiseFilm = (e) => {
-        if (e) { e.preventDefault(); e.stopPropagation(); }
-        openLB('video', 'boise-renderhouse.mp4', { vertical: false });
+    // 1. Direct Copy Link Buttons for Uploaded Portfolio Videos
+    const copyToast = document.getElementById('copyToast');
+    const copyToastText = document.getElementById('copyToastText');
+    let toastTimer = null;
+    const isAr = document.documentElement.lang === 'ar';
+
+    const buildShareUrl = (slug) => {
+        const origin = (window.location.origin && window.location.origin !== 'null')
+            ? window.location.origin
+            : 'https://ahmednazif.com';
+        if (origin.includes('ahmednazif.com')) {
+            return `${origin}/${slug}`;
+        }
+        return `${origin}/${slug}.html`;
     };
-    if (vcsBoiseThumb) vcsBoiseThumb.addEventListener('click', openBoiseFilm);
-    if (vcsWatchBtn)   vcsWatchBtn.addEventListener('click', openBoiseFilm);
+
+    const copyText = (text) => {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            return navigator.clipboard.writeText(text);
+        }
+        return new Promise((resolve) => {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            resolve();
+        });
+    };
+
+    document.querySelectorAll('[data-copy-slug]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const slug = btn.dataset.copySlug || 'boise';
+            const url = buildShareUrl(slug);
+            const icon = btn.querySelector('i');
+            const label = btn.querySelector('span');
+            const origText = label ? label.textContent : '';
+
+            copyText(url).then(() => {
+                btn.classList.add('copied');
+                if (icon) icon.className = 'fa-solid fa-check';
+                if (label) label.textContent = isAr ? 'تم النسخ!' : 'Copied!';
+
+                if (copyToast && copyToastText) {
+                    copyToastText.textContent = isAr
+                        ? `تم نسخ الرابط: ${url}`
+                        : `Link copied: ${url}`;
+                    copyToast.classList.add('show');
+                    clearTimeout(toastTimer);
+                    toastTimer = setTimeout(() => copyToast.classList.remove('show'), 2600);
+                }
+
+                setTimeout(() => {
+                    btn.classList.remove('copied');
+                    if (icon) icon.className = 'fa-solid fa-link';
+                    if (label) label.textContent = origText;
+                }, 2200);
+            });
+        });
+    });
 
     // 2. Voral Media 9:16 Vertical Reel Card
     const vcvVideo       = document.getElementById('vcvVideo');

@@ -1086,18 +1086,30 @@ html[lang="ar"] .vcs-play-btn i {
 .vcs-meta-line strong {
     color: #e2e8f0;
 }
+.vcs-actions-group {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    flex-shrink: 0;
+}
+.vc-vertical-spotlight .vcs-actions-group {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    gap: 0.5rem;
+}
 .vcs-action-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    padding: 0.55rem 1.15rem;
+    gap: 0.45rem;
+    padding: 0.55rem 1.05rem;
     border-radius: var(--r-pill);
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.14);
     color: #fff;
     font-family: var(--fb);
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 600;
     white-space: nowrap;
     cursor: pointer;
@@ -1106,6 +1118,14 @@ html[lang="ar"] .vcs-play-btn i {
 }
 .vc-vertical-spotlight .vcs-action-btn {
     width: 100%;
+    padding: 0.55rem 0.65rem;
+    font-size: 0.75rem;
+}
+.vcs-copy-btn.copied,
+.hsc-copy-btn.copied {
+    background: rgba(52, 211, 153, 0.16) !important;
+    border-color: var(--green) !important;
+    color: var(--green) !important;
 }
 .vcs-action-btn:hover {
     background: rgba(255, 255, 255, 0.14);
@@ -1997,6 +2017,38 @@ a.cfc-item:hover {
 }
 .lb-ratio video {
     object-fit: contain;
+}
+
+
+/* ── COPY LINK TOAST ── */
+.copy-toast {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translate(-50%, 60px);
+    background: #121723;
+    color: #fff;
+    border: 1px solid var(--purple);
+    padding: 0.7rem 1.3rem;
+    border-radius: var(--r-pill);
+    font-family: var(--fb);
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.75);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.25s var(--ease);
+    z-index: 9999;
+}
+.copy-toast i {
+    color: var(--green);
+}
+.copy-toast.show {
+    transform: translate(-50%, 0);
+    opacity: 1;
 }
 
 /* ═══════════════════════════════════
