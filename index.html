@@ -305,7 +305,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <link rel="stylesheet" href="styles.css?v=7.5">
+    <link rel="stylesheet" href="styles.css?v=7.7">
 
     <link rel="icon" href="/favicon.ico" sizes="any">
 
@@ -397,170 +397,153 @@
 
 </div>
 
-<!-- ═══════ HERO ═══════ -->
-<section class="hero" id="home">
-    <div class="wrap hero-wrap">
-        <div class="hero-grid">
-            <div class="hero-left" data-aos>
+<!-- ═══════ HERO & CATEGORIZED WORK SHOWCASE ═══════ -->
+<section class="hero hero-compact" id="home">
+    <div class="wrap">
+        <div class="hero-intro-bar" data-aos>
+            <div class="hib-left">
                 <h1 class="hero-heading">
                     Cinema-Grade Post-Production<br>
                     <span class="hh-gradient">&amp; High-Retention Motion.</span>
                 </h1>
                 <p class="hero-desc">
-                    I'm <strong>Ahmed Nazif</strong> — video editor &amp; post-production artist. Partnering with top creative studios globally, including <strong>Render House (USA)</strong> and <strong>Voral Media (UAE)</strong>. Crafting luxury real estate showcases, viral short-form reels, and retention-engineered visual narratives.
+                    I'm <strong>Ahmed Nazif</strong> — video editor &amp; post-production specialist partnering with studios and creators across the <strong>USA &amp; UAE</strong>. Explore examples of my work across commercial real estate, marketing shorts, and high-performing gaming content below.
                 </p>
+            </div>
+            <div class="hib-right">
+                <div class="hero-stats">
+                    <div class="hs">
+                        <strong>500K<span>+</span></strong>
+                        <span>Personal YT (11 Videos)</span>
+                    </div>
+                    <div class="hs">
+                        <strong>10K<span>+</span></strong>
+                        <span>Subscribers</span>
+                    </div>
+                    <div class="hs">
+                        <strong>USA &amp; UAE</strong>
+                        <span>Client Studios</span>
+                    </div>
+                    <div class="hs">
+                        <strong>+50%</strong>
+                        <span>Retention Boost</span>
+                    </div>
+                </div>
                 <div class="hero-btns">
                     <a href="#work" class="btn-primary">
                         <i class="fa-solid fa-play"></i>
-                        Explore Portfolio
+                        Watch Examples
                     </a>
                     <a href="#contact" class="btn-ghost">
                         Start a Project
                         <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
-                <div class="hero-stats">
-                    <div class="hs">
-                        <strong>500K<span>+</span></strong>
-                        <span>Personal Channel Views (11 Videos)</span>
-                    </div>
-                    <div class="hs-sep"></div>
-                    <div class="hs">
-                        <strong>10K<span>+</span></strong>
-                        <span>Subscribers</span>
-                    </div>
-                    <div class="hs-sep"></div>
-                    <div class="hs">
-                        <strong>USA &amp; UAE</strong>
-                        <span>Client Studios</span>
-                    </div>
-                    <div class="hs-sep"></div>
-                    <div class="hs">
-                        <strong>+50%</strong>
-                        <span>Retention Boost</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="hero-right" data-aos data-aos-delay="150">
-                <div class="hero-showcase">
-                    <div class="hsc-glow"></div>
-                    <div class="hsc-frame" id="heroFrame" tabindex="0" role="region" aria-label="Boise 2027 Cinema Player">
-                        <video id="heroVideo" class="hsc-video" src="boise-preview.mp4" poster="images/renderhouse_thumb.jpg" autoplay loop muted playsinline preload="auto"></video>
-                        
-                        <div class="hsc-ripple" id="heroRipple"><i class="fa-solid fa-play" id="heroRippleIcon"></i></div>
-
-                        <div class="hsc-center-overlay" id="heroCenterPlay">
-                            <button class="hsc-center-circle" aria-label="Play Video">
-                                <i class="fa-solid fa-play"></i>
-                            </button>
-                        </div>
-
-                        <div class="hsc-controls-wrap" id="heroControls">
-                            <div class="hsc-seeker" id="heroSeeker" role="slider" aria-label="Seek video" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                                <div class="hsc-seeker-track" id="heroSeekerTrack">
-                                    <div class="hsc-seeker-buffer" id="heroBuffer"></div>
-                                    <div class="hsc-seeker-prog" id="heroProg">
-                                        <span class="hsc-seeker-knob"></span>
-                                    </div>
-                                </div>
-                                <div class="hsc-seeker-tooltip" id="heroSeekerTip">00:00</div>
-                            </div>
-
-                            <div class="hsc-bottom-bar">
-                                <div class="hsc-bar-left">
-                                    <button class="hsc-ctrl-btn hsc-play-btn" id="heroPlayPauseBtn" aria-label="Play or Pause" title="Play / Pause (Space)">
-                                        <i class="fa-solid fa-pause" id="heroPlayPauseIcon"></i>
-                                    </button>
-
-                                    <div class="hsc-vol-wrap" id="heroVolWrap">
-                                        <button class="hsc-ctrl-btn hsc-vol-btn" id="heroSoundBtn" aria-label="Toggle Sound" title="Mute / Unmute (M)">
-                                            <i class="fa-solid fa-volume-xmark" id="heroSoundIcon"></i>
-                                        </button>
-                                        <div class="hsc-vol-slider-wrap">
-                                            <input type="range" class="hsc-vol-slider" id="heroVolSlider" min="0" max="1" step="0.05" value="0" aria-label="Volume Slider">
-                                        </div>
-                                    </div>
-
-                                    <div class="hsc-time-display">
-                                        <span id="heroCurTime">00:00</span>
-                                        <span class="hsc-time-sep">/</span>
-                                        <span id="heroDurTime">03:38</span>
-                                    </div>
-                                </div>
-
-                                <div class="hsc-bar-center">
-                                    <div class="hsc-title-line">
-                                        <span class="hsc-dot"></span>
-                                        <span class="hsc-title-text">Boise 2027 &bull; <strong class="hsc-client-name">Render House</strong></span>
-                                    </div>
-                                </div>
-
-                                <div class="hsc-bar-right">
-                                    <button class="hsc-ctrl-btn hsc-icon-only" id="heroFsBtn" aria-label="Toggle Fullscreen" title="Fullscreen (F)">
-                                        <i class="fa-solid fa-expand" id="heroFsIcon"></i>
-                                    </button>
-
-                                    <button class="hsc-ctrl-btn hsc-btn-primary" id="heroFullBtn" data-video="boise-renderhouse.mp4" aria-label="Watch Full Video in Cinema Lightbox">
-                                        <i class="fa-solid fa-film"></i>
-                                        <span>Full Film (3:38)</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
-    </div>
-    <div class="hero-scroll">
-        <span>Scroll</span>
-        <div class="hs-arrow"><i class="fa-solid fa-chevron-down"></i></div>
     </div>
 </section>
 
-<!-- ═══════ PORTFOLIO / WORK ═══════ -->
+<!-- ═══════ PORTFOLIO / WORK EXAMPLES ═══════ -->
 <section class="work" id="work">
     <div class="wrap">
-        <div class="section-head" data-aos>
-            <div class="eyebrow">Selected Work / Commercial &amp; Creator</div>
-            <h2>Proven Impact.<br><span class="grad-text">Crafted for Maximum Retention.</span></h2>
-            <p>From high-budget commercial infrastructure films for US studios to viral vertical reels in Dubai and episodic long-form series with over 500,000 views.</p>
-        </div>
 
-        <div class="portfolio-filter" data-aos>
-            <button class="pf-btn pf-active" data-filter="all">All Work</button>
-            <button class="pf-btn" data-filter="commercial">Commercial &amp; 3D (USA)</button>
-            <button class="pf-btn" data-filter="shorts">Vertical Reel 9:16 (UAE)</button>
-            <button class="pf-btn" data-filter="youtube">YouTube Series</button>
-        </div>
+        <!-- Row 1: 01 Real Estate Video (16:9) + 02 Marketing Short (9:16) -->
+        <div class="showcase-top-grid">
 
-        <!-- Featured Asymmetric Bento: 16:9 Commercial + 9:16 Vertical Reel -->
-        <div class="work-grid-featured">
-            <!-- Card 1: Render House (USA) — 16:9 Commercial Showcase -->
-            <div class="vc-spotlight" data-cat="commercial" data-video="boise-renderhouse.mp4" data-aos>
-                <div class="vcs-thumb" id="vcsBoiseThumb">
-                    <img loading="lazy" src="images/renderhouse_thumb.jpg" alt="Render House - Boise 2027 Infrastructure">
-                    <div class="vcs-overlay">
-                        <div class="vcs-play-btn"><i class="fa-solid fa-play"></i></div>
+            <!-- Example 01: Real Estate & Commercial Video (16:9) -->
+            <div class="sc-block sc-block-wide" data-aos>
+                <div class="sc-cat-header">
+                    <div class="sc-cat-left">
+                        <span class="sc-cat-tag"><span class="sc-num">01</span> Real Estate &amp; Commercial Video</span>
+                        <h2 class="sc-cat-title">Boise 2027 Infrastructure <span class="sc-cat-client">&mdash; Render House (USA)</span></h2>
                     </div>
-                </div>
-                <div class="vcs-info">
-                    <div class="vcs-info-text">
-                        <h3 class="vcs-title">Boise 2027 Infrastructure</h3>
-                        <div class="vcs-meta-line"><strong>Render House (USA)</strong> &bull; Commercial Real Estate &amp; 3D Motion &bull; 03:38</div>
-                    </div>
-                    <button class="vcs-action-btn vcs-action-primary" id="vcsWatchBtn" data-video="boise-renderhouse.mp4">
-                        <i class="fa-solid fa-film"></i> Watch Film
+                    <button class="sc-head-btn" id="vcsWatchBtn" data-video="boise-renderhouse.mp4">
+                        <i class="fa-solid fa-expand"></i> Full Film (3:38)
                     </button>
+                </div>
+
+                <div class="hsc-frame" id="heroFrame" tabindex="0" role="region" aria-label="Boise 2027 Cinema Player">
+                    <video id="heroVideo" class="hsc-video" src="boise-preview.mp4" poster="images/renderhouse_thumb.jpg" autoplay loop muted playsinline preload="auto"></video>
+                    
+                    <div class="hsc-ripple" id="heroRipple"><i class="fa-solid fa-play" id="heroRippleIcon"></i></div>
+
+                    <div class="hsc-center-overlay" id="heroCenterPlay">
+                        <button class="hsc-center-circle" aria-label="Play Video">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                    </div>
+
+                    <div class="hsc-controls-wrap" id="heroControls">
+                        <div class="hsc-seeker" id="heroSeeker" role="slider" aria-label="Seek video" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                            <div class="hsc-seeker-track" id="heroSeekerTrack">
+                                <div class="hsc-seeker-buffer" id="heroBuffer"></div>
+                                <div class="hsc-seeker-prog" id="heroProg">
+                                    <span class="hsc-seeker-knob"></span>
+                                </div>
+                            </div>
+                            <div class="hsc-seeker-tooltip" id="heroSeekerTip">00:00</div>
+                        </div>
+
+                        <div class="hsc-bottom-bar">
+                            <div class="hsc-bar-left">
+                                <button class="hsc-ctrl-btn hsc-play-btn" id="heroPlayPauseBtn" aria-label="Play or Pause" title="Play / Pause (Space)">
+                                    <i class="fa-solid fa-pause" id="heroPlayPauseIcon"></i>
+                                </button>
+
+                                <div class="hsc-vol-wrap" id="heroVolWrap">
+                                    <button class="hsc-ctrl-btn hsc-vol-btn" id="heroSoundBtn" aria-label="Toggle Sound" title="Mute / Unmute (M)">
+                                        <i class="fa-solid fa-volume-xmark" id="heroSoundIcon"></i>
+                                    </button>
+                                    <div class="hsc-vol-slider-wrap">
+                                        <input type="range" class="hsc-vol-slider" id="heroVolSlider" min="0" max="1" step="0.05" value="0" aria-label="Volume Slider">
+                                    </div>
+                                </div>
+
+                                <div class="hsc-time-display">
+                                    <span id="heroCurTime">00:00</span>
+                                    <span class="hsc-time-sep">/</span>
+                                    <span id="heroDurTime">03:38</span>
+                                </div>
+                            </div>
+
+                            <div class="hsc-bar-center">
+                                <div class="hsc-title-line">
+                                    <span class="hsc-dot"></span>
+                                    <span class="hsc-title-text">3D Camera Tracking &bull; Motion Callouts &bull; Sound Design</span>
+                                </div>
+                            </div>
+
+                            <div class="hsc-bar-right">
+                                <button class="hsc-ctrl-btn hsc-icon-only" id="heroFsBtn" aria-label="Toggle Fullscreen" title="Fullscreen (F)">
+                                    <i class="fa-solid fa-expand" id="heroFsIcon"></i>
+                                </button>
+
+                                <button class="hsc-ctrl-btn hsc-btn-primary" id="heroFullBtn" data-video="boise-renderhouse.mp4" aria-label="Watch Full Video in Cinema Lightbox">
+                                    <i class="fa-solid fa-film"></i>
+                                    <span>Watch Full (3:38)</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Card 2: Voral Media (UAE) — Authentic 9:16 Vertical Reel -->
-            <div class="vc-spotlight vc-vertical-spotlight" data-cat="shorts" data-video="voral-reel.mp4" data-aos data-aos-delay="100">
+            <!-- Example 02: Marketing Short (9:16 Vertical Reel) -->
+            <div class="sc-block sc-block-vert" data-aos data-aos-delay="100">
+                <div class="sc-cat-header">
+                    <div class="sc-cat-left">
+                        <span class="sc-cat-tag sc-cat-tag-cyan"><span class="sc-num">02</span> Marketing Short (9:16)</span>
+                        <h2 class="sc-cat-title">Brand Reel <span class="sc-cat-client">&mdash; Voral Media (UAE)</span></h2>
+                    </div>
+                    <a href="/voral.html" target="_blank" class="sc-head-btn" title="Open Project Page">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+
                 <div class="vcs-vertical-wrap" id="vcvWrap">
                     <video id="vcvVideo" class="vcv-video-full" src="voral-reel.mp4" poster="images/voral_thumb.jpg" loop playsinline preload="metadata"></video>
-                    <span class="vcs-format-badge"><i class="fa-solid fa-mobile-screen"></i> 9:16 Reel</span>
+                    <span class="vcs-format-badge"><i class="fa-solid fa-mobile-screen"></i> 9:16 Vertical</span>
                     <button class="vcv-sound-float" id="vcvSoundBtn" title="Toggle Sound" aria-label="Toggle Sound">
                         <i class="fa-solid fa-volume-xmark" id="vcvSoundIcon"></i>
                     </button>
@@ -568,130 +551,129 @@
                         <div class="vcs-play-btn"><i class="fa-solid fa-play"></i></div>
                     </div>
                 </div>
-                <div class="vcs-info">
-                    <div class="vcs-info-text">
-                        <h3 class="vcs-title">Voral Media Commercial Reel</h3>
-                        <div class="vcs-meta-line"><strong>Voral Media (Dubai, UAE)</strong> &bull; Viral Short-Form Campaign</div>
+            </div>
+
+        </div>
+
+        <!-- Example 03: Well-Performing Gaming Videos (YouTube Series) -->
+        <div class="sc-gaming-section" data-aos>
+            <div class="sc-gaming-header">
+                <div class="sc-cat-left">
+                    <span class="sc-cat-tag"><span class="sc-num">03</span> Well-Performing Gaming Videos</span>
+                    <h2 class="sc-gaming-title">High-Retention YouTube Series <span class="sc-cat-client">&mdash; 500,000+ Views Across 11 Videos (@Plains)</span></h2>
+                </div>
+                <a href="https://www.youtube.com/@Plains" target="_blank" class="btn-yt">
+                    <i class="fa-brands fa-youtube"></i>
+                    Visit Channel (@Plains)
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+
+            <div class="video-grid" id="videoGrid">
+                <!-- Video 1 -->
+                <div class="vc" data-cat="youtube" data-vid="jjlwfERLaqE" data-aos>
+                    <div class="vc-thumb">
+                        <img loading="lazy" src="https://img.youtube.com/vi/jjlwfERLaqE/maxresdefault.jpg" alt="Undercover in Chinese Server" onerror="this.src='https://img.youtube.com/vi/jjlwfERLaqE/hqdefault.jpg'">
+                        <div class="vc-overlay"><div class="vc-play"><i class="fa-solid fa-play"></i></div></div>
+                        <div class="vc-views"><i class="fa-solid fa-fire"></i> 97K</div>
+                        <div class="vc-time">09:25</div>
                     </div>
-                    <a href="/voral.html" target="_blank" class="vcs-action-btn">
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Review Page
-                    </a>
+                    <div class="vc-meta">
+                        <h3>Undercover in Chinese Server</h3>
+                        <div class="vc-stats">
+                            <span><i class="fa-solid fa-eye"></i> 97K views</span>
+                            <span><i class="fa-solid fa-crown"></i> Channel #1</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="vc" data-cat="youtube" data-vid="WgmfFzcpOmc" data-aos data-aos-delay="80">
+                    <div class="vc-thumb">
+                        <img loading="lazy" src="https://img.youtube.com/vi/WgmfFzcpOmc/maxresdefault.jpg" alt="Valorant Coach Challenge" onerror="this.src='https://img.youtube.com/vi/WgmfFzcpOmc/hqdefault.jpg'">
+                        <div class="vc-overlay"><div class="vc-play"><i class="fa-solid fa-play"></i></div></div>
+                        <div class="vc-views"><i class="fa-solid fa-eye"></i> 82K</div>
+                        <div class="vc-time">10:38</div>
+                    </div>
+                    <div class="vc-meta">
+                        <h3>Hired a Pro Coach for 1000 EGP</h3>
+                        <div class="vc-stats">
+                            <span><i class="fa-solid fa-eye"></i> 82K views</span>
+                            <span><i class="fa-solid fa-fire"></i> High retention</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 3 -->
+                <div class="vc" data-cat="youtube" data-vid="1Myr-s_QAhA" data-aos data-aos-delay="160">
+                    <div class="vc-thumb">
+                        <img loading="lazy" src="https://img.youtube.com/vi/1Myr-s_QAhA/maxresdefault.jpg" alt="US Server Undercover" onerror="this.src='https://img.youtube.com/vi/1Myr-s_QAhA/hqdefault.jpg'">
+                        <div class="vc-overlay"><div class="vc-play"><i class="fa-solid fa-play"></i></div></div>
+                        <div class="vc-views"><i class="fa-solid fa-eye"></i> 62K</div>
+                        <div class="vc-time">10:29</div>
+                    </div>
+                    <div class="vc-meta">
+                        <h3>Undercover in US Server</h3>
+                        <div class="vc-stats">
+                            <span><i class="fa-solid fa-eye"></i> 62K views</span>
+                            <span><i class="fa-solid fa-star"></i> Fan Favorite</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 4 -->
+                <div class="vc" data-cat="youtube" data-vid="3VohVmtUpXE" data-start="243" data-aos data-aos-delay="0">
+                    <div class="vc-thumb">
+                        <img loading="lazy" src="https://img.youtube.com/vi/3VohVmtUpXE/maxresdefault.jpg" alt="Hunting for Anime Girls" onerror="this.src='https://img.youtube.com/vi/3VohVmtUpXE/hqdefault.jpg'">
+                        <div class="vc-overlay"><div class="vc-play"><i class="fa-solid fa-play"></i></div></div>
+                        <div class="vc-views"><i class="fa-solid fa-eye"></i> 61K</div>
+                        <div class="vc-time">08:50</div>
+                    </div>
+                    <div class="vc-meta">
+                        <h3>Hunting for Anime Girls in Valorant</h3>
+                        <div class="vc-stats">
+                            <span><i class="fa-solid fa-eye"></i> 61K views</span>
+                            <span><i class="fa-solid fa-wand-magic-sparkles"></i> VFX Heavy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 5 -->
+                <div class="vc" data-cat="youtube" data-vid="tPQExFt0rD4" data-aos data-aos-delay="80">
+                    <div class="vc-thumb">
+                        <img loading="lazy" src="https://img.youtube.com/vi/tPQExFt0rD4/maxresdefault.jpg" alt="The Server That Makes You Rich" onerror="this.src='https://img.youtube.com/vi/tPQExFt0rD4/hqdefault.jpg'">
+                        <div class="vc-overlay"><div class="vc-play"><i class="fa-solid fa-play"></i></div></div>
+                        <div class="vc-views"><i class="fa-solid fa-eye"></i> 41K</div>
+                        <div class="vc-time">09:15</div>
+                    </div>
+                    <div class="vc-meta">
+                        <h3>The Server That Makes You Rich</h3>
+                        <div class="vc-stats">
+                            <span><i class="fa-solid fa-eye"></i> 41K views</span>
+                            <span><i class="fa-solid fa-bolt"></i> High Pacing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 6 -->
+                <div class="vc" data-cat="youtube" data-vid="1UQBT9-h-Es" data-start="195" data-aos data-aos-delay="160">
+                    <div class="vc-thumb">
+                        <img loading="lazy" src="https://img.youtube.com/vi/1UQBT9-h-Es/maxresdefault.jpg" alt="Australian Server" onerror="this.src='https://img.youtube.com/vi/1UQBT9-h-Es/hqdefault.jpg'">
+                        <div class="vc-overlay"><div class="vc-play"><i class="fa-solid fa-play"></i></div></div>
+                        <div class="vc-views"><i class="fa-solid fa-eye"></i> 36K</div>
+                        <div class="vc-time">10:24</div>
+                    </div>
+                    <div class="vc-meta">
+                        <h3>Undercover in Australian Server</h3>
+                        <div class="vc-stats">
+                            <span><i class="fa-solid fa-eye"></i> 36K views</span>
+                            <span><i class="fa-solid fa-earth-americas"></i> 36K+ Reach</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- YouTube Long-Form Creator Series -->
-        <div class="video-grid" id="videoGrid">
-            <!-- Video 1 -->
-            <div class="vc" data-cat="youtube" data-vid="jjlwfERLaqE" data-aos>
-                <div class="vc-thumb">
-                    <img loading="lazy" src="https://img.youtube.com/vi/jjlwfERLaqE/maxresdefault.jpg" alt="Undercover in Chinese Server" onerror="this.src='https://img.youtube.com/vi/jjlwfERLaqE/hqdefault.jpg'">
-                    <div class="vc-overlay"><div class="vc-play"><i class="fa-solid fa-play"></i></div></div>
-                    <div class="vc-views"><i class="fa-solid fa-fire"></i> 97K</div>
-                    <div class="vc-time">09:25</div>
-                </div>
-                <div class="vc-meta">
-                    <h3>Undercover in Chinese Server</h3>
-                    <div class="vc-stats">
-                        <span><i class="fa-solid fa-eye"></i> 97K views</span>
-                        <span><i class="fa-solid fa-crown"></i> Channel #1</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Video 2 -->
-            <div class="vc" data-cat="youtube" data-vid="WgmfFzcpOmc" data-aos data-aos-delay="80">
-                <div class="vc-thumb">
-                    <img loading="lazy" src="https://img.youtube.com/vi/WgmfFzcpOmc/maxresdefault.jpg" alt="Valorant Coach Challenge" onerror="this.src='https://img.youtube.com/vi/WgmfFzcpOmc/hqdefault.jpg'">
-                    <div class="vc-overlay"><div class="vc-play"><i class="fa-solid fa-play"></i></div></div>
-                    <div class="vc-views"><i class="fa-solid fa-eye"></i> 82K</div>
-                    <div class="vc-time">10:38</div>
-                </div>
-                <div class="vc-meta">
-                    <h3>Hired a Pro Coach for 1000 EGP</h3>
-                    <div class="vc-stats">
-                        <span><i class="fa-solid fa-eye"></i> 82K views</span>
-                        <span><i class="fa-solid fa-fire"></i> High retention</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Video 3 -->
-            <div class="vc" data-cat="youtube" data-vid="1Myr-s_QAhA" data-aos data-aos-delay="160">
-                <div class="vc-thumb">
-                    <img loading="lazy" src="https://img.youtube.com/vi/1Myr-s_QAhA/maxresdefault.jpg" alt="US Server Undercover" onerror="this.src='https://img.youtube.com/vi/1Myr-s_QAhA/hqdefault.jpg'">
-                    <div class="vc-overlay"><div class="vc-play"><i class="fa-solid fa-play"></i></div></div>
-                    <div class="vc-views"><i class="fa-solid fa-eye"></i> 62K</div>
-                    <div class="vc-time">10:29</div>
-                </div>
-                <div class="vc-meta">
-                    <h3>Undercover in US Server</h3>
-                    <div class="vc-stats">
-                        <span><i class="fa-solid fa-eye"></i> 62K views</span>
-                        <span><i class="fa-solid fa-star"></i> Fan Favorite</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Video 4 -->
-            <div class="vc" data-cat="youtube" data-vid="3VohVmtUpXE" data-start="243" data-aos data-aos-delay="0">
-                <div class="vc-thumb">
-                    <img loading="lazy" src="https://img.youtube.com/vi/3VohVmtUpXE/maxresdefault.jpg" alt="Hunting for Anime Girls" onerror="this.src='https://img.youtube.com/vi/3VohVmtUpXE/hqdefault.jpg'">
-                    <div class="vc-overlay"><div class="vc-play"><i class="fa-solid fa-play"></i></div></div>
-                    <div class="vc-views"><i class="fa-solid fa-eye"></i> 61K</div>
-                    <div class="vc-time">08:50</div>
-                </div>
-                <div class="vc-meta">
-                    <h3>Hunting for Anime Girls in Valorant</h3>
-                    <div class="vc-stats">
-                        <span><i class="fa-solid fa-eye"></i> 61K views</span>
-                        <span><i class="fa-solid fa-wand-magic-sparkles"></i> VFX Heavy</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Video 5 -->
-            <div class="vc" data-cat="youtube" data-vid="tPQExFt0rD4" data-aos data-aos-delay="80">
-                <div class="vc-thumb">
-                    <img loading="lazy" src="https://img.youtube.com/vi/tPQExFt0rD4/maxresdefault.jpg" alt="The Server That Makes You Rich" onerror="this.src='https://img.youtube.com/vi/tPQExFt0rD4/hqdefault.jpg'">
-                    <div class="vc-overlay"><div class="vc-play"><i class="fa-solid fa-play"></i></div></div>
-                    <div class="vc-views"><i class="fa-solid fa-eye"></i> 41K</div>
-                    <div class="vc-time">09:15</div>
-                </div>
-                <div class="vc-meta">
-                    <h3>The Server That Makes You Rich</h3>
-                    <div class="vc-stats">
-                        <span><i class="fa-solid fa-eye"></i> 41K views</span>
-                        <span><i class="fa-solid fa-bolt"></i> High Pacing</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Video 6 -->
-            <div class="vc" data-cat="youtube" data-vid="1UQBT9-h-Es" data-start="195" data-aos data-aos-delay="160">
-                <div class="vc-thumb">
-                    <img loading="lazy" src="https://img.youtube.com/vi/1UQBT9-h-Es/maxresdefault.jpg" alt="Australian Server" onerror="this.src='https://img.youtube.com/vi/1UQBT9-h-Es/hqdefault.jpg'">
-                    <div class="vc-overlay"><div class="vc-play"><i class="fa-solid fa-play"></i></div></div>
-                    <div class="vc-views"><i class="fa-solid fa-eye"></i> 36K</div>
-                    <div class="vc-time">10:24</div>
-                </div>
-                <div class="vc-meta">
-                    <h3>Undercover in Australian Server</h3>
-                    <div class="vc-stats">
-                        <span><i class="fa-solid fa-eye"></i> 36K views</span>
-                        <span><i class="fa-solid fa-earth-americas"></i> 36K+ Reach</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="work-cta" data-aos>
-            <a href="https://www.youtube.com/@Plains" target="_blank" class="btn-yt">
-                <i class="fa-brands fa-youtube"></i>
-                Visit Full Channel (@Plains)
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-        </div>
     </div>
 </section>
 
@@ -1261,7 +1243,7 @@
 
 </div>
 
-<script src="script.js?v=7.5"></script>
+<script src="script.js?v=7.7"></script>
 
 </body>
 
