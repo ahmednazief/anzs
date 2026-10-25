@@ -305,7 +305,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <link rel="stylesheet" href="styles.css?v=8.2">
+    <link rel="stylesheet" href="styles.css?v=8.3">
 
     <link rel="icon" href="/favicon.ico" sizes="any">
 
@@ -471,7 +471,7 @@
                                 <div class="hsc-bar-center">
                                     <div class="hsc-title-line">
                                         <span class="hsc-dot"></span>
-                                        <span class="hsc-title-text">Boise 2027 &bull; <strong class="hsc-client-name">Render House</strong></span>
+                                        <span class="hsc-title-text"><span class="hsc-sample-tag">Example: Long-Form</span> Boise 2027 &bull; <strong class="hsc-client-name">Render House</strong></span>
                                     </div>
                                 </div>
 
@@ -529,16 +529,21 @@
 <section class="work" id="work">
     <div class="wrap">
         <div class="section-head" data-aos>
-            <div class="eyebrow">Selected Work / Commercial &amp; Creator</div>
-            <h2>Proven Impact.<br><span class="grad-text">Crafted for Maximum Retention.</span></h2>
-            <p>From high-budget commercial infrastructure films for US studios to viral vertical reels in Dubai and episodic long-form series with over 500,000 views.</p>
+            <div class="eyebrow"><i class="fa-solid fa-sparkles"></i> Curated Production Samples &bull; Handpicked Showcases</div>
+            <h2>Format Showcases.<br><span class="grad-text">Engineered for Maximum Retention.</span></h2>
+            <p>A handpicked selection of production examples illustrating specific formats — from multi-minute commercial showcases and viral vertical reels to episodic gaming series.</p>
         </div>
 
         <div class="portfolio-filter" data-aos>
-            <button class="pf-btn pf-active" data-filter="all">All Work</button>
-            <button class="pf-btn" data-filter="commercial">Commercial &amp; 3D (USA)</button>
-            <button class="pf-btn" data-filter="shorts">Vertical Reel 9:16 (UAE)</button>
-            <button class="pf-btn" data-filter="youtube">YouTube Series</button>
+            <button class="pf-btn pf-active" data-filter="all">All Examples</button>
+            <button class="pf-btn" data-filter="commercial">Long-Form Commercial (16:9)</button>
+            <button class="pf-btn" data-filter="shorts">Short-Form Reel (9:16)</button>
+            <button class="pf-btn" data-filter="youtube">Gaming Long-Form</button>
+        </div>
+
+        <div class="samples-disclaimer-pill" data-aos>
+            <i class="fa-solid fa-circle-info"></i>
+            <span><strong>Representative Format Examples:</strong> Handpicked specimens illustrating pacing, 3D motion, and retention styles &mdash; selected from hundreds of hours edited across global studios and creators.</span>
         </div>
 
         <!-- Featured Asymmetric Bento: 16:9 Commercial + 9:16 Vertical Reel -->
@@ -547,14 +552,17 @@
             <div class="vc-spotlight" data-cat="commercial" data-video="boise-renderhouse.mp4" data-aos>
                 <a href="/boise.html" class="vcs-thumb" id="vcsBoiseThumb">
                     <img loading="lazy" src="images/renderhouse_thumb.jpg" alt="Render House - Boise 2027 Infrastructure">
+                    <span class="vcs-format-badge sample-badge"><i class="fa-solid fa-film"></i> Example &bull; Long-Form Video (16:9)</span>
                     <div class="vcs-overlay">
                         <div class="vcs-play-btn"><i class="fa-solid fa-play"></i></div>
                     </div>
                 </a>
                 <div class="vcs-info">
                     <div class="vcs-info-text">
+                        <div class="vcs-sample-kicker"><i class="fa-solid fa-layer-group"></i> Example &bull; Long-Form Video Production</div>
                         <h3 class="vcs-title">Boise 2027 Infrastructure</h3>
                         <div class="vcs-meta-line"><strong>Render House (USA)</strong> &bull; Commercial Real Estate &amp; 3D Motion &bull; 03:38</div>
+                        <p class="vcs-sample-note">Demonstrating 3D camera tracking, architectural motion graphics, and multi-minute narrative flow.</p>
                     </div>
                     <div class="vcs-actions-group">
                         <button type="button" class="vcs-action-btn vcs-copy-btn" data-copy-slug="boise" title="Copy Direct Video Link">
@@ -571,7 +579,7 @@
             <div class="vc-spotlight vc-vertical-spotlight" data-cat="shorts" data-video="voral-reel.mp4" data-aos data-aos-delay="100">
                 <div class="vcs-vertical-wrap" id="vcvWrap">
                     <video id="vcvVideo" class="vcv-video-full" src="voral-reel.mp4" poster="images/voral_thumb.jpg" loop playsinline preload="metadata"></video>
-                    <span class="vcs-format-badge"><i class="fa-solid fa-mobile-screen"></i> 9:16 Reel</span>
+                    <span class="vcs-format-badge sample-badge sample-badge-short"><i class="fa-solid fa-mobile-screen"></i> Example &bull; Short-Form Reel (9:16)</span>
                     <button class="vcv-sound-float" id="vcvSoundBtn" title="Toggle Sound" aria-label="Toggle Sound">
                         <i class="fa-solid fa-volume-xmark" id="vcvSoundIcon"></i>
                     </button>
@@ -581,8 +589,10 @@
                 </div>
                 <div class="vcs-info">
                     <div class="vcs-info-text">
+                        <div class="vcs-sample-kicker"><i class="fa-solid fa-bolt"></i> Example &bull; Short-Form Video Production</div>
                         <h3 class="vcs-title">Voral Media Commercial Reel</h3>
-                        <div class="vcs-meta-line"><strong>Voral Media (Dubai, UAE)</strong> &bull; Viral Short-Form Campaign</div>
+                        <div class="vcs-meta-line"><strong>Voral Media (Dubai, UAE)</strong> &bull; Viral Short-Form Campaign &bull; 00:22</div>
+                        <p class="vcs-sample-note">Demonstrating 3-second hook retention, kinetic typography, dynamic speed ramps, and high-impact sound design.</p>
                     </div>
                     <div class="vcs-actions-group">
                         <button type="button" class="vcs-action-btn vcs-copy-btn" data-copy-slug="voral" title="Copy Direct Video Link">
@@ -596,17 +606,32 @@
             </div>
         </div>
 
+        <!-- Creator & Gaming Long-Form Header -->
+        <div class="creator-samples-header" data-cat="youtube" data-aos>
+            <div class="csh-left">
+                <div class="vcs-sample-kicker"><i class="fa-brands fa-youtube"></i> Examples &bull; Creator &amp; Gaming Long-Form</div>
+                <h3 class="csh-title">Episodic YouTube &amp; Gaming Samples</h3>
+                <p class="csh-desc">Handpicked sample edits from over 500,000 views on @Plains — illustrating retention curves, comedic timing, and narrative pacing. <em>(Curated specimens from extensive channel archives).</em></p>
+            </div>
+            <div class="csh-badge">
+                <span class="csh-pill"><i class="fa-solid fa-gamepad"></i> 6 Featured Samples</span>
+                <span class="csh-sub">500K+ Views &bull; 100+ Hours Cut</span>
+            </div>
+        </div>
+
         <!-- YouTube Long-Form Creator Series -->
         <div class="video-grid" id="videoGrid">
             <!-- Video 1 -->
             <div class="vc" data-cat="youtube" data-vid="jjlwfERLaqE" data-aos>
                 <div class="vc-thumb">
                     <img loading="lazy" src="https://img.youtube.com/vi/jjlwfERLaqE/maxresdefault.jpg" alt="Undercover in Chinese Server" onerror="this.src='https://img.youtube.com/vi/jjlwfERLaqE/hqdefault.jpg'">
+                    <span class="vc-format-badge"><i class="fa-solid fa-gamepad"></i> Long-Form Sample</span>
                     <div class="vc-overlay"><div class="vc-play"><i class="fa-solid fa-play"></i></div></div>
                     <div class="vc-views"><i class="fa-solid fa-fire"></i> 97K</div>
                     <div class="vc-time">09:25</div>
                 </div>
                 <div class="vc-meta">
+                    <div class="vc-sample-meta-kicker"><i class="fa-solid fa-video"></i> Example &bull; Long-Form Gaming</div>
                     <h3>Undercover in Chinese Server</h3>
                     <div class="vc-stats">
                         <span><i class="fa-solid fa-eye"></i> 97K views</span>
@@ -619,11 +644,13 @@
             <div class="vc" data-cat="youtube" data-vid="WgmfFzcpOmc" data-aos data-aos-delay="80">
                 <div class="vc-thumb">
                     <img loading="lazy" src="https://img.youtube.com/vi/WgmfFzcpOmc/maxresdefault.jpg" alt="Valorant Coach Challenge" onerror="this.src='https://img.youtube.com/vi/WgmfFzcpOmc/hqdefault.jpg'">
+                    <span class="vc-format-badge"><i class="fa-solid fa-gamepad"></i> Long-Form Sample</span>
                     <div class="vc-overlay"><div class="vc-play"><i class="fa-solid fa-play"></i></div></div>
                     <div class="vc-views"><i class="fa-solid fa-eye"></i> 82K</div>
                     <div class="vc-time">10:38</div>
                 </div>
                 <div class="vc-meta">
+                    <div class="vc-sample-meta-kicker"><i class="fa-solid fa-video"></i> Example &bull; Long-Form Gaming</div>
                     <h3>Hired a Pro Coach for 1000 EGP</h3>
                     <div class="vc-stats">
                         <span><i class="fa-solid fa-eye"></i> 82K views</span>
@@ -636,11 +663,13 @@
             <div class="vc" data-cat="youtube" data-vid="1Myr-s_QAhA" data-aos data-aos-delay="160">
                 <div class="vc-thumb">
                     <img loading="lazy" src="https://img.youtube.com/vi/1Myr-s_QAhA/maxresdefault.jpg" alt="US Server Undercover" onerror="this.src='https://img.youtube.com/vi/1Myr-s_QAhA/hqdefault.jpg'">
+                    <span class="vc-format-badge"><i class="fa-solid fa-gamepad"></i> Long-Form Sample</span>
                     <div class="vc-overlay"><div class="vc-play"><i class="fa-solid fa-play"></i></div></div>
                     <div class="vc-views"><i class="fa-solid fa-eye"></i> 62K</div>
                     <div class="vc-time">10:29</div>
                 </div>
                 <div class="vc-meta">
+                    <div class="vc-sample-meta-kicker"><i class="fa-solid fa-video"></i> Example &bull; Long-Form Gaming</div>
                     <h3>Undercover in US Server</h3>
                     <div class="vc-stats">
                         <span><i class="fa-solid fa-eye"></i> 62K views</span>
@@ -653,11 +682,13 @@
             <div class="vc" data-cat="youtube" data-vid="3VohVmtUpXE" data-start="243" data-aos data-aos-delay="0">
                 <div class="vc-thumb">
                     <img loading="lazy" src="https://img.youtube.com/vi/3VohVmtUpXE/maxresdefault.jpg" alt="Hunting for Anime Girls" onerror="this.src='https://img.youtube.com/vi/3VohVmtUpXE/hqdefault.jpg'">
+                    <span class="vc-format-badge"><i class="fa-solid fa-gamepad"></i> Long-Form Sample</span>
                     <div class="vc-overlay"><div class="vc-play"><i class="fa-solid fa-play"></i></div></div>
                     <div class="vc-views"><i class="fa-solid fa-eye"></i> 61K</div>
                     <div class="vc-time">08:50</div>
                 </div>
                 <div class="vc-meta">
+                    <div class="vc-sample-meta-kicker"><i class="fa-solid fa-video"></i> Example &bull; Long-Form Gaming</div>
                     <h3>Hunting for Anime Girls in Valorant</h3>
                     <div class="vc-stats">
                         <span><i class="fa-solid fa-eye"></i> 61K views</span>
@@ -670,11 +701,13 @@
             <div class="vc" data-cat="youtube" data-vid="tPQExFt0rD4" data-aos data-aos-delay="80">
                 <div class="vc-thumb">
                     <img loading="lazy" src="https://img.youtube.com/vi/tPQExFt0rD4/maxresdefault.jpg" alt="The Server That Makes You Rich" onerror="this.src='https://img.youtube.com/vi/tPQExFt0rD4/hqdefault.jpg'">
+                    <span class="vc-format-badge"><i class="fa-solid fa-gamepad"></i> Long-Form Sample</span>
                     <div class="vc-overlay"><div class="vc-play"><i class="fa-solid fa-play"></i></div></div>
                     <div class="vc-views"><i class="fa-solid fa-eye"></i> 41K</div>
                     <div class="vc-time">09:15</div>
                 </div>
                 <div class="vc-meta">
+                    <div class="vc-sample-meta-kicker"><i class="fa-solid fa-video"></i> Example &bull; Long-Form Gaming</div>
                     <h3>The Server That Makes You Rich</h3>
                     <div class="vc-stats">
                         <span><i class="fa-solid fa-eye"></i> 41K views</span>
@@ -687,16 +720,35 @@
             <div class="vc" data-cat="youtube" data-vid="1UQBT9-h-Es" data-start="195" data-aos data-aos-delay="160">
                 <div class="vc-thumb">
                     <img loading="lazy" src="https://img.youtube.com/vi/1UQBT9-h-Es/maxresdefault.jpg" alt="Australian Server" onerror="this.src='https://img.youtube.com/vi/1UQBT9-h-Es/hqdefault.jpg'">
+                    <span class="vc-format-badge"><i class="fa-solid fa-gamepad"></i> Long-Form Sample</span>
                     <div class="vc-overlay"><div class="vc-play"><i class="fa-solid fa-play"></i></div></div>
                     <div class="vc-views"><i class="fa-solid fa-eye"></i> 36K</div>
                     <div class="vc-time">10:24</div>
                 </div>
                 <div class="vc-meta">
+                    <div class="vc-sample-meta-kicker"><i class="fa-solid fa-video"></i> Example &bull; Long-Form Gaming</div>
                     <h3>Undercover in Australian Server</h3>
                     <div class="vc-stats">
                         <span><i class="fa-solid fa-eye"></i> 36K views</span>
                         <span><i class="fa-solid fa-earth-americas"></i> 36K+ Reach</span>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sample Disclaimer Banner -->
+        <div class="portfolio-disclaimer" data-cat="youtube" data-aos>
+            <div class="pd-inner">
+                <div class="pd-icon-wrap">
+                    <i class="fa-solid fa-folder-open"></i>
+                </div>
+                <div class="pd-text">
+                    <h4>These are representative format examples &mdash; not an exhaustive catalog.</h4>
+                    <p>Over years of editing, I've cut hundreds of hours across private corporate commissions, unlisted creator series, and commercial promos. Looking for industry-specific samples (tech, SaaS, documentary, esports)? Let's connect.</p>
+                </div>
+                <div class="pd-actions">
+                    <a href="#contact" class="btn-primary btn-sm"><i class="fa-solid fa-paper-plane"></i> Request Custom Samples</a>
+                    <a href="https://www.youtube.com/@Plains" target="_blank" class="btn-ghost btn-sm"><i class="fa-brands fa-youtube"></i> YouTube Archive</a>
                 </div>
             </div>
         </div>

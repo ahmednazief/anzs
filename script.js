@@ -486,7 +486,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (ytGrid) {
-                ytGrid.style.display = (filter === 'commercial' || filter === 'shorts') ? 'none' : '';
+                const showYt = (filter === 'all' || filter === 'youtube');
+                ytGrid.style.display = showYt ? '' : 'none';
+                document.querySelectorAll('.creator-samples-header, .portfolio-disclaimer, .work-cta').forEach(el => {
+                    el.style.display = showYt ? '' : 'none';
+                });
             }
         });
     });

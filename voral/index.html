@@ -607,6 +607,37 @@
             border-bottom: 1px solid var(--border);
         }
 
+        .sample-pill-header {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            border-radius: var(--r-pill);
+            background: rgba(56, 189, 248, 0.12);
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            color: var(--cyan);
+            font-family: var(--fm);
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 8px;
+            width: fit-content;
+        }
+
+        .un-sample-tag {
+            font-family: var(--fm);
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--purple-light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 3px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
         .video-main-title {
             font-family: var(--fd);
             font-size: clamp(1.35rem, 2.2vw, 1.85rem);
@@ -1095,7 +1126,7 @@
                 <div class="player-top-bar">
                     <div class="player-badge">
                         <span class="dot"></span>
-                        <span id="playerBadgeText">9:16 VERTICAL REEL • 30 FPS • VORAL MEDIA (UAE)</span>
+                        <span id="playerBadgeText">EXAMPLE // 9:16 VERTICAL SHORT-FORM REEL • 30 FPS • VORAL MEDIA (UAE)</span>
                     </div>
 
                     <div class="quality-wrap">
@@ -1161,6 +1192,7 @@
 
             <!-- VIDEO TITLE + CREATOR + DOWNLOAD / SHARE BAR -->
             <div class="video-header-block">
+                <div class="sample-pill-header" id="videoSamplePill"><i class="fa-solid fa-mobile-screen"></i> Example &bull; Short-Form Video Production (9:16)</div>
                 <h1 class="video-main-title" id="videoTitle">Voral Media — High-Retention Commercial Reel</h1>
 
                 <div class="video-actions-bar">
@@ -1219,7 +1251,7 @@
         <!-- RIGHT SIDEBAR: UP NEXT / UPLOADED PORTFOLIO VIDEOS -->
         <aside class="watch-sidebar">
             <div class="sidebar-heading">
-                Uploaded Portfolio Videos
+                Curated Production Examples
                 <span>Watch &amp; Download</span>
             </div>
 
@@ -1233,6 +1265,7 @@
                     </div>
                     <div class="un-info">
                         <div>
+                            <div class="un-sample-tag"><i class="fa-solid fa-film"></i> Example: Long-Form Video</div>
                             <div class="un-title">Boise 2027 — Everything New &amp; Coming Soon</div>
                             <div class="un-client">Render House (USA) &bull; 16:9 Commercial</div>
                         </div>
@@ -1256,6 +1289,7 @@
                     </div>
                     <div class="un-info">
                         <div>
+                            <div class="un-sample-tag" style="color: var(--cyan);"><i class="fa-solid fa-mobile-screen"></i> Example: Short-Form Video</div>
                             <div class="un-title">Voral Media — High-Retention Commercial Reel</div>
                             <div class="un-client">Voral Media (UAE) &bull; 9:16 Vertical Short</div>
                         </div>
@@ -1296,7 +1330,8 @@
                 slug: 'boise',
                 title: 'Boise 2027 — Everything New & Coming Soon (Render House)',
                 clientSub: 'Client: Render House (USA) • Commercial Real Estate & 3D Motion',
-                badge: '16:9 COMMERCIAL • 60 FPS • RENDER HOUSE (USA)',
+                badge: 'EXAMPLE // 16:9 COMMERCIAL LONG-FORM • 60 FPS • RENDER HOUSE (USA)',
+                samplePill: '<i class="fa-solid fa-film"></i> Example &bull; Long-Form Commercial Production (16:9)',
                 isVertical: false,
                 poster: '/images/renderhouse_thumb.jpg',
                 defaultSrc: '/boise-renderhouse.mp4',
@@ -1322,7 +1357,8 @@
                 slug: 'voral',
                 title: 'Voral Media — High-Retention Commercial Reel',
                 clientSub: 'Client: Voral Media (Dubai, UAE) • Viral 9:16 Short-Form Production',
-                badge: '9:16 VERTICAL REEL • 30 FPS • VORAL MEDIA (UAE)',
+                badge: 'EXAMPLE // 9:16 VERTICAL SHORT-FORM REEL • 30 FPS • VORAL MEDIA (UAE)',
+                samplePill: '<i class="fa-solid fa-mobile-screen"></i> Example &bull; Short-Form Video Production (9:16)',
                 isVertical: true,
                 poster: '/images/voral_thumb.jpg',
                 defaultSrc: '/voral-stream.mp4',
@@ -1388,6 +1424,8 @@
 
             document.title = `${p.title} | Ahmed Nazif Studio`;
             document.getElementById('videoTitle').textContent = p.title;
+            const samplePillEl = document.getElementById('videoSamplePill');
+            if (samplePillEl && p.samplePill) samplePillEl.innerHTML = p.samplePill;
             document.getElementById('clientSub').textContent = p.clientSub;
             document.getElementById('playerBadgeText').textContent = p.badge;
             document.getElementById('videoDesc').innerHTML = p.desc;
