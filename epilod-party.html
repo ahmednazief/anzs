@@ -1,0 +1,1753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BYE6X0HX68"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BYE6X0HX68');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#060608" />
+  <title>Epilod Party — Watch Movies Together in Sync</title>
+  <meta
+    name="description"
+    content="Epilod Party is a local watch-party media player for Windows. Watch movies and shows together in perfect sync with friends — zero uploads required."
+  />
+  <link rel="canonical" href="https://ahmednazif.com/epilod-party" />
+
+  <!-- Open Graph / Social Preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ahmednazif.com/epilod-party" />
+  <meta property="og:title" content="Epilod Party — Watch Movies Together in Sync" />
+  <meta
+    property="og:description"
+    content="A local watch-party media player for Windows with liquid glass design, instant 6-digit rooms, live reactions, and auto-synced subtitles."
+  />
+  <meta property="og:image" content="https://ahmednazif.com/images/epilod-party/og-preview.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Epilod Party — Watch Movies Together in Sync" />
+  <meta
+    name="twitter:description"
+    content="Watch local movies and shows in sync with friends on Windows. Public Beta."
+  />
+  <meta name="twitter:image" content="https://ahmednazif.com/images/epilod-party/og-preview.jpg" />
+
+  <!-- App Favicon -->
+  <link rel="icon" type="image/png" href="/images/epilod-party/app-icon.png" />
+  <link rel="apple-touch-icon" href="/images/epilod-party/app-icon.png" />
+
+  <!-- Inter Variable Font (matches Epilod Party desktop app) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="preload" as="image" href="/images/epilod-party/watch-party.webp" />
+
+  <style>
+    :root {
+      --canvas: #060608;
+      --ink-primary: #f4f4f6;
+      --ink-secondary: #a1a1aa;
+      --ink-muted: #71717a;
+
+      --amethyst: #7c3aed;
+      --amethyst-bright: #8b5cf6;
+      --amethyst-soft: #c4b5fd;
+      --amethyst-ice: #ddd6fe;
+      --amethyst-mist: #ede9fe;
+
+      --spring-fluid: cubic-bezier(0.22, 1.24, 0.36, 1);
+      --spring-soft: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-glass: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      background-color: var(--canvas);
+      color: var(--ink-primary);
+      font-family: "Inter", "Segoe UI Variable Display", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      color-scheme: dark;
+    }
+
+    body {
+      min-height: 100vh;
+      min-height: 100dvh;
+      background-color: var(--canvas);
+      background-image:
+        radial-gradient(70% 50% at 50% 0%, rgba(255, 255, 255, 0.025) 0%, rgba(255, 255, 255, 0) 70%),
+        radial-gradient(60% 48% at 50% 100%, rgba(124, 58, 237, 0.045) 0%, rgba(124, 58, 237, 0) 74%);
+      color: var(--ink-primary);
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      color: inherit;
+      background: none;
+      border: 0;
+    }
+
+    .num {
+      font-variant-numeric: tabular-nums lining-nums;
+      font-feature-settings: "tnum" 1, "lnum" 1;
+    }
+
+    /* =====================================================================
+       Ambient Refracted Light Stage (behind translucent liquid glass)
+       ===================================================================== */
+    .ambient-stage {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .ambient-orb-purple {
+      position: absolute;
+      left: 50%;
+      top: 10%;
+      width: min(760px, 95vw);
+      height: min(560px, 72vw);
+      transform: translateX(-58%);
+      border-radius: 50%;
+      background: radial-gradient(
+        circle at 46% 42%,
+        rgba(139, 92, 246, 0.24) 0%,
+        rgba(124, 58, 237, 0.10) 42%,
+        rgba(124, 58, 237, 0) 72%
+      );
+      filter: blur(56px);
+      animation: orbDriftPurple 11s ease-in-out infinite alternate;
+      will-change: transform, opacity;
+    }
+
+    .ambient-orb-silver {
+      position: absolute;
+      left: 50%;
+      top: 18%;
+      width: min(640px, 85vw);
+      height: min(480px, 65vw);
+      transform: translateX(-34%);
+      border-radius: 50%;
+      background: radial-gradient(
+        circle at 55% 50%,
+        rgba(228, 228, 236, 0.10) 0%,
+        rgba(161, 161, 170, 0.04) 46%,
+        rgba(161, 161, 170, 0) 74%
+      );
+      filter: blur(58px);
+      animation: orbDriftSilver 13s ease-in-out infinite alternate;
+      will-change: transform, opacity;
+    }
+
+    @keyframes orbDriftPurple {
+      0% {
+        transform: translate3d(-58%, 0, 0) scale(1);
+        opacity: 0.78;
+      }
+      100% {
+        transform: translate3d(-54%, 18px, 0) scale(1.07);
+        opacity: 1;
+      }
+    }
+
+    @keyframes orbDriftSilver {
+      0% {
+        transform: translate3d(-34%, 6px, 0) scale(1);
+        opacity: 0.65;
+      }
+      100% {
+        transform: translate3d(-38%, -12px, 0) scale(1.06);
+        opacity: 0.9;
+      }
+    }
+
+    /* =====================================================================
+       Page Shell
+       ===================================================================== */
+    .page-shell {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(52px, 8vh, 88px) clamp(18px, 4vw, 40px) 36px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+    }
+
+    /* =====================================================================
+       Optical Condensation Reveal Choreography
+       ===================================================================== */
+    .liquid-reveal {
+      opacity: 0;
+      transform: translateY(16px) scale(0.968);
+      filter: blur(11px);
+      animation: liquidCondense 740ms var(--spring-soft) forwards;
+      animation-delay: var(--delay, 0ms);
+    }
+
+    .liquid-reveal-stage {
+      opacity: 0;
+      transform: translateY(24px) scale(0.962);
+      filter: blur(14px);
+      animation: liquidCondenseStage 860ms var(--spring-soft) forwards;
+      animation-delay: var(--delay, 260ms);
+    }
+
+    @keyframes liquidCondense {
+      0% {
+        opacity: 0;
+        transform: translateY(16px) scale(0.968);
+        filter: blur(11px);
+      }
+      100% {
+        opacity: 1;
+        transform: none;
+        filter: none;
+      }
+    }
+
+    @keyframes liquidCondenseStage {
+      0% {
+        opacity: 0;
+        transform: translateY(24px) scale(0.962);
+        filter: blur(14px);
+      }
+      100% {
+        opacity: 1;
+        transform: none;
+        filter: none;
+      }
+    }
+
+    /* =====================================================================
+       Hero Header
+       ===================================================================== */
+    .hero-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .app-icon-wrap {
+      --delay: 20ms;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      transition: transform 320ms var(--spring-fluid);
+    }
+
+    .app-icon-wrap::before {
+      content: "";
+      position: absolute;
+      inset: -14px;
+      border-radius: 30px;
+      background: radial-gradient(
+        circle at 50% 45%,
+        rgba(139, 92, 246, 0.34) 0%,
+        rgba(124, 58, 237, 0.12) 48%,
+        transparent 74%
+      );
+      filter: blur(16px);
+      z-index: -1;
+      transition: opacity 260ms var(--ease-glass), transform 320ms var(--spring-fluid);
+    }
+
+    .app-icon-wrap:hover {
+      transform: translateY(-2px) scale(1.045);
+    }
+
+    .app-icon-wrap:hover::before {
+      transform: scale(1.12);
+    }
+
+    .app-icon {
+      width: 68px;
+      height: 68px;
+      display: block;
+      user-select: none;
+      -webkit-user-drag: none;
+      filter: drop-shadow(0 12px 26px rgba(124, 58, 237, 0.32));
+    }
+
+    .hero-title {
+      --delay: 85ms;
+      font-size: clamp(2.25rem, 5vw, 3.4rem);
+      font-weight: 650;
+      letter-spacing: -0.036em;
+      line-height: 1.06;
+      color: #ffffff;
+      text-shadow: 0 2px 24px rgba(139, 92, 246, 0.16);
+    }
+
+    .hero-subtitle {
+      --delay: 145ms;
+      margin-top: 12px;
+      max-width: 460px;
+      font-size: clamp(0.98rem, 1.8vw, 1.12rem);
+      font-weight: 420;
+      line-height: 1.5;
+      letter-spacing: -0.01em;
+      color: var(--ink-secondary);
+    }
+
+    /* =====================================================================
+       Big iOS 27 Liquid Glass Download Button
+       ===================================================================== */
+    .cta-block {
+      --delay: 205ms;
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .ep-liquid-download {
+      --mx: 50%;
+      --my: 50%;
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 13px;
+      min-height: 60px;
+      padding: 10px 14px 10px 26px;
+      border-radius: 9999px;
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: -0.014em;
+      cursor: pointer;
+      user-select: none;
+      background-color: rgba(124, 58, 237, 0.44);
+      background-image:
+        radial-gradient(
+          155px circle at var(--mx) var(--my),
+          rgba(255, 255, 255, 0.24) 0%,
+          rgba(196, 181, 253, 0.14) 42%,
+          rgba(196, 181, 253, 0) 74%
+        ),
+        linear-gradient(
+          174deg,
+          rgba(255, 255, 255, 0.28) 0%,
+          rgba(167, 139, 250, 0.16) 46%,
+          rgba(109, 40, 217, 0.28) 100%
+        );
+      background-clip: padding-box;
+      border: 1px solid rgba(237, 233, 254, 0.36);
+      -webkit-backdrop-filter: blur(20px) saturate(160%) brightness(1.06);
+      backdrop-filter: blur(20px) saturate(160%) brightness(1.06);
+      box-shadow:
+        inset 0 1px 0.5px 0 rgba(255, 255, 255, 0.56),
+        inset 0 -1px 0.5px 0 rgba(196, 181, 253, 0.24),
+        inset 0 0 14px 0 rgba(139, 92, 246, 0.18),
+        0 12px 32px -8px rgba(8, 3, 20, 0.72),
+        0 0 32px -6px rgba(124, 58, 237, 0.44);
+      transition:
+        transform 240ms var(--spring-fluid),
+        background-color 180ms var(--ease-glass),
+        border-color 180ms var(--ease-glass),
+        box-shadow 220ms var(--ease-glass);
+    }
+
+    /* Delicate upper specular lens diffuse (melted glass, not hard gloss) */
+    .ep-liquid-download::before {
+      content: "";
+      position: absolute;
+      inset: 1px 16px auto 16px;
+      height: 36%;
+      border-radius: 9999px;
+      pointer-events: none;
+      z-index: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.22) 0%,
+        rgba(237, 233, 254, 0.06) 55%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      opacity: 0.72;
+      transition: opacity 180ms var(--ease-glass);
+    }
+
+    /* Lower internal lavender caustic */
+    .ep-liquid-download::after {
+      content: "";
+      position: absolute;
+      inset: auto 18px 2px 18px;
+      height: 30%;
+      border-radius: 9999px;
+      pointer-events: none;
+      z-index: 0;
+      background: radial-gradient(
+        85% 100% at 50% 100%,
+        rgba(196, 181, 253, 0.40) 0%,
+        rgba(139, 92, 246, 0) 100%
+      );
+      opacity: 0.74;
+      transition: opacity 180ms var(--ease-glass);
+    }
+
+    /* One-shot diagonal specular glass sweep on initial settle */
+    .btn-sheen {
+      position: absolute;
+      top: -20%;
+      left: -42%;
+      width: 34%;
+      height: 140%;
+      pointer-events: none;
+      z-index: 1;
+      background: linear-gradient(
+        105deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.34) 48%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: skewX(-18deg) translateX(0);
+      opacity: 0;
+      animation: glassSweep 1150ms var(--ease-glass) 820ms 1 forwards;
+    }
+
+    @keyframes glassSweep {
+      0% {
+        transform: skewX(-18deg) translateX(0);
+        opacity: 0;
+      }
+      18% {
+        opacity: 0.7;
+      }
+      82% {
+        opacity: 0.55;
+      }
+      100% {
+        transform: skewX(-18deg) translateX(480%);
+        opacity: 0;
+      }
+    }
+
+    .ep-liquid-download > *:not(.btn-sheen):not(.liquid-ripple) {
+      position: relative;
+      z-index: 2;
+    }
+
+    .ep-liquid-download:hover {
+      transform: translateY(-2px) scale(1.022);
+      background-color: rgba(139, 92, 246, 0.54);
+      border-color: rgba(245, 243, 255, 0.62);
+      box-shadow:
+        inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.86),
+        inset 0 -1.5px 3px 0 rgba(221, 214, 254, 0.45),
+        inset 0 0 22px 0 rgba(167, 139, 250, 0.36),
+        0 18px 42px -8px rgba(8, 3, 20, 0.82),
+        0 0 46px -2px rgba(139, 92, 246, 0.62);
+    }
+
+    .ep-liquid-download:hover::before {
+      opacity: 0.98;
+    }
+
+    .ep-liquid-download:hover::after {
+      opacity: 0.94;
+    }
+
+    .ep-liquid-download:active,
+    .ep-liquid-download.is-pressing {
+      transform: scale(0.955);
+      transition-duration: 75ms;
+      transition-timing-function: ease-out;
+    }
+
+    .ep-liquid-download:focus-visible {
+      outline: 2px solid rgba(221, 214, 254, 0.78);
+      outline-offset: 4px;
+    }
+
+    .dl-icon-slot {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+    }
+
+    .dl-arrow-stem {
+      transition: transform 260ms var(--spring-fluid);
+      transform-origin: center;
+    }
+
+    .ep-liquid-download:hover .dl-arrow-stem {
+      transform: translateY(2px);
+    }
+
+    .ep-liquid-download:active .dl-arrow-stem {
+      transform: translateY(3.2px) scaleY(0.92);
+    }
+
+    .dl-label {
+      white-space: nowrap;
+      text-shadow: 0 1px 4px rgba(14, 4, 34, 0.45);
+    }
+
+    .dl-version-chip {
+      display: inline-flex;
+      align-items: center;
+      height: 36px;
+      padding: 0 14px;
+      border-radius: 9999px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      color: var(--amethyst-mist);
+      background: rgba(14, 8, 30, 0.38);
+      border: 1px solid rgba(237, 233, 254, 0.22);
+      box-shadow:
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.26),
+        inset 0 -1px 0 0 rgba(196, 181, 253, 0.12);
+      transition:
+        background-color 180ms var(--ease-glass),
+        border-color 180ms var(--ease-glass),
+        transform 220ms var(--spring-fluid);
+    }
+
+    .ep-liquid-download:hover .dl-version-chip {
+      background: rgba(18, 10, 40, 0.48);
+      border-color: rgba(245, 243, 255, 0.34);
+    }
+
+    /* Click radial liquid shockwave inside the button */
+    .liquid-ripple {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+      background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.46) 0%,
+        rgba(221, 214, 254, 0.26) 40%,
+        rgba(139, 92, 246, 0) 74%
+      );
+      transform: translate(-50%, -50%) scale(0);
+      animation: liquidRippleOut 680ms var(--ease-glass) forwards;
+    }
+
+    @keyframes liquidRippleOut {
+      0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0.95;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(2.8);
+        opacity: 0;
+      }
+    }
+
+    /* Quiet single-line metadata beneath CTA */
+    .cta-meta {
+      --delay: 255ms;
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 0.8125rem;
+      font-weight: 450;
+      color: var(--ink-secondary);
+      letter-spacing: -0.005em;
+    }
+
+    .meta-os {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--ink-primary);
+      font-weight: 500;
+    }
+
+    .meta-dot {
+      color: var(--ink-muted);
+      user-select: none;
+    }
+
+    .beta-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--amethyst-ice);
+      font-weight: 500;
+    }
+
+    .beta-pulse {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--amethyst-soft);
+      box-shadow: 0 0 10px rgba(196, 181, 253, 0.85);
+      animation: betaBreathe 2.8s ease-in-out infinite;
+    }
+
+    @keyframes betaBreathe {
+      0%, 100% {
+        opacity: 0.72;
+        transform: scale(0.95);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.15);
+      }
+    }
+
+    /* =====================================================================
+       Big App Screenshot Showcase (directly below Download button)
+       ===================================================================== */
+    .showcase-wrap {
+      width: 100%;
+      max-width: 1100px;
+      margin-top: clamp(36px, 5.5vh, 56px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .showcase-stage {
+      --delay: 310ms;
+      position: relative;
+      width: 100%;
+      aspect-ratio: 2720 / 1640;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Soft amethyst ambient halo under/behind the floating window screenshot */
+    .showcase-halo {
+      position: absolute;
+      inset: 6% 8% -4% 8%;
+      border-radius: 40px;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(65% 60% at 50% 42%, rgba(124, 58, 237, 0.20) 0%, rgba(124, 58, 237, 0.05) 55%, transparent 78%),
+        radial-gradient(50% 40% at 25% 75%, rgba(167, 139, 250, 0.10) 0%, transparent 72%);
+      filter: blur(46px);
+      opacity: 0.92;
+      transition: opacity 400ms var(--ease-glass);
+    }
+
+    .screenshot-frame {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      cursor: zoom-in;
+      transition: transform 420ms var(--spring-soft);
+    }
+
+    .screenshot-frame:hover {
+      transform: translateY(-2px);
+    }
+
+    .screenshot-img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      user-select: none;
+      -webkit-user-drag: none;
+      filter: drop-shadow(0 32px 72px rgba(0, 0, 0, 0.88)) drop-shadow(0 8px 28px rgba(124, 58, 237, 0.14));
+      transition:
+        opacity 260ms var(--ease-glass),
+        transform 380ms var(--spring-soft),
+        filter 320ms var(--ease-glass);
+      will-change: opacity, transform, filter;
+    }
+
+    .screenshot-img.is-swapping {
+      opacity: 0;
+      transform: scale(0.986);
+      filter: blur(10px) drop-shadow(0 32px 72px rgba(0, 0, 0, 0.88));
+    }
+
+    /* Subtle hover-only expand pill tucked cleanly inside corner */
+    .expand-pill {
+      position: absolute;
+      right: 18px;
+      bottom: 18px;
+      z-index: 3;
+      width: 36px;
+      height: 36px;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.88);
+      background-color: rgba(14, 14, 22, 0.56);
+      background-image: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.18) 0%,
+        rgba(255, 255, 255, 0.04) 55%,
+        rgba(139, 92, 246, 0.08) 100%
+      );
+      border: 1px solid rgba(255, 255, 255, 0.20);
+      -webkit-backdrop-filter: blur(16px) saturate(140%);
+      backdrop-filter: blur(16px) saturate(140%);
+      box-shadow:
+        inset 0 1px 0.5px 0 rgba(255, 255, 255, 0.36),
+        0 8px 20px -6px rgba(0, 0, 0, 0.72);
+      opacity: 0;
+      transform: scale(0.9);
+      cursor: pointer;
+      transition:
+        opacity 200ms var(--ease-glass),
+        transform 240ms var(--spring-fluid),
+        border-color 160ms var(--ease-glass),
+        background-color 160ms var(--ease-glass);
+    }
+
+    .screenshot-frame:hover .expand-pill,
+    .expand-pill:focus-visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .expand-pill:hover {
+      transform: scale(1.08);
+      background-color: rgba(124, 58, 237, 0.45);
+      border-color: rgba(237, 233, 254, 0.42);
+    }
+
+    .expand-pill:active {
+      transform: scale(0.93);
+      transition-duration: 70ms;
+    }
+
+    .expand-pill:focus-visible {
+      outline: 1.5px solid rgba(221, 214, 254, 0.75);
+      outline-offset: 2px;
+    }
+
+    /* =====================================================================
+       Morphing Liquid-Droplet View Switcher (mirrors Epilod SegmentedTabs)
+       ===================================================================== */
+    .switcher-row {
+      --delay: 375ms;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .ep-glass-tray {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px;
+      border-radius: 9999px;
+      background-color: rgba(255, 255, 255, 0.048);
+      background-image: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.08) 0%,
+        rgba(14, 14, 22, 0.24) 100%
+      );
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      -webkit-backdrop-filter: blur(18px) saturate(135%);
+      backdrop-filter: blur(18px) saturate(135%);
+      box-shadow:
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.12),
+        inset 0 -1px 0 0 rgba(255, 255, 255, 0.03),
+        0 10px 28px -10px rgba(0, 0, 0, 0.65);
+    }
+
+    .droplet-track {
+      position: absolute;
+      top: 4px;
+      bottom: 4px;
+      left: 0;
+      pointer-events: none;
+      transition:
+        transform 420ms cubic-bezier(0.22, 1.30, 0.36, 1),
+        width 420ms cubic-bezier(0.22, 1.30, 0.36, 1);
+      will-change: transform, width;
+    }
+
+    .ep-droplet-indicator {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 9999px;
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.14) 0%,
+        rgba(139, 92, 246, 0.20) 48%,
+        rgba(124, 58, 237, 0.18) 100%
+      );
+      box-shadow:
+        inset 0 0 0 1px rgba(221, 214, 254, 0.24),
+        inset 0 1px 0.5px 0 rgba(255, 255, 255, 0.32),
+        inset 0 -1px 0.5px 0 rgba(196, 181, 253, 0.14),
+        0 4px 14px -4px rgba(124, 58, 237, 0.35);
+      transition:
+        transform 360ms cubic-bezier(0.22, 1.38, 0.34, 1),
+        filter 220ms var(--ease-glass);
+      will-change: transform, filter;
+    }
+
+    .ep-droplet-indicator[data-morphing="true"] {
+      transform: scaleX(1.08) scaleY(0.90);
+      filter: brightness(1.16);
+    }
+
+    .view-tab {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      height: 34px;
+      padding: 0 14px;
+      border-radius: 9999px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--ink-secondary);
+      white-space: nowrap;
+      cursor: pointer;
+      transition:
+        transform 140ms var(--ease-glass),
+        color 130ms var(--ease-glass),
+        background-color 130ms var(--ease-glass);
+    }
+
+    .view-tab:hover:not([aria-selected="true"]) {
+      color: var(--ink-primary);
+      background-color: rgba(255, 255, 255, 0.055);
+    }
+
+    .view-tab[aria-selected="true"] {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .view-tab:active {
+      transform: scale(0.955);
+      transition-duration: 70ms;
+    }
+
+    .view-tab:focus-visible {
+      outline: 1.5px solid rgba(221, 214, 254, 0.65);
+      outline-offset: -1px;
+    }
+
+    .tab-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.78;
+      transition: opacity 150ms var(--ease-glass);
+    }
+
+    .view-tab[aria-selected="true"] .tab-icon {
+      opacity: 1;
+    }
+
+    /* =====================================================================
+       Liquid Glass Lightbox Modal
+       ===================================================================== */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(16px, 3vw, 40px);
+      background: radial-gradient(75% 65% at 50% 42%, rgba(18, 17, 26, 0.45) 0%, rgba(4, 4, 8, 0.86) 100%);
+      -webkit-backdrop-filter: blur(18px) saturate(125%);
+      backdrop-filter: blur(18px) saturate(125%);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 220ms var(--ease-glass);
+    }
+
+    .lightbox[data-open="true"] {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .lightbox-inner {
+      position: relative;
+      max-width: min(1360px, 100%);
+      max-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: scale(0.94) translateY(10px);
+      filter: blur(8px);
+      transition:
+        transform 320ms var(--spring-fluid),
+        filter 260ms var(--ease-glass);
+    }
+
+    .lightbox[data-open="true"] .lightbox-inner {
+      transform: scale(1) translateY(0);
+      filter: blur(0);
+    }
+
+    .lightbox-img {
+      max-width: 100%;
+      max-height: 88vh;
+      width: auto;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 36px 90px rgba(0, 0, 0, 0.94));
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 20px;
+      right: 22px;
+      width: 40px;
+      height: 40px;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ink-primary);
+      background-color: rgba(22, 22, 30, 0.56);
+      background-image: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.22) 0%,
+        rgba(255, 255, 255, 0.05) 55%,
+        rgba(139, 92, 246, 0.08) 100%
+      );
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      -webkit-backdrop-filter: blur(18px) saturate(140%);
+      backdrop-filter: blur(18px) saturate(140%);
+      box-shadow:
+        inset 0 1px 0.5px 0 rgba(255, 255, 255, 0.44),
+        0 10px 26px -8px rgba(0, 0, 0, 0.72);
+      cursor: pointer;
+      transition:
+        transform 180ms var(--spring-fluid),
+        background-color 140ms var(--ease-glass),
+        border-color 140ms var(--ease-glass);
+    }
+
+    .lightbox-close:hover {
+      transform: scale(1.07);
+      background-color: rgba(124, 58, 237, 0.44);
+      border-color: rgba(237, 233, 254, 0.46);
+    }
+
+    .lightbox-close:active {
+      transform: scale(0.92);
+    }
+
+    /* =====================================================================
+       Minimal Single-Line Footer
+       ===================================================================== */
+    .quiet-footer {
+      --delay: 420ms;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      padding: 20px 20px 32px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 10px 14px;
+      font-size: 0.78rem;
+      color: var(--ink-muted);
+    }
+
+    .footer-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--ink-muted);
+      transition: color 150ms var(--ease-glass);
+    }
+
+    .footer-link:hover {
+      color: var(--amethyst-ice);
+    }
+
+    /* =====================================================================
+       Responsive Tuning
+       ===================================================================== */
+    @media (max-width: 640px) {
+      .page-shell {
+        padding-top: 40px;
+      }
+
+      .app-icon {
+        width: 58px;
+        height: 58px;
+      }
+
+      .ep-liquid-download {
+        width: min(100%, 340px);
+        min-height: 56px;
+        padding: 8px 10px 8px 20px;
+        font-size: 0.94rem;
+        gap: 10px;
+      }
+
+      .dl-version-chip {
+        height: 34px;
+        padding: 0 11px;
+        font-size: 0.75rem;
+      }
+
+      .view-tab {
+        height: 32px;
+        padding: 0 11px;
+        font-size: 0.74rem;
+        gap: 5px;
+      }
+
+      .tab-icon {
+        display: none;
+      }
+
+      .expand-pill {
+        display: none;
+      }
+
+      .quiet-footer {
+        font-size: 0.72rem;
+        gap: 6px 8px;
+        padding: 18px 14px 28px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .liquid-reveal,
+      .liquid-reveal-stage,
+      .ambient-orb-purple,
+      .ambient-orb-silver,
+      .btn-sheen,
+      .beta-pulse,
+      .liquid-ripple {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+      }
+
+      .ep-liquid-download,
+      .dl-arrow-stem,
+      .droplet-track,
+      .ep-droplet-indicator,
+      .screenshot-frame,
+      .screenshot-img,
+      .expand-pill,
+      .lightbox,
+      .lightbox-inner {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Subtle luminous orbs behind glass surfaces -->
+  <div class="ambient-stage" aria-hidden="true">
+    <div class="ambient-orb-purple"></div>
+    <div class="ambient-orb-silver"></div>
+  </div>
+
+  <main class="page-shell">
+    <header class="hero-brand">
+      <div class="app-icon-wrap liquid-reveal" aria-hidden="true">
+        <img
+          src="/images/epilod-party/app-icon.png"
+          alt=""
+          width="68"
+          height="68"
+          class="app-icon"
+          draggable="false"
+        />
+      </div>
+
+      <h1 class="hero-title liquid-reveal">Epilod Party</h1>
+
+      <p class="hero-subtitle liquid-reveal">
+        Watch local movies and shows together, synced frame-for-frame with friends.
+      </p>
+    </header>
+
+    <section class="cta-block" aria-label="Download">
+      <a
+        id="downloadBtn"
+        href="https://github.com/ahmednazief/epilod-party/releases/latest/download/Epilod.Party.Setup.exe"
+        download="Epilod.Party.Setup.exe"
+        class="ep-liquid-download liquid-reveal"
+        style="--delay: 205ms"
+        aria-label="Download Epilod Party for Windows"
+      >
+        <span class="btn-sheen" aria-hidden="true"></span>
+
+        <!-- Custom Smoked-Amethyst Crystal Download Icon -->
+        <span class="dl-icon-slot" id="dlIconSlot" aria-hidden="true">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none">
+            <g class="dl-arrow-stem">
+              <path
+                d="M12 4.2V14.8"
+                stroke="#FFFFFF"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M7.9 11.1L12 15.3L16.1 11.1"
+                stroke="#EDE9FE"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </g>
+            <path
+              d="M4.8 16.4V17.7C4.8 18.86 5.74 19.8 6.9 19.8H17.1C18.26 19.8 19.2 18.86 19.2 17.7V16.4"
+              stroke="#DDD6FE"
+              stroke-opacity="0.92"
+              stroke-width="1.85"
+              stroke-linecap="round"
+            />
+          </svg>
+        </span>
+
+        <span class="dl-label" id="dlLabel">Download for Windows</span>
+        <span class="dl-version-chip num" id="dlVersionChip">v0.1.0</span>
+      </a>
+
+      <div class="cta-meta num liquid-reveal" aria-live="polite">
+        <span class="meta-os">
+          <!-- Custom Beveled Crystal Windows Crest -->
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3.2" y="3.2" width="8" height="8" rx="1.8" fill="#EDE9FE" fill-opacity="0.88" />
+            <rect x="12.8" y="3.2" width="8" height="8" rx="1.8" fill="#DDD6FE" fill-opacity="0.72" />
+            <rect x="3.2" y="12.8" width="8" height="8" rx="1.8" fill="#C4B5FD" fill-opacity="0.72" />
+            <rect x="12.8" y="12.8" width="8" height="8" rx="1.8" fill="#A78BFA" fill-opacity="0.88" />
+          </svg>
+          <span>Windows 10 &amp; 11</span>
+        </span>
+        <span class="meta-dot" aria-hidden="true">·</span>
+        <span class="beta-indicator">
+          <span class="beta-pulse" aria-hidden="true"></span>
+          <span>Public Beta</span>
+        </span>
+        <span class="meta-dot" aria-hidden="true">·</span>
+        <span id="metaSize">39.5 MB</span>
+      </div>
+    </section>
+
+    <!-- Big App Screenshot Showcase -->
+    <section class="showcase-wrap" aria-label="Epilod Party Interface Preview">
+      <div class="showcase-stage liquid-reveal-stage">
+        <div class="showcase-halo" aria-hidden="true"></div>
+
+        <div
+          id="screenshotFrame"
+          class="screenshot-frame"
+          role="button"
+          tabindex="0"
+          aria-label="Inspect full-size app screenshot"
+        >
+          <img
+            id="showcaseImg"
+            src="/images/epilod-party/watch-party.webp"
+            alt="Epilod Party Watch Party view showing four friends synced together over a cosmic film with Smoked-Amethyst liquid glass controls"
+            width="2040"
+            height="1230"
+            decoding="async"
+            class="screenshot-img"
+            draggable="false"
+          />
+
+          <button
+            type="button"
+            id="expandBtn"
+            class="expand-pill"
+            aria-label="View screenshot full screen"
+            title="Expand preview"
+          >
+            <!-- Custom Crystal Expand Lens -->
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d="M14.5 4.8H19.2V9.5"
+                stroke="#FFFFFF"
+                stroke-width="1.85"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M19 5L13.8 10.2"
+                stroke="#DDD6FE"
+                stroke-width="1.75"
+                stroke-linecap="round"
+              />
+              <path
+                d="M9.5 19.2H4.8V14.5"
+                stroke="#FFFFFF"
+                stroke-width="1.85"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M5 19L10.2 13.8"
+                stroke="#DDD6FE"
+                stroke-width="1.75"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Morphing Liquid-Droplet View Switcher -->
+      <div class="switcher-row">
+        <div class="ep-glass-tray liquid-reveal" style="--delay: 375ms" role="tablist" aria-label="App screen views" id="viewTabs">
+          <span class="droplet-track" id="dropletTrack" aria-hidden="true">
+            <span class="ep-droplet-indicator" id="dropletCore"></span>
+          </span>
+
+          <button
+            type="button"
+            role="tab"
+            aria-selected="true"
+            class="view-tab"
+            data-view="watch-party"
+            data-src="/images/epilod-party/watch-party.webp"
+            data-alt="Epilod Party Watch Party view showing four friends synced together over a cosmic film with Smoked-Amethyst liquid glass controls"
+          >
+            <span class="tab-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="5.5" width="18" height="12.5" rx="3.4" fill="currentColor" fill-opacity="0.16" stroke="currentColor" stroke-width="1.65" />
+                <path d="M10.4 9.2L15.2 11.75L10.4 14.3V9.2Z" fill="#DDD6FE" />
+                <path d="M8.5 3.2C10.7 2.1 13.3 2.1 15.5 3.2" stroke="#C4B5FD" stroke-width="1.5" stroke-linecap="round" />
+              </svg>
+            </span>
+            <span>Watch Party</span>
+          </button>
+
+          <button
+            type="button"
+            role="tab"
+            aria-selected="false"
+            class="view-tab"
+            data-view="reactions"
+            data-src="/images/epilod-party/live-reactions.webp"
+            data-alt="Epilod Party Live Reactions view showing floating emoji reactions and translucent reaction picker dock"
+          >
+            <span class="tab-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M12 19.6C12 19.6 4.5 14.9 4.5 9.6C4.5 7.2 6.4 5.4 8.7 5.4C10.1 5.4 11.3 6.1 12 7.1C12.7 6.1 13.9 5.4 15.3 5.4C17.6 5.4 19.5 7.2 19.5 9.6C19.5 14.9 12 19.6 12 19.6Z"
+                  fill="currentColor"
+                  fill-opacity="0.16"
+                  stroke="currentColor"
+                  stroke-width="1.65"
+                  stroke-linejoin="round"
+                />
+                <path d="M7.6 9.5C7.6 8.3 8.4 7.6 9.5 7.6" stroke="#DDD6FE" stroke-width="1.4" stroke-linecap="round" />
+              </svg>
+            </span>
+            <span>Reactions</span>
+          </button>
+
+          <button
+            type="button"
+            role="tab"
+            aria-selected="false"
+            class="view-tab"
+            data-view="subtitles"
+            data-src="/images/epilod-party/subtitles-sync.webp"
+            data-alt="Epilod Party Subtitles panel showing Magic Sync auto-alignment and multi-language Arabic and English subtitle tracks"
+          >
+            <span class="tab-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="5" width="18" height="14" rx="3.8" fill="currentColor" fill-opacity="0.14" stroke="currentColor" stroke-width="1.65" />
+                <rect x="6.2" y="9.6" width="8.2" height="1.8" rx="0.9" fill="currentColor" />
+                <rect x="15.8" y="9.6" width="2.4" height="1.8" rx="0.9" fill="#DDD6FE" />
+                <rect x="6.2" y="13.2" width="4.2" height="1.8" rx="0.9" fill="#C4B5FD" />
+                <rect x="11.8" y="13.2" width="6.4" height="1.8" rx="0.9" fill="currentColor" />
+              </svg>
+            </span>
+            <span>Subtitles</span>
+          </button>
+
+          <button
+            type="button"
+            role="tab"
+            aria-selected="false"
+            class="view-tab"
+            data-view="invite"
+            data-src="/images/epilod-party/invite-pass.webp"
+            data-alt="Epilod Party 6-digit invite code host and join liquid glass sheet"
+          >
+            <span class="tab-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <circle cx="8.6" cy="14.6" r="3.9" fill="#A78BFA" fill-opacity="0.20" stroke="#DDD6FE" stroke-width="1.65" />
+                <path d="M11.6 11.6L18.6 4.6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
+                <path d="M16.2 7L18.8 9.6" stroke="#C4B5FD" stroke-width="1.75" stroke-linecap="round" />
+              </svg>
+            </span>
+            <span>Invite Pass</span>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="quiet-footer liquid-reveal">
+    <a href="https://ahmednazif.com/" class="footer-link">ahmednazif.com</a>
+    <span aria-hidden="true">·</span>
+    <a
+      href="https://github.com/ahmednazief/epilod-party"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="footer-link"
+    >
+      <!-- Custom Crystal Code Crest -->
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path
+          d="M8.5 7.5L4 12L8.5 16.5"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M15.5 7.5L20 12L15.5 16.5"
+          stroke="#C4B5FD"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+      <span>GitHub</span>
+    </a>
+    <span aria-hidden="true">·</span>
+    <a
+      id="releaseNotesLink"
+      href="https://github.com/ahmednazief/epilod-party/releases"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="footer-link"
+    >
+      Releases
+    </a>
+    <span aria-hidden="true">·</span>
+    <span>GPL-3.0</span>
+  </footer>
+
+  <!-- Full-Screen Liquid Glass Lightbox -->
+  <div
+    id="lightbox"
+    class="lightbox"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Full-size screenshot preview"
+    data-open="false"
+  >
+    <button type="button" id="lightboxClose" class="lightbox-close" aria-label="Close preview">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M6.5 6.5L17.5 17.5" stroke="#FFFFFF" stroke-width="1.95" stroke-linecap="round" />
+        <path d="M17.5 6.5L6.5 17.5" stroke="#DDD6FE" stroke-width="1.95" stroke-linecap="round" />
+      </svg>
+    </button>
+    <div class="lightbox-inner">
+      <img id="lightboxImg" src="" alt="" class="lightbox-img" draggable="false" />
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      document.querySelectorAll(".liquid-reveal, .liquid-reveal-stage").forEach(function (el) {
+        var settle = function () {
+          el.classList.remove("liquid-reveal", "liquid-reveal-stage");
+        };
+        el.addEventListener(
+          "animationend",
+          function (e) {
+            if (e.animationName === "liquidCondense" || e.animationName === "liquidCondenseStage") {
+              settle();
+            }
+          },
+          { once: true }
+        );
+        window.setTimeout(settle, 1600);
+      });
+
+      const REPO = "ahmednazief/epilod-party";
+      const RELEASES_API = "https://api.github.com/repos/" + REPO + "/releases?per_page=6";
+      const CACHE_KEY = "epilod_party_latest_release_v1";
+      const CACHE_TTL_MS = 10 * 60 * 1000;
+
+      const downloadBtn = document.getElementById("downloadBtn");
+      const dlLabel = document.getElementById("dlLabel");
+      const dlVersionChip = document.getElementById("dlVersionChip");
+      const dlIconSlot = document.getElementById("dlIconSlot");
+      const metaSize = document.getElementById("metaSize");
+      const releaseNotesLink = document.getElementById("releaseNotesLink");
+
+      const originalIconMarkup = dlIconSlot.innerHTML;
+      const checkIconMarkup =
+        '<svg width="21" height="21" viewBox="0 0 24 24" fill="none">' +
+        '<path d="M5.2 12.6L9.8 17.2L18.8 7.4" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>' +
+        '<path d="M9.8 17.2L18.8 7.4" stroke="#DDD6FE" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>' +
+        "</svg>";
+
+      function formatSizeMB(bytes) {
+        if (!bytes || typeof bytes !== "number" || bytes <= 0) return null;
+        return (bytes / (1024 * 1024)).toFixed(1) + " MB";
+      }
+
+      function normalizeVersion(tag) {
+        const clean = String(tag || "").trim().replace(/^v/i, "");
+        return clean ? "v" + clean : null;
+      }
+
+      function applyReleaseInfo(info) {
+        if (!info) return;
+        if (info.version) {
+          dlVersionChip.textContent = info.version;
+        }
+        if (info.sizeLabel) {
+          metaSize.textContent = info.sizeLabel;
+        }
+        if (info.downloadUrl) {
+          downloadBtn.href = info.downloadUrl;
+          downloadBtn.setAttribute("download", info.assetName || "Epilod.Party.Setup.exe");
+        }
+        if (info.releaseUrl && releaseNotesLink) {
+          releaseNotesLink.href = info.releaseUrl;
+        }
+      }
+
+      function pickInstallerAsset(assets) {
+        if (!Array.isArray(assets)) return null;
+        const preferred = assets.find(function (a) {
+          return a && typeof a.name === "string" && /epilod.*setup.*\.exe$/i.test(a.name);
+        });
+        if (preferred) return preferred;
+        return (
+          assets.find(function (a) {
+            return a && typeof a.name === "string" && /\.exe$/i.test(a.name);
+          }) || null
+        );
+      }
+
+      async function syncLatestRelease() {
+        try {
+          const cachedRaw = sessionStorage.getItem(CACHE_KEY);
+          if (cachedRaw) {
+            const cached = JSON.parse(cachedRaw);
+            if (cached && Date.now() - cached.savedAt < CACHE_TTL_MS && cached.data) {
+              applyReleaseInfo(cached.data);
+              return;
+            }
+          }
+        } catch (_) {
+          // Ignore storage restrictions
+        }
+
+        try {
+          const res = await fetch(RELEASES_API, {
+            headers: { Accept: "application/vnd.github+json" },
+          });
+          if (!res.ok) return;
+          const releases = await res.json();
+          if (!Array.isArray(releases)) return;
+
+          for (let i = 0; i < releases.length; i++) {
+            const rel = releases[i];
+            if (!rel || rel.draft) continue;
+            const asset = pickInstallerAsset(rel.assets);
+            if (!asset || !asset.browser_download_url) continue;
+
+            const data = {
+              version: normalizeVersion(rel.tag_name || rel.name),
+              sizeLabel: formatSizeMB(asset.size),
+              downloadUrl: asset.browser_download_url,
+              assetName: asset.name,
+              releaseUrl: rel.html_url || "https://github.com/" + REPO + "/releases",
+            };
+            applyReleaseInfo(data);
+            try {
+              sessionStorage.setItem(CACHE_KEY, JSON.stringify({ savedAt: Date.now(), data: data }));
+            } catch (_) {
+              // Ignore storage quota errors
+            }
+            break;
+          }
+        } catch (_) {
+          // Keep verified static fallback intact
+        }
+      }
+
+      void syncLatestRelease();
+
+      /* -------------------------------------------------------------------
+         Pointer-tracked specular caustic & liquid click shockwave on CTA
+         ------------------------------------------------------------------- */
+      let rafPending = false;
+      let nextMx = "50%";
+      let nextMy = "50%";
+
+      downloadBtn.addEventListener("pointermove", function (e) {
+        const rect = downloadBtn.getBoundingClientRect();
+        nextMx = (((e.clientX - rect.left) / rect.width) * 100).toFixed(1) + "%";
+        nextMy = (((e.clientY - rect.top) / rect.height) * 100).toFixed(1) + "%";
+        if (!rafPending) {
+          rafPending = true;
+          requestAnimationFrame(function () {
+            downloadBtn.style.setProperty("--mx", nextMx);
+            downloadBtn.style.setProperty("--my", nextMy);
+            rafPending = false;
+          });
+        }
+      });
+
+      downloadBtn.addEventListener("pointerleave", function () {
+        downloadBtn.style.setProperty("--mx", "50%");
+        downloadBtn.style.setProperty("--my", "50%");
+      });
+
+      let feedbackTimer = null;
+
+      downloadBtn.addEventListener("click", function (e) {
+        const rect = downloadBtn.getBoundingClientRect();
+        const x = e.clientX ? e.clientX - rect.left : rect.width / 2;
+        const y = e.clientY ? e.clientY - rect.top : rect.height / 2;
+
+        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          const ripple = document.createElement("span");
+          ripple.className = "liquid-ripple";
+          const diameter = Math.max(rect.width, rect.height);
+          ripple.style.width = diameter + "px";
+          ripple.style.height = diameter + "px";
+          ripple.style.left = x + "px";
+          ripple.style.top = y + "px";
+          downloadBtn.appendChild(ripple);
+          window.setTimeout(function () {
+            ripple.remove();
+          }, 700);
+        }
+
+        dlLabel.textContent = "Starting download…";
+        dlIconSlot.innerHTML = checkIconMarkup;
+        if (feedbackTimer) window.clearTimeout(feedbackTimer);
+        feedbackTimer = window.setTimeout(function () {
+          dlLabel.textContent = "Download for Windows";
+          dlIconSlot.innerHTML = originalIconMarkup;
+        }, 2600);
+      });
+
+      /* -------------------------------------------------------------------
+         Liquid-Droplet Screenshot Switcher
+         ------------------------------------------------------------------- */
+      const tabsContainer = document.getElementById("viewTabs");
+      const tabs = Array.from(tabsContainer.querySelectorAll('[role="tab"]'));
+      const dropletTrack = document.getElementById("dropletTrack");
+      const dropletCore = document.getElementById("dropletCore");
+      const showcaseImg = document.getElementById("showcaseImg");
+
+      let morphTimer = null;
+      let swapTimer = null;
+
+      function positionDroplet(targetTab, animate) {
+        if (!targetTab) return;
+        if (!animate) {
+          dropletTrack.style.transition = "none";
+        }
+        dropletTrack.style.width = targetTab.offsetWidth + "px";
+        dropletTrack.style.transform = "translateX(" + targetTab.offsetLeft + "px)";
+        if (!animate) {
+          void dropletTrack.offsetWidth;
+          dropletTrack.style.transition = "";
+        }
+      }
+
+      function selectTab(nextTab) {
+        const currentTab = tabs.find(function (t) {
+          return t.getAttribute("aria-selected") === "true";
+        });
+        if (!nextTab || currentTab === nextTab) return;
+
+        tabs.forEach(function (t) {
+          t.setAttribute("aria-selected", t === nextTab ? "true" : "false");
+        });
+
+        positionDroplet(nextTab, true);
+        dropletCore.setAttribute("data-morphing", "true");
+        if (morphTimer) window.clearTimeout(morphTimer);
+        morphTimer = window.setTimeout(function () {
+          dropletCore.removeAttribute("data-morphing");
+        }, 190);
+
+        const nextSrc = nextTab.getAttribute("data-src");
+        const nextAlt = nextTab.getAttribute("data-alt") || "";
+        if (!nextSrc) return;
+
+        if (swapTimer) window.clearTimeout(swapTimer);
+        showcaseImg.classList.add("is-swapping");
+
+        const loader = new Image();
+        let swapped = false;
+        const commitSwap = function () {
+          if (swapped) return;
+          swapped = true;
+          showcaseImg.src = nextSrc;
+          showcaseImg.alt = nextAlt;
+          requestAnimationFrame(function () {
+            showcaseImg.classList.remove("is-swapping");
+          });
+        };
+
+        loader.onload = function () {
+          swapTimer = window.setTimeout(commitSwap, 110);
+        };
+        loader.onerror = commitSwap;
+        loader.src = nextSrc;
+        if (loader.complete) {
+          swapTimer = window.setTimeout(commitSwap, 110);
+        }
+      }
+
+      tabs.forEach(function (tab, index) {
+        tab.addEventListener("click", function () {
+          selectTab(tab);
+        });
+        tab.addEventListener("keydown", function (e) {
+          if (e.key === "ArrowRight") {
+            e.preventDefault();
+            const next = tabs[(index + 1) % tabs.length];
+            next.focus();
+            selectTab(next);
+          } else if (e.key === "ArrowLeft") {
+            e.preventDefault();
+            const prev = tabs[(index - 1 + tabs.length) % tabs.length];
+            prev.focus();
+            selectTab(prev);
+          }
+        });
+      });
+
+      const initialActive = tabs.find(function (t) {
+        return t.getAttribute("aria-selected") === "true";
+      });
+      positionDroplet(initialActive, false);
+
+      if (typeof ResizeObserver !== "undefined") {
+        new ResizeObserver(function () {
+          const active = tabs.find(function (t) {
+            return t.getAttribute("aria-selected") === "true";
+          });
+          positionDroplet(active, false);
+        }).observe(tabsContainer);
+      }
+
+      /* Gently warm non-default screenshot WebPs once page settles */
+      window.addEventListener("load", function () {
+        if (document.fonts && document.fonts.ready) {
+          document.fonts.ready.then(function () {
+            const active = tabs.find(function (t) {
+              return t.getAttribute("aria-selected") === "true";
+            });
+            positionDroplet(active, false);
+          });
+        }
+        window.setTimeout(function () {
+          tabs.forEach(function (tab) {
+            if (tab.getAttribute("aria-selected") !== "true") {
+              const img = new Image();
+              img.src = tab.getAttribute("data-src");
+            }
+          });
+        }, 900);
+      });
+
+      /* -------------------------------------------------------------------
+         Lightbox Inspection
+         ------------------------------------------------------------------- */
+      const screenshotFrame = document.getElementById("screenshotFrame");
+      const expandBtn = document.getElementById("expandBtn");
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightboxImg");
+      const lightboxClose = document.getElementById("lightboxClose");
+
+      function openLightbox() {
+        lightboxImg.src = showcaseImg.src;
+        lightboxImg.alt = showcaseImg.alt;
+        lightbox.setAttribute("data-open", "true");
+        document.body.style.overflow = "hidden";
+        lightboxClose.focus();
+      }
+
+      function closeLightbox() {
+        lightbox.setAttribute("data-open", "false");
+        document.body.style.overflow = "";
+      }
+
+      screenshotFrame.addEventListener("click", openLightbox);
+      expandBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        openLightbox();
+      });
+      screenshotFrame.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openLightbox();
+        }
+      });
+
+      lightboxClose.addEventListener("click", closeLightbox);
+      lightbox.addEventListener("click", function (e) {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && lightbox.getAttribute("data-open") === "true") {
+          closeLightbox();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
