@@ -13,35 +13,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#060608" />
-  <title>Epilod Party — Watch Movies Together in Sync</title>
+  <title>Epilod Party — Watch Together, in Sync</title>
   <meta
     name="description"
-    content="Epilod Party is a local watch-party media player for Windows. Watch movies and shows together in perfect sync with friends — zero uploads required."
+    content="Epilod Party is a local watch-party media player for Windows. Same file, same frame, zero uploads."
   />
   <link rel="canonical" href="https://ahmednazif.com/epilod-party" />
 
   <!-- Open Graph / Social Preview -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://ahmednazif.com/epilod-party" />
-  <meta property="og:title" content="Epilod Party — Watch Movies Together in Sync" />
+  <meta property="og:title" content="Epilod Party — Watch Together, in Sync" />
   <meta
     property="og:description"
-    content="A local watch-party media player for Windows with liquid glass design, instant 6-digit rooms, live reactions, and auto-synced subtitles."
+    content="A local watch-party media player for Windows with liquid glass design, instant 6-digit rooms, and native mpv playback."
   />
   <meta property="og:image" content="https://ahmednazif.com/images/epilod-party/og-preview.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Epilod Party — Watch Movies Together in Sync" />
+  <meta name="twitter:title" content="Epilod Party — Watch Together, in Sync" />
   <meta
     name="twitter:description"
-    content="Watch local movies and shows in sync with friends on Windows. Public Beta."
+    content="A local watch-party media player for Windows. Same file, same frame, zero uploads."
   />
   <meta name="twitter:image" content="https://ahmednazif.com/images/epilod-party/og-preview.jpg" />
 
-  <!-- App Favicon -->
   <link rel="icon" type="image/png" href="/images/epilod-party/app-icon.png" />
   <link rel="apple-touch-icon" href="/images/epilod-party/app-icon.png" />
 
-  <!-- Inter Variable Font (matches Epilod Party desktop app) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -90,9 +88,6 @@
       min-height: 100vh;
       min-height: 100dvh;
       background-color: var(--canvas);
-      background-image:
-        radial-gradient(70% 50% at 50% 0%, rgba(255, 255, 255, 0.025) 0%, rgba(255, 255, 255, 0) 70%),
-        radial-gradient(60% 48% at 50% 100%, rgba(124, 58, 237, 0.045) 0%, rgba(124, 58, 237, 0) 74%);
       color: var(--ink-primary);
       overflow-x: hidden;
       display: flex;
@@ -117,9 +112,9 @@
     }
 
     /* =====================================================================
-       Ambient Refracted Light Stage (behind translucent liquid glass)
+       Luminous Cinema Light Field (gives Liquid Glass real light to refract)
        ===================================================================== */
-    .ambient-stage {
+    .cinema-backdrop {
       position: fixed;
       inset: 0;
       pointer-events: none;
@@ -127,80 +122,57 @@
       z-index: 0;
     }
 
-    .ambient-orb-purple {
+    .aurora-bloom {
       position: absolute;
       left: 50%;
-      top: 10%;
-      width: min(760px, 95vw);
-      height: min(560px, 72vw);
-      transform: translateX(-58%);
+      top: 120px;
+      width: min(980px, 110vw);
+      height: min(620px, 75vw);
+      transform: translateX(-50%);
       border-radius: 50%;
-      background: radial-gradient(
-        circle at 46% 42%,
-        rgba(139, 92, 246, 0.24) 0%,
-        rgba(124, 58, 237, 0.10) 42%,
-        rgba(124, 58, 237, 0) 72%
-      );
+      background:
+        radial-gradient(
+          48% 46% at 44% 38%,
+          rgba(139, 92, 246, 0.24) 0%,
+          rgba(124, 58, 237, 0.11) 46%,
+          rgba(124, 58, 237, 0) 76%
+        ),
+        radial-gradient(
+          42% 40% at 62% 52%,
+          rgba(221, 214, 254, 0.08) 0%,
+          rgba(167, 139, 250, 0.03) 48%,
+          rgba(167, 139, 250, 0) 76%
+        );
       filter: blur(56px);
-      animation: orbDriftPurple 11s ease-in-out infinite alternate;
+      animation: auroraBreathe 12s ease-in-out infinite alternate;
       will-change: transform, opacity;
     }
 
-    .ambient-orb-silver {
+    .stage-horizon {
       position: absolute;
       left: 50%;
-      top: 18%;
-      width: min(640px, 85vw);
-      height: min(480px, 65vw);
-      transform: translateX(-34%);
-      border-radius: 50%;
+      top: 340px;
+      width: min(1240px, 120vw);
+      height: 520px;
+      transform: translateX(-50%);
       background: radial-gradient(
-        circle at 55% 50%,
-        rgba(228, 228, 236, 0.10) 0%,
-        rgba(161, 161, 170, 0.04) 46%,
-        rgba(161, 161, 170, 0) 74%
+        60% 55% at 50% 45%,
+        rgba(109, 40, 217, 0.16) 0%,
+        rgba(76, 29, 149, 0.06) 48%,
+        rgba(6, 6, 8, 0) 76%
       );
-      filter: blur(58px);
-      animation: orbDriftSilver 13s ease-in-out infinite alternate;
-      will-change: transform, opacity;
+      filter: blur(64px);
     }
 
-    @keyframes orbDriftPurple {
+    @keyframes auroraBreathe {
       0% {
-        transform: translate3d(-58%, 0, 0) scale(1);
-        opacity: 0.78;
+        transform: translate3d(-50%, 0, 0) scale(1);
+        opacity: 0.84;
       }
       100% {
-        transform: translate3d(-54%, 18px, 0) scale(1.07);
+        transform: translate3d(-50%, -10px, 0) scale(1.045);
         opacity: 1;
       }
-    }
-
-    @keyframes orbDriftSilver {
-      0% {
-        transform: translate3d(-34%, 6px, 0) scale(1);
-        opacity: 0.65;
-      }
-      100% {
-        transform: translate3d(-38%, -12px, 0) scale(1.06);
-        opacity: 0.9;
-      }
-    }
-
-    /* =====================================================================
-       Page Shell
-       ===================================================================== */
-    .page-shell {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: clamp(52px, 8vh, 88px) clamp(18px, 4vw, 40px) 36px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      flex: 1;
     }
 
     /* =====================================================================
@@ -208,25 +180,25 @@
        ===================================================================== */
     .liquid-reveal {
       opacity: 0;
-      transform: translateY(16px) scale(0.968);
-      filter: blur(11px);
-      animation: liquidCondense 740ms var(--spring-soft) forwards;
+      transform: translateY(14px) scale(0.972);
+      filter: blur(10px);
+      animation: liquidCondense 720ms var(--spring-soft) forwards;
       animation-delay: var(--delay, 0ms);
     }
 
     .liquid-reveal-stage {
       opacity: 0;
-      transform: translateY(24px) scale(0.962);
+      transform: translateY(22px) scale(0.966);
       filter: blur(14px);
       animation: liquidCondenseStage 860ms var(--spring-soft) forwards;
-      animation-delay: var(--delay, 260ms);
+      animation-delay: var(--delay, 220ms);
     }
 
     @keyframes liquidCondense {
       0% {
         opacity: 0;
-        transform: translateY(16px) scale(0.968);
-        filter: blur(11px);
+        transform: translateY(14px) scale(0.972);
+        filter: blur(10px);
       }
       100% {
         opacity: 1;
@@ -238,7 +210,7 @@
     @keyframes liquidCondenseStage {
       0% {
         opacity: 0;
-        transform: translateY(24px) scale(0.962);
+        transform: translateY(22px) scale(0.966);
         filter: blur(14px);
       }
       100% {
@@ -249,229 +221,268 @@
     }
 
     /* =====================================================================
-       Hero Header
+       Minimal Floating Header
        ===================================================================== */
-    .hero-brand {
+    .top-bar {
+      --delay: 0ms;
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 20px clamp(18px, 4vw, 32px) 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand-lockup {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.94rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--ink-primary);
+    }
+
+    .brand-icon {
+      width: 28px;
+      height: 28px;
+      display: block;
+      user-select: none;
+      -webkit-user-drag: none;
+      filter: drop-shadow(0 4px 12px rgba(124, 58, 237, 0.36));
+    }
+
+    .top-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--ink-secondary);
+      padding: 6px 12px;
+      border-radius: 9999px;
+      transition:
+        color 160ms var(--ease-glass),
+        background-color 160ms var(--ease-glass);
+    }
+
+    .top-link:hover {
+      color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.06);
+    }
+
+    /* =====================================================================
+       Main Stage
+       ===================================================================== */
+    .page-shell {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: clamp(24px, 4.2vh, 46px) clamp(18px, 4vw, 32px) 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+    }
+
+    .hero-head {
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
     }
 
-    .app-icon-wrap {
-      --delay: 20ms;
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-      transition: transform 320ms var(--spring-fluid);
-    }
-
-    .app-icon-wrap::before {
-      content: "";
-      position: absolute;
-      inset: -14px;
-      border-radius: 30px;
-      background: radial-gradient(
-        circle at 50% 45%,
-        rgba(139, 92, 246, 0.34) 0%,
-        rgba(124, 58, 237, 0.12) 48%,
-        transparent 74%
-      );
-      filter: blur(16px);
-      z-index: -1;
-      transition: opacity 260ms var(--ease-glass), transform 320ms var(--spring-fluid);
-    }
-
-    .app-icon-wrap:hover {
-      transform: translateY(-2px) scale(1.045);
-    }
-
-    .app-icon-wrap:hover::before {
-      transform: scale(1.12);
-    }
-
-    .app-icon {
-      width: 68px;
-      height: 68px;
-      display: block;
-      user-select: none;
-      -webkit-user-drag: none;
-      filter: drop-shadow(0 12px 26px rgba(124, 58, 237, 0.32));
-    }
-
     .hero-title {
-      --delay: 85ms;
-      font-size: clamp(2.25rem, 5vw, 3.4rem);
+      --delay: 55ms;
+      font-size: clamp(2.25rem, 4.8vw, 3.45rem);
       font-weight: 650;
-      letter-spacing: -0.036em;
-      line-height: 1.06;
-      color: #ffffff;
-      text-shadow: 0 2px 24px rgba(139, 92, 246, 0.16);
+      letter-spacing: -0.042em;
+      line-height: 1.04;
+      background: linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #f4f4f6 62%,
+        rgba(221, 214, 254, 0.86) 100%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .hero-subtitle {
-      --delay: 145ms;
+      --delay: 110ms;
       margin-top: 12px;
-      max-width: 460px;
-      font-size: clamp(0.98rem, 1.8vw, 1.12rem);
+      max-width: 520px;
+      font-size: clamp(0.95rem, 1.55vw, 1.08rem);
       font-weight: 420;
       line-height: 1.5;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.012em;
       color: var(--ink-secondary);
     }
 
     /* =====================================================================
-       Big iOS 27 Smoked-Amethyst Liquid Glass Download Button
+       Big iOS 27 Liquid Glass Download Button
+       (Concentric Specular Corner Bezel + Crystal Icon Badge + Caustic Glow)
        ===================================================================== */
     .cta-block {
-      --delay: 205ms;
-      margin-top: 30px;
+      --delay: 165ms;
+      margin-top: 26px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 14px;
+      gap: 13px;
     }
 
     .ep-liquid-download {
       --mx: 50%;
       --my: 50%;
+      --rim-angle: 132deg;
       position: relative;
       isolation: isolate;
       overflow: hidden;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
-      height: 58px;
-      padding: 0 34px;
+      gap: 14px;
+      height: 60px;
+      padding: 0 30px 0 11px;
       border-radius: 9999px;
       color: #ffffff;
-      font-size: 1.03rem;
-      font-weight: 560;
+      font-size: 1.02rem;
+      font-weight: 570;
       letter-spacing: -0.015em;
       cursor: pointer;
       user-select: none;
-      background-color: rgba(16, 11, 30, 0.62);
+      background-color: rgba(109, 40, 217, 0.28);
       background-image:
         radial-gradient(
-          140px circle at var(--mx) var(--my),
-          rgba(237, 233, 254, 0.16) 0%,
-          rgba(167, 139, 250, 0.08) 45%,
+          165px circle at var(--mx) var(--my),
+          rgba(237, 233, 254, 0.24) 0%,
+          rgba(167, 139, 250, 0.12) 44%,
           rgba(167, 139, 250, 0) 74%
         ),
         linear-gradient(
-          168deg,
-          rgba(167, 139, 250, 0.22) 0%,
-          rgba(124, 58, 237, 0.30) 52%,
-          rgba(91, 33, 182, 0.38) 100%
+          165deg,
+          rgba(255, 255, 255, 0.12) 0%,
+          rgba(139, 92, 246, 0.22) 48%,
+          rgba(91, 33, 182, 0.34) 100%
         );
-      background-clip: padding-box;
-      border: 1px solid rgba(221, 214, 254, 0.30);
-      -webkit-backdrop-filter: blur(22px) saturate(160%);
-      backdrop-filter: blur(22px) saturate(160%);
+      -webkit-backdrop-filter: blur(28px) saturate(185%) brightness(1.06);
+      backdrop-filter: blur(28px) saturate(185%) brightness(1.06);
       box-shadow:
-        inset 0 1px 0 0 rgba(255, 255, 255, 0.40),
-        inset 0 -1px 0 0 rgba(196, 181, 253, 0.18),
-        inset 0 0 16px 0 rgba(124, 58, 237, 0.18),
-        0 14px 36px -10px rgba(124, 58, 237, 0.44),
-        0 4px 14px -4px rgba(0, 0, 0, 0.72);
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.22),
+        inset 0 -1px 0 0 rgba(196, 181, 253, 0.16),
+        0 18px 44px -10px rgba(124, 58, 237, 0.52),
+        0 6px 20px -4px rgba(0, 0, 0, 0.76);
       transition:
-        transform 240ms var(--spring-fluid),
+        transform 260ms var(--spring-fluid),
         background-color 180ms var(--ease-glass),
-        border-color 180ms var(--ease-glass),
-        box-shadow 220ms var(--ease-glass);
+        box-shadow 240ms var(--ease-glass);
     }
 
-    /* Ultra-subtle top optical rim highlight */
+    /* Concentric iOS 27 specular rim light (brightest at diagonal bevels, fades on sides) */
     .ep-liquid-download::before {
       content: "";
       position: absolute;
-      inset: 0 20px auto 20px;
-      height: 1px;
+      inset: 0;
+      padding: 1.25px;
+      border-radius: inherit;
       pointer-events: none;
-      z-index: 0;
+      z-index: 2;
       background: linear-gradient(
-        90deg,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.55) 50%,
-        rgba(255, 255, 255, 0) 100%
+        var(--rim-angle),
+        rgba(255, 255, 255, 0.78) 0%,
+        rgba(221, 214, 254, 0.22) 28%,
+        rgba(255, 255, 255, 0.05) 50%,
+        rgba(196, 181, 253, 0.20) 74%,
+        rgba(237, 233, 254, 0.58) 100%
       );
-      opacity: 0.78;
-      transition: opacity 180ms var(--ease-glass);
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      opacity: 0.88;
+      transition: opacity 200ms var(--ease-glass);
     }
 
-    /* Soft lower internal amethyst refraction */
+    /* Subtle internal violet refraction puddle along lower curve */
     .ep-liquid-download::after {
       content: "";
       position: absolute;
-      inset: auto 24px 1px 24px;
-      height: 28%;
+      inset: auto 18px 2px 18px;
+      height: 34%;
       border-radius: 9999px;
       pointer-events: none;
       z-index: 0;
       background: radial-gradient(
-        80% 100% at 50% 100%,
-        rgba(196, 181, 253, 0.24) 0%,
-        rgba(139, 92, 246, 0) 100%
+        75% 100% at 50% 100%,
+        rgba(167, 139, 250, 0.24) 0%,
+        rgba(124, 58, 237, 0) 100%
       );
-      opacity: 0.65;
-      transition: opacity 180ms var(--ease-glass);
+      opacity: 0.7;
+      transition: opacity 200ms var(--ease-glass);
     }
 
-    /* One-shot diagonal specular glass sweep on initial settle */
+    /* One-shot diagonal glass sheen on initial settle */
     .btn-sheen {
       position: absolute;
-      top: -20%;
-      left: -42%;
-      width: 30%;
-      height: 140%;
+      top: -24%;
+      left: -45%;
+      width: 32%;
+      height: 148%;
       pointer-events: none;
       z-index: 1;
       background: linear-gradient(
         105deg,
         rgba(255, 255, 255, 0) 0%,
-        rgba(237, 233, 254, 0.24) 48%,
+        rgba(255, 255, 255, 0.26) 48%,
         rgba(255, 255, 255, 0) 100%
       );
-      transform: skewX(-18deg) translateX(0);
+      transform: skewX(-20deg) translateX(0);
       opacity: 0;
-      animation: glassSweep 1150ms var(--ease-glass) 820ms 1 forwards;
+      animation: glassSweep 1150ms var(--ease-glass) 780ms 1 forwards;
     }
 
     @keyframes glassSweep {
       0% {
-        transform: skewX(-18deg) translateX(0);
+        transform: skewX(-20deg) translateX(0);
         opacity: 0;
       }
-      18% {
-        opacity: 0.75;
+      20% {
+        opacity: 0.72;
       }
-      82% {
-        opacity: 0.55;
+      80% {
+        opacity: 0.5;
       }
       100% {
-        transform: skewX(-18deg) translateX(480%);
+        transform: skewX(-20deg) translateX(480%);
         opacity: 0;
       }
     }
 
     .ep-liquid-download > *:not(.btn-sheen):not(.liquid-ripple) {
       position: relative;
-      z-index: 2;
+      z-index: 3;
     }
 
     .ep-liquid-download:hover {
       transform: translateY(-2px) scale(1.022);
-      background-color: rgba(24, 15, 46, 0.72);
-      border-color: rgba(237, 233, 254, 0.48);
+      background-color: rgba(124, 58, 237, 0.40);
       box-shadow:
-        inset 0 1px 0 0 rgba(255, 255, 255, 0.58),
-        inset 0 -1px 0 0 rgba(221, 214, 254, 0.28),
-        inset 0 0 22px 0 rgba(139, 92, 246, 0.28),
-        0 18px 44px -8px rgba(124, 58, 237, 0.58),
-        0 6px 18px -4px rgba(0, 0, 0, 0.78);
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.30),
+        inset 0 -1px 0 0 rgba(221, 214, 254, 0.24),
+        0 22px 52px -10px rgba(124, 58, 237, 0.64),
+        0 8px 24px -4px rgba(0, 0, 0, 0.80);
     }
 
     .ep-liquid-download:hover::before {
@@ -479,7 +490,7 @@
     }
 
     .ep-liquid-download:hover::after {
-      opacity: 0.92;
+      opacity: 0.96;
     }
 
     .ep-liquid-download:active,
@@ -494,13 +505,31 @@
       outline-offset: 4px;
     }
 
-    .dl-icon-slot {
+    /* Left Amethyst Crystal Orb inside the Download capsule (matches Watch Party pill) */
+    .dl-orb-badge {
+      position: relative;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 20px;
-      height: 20px;
+      width: 40px;
+      height: 40px;
+      border-radius: 9999px;
       flex-shrink: 0;
+      background: linear-gradient(155deg, rgba(167, 139, 250, 0.55) 0%, rgba(109, 40, 217, 0.78) 100%);
+      border: 1px solid rgba(237, 233, 254, 0.42);
+      box-shadow:
+        inset 0 1px 0.5px 0 rgba(255, 255, 255, 0.55),
+        inset 0 -1px 0.5px 0 rgba(196, 181, 253, 0.24),
+        0 4px 14px -2px rgba(124, 58, 237, 0.52);
+      transition: transform 260ms var(--spring-fluid), box-shadow 220ms var(--ease-glass);
+    }
+
+    .ep-liquid-download:hover .dl-orb-badge {
+      transform: scale(1.05);
+      box-shadow:
+        inset 0 1px 0.5px 0 rgba(255, 255, 255, 0.72),
+        inset 0 -1px 0.5px 0 rgba(221, 214, 254, 0.32),
+        0 6px 18px -2px rgba(139, 92, 246, 0.68);
     }
 
     .dl-arrow-stem {
@@ -518,10 +547,9 @@
 
     .dl-label {
       white-space: nowrap;
-      text-shadow: 0 1px 6px rgba(10, 4, 24, 0.5);
+      text-shadow: 0 1px 8px rgba(6, 4, 16, 0.55);
     }
 
-    /* Click radial liquid shockwave inside the button */
     .liquid-ripple {
       position: absolute;
       border-radius: 50%;
@@ -529,8 +557,8 @@
       z-index: 1;
       background: radial-gradient(
         circle,
-        rgba(255, 255, 255, 0.46) 0%,
-        rgba(221, 214, 254, 0.26) 40%,
+        rgba(255, 255, 255, 0.42) 0%,
+        rgba(221, 214, 254, 0.22) 42%,
         rgba(139, 92, 246, 0) 74%
       );
       transform: translate(-50%, -50%) scale(0);
@@ -550,12 +578,12 @@
 
     /* Quiet single-line metadata beneath CTA */
     .cta-meta {
-      --delay: 255ms;
+      --delay: 205ms;
       display: inline-flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 7px;
       font-size: 0.8125rem;
       font-weight: 450;
       color: var(--ink-secondary);
@@ -576,69 +604,36 @@
     }
 
     .beta-indicator {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
       color: var(--amethyst-ice);
       font-weight: 500;
     }
 
-    .beta-pulse {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--amethyst-soft);
-      box-shadow: 0 0 10px rgba(196, 181, 253, 0.85);
-      animation: betaBreathe 2.8s ease-in-out infinite;
-    }
-
-    @keyframes betaBreathe {
-      0%, 100% {
-        opacity: 0.72;
-        transform: scale(0.95);
-      }
-      50% {
-        opacity: 1;
-        transform: scale(1.15);
-      }
-    }
-
     /* =====================================================================
-       Big App Screenshot Showcase (directly below Download button)
+       Big App Screenshot Showcase (fits cleanly uncut on desktop hero)
        ===================================================================== */
-    .showcase-wrap {
-      width: 100%;
-      max-width: 1100px;
-      margin-top: clamp(36px, 5.5vh, 56px);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-    }
-
     .showcase-stage {
-      --delay: 310ms;
+      --delay: 230ms;
       position: relative;
       width: 100%;
+      max-width: min(1080px, calc(68dvh * 1.6585));
+      min-width: min(100%, 300px);
       aspect-ratio: 2720 / 1640;
+      margin-top: clamp(24px, 3.8vh, 40px);
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    /* Soft amethyst ambient halo under/behind the floating window screenshot */
     .showcase-halo {
       position: absolute;
-      inset: 6% 8% -4% 8%;
+      inset: 4% 6% -6% 6%;
       border-radius: 40px;
       pointer-events: none;
       z-index: 0;
       background:
-        radial-gradient(65% 60% at 50% 42%, rgba(124, 58, 237, 0.20) 0%, rgba(124, 58, 237, 0.05) 55%, transparent 78%),
-        radial-gradient(50% 40% at 25% 75%, rgba(167, 139, 250, 0.10) 0%, transparent 72%);
-      filter: blur(46px);
-      opacity: 0.92;
-      transition: opacity 400ms var(--ease-glass);
+        radial-gradient(65% 60% at 50% 42%, rgba(124, 58, 237, 0.22) 0%, rgba(124, 58, 237, 0.06) 55%, transparent 78%),
+        radial-gradient(50% 40% at 25% 75%, rgba(167, 139, 250, 0.12) 0%, transparent 72%);
+      filter: blur(48px);
     }
 
     .screenshot-frame {
@@ -661,201 +656,7 @@
       object-fit: contain;
       user-select: none;
       -webkit-user-drag: none;
-      filter: drop-shadow(0 32px 72px rgba(0, 0, 0, 0.88)) drop-shadow(0 8px 28px rgba(124, 58, 237, 0.14));
-      transition:
-        opacity 260ms var(--ease-glass),
-        transform 380ms var(--spring-soft),
-        filter 320ms var(--ease-glass);
-      will-change: opacity, transform, filter;
-    }
-
-    .screenshot-img.is-swapping {
-      opacity: 0;
-      transform: scale(0.986);
-      filter: blur(10px) drop-shadow(0 32px 72px rgba(0, 0, 0, 0.88));
-    }
-
-    /* Subtle hover-only expand pill tucked cleanly inside corner */
-    .expand-pill {
-      position: absolute;
-      right: 18px;
-      bottom: 18px;
-      z-index: 3;
-      width: 36px;
-      height: 36px;
-      border-radius: 9999px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255, 255, 255, 0.88);
-      background-color: rgba(14, 14, 22, 0.56);
-      background-image: linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0.18) 0%,
-        rgba(255, 255, 255, 0.04) 55%,
-        rgba(139, 92, 246, 0.08) 100%
-      );
-      border: 1px solid rgba(255, 255, 255, 0.20);
-      -webkit-backdrop-filter: blur(16px) saturate(140%);
-      backdrop-filter: blur(16px) saturate(140%);
-      box-shadow:
-        inset 0 1px 0.5px 0 rgba(255, 255, 255, 0.36),
-        0 8px 20px -6px rgba(0, 0, 0, 0.72);
-      opacity: 0;
-      transform: scale(0.9);
-      cursor: pointer;
-      transition:
-        opacity 200ms var(--ease-glass),
-        transform 240ms var(--spring-fluid),
-        border-color 160ms var(--ease-glass),
-        background-color 160ms var(--ease-glass);
-    }
-
-    .screenshot-frame:hover .expand-pill,
-    .expand-pill:focus-visible {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    .expand-pill:hover {
-      transform: scale(1.08);
-      background-color: rgba(124, 58, 237, 0.45);
-      border-color: rgba(237, 233, 254, 0.42);
-    }
-
-    .expand-pill:active {
-      transform: scale(0.93);
-      transition-duration: 70ms;
-    }
-
-    .expand-pill:focus-visible {
-      outline: 1.5px solid rgba(221, 214, 254, 0.75);
-      outline-offset: 2px;
-    }
-
-    /* =====================================================================
-       Morphing Liquid-Droplet View Switcher (mirrors Epilod SegmentedTabs)
-       ===================================================================== */
-    .switcher-row {
-      --delay: 375ms;
-      display: flex;
-      justify-content: center;
-      width: 100%;
-    }
-
-    .ep-glass-tray {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      padding: 4px;
-      border-radius: 9999px;
-      background-color: rgba(10, 10, 14, 0.72);
-      background-image: linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0.04) 0%,
-        rgba(255, 255, 255, 0.015) 100%
-      );
-      border: 1px solid rgba(255, 255, 255, 0.09);
-      -webkit-backdrop-filter: blur(20px) saturate(140%);
-      backdrop-filter: blur(20px) saturate(140%);
-      box-shadow:
-        inset 0 1px 3px 0 rgba(0, 0, 0, 0.55),
-        inset 0 -1px 0 0 rgba(255, 255, 255, 0.05),
-        0 10px 28px -10px rgba(0, 0, 0, 0.70);
-    }
-
-    .droplet-track {
-      position: absolute;
-      top: 4px;
-      bottom: 4px;
-      left: 0;
-      pointer-events: none;
-      transition:
-        transform 460ms cubic-bezier(0.22, 1.26, 0.36, 1),
-        width 460ms cubic-bezier(0.22, 1.26, 0.36, 1);
-      will-change: transform, width;
-    }
-
-    .ep-droplet-indicator {
-      display: block;
-      width: 100%;
-      height: 100%;
-      border-radius: 9999px;
-      background-color: rgba(124, 58, 237, 0.32);
-      background-image: linear-gradient(
-        175deg,
-        rgba(255, 255, 255, 0.22) 0%,
-        rgba(139, 92, 246, 0.16) 50%,
-        rgba(109, 40, 217, 0.28) 100%
-      );
-      box-shadow:
-        inset 0 0 0 1px rgba(221, 214, 254, 0.34),
-        inset 0 1px 0.5px 0 rgba(255, 255, 255, 0.45),
-        inset 0 -1px 0.5px 0 rgba(196, 181, 253, 0.18),
-        0 4px 16px -2px rgba(124, 58, 237, 0.44);
-      transform-origin: center center;
-      transition:
-        transform 340ms cubic-bezier(0.22, 1.38, 0.34, 1),
-        filter 220ms var(--ease-glass);
-      will-change: transform, filter;
-    }
-
-    .ep-droplet-indicator[data-morphing="true"] {
-      transform: scaleX(1.14) scaleY(0.86);
-      filter: brightness(1.18);
-    }
-
-    .view-tab {
-      position: relative;
-      z-index: 1;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 7px;
-      height: 34px;
-      padding: 0 15px;
-      border-radius: 9999px;
-      font-size: 0.78rem;
-      font-weight: 500;
-      color: var(--ink-secondary);
-      white-space: nowrap;
-      cursor: pointer;
-      transition:
-        transform 140ms var(--ease-glass),
-        color 180ms var(--ease-glass),
-        text-shadow 180ms var(--ease-glass);
-    }
-
-    .view-tab:hover:not([aria-selected="true"]) {
-      color: var(--ink-primary);
-    }
-
-    .view-tab[aria-selected="true"] {
-      color: #ffffff;
-      text-shadow: 0 0 14px rgba(237, 233, 254, 0.35);
-    }
-
-    .view-tab:active {
-      transform: scale(0.955);
-      transition-duration: 70ms;
-    }
-
-    .view-tab:focus-visible {
-      outline: 1.5px solid rgba(221, 214, 254, 0.65);
-      outline-offset: -1px;
-    }
-
-    .tab-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0.78;
-      transition: opacity 150ms var(--ease-glass);
-    }
-
-    .view-tab[aria-selected="true"] .tab-icon {
-      opacity: 1;
+      filter: drop-shadow(0 32px 72px rgba(0, 0, 0, 0.90)) drop-shadow(0 8px 28px rgba(124, 58, 237, 0.16));
     }
 
     /* =====================================================================
@@ -869,9 +670,9 @@
       align-items: center;
       justify-content: center;
       padding: clamp(16px, 3vw, 40px);
-      background: radial-gradient(75% 65% at 50% 42%, rgba(18, 17, 26, 0.45) 0%, rgba(4, 4, 8, 0.86) 100%);
-      -webkit-backdrop-filter: blur(18px) saturate(125%);
-      backdrop-filter: blur(18px) saturate(125%);
+      background: radial-gradient(75% 65% at 50% 42%, rgba(18, 17, 26, 0.45) 0%, rgba(4, 4, 8, 0.88) 100%);
+      -webkit-backdrop-filter: blur(20px) saturate(130%);
+      backdrop-filter: blur(20px) saturate(130%);
       opacity: 0;
       pointer-events: none;
       transition: opacity 220ms var(--ease-glass);
@@ -952,27 +753,24 @@
     }
 
     /* =====================================================================
-       Minimal Single-Line Footer
+       Quiet Single-Line Footer
        ===================================================================== */
     .quiet-footer {
-      --delay: 420ms;
+      --delay: 300ms;
       position: relative;
       z-index: 1;
       width: 100%;
-      padding: 20px 20px 32px;
+      padding: 12px 20px 26px;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: center;
-      gap: 10px 14px;
-      font-size: 0.78rem;
+      gap: 8px 12px;
+      font-size: 0.76rem;
       color: var(--ink-muted);
     }
 
     .footer-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
       color: var(--ink-muted);
       transition: color 150ms var(--ease-glass);
     }
@@ -985,21 +783,25 @@
        Responsive Tuning
        ===================================================================== */
     @media (max-width: 640px) {
-      .page-shell {
-        padding-top: 40px;
+      .top-bar {
+        padding-top: 16px;
       }
 
-      .app-icon {
-        width: 58px;
-        height: 58px;
+      .page-shell {
+        padding-top: 28px;
       }
 
       .ep-liquid-download {
-        width: min(100%, 320px);
-        height: 52px;
-        padding: 0 22px;
-        font-size: 0.94rem;
-        gap: 10px;
+        width: min(100%, 332px);
+        height: 54px;
+        padding: 0 22px 0 9px;
+        font-size: 0.95rem;
+        gap: 12px;
+      }
+
+      .dl-orb-badge {
+        width: 36px;
+        height: 36px;
       }
 
       .cta-meta {
@@ -1007,35 +809,23 @@
         gap: 5px;
       }
 
-      .view-tab {
-        height: 32px;
-        padding: 0 11px;
-        font-size: 0.74rem;
-        gap: 5px;
-      }
-
-      .tab-icon {
-        display: none;
-      }
-
-      .expand-pill {
-        display: none;
+      .showcase-stage {
+        max-width: 100%;
+        margin-top: 28px;
       }
 
       .quiet-footer {
         font-size: 0.72rem;
-        gap: 6px 8px;
-        padding: 18px 14px 28px;
+        gap: 6px 10px;
+        padding: 16px 14px 26px;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
       .liquid-reveal,
       .liquid-reveal-stage,
-      .ambient-orb-purple,
-      .ambient-orb-silver,
+      .aurora-bloom,
       .btn-sheen,
-      .beta-pulse,
       .liquid-ripple {
         animation: none !important;
         opacity: 1 !important;
@@ -1044,12 +834,9 @@
       }
 
       .ep-liquid-download,
+      .dl-orb-badge,
       .dl-arrow-stem,
-      .droplet-track,
-      .ep-droplet-indicator,
       .screenshot-frame,
-      .screenshot-img,
-      .expand-pill,
       .lightbox,
       .lightbox-inner {
         transition: none !important;
@@ -1058,265 +845,31 @@
   </style>
 </head>
 <body>
-  <!-- Subtle luminous orbs behind glass surfaces -->
-  <div class="ambient-stage" aria-hidden="true">
-    <div class="ambient-orb-purple"></div>
-    <div class="ambient-orb-silver"></div>
+  <div class="cinema-backdrop" aria-hidden="true">
+    <div class="aurora-bloom"></div>
+    <div class="stage-horizon"></div>
   </div>
 
-  <main class="page-shell">
-    <header class="hero-brand">
-      <div class="app-icon-wrap liquid-reveal" aria-hidden="true">
-        <img
-          src="/images/epilod-party/app-icon.png"
-          alt=""
-          width="68"
-          height="68"
-          class="app-icon"
-          draggable="false"
-        />
-      </div>
+  <header class="top-bar">
+    <div class="brand-lockup">
+      <img
+        src="/images/epilod-party/app-icon.png"
+        alt=""
+        width="28"
+        height="28"
+        class="brand-icon"
+        draggable="false"
+      />
+      <span>Epilod Party</span>
+    </div>
 
-      <h1 class="hero-title liquid-reveal">Epilod Party</h1>
-
-      <p class="hero-subtitle liquid-reveal">
-        Watch local movies and shows together, synced frame-for-frame with friends.
-      </p>
-    </header>
-
-    <section class="cta-block" aria-label="Download">
-      <a
-        id="downloadBtn"
-        href="https://github.com/ahmednazief/epilod-party/releases/latest/download/Epilod.Party.Setup.exe"
-        download="Epilod.Party.Setup.exe"
-        class="ep-liquid-download liquid-reveal"
-        style="--delay: 205ms"
-        aria-label="Download Epilod Party for Windows"
-      >
-        <span class="btn-sheen" aria-hidden="true"></span>
-
-        <!-- Custom Smoked-Amethyst Crystal Download Icon -->
-        <span class="dl-icon-slot" id="dlIconSlot" aria-hidden="true">
-          <svg width="21" height="21" viewBox="0 0 24 24" fill="none">
-            <g class="dl-arrow-stem">
-              <path
-                d="M12 4.2V14.8"
-                stroke="#FFFFFF"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-              <path
-                d="M7.9 11.1L12 15.3L16.1 11.1"
-                stroke="#EDE9FE"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </g>
-            <path
-              d="M4.8 16.4V17.7C4.8 18.86 5.74 19.8 6.9 19.8H17.1C18.26 19.8 19.2 18.86 19.2 17.7V16.4"
-              stroke="#DDD6FE"
-              stroke-opacity="0.92"
-              stroke-width="1.85"
-              stroke-linecap="round"
-            />
-          </svg>
-        </span>
-
-        <span class="dl-label" id="dlLabel">Download for Windows</span>
-      </a>
-
-      <div class="cta-meta num liquid-reveal" style="--delay: 255ms" aria-live="polite">
-        <span class="meta-os">
-          <!-- Custom Beveled Crystal Windows Crest -->
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <rect x="3.2" y="3.2" width="8" height="8" rx="1.8" fill="#EDE9FE" fill-opacity="0.88" />
-            <rect x="12.8" y="3.2" width="8" height="8" rx="1.8" fill="#DDD6FE" fill-opacity="0.72" />
-            <rect x="3.2" y="12.8" width="8" height="8" rx="1.8" fill="#C4B5FD" fill-opacity="0.72" />
-            <rect x="12.8" y="12.8" width="8" height="8" rx="1.8" fill="#A78BFA" fill-opacity="0.88" />
-          </svg>
-          <span>Windows 10 &amp; 11</span>
-        </span>
-        <span class="meta-dot" aria-hidden="true">·</span>
-        <span class="beta-indicator">
-          <span class="beta-pulse" aria-hidden="true"></span>
-          <span>Public Beta</span>
-        </span>
-        <span class="meta-dot" aria-hidden="true">·</span>
-        <span id="dlVersionChip">v0.1.0</span>
-        <span class="meta-dot" aria-hidden="true">·</span>
-        <span id="metaSize">39.5 MB</span>
-      </div>
-    </section>
-
-    <!-- Big App Screenshot Showcase -->
-    <section class="showcase-wrap" aria-label="Epilod Party Interface Preview">
-      <div class="showcase-stage liquid-reveal-stage">
-        <div class="showcase-halo" aria-hidden="true"></div>
-
-        <div
-          id="screenshotFrame"
-          class="screenshot-frame"
-          role="button"
-          tabindex="0"
-          aria-label="Inspect full-size app screenshot"
-        >
-          <img
-            id="showcaseImg"
-            src="/images/epilod-party/watch-party.webp"
-            alt="Epilod Party Watch Party view showing four friends synced together over a cosmic film with Smoked-Amethyst liquid glass controls"
-            width="2040"
-            height="1230"
-            decoding="async"
-            class="screenshot-img"
-            draggable="false"
-          />
-
-          <button
-            type="button"
-            id="expandBtn"
-            class="expand-pill"
-            aria-label="View screenshot full screen"
-            title="Expand preview"
-          >
-            <!-- Custom Crystal Expand Lens -->
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path
-                d="M14.5 4.8H19.2V9.5"
-                stroke="#FFFFFF"
-                stroke-width="1.85"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M19 5L13.8 10.2"
-                stroke="#DDD6FE"
-                stroke-width="1.75"
-                stroke-linecap="round"
-              />
-              <path
-                d="M9.5 19.2H4.8V14.5"
-                stroke="#FFFFFF"
-                stroke-width="1.85"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M5 19L10.2 13.8"
-                stroke="#DDD6FE"
-                stroke-width="1.75"
-                stroke-linecap="round"
-              />
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- Morphing Liquid-Droplet View Switcher -->
-      <div class="switcher-row">
-        <div class="ep-glass-tray liquid-reveal" style="--delay: 375ms" role="tablist" aria-label="App screen views" id="viewTabs">
-          <span class="droplet-track" id="dropletTrack" aria-hidden="true">
-            <span class="ep-droplet-indicator" id="dropletCore"></span>
-          </span>
-
-          <button
-            type="button"
-            role="tab"
-            aria-selected="true"
-            class="view-tab"
-            data-view="watch-party"
-            data-src="/images/epilod-party/watch-party.webp"
-            data-alt="Epilod Party Watch Party view showing four friends synced together over a cosmic film with Smoked-Amethyst liquid glass controls"
-          >
-            <span class="tab-icon" aria-hidden="true">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                <rect x="3" y="5.5" width="18" height="12.5" rx="3.4" fill="currentColor" fill-opacity="0.16" stroke="currentColor" stroke-width="1.65" />
-                <path d="M10.4 9.2L15.2 11.75L10.4 14.3V9.2Z" fill="#DDD6FE" />
-                <path d="M8.5 3.2C10.7 2.1 13.3 2.1 15.5 3.2" stroke="#C4B5FD" stroke-width="1.5" stroke-linecap="round" />
-              </svg>
-            </span>
-            <span>Watch Party</span>
-          </button>
-
-          <button
-            type="button"
-            role="tab"
-            aria-selected="false"
-            class="view-tab"
-            data-view="reactions"
-            data-src="/images/epilod-party/live-reactions.webp"
-            data-alt="Epilod Party Live Reactions view showing floating emoji reactions and translucent reaction picker dock"
-          >
-            <span class="tab-icon" aria-hidden="true">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M12 19.6C12 19.6 4.5 14.9 4.5 9.6C4.5 7.2 6.4 5.4 8.7 5.4C10.1 5.4 11.3 6.1 12 7.1C12.7 6.1 13.9 5.4 15.3 5.4C17.6 5.4 19.5 7.2 19.5 9.6C19.5 14.9 12 19.6 12 19.6Z"
-                  fill="currentColor"
-                  fill-opacity="0.16"
-                  stroke="currentColor"
-                  stroke-width="1.65"
-                  stroke-linejoin="round"
-                />
-                <path d="M7.6 9.5C7.6 8.3 8.4 7.6 9.5 7.6" stroke="#DDD6FE" stroke-width="1.4" stroke-linecap="round" />
-              </svg>
-            </span>
-            <span>Reactions</span>
-          </button>
-
-          <button
-            type="button"
-            role="tab"
-            aria-selected="false"
-            class="view-tab"
-            data-view="episodes"
-            data-src="/images/epilod-party/episodes.webp"
-            data-alt="Epilod Party season episodes queue showing friends synced on Episode 4 with Auto-Next and Follow controls"
-          >
-            <span class="tab-icon" aria-hidden="true">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                <rect x="6" y="3.5" width="12" height="2.4" rx="1.2" fill="#DDD6FE" fill-opacity="0.55" />
-                <rect x="4.2" y="6.8" width="15.6" height="2.6" rx="1.3" fill="#C4B5FD" fill-opacity="0.75" />
-                <rect x="2.8" y="9.8" width="18.4" height="11" rx="3.2" fill="currentColor" fill-opacity="0.16" stroke="currentColor" stroke-width="1.55" />
-                <path d="M10.4 12.8L14.8 15.3L10.4 17.8V12.8Z" fill="#DDD6FE" />
-              </svg>
-            </span>
-            <span>Episodes</span>
-          </button>
-
-          <button
-            type="button"
-            role="tab"
-            aria-selected="false"
-            class="view-tab"
-            data-view="invite"
-            data-src="/images/epilod-party/invite-pass.webp"
-            data-alt="Epilod Party 6-digit invite code host and join liquid glass sheet"
-          >
-            <span class="tab-icon" aria-hidden="true">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                <circle cx="8.6" cy="14.6" r="3.9" fill="#A78BFA" fill-opacity="0.20" stroke="#DDD6FE" stroke-width="1.65" />
-                <path d="M11.6 11.6L18.6 4.6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
-                <path d="M16.2 7L18.8 9.6" stroke="#C4B5FD" stroke-width="1.75" stroke-linecap="round" />
-              </svg>
-            </span>
-            <span>Invite Pass</span>
-          </button>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="quiet-footer liquid-reveal">
-    <a href="https://ahmednazif.com/" class="footer-link">ahmednazif.com</a>
-    <span aria-hidden="true">·</span>
     <a
       href="https://github.com/ahmednazief/epilod-party"
       target="_blank"
       rel="noopener noreferrer"
-      class="footer-link"
+      class="top-link"
     >
-      <!-- Custom Crystal Code Crest -->
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <path
           d="M8.5 7.5L4 12L8.5 16.5"
           stroke="currentColor"
@@ -1334,6 +887,105 @@
       </svg>
       <span>GitHub</span>
     </a>
+  </header>
+
+  <main class="page-shell">
+    <div class="hero-head">
+      <h1 class="hero-title liquid-reveal">Watch movies together.</h1>
+      <p class="hero-subtitle liquid-reveal">
+        A local media player for Windows that keeps you and your friends in sync.
+      </p>
+    </div>
+
+    <section class="cta-block" aria-label="Download">
+      <a
+        id="downloadBtn"
+        href="https://github.com/ahmednazief/epilod-party/releases/latest/download/Epilod.Party.Setup.exe"
+        download="Epilod.Party.Setup.exe"
+        class="ep-liquid-download liquid-reveal"
+        style="--delay: 165ms"
+        aria-label="Download Epilod Party for Windows"
+      >
+        <span class="btn-sheen" aria-hidden="true"></span>
+
+        <!-- Custom Amethyst Crystal Download Droplet -->
+        <span class="dl-orb-badge" id="dlIconSlot" aria-hidden="true">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none">
+            <g class="dl-arrow-stem">
+              <path
+                d="M12 4.2V14.8"
+                stroke="#FFFFFF"
+                stroke-width="2.05"
+                stroke-linecap="round"
+              />
+              <path
+                d="M7.9 11.1L12 15.3L16.1 11.1"
+                stroke="#EDE9FE"
+                stroke-width="2.05"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </g>
+            <path
+              d="M4.8 16.4V17.7C4.8 18.86 5.74 19.8 6.9 19.8H17.1C18.26 19.8 19.2 18.86 19.2 17.7V16.4"
+              stroke="#DDD6FE"
+              stroke-opacity="0.92"
+              stroke-width="1.85"
+              stroke-linecap="round"
+            />
+          </svg>
+        </span>
+
+        <span class="dl-label" id="dlLabel">Download for Windows</span>
+      </a>
+
+      <div class="cta-meta num liquid-reveal" style="--delay: 205ms" aria-live="polite">
+        <span class="meta-os">
+          <!-- Custom Beveled Crystal Windows Crest -->
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3.2" y="3.2" width="8" height="8" rx="1.8" fill="#EDE9FE" fill-opacity="0.88" />
+            <rect x="12.8" y="3.2" width="8" height="8" rx="1.8" fill="#DDD6FE" fill-opacity="0.72" />
+            <rect x="3.2" y="12.8" width="8" height="8" rx="1.8" fill="#C4B5FD" fill-opacity="0.72" />
+            <rect x="12.8" y="12.8" width="8" height="8" rx="1.8" fill="#A78BFA" fill-opacity="0.88" />
+          </svg>
+          <span>Windows 10 &amp; 11</span>
+        </span>
+        <span class="meta-dot" aria-hidden="true">·</span>
+        <span class="beta-indicator">Public Beta</span>
+        <span class="meta-dot" aria-hidden="true">·</span>
+        <span id="dlVersionChip">v0.1.0</span>
+        <span class="meta-dot" aria-hidden="true">·</span>
+        <span id="metaSize">39.5 MB</span>
+      </div>
+    </section>
+
+    <!-- Big App Screenshot Showcase -->
+    <section class="showcase-stage liquid-reveal-stage" aria-label="Epilod Party Desktop App Preview">
+      <div class="showcase-halo" aria-hidden="true"></div>
+
+      <div
+        id="screenshotFrame"
+        class="screenshot-frame"
+        role="button"
+        tabindex="0"
+        aria-label="Inspect full-size Epilod Party screenshot"
+      >
+        <img
+          id="showcaseImg"
+          src="/images/epilod-party/watch-party.webp"
+          alt="Epilod Party desktop app playing a sci-fi film in sync with four friends inside a Smoked-Amethyst liquid glass interface"
+          width="2040"
+          height="1230"
+          decoding="async"
+          class="screenshot-img"
+          draggable="false"
+        />
+      </div>
+    </section>
+  </main>
+
+  <footer class="quiet-footer">
+    <a href="https://ahmednazif.com/" class="footer-link">ahmednazif.com</a>
     <span aria-hidden="true">·</span>
     <a
       id="releaseNotesLink"
@@ -1383,7 +1035,7 @@
           },
           { once: true }
         );
-        window.setTimeout(settle, 1600);
+        window.setTimeout(settle, 1500);
       });
 
       const REPO = "ahmednazief/epilod-party";
@@ -1400,7 +1052,7 @@
 
       const originalIconMarkup = dlIconSlot.innerHTML;
       const checkIconMarkup =
-        '<svg width="21" height="21" viewBox="0 0 24 24" fill="none">' +
+        '<svg width="19" height="19" viewBox="0 0 24 24" fill="none">' +
         '<path d="M5.2 12.6L9.8 17.2L18.8 7.4" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>' +
         '<path d="M9.8 17.2L18.8 7.4" stroke="#DDD6FE" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>' +
         "</svg>";
@@ -1496,21 +1148,26 @@
       void syncLatestRelease();
 
       /* -------------------------------------------------------------------
-         Pointer-tracked specular caustic & liquid click shockwave on CTA
+         Pointer-tracked specular rim tilt + caustic & click ripple on CTA
          ------------------------------------------------------------------- */
       let rafPending = false;
       let nextMx = "50%";
       let nextMy = "50%";
+      let nextAngle = "132deg";
 
       downloadBtn.addEventListener("pointermove", function (e) {
         const rect = downloadBtn.getBoundingClientRect();
-        nextMx = (((e.clientX - rect.left) / rect.width) * 100).toFixed(1) + "%";
-        nextMy = (((e.clientY - rect.top) / rect.height) * 100).toFixed(1) + "%";
+        const px = (e.clientX - rect.left) / rect.width;
+        const py = (e.clientY - rect.top) / rect.height;
+        nextMx = (px * 100).toFixed(1) + "%";
+        nextMy = (py * 100).toFixed(1) + "%";
+        nextAngle = Math.round(108 + (px - 0.5) * 44) + "deg";
         if (!rafPending) {
           rafPending = true;
           requestAnimationFrame(function () {
             downloadBtn.style.setProperty("--mx", nextMx);
             downloadBtn.style.setProperty("--my", nextMy);
+            downloadBtn.style.setProperty("--rim-angle", nextAngle);
             rafPending = false;
           });
         }
@@ -1519,6 +1176,7 @@
       downloadBtn.addEventListener("pointerleave", function () {
         downloadBtn.style.setProperty("--mx", "50%");
         downloadBtn.style.setProperty("--my", "50%");
+        downloadBtn.style.setProperty("--rim-angle", "132deg");
       });
 
       let feedbackTimer = null;
@@ -1552,141 +1210,10 @@
       });
 
       /* -------------------------------------------------------------------
-         Liquid-Droplet Screenshot Switcher
-         ------------------------------------------------------------------- */
-      const tabsContainer = document.getElementById("viewTabs");
-      const tabs = Array.from(tabsContainer.querySelectorAll('[role="tab"]'));
-      const dropletTrack = document.getElementById("dropletTrack");
-      const dropletCore = document.getElementById("dropletCore");
-      const showcaseImg = document.getElementById("showcaseImg");
-
-      let morphTimer = null;
-      let swapTimer = null;
-
-      function positionDroplet(targetTab, animate) {
-        if (!targetTab) return;
-        if (!animate) {
-          dropletTrack.style.transition = "none";
-        }
-        dropletTrack.style.width = targetTab.offsetWidth + "px";
-        dropletTrack.style.transform = "translateX(" + targetTab.offsetLeft + "px)";
-        if (!animate) {
-          void dropletTrack.offsetWidth;
-          dropletTrack.style.transition = "";
-        }
-      }
-
-      function selectTab(nextTab) {
-        const currentTab = tabs.find(function (t) {
-          return t.getAttribute("aria-selected") === "true";
-        });
-        if (!nextTab || currentTab === nextTab) return;
-
-        tabs.forEach(function (t) {
-          t.setAttribute("aria-selected", t === nextTab ? "true" : "false");
-        });
-
-        positionDroplet(nextTab, true);
-        dropletCore.setAttribute("data-morphing", "true");
-        if (morphTimer) window.clearTimeout(morphTimer);
-        morphTimer = window.setTimeout(function () {
-          dropletCore.removeAttribute("data-morphing");
-        }, 190);
-
-        const nextSrc = nextTab.getAttribute("data-src");
-        const nextAlt = nextTab.getAttribute("data-alt") || "";
-        if (!nextSrc) return;
-
-        if (swapTimer) window.clearTimeout(swapTimer);
-        showcaseImg.classList.add("is-swapping");
-
-        const loader = new Image();
-        let swapped = false;
-        const commitSwap = function () {
-          if (swapped) return;
-          swapped = true;
-          showcaseImg.src = nextSrc;
-          showcaseImg.alt = nextAlt;
-          requestAnimationFrame(function () {
-            showcaseImg.classList.remove("is-swapping");
-          });
-        };
-
-        loader.onload = function () {
-          swapTimer = window.setTimeout(commitSwap, 110);
-        };
-        loader.onerror = commitSwap;
-        loader.src = nextSrc;
-        if (loader.complete) {
-          swapTimer = window.setTimeout(commitSwap, 110);
-        }
-      }
-
-      tabs.forEach(function (tab, index) {
-        tab.addEventListener("click", function () {
-          selectTab(tab);
-        });
-        tab.addEventListener("keydown", function (e) {
-          if (e.key === "ArrowRight") {
-            e.preventDefault();
-            const next = tabs[(index + 1) % tabs.length];
-            next.focus();
-            selectTab(next);
-          } else if (e.key === "ArrowLeft") {
-            e.preventDefault();
-            const prev = tabs[(index - 1 + tabs.length) % tabs.length];
-            prev.focus();
-            selectTab(prev);
-          }
-        });
-      });
-
-      const initialActive = tabs.find(function (t) {
-        return t.getAttribute("aria-selected") === "true";
-      });
-      positionDroplet(initialActive, false);
-
-      let lastTrayWidth = tabsContainer.offsetWidth;
-      window.addEventListener("resize", function () {
-        const nextW = tabsContainer.offsetWidth;
-        if (Math.abs(nextW - lastTrayWidth) >= 2) {
-          lastTrayWidth = nextW;
-          const active = tabs.find(function (t) {
-            return t.getAttribute("aria-selected") === "true";
-          });
-          positionDroplet(active, false);
-        }
-      });
-
-      /* Gently warm non-default screenshot WebPs once page settles */
-      window.addEventListener("load", function () {
-        if (document.fonts && document.fonts.ready) {
-          document.fonts.ready.then(function () {
-            const newW = tabsContainer.offsetWidth;
-            if (Math.abs(newW - lastTrayWidth) >= 2) {
-              lastTrayWidth = newW;
-              const active = tabs.find(function (t) {
-                return t.getAttribute("aria-selected") === "true";
-              });
-              positionDroplet(active, false);
-            }
-          });
-        }
-        window.setTimeout(function () {
-          tabs.forEach(function (tab) {
-            if (tab.getAttribute("aria-selected") !== "true") {
-              const img = new Image();
-              img.src = tab.getAttribute("data-src");
-            }
-          });
-        }, 900);
-      });
-
-      /* -------------------------------------------------------------------
          Lightbox Inspection
          ------------------------------------------------------------------- */
       const screenshotFrame = document.getElementById("screenshotFrame");
-      const expandBtn = document.getElementById("expandBtn");
+      const showcaseImg = document.getElementById("showcaseImg");
       const lightbox = document.getElementById("lightbox");
       const lightboxImg = document.getElementById("lightboxImg");
       const lightboxClose = document.getElementById("lightboxClose");
@@ -1705,10 +1232,6 @@
       }
 
       screenshotFrame.addEventListener("click", openLightbox);
-      expandBtn.addEventListener("click", function (e) {
-        e.stopPropagation();
-        openLightbox();
-      });
       screenshotFrame.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
