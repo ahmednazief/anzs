@@ -1,0 +1,1879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BYE6X0HX68"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BYE6X0HX68');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#7c3aed" />
+  <title>How Epilod Party Works — Local Files, 6-Digit Rooms, Synced Playback</title>
+  <meta
+    name="description"
+    content="How Epilod Party works: everyone opens their own local movie or show file on Windows, shares a 6-digit pass code, and watches frame-for-frame together."
+  />
+  <link rel="canonical" href="https://ahmednazif.com/epilod-party/how-it-works" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ahmednazif.com/epilod-party/how-it-works" />
+  <meta property="og:title" content="How Epilod Party Works — Local Files, 6-Digit Rooms, Synced Playback" />
+  <meta
+    property="og:description"
+    content="Everyone opens their own downloaded video file, shares a 6-digit pass code, and watches frame-for-frame together with zero uploads."
+  />
+  <meta property="og:image" content="https://ahmednazif.com/images/epilod-party/og-preview.jpg" />
+
+  <link rel="icon" type="image/png" href="/images/epilod-party/app-icon.png" />
+  <link rel="apple-touch-icon" href="/images/epilod-party/app-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112.5..125,700..900&family=Inter:opsz,wght@14..32,400..700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --black: #000000;
+      --white: #ffffff;
+      --muted-white: rgba(255, 255, 255, 0.72);
+      --subtle-white: rgba(255, 255, 255, 0.52);
+
+      --amethyst: #7c3aed;
+      --amethyst-hover: #6d28d9;
+      --amethyst-bright: #8b5cf6;
+      --amethyst-soft: #c4b5fd;
+      --amethyst-ice: #ddd6fe;
+      --amethyst-deep: #4c1d95;
+      --amethyst-midnight: #25134d;
+
+      --btn-white-hover: #c7c8ce;
+      --font-display: "Archivo", "Inter", system-ui, sans-serif;
+      --font-body: "Inter", "Segoe UI Variable Display", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      background-color: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      color-scheme: dark;
+    }
+
+    body {
+      background-color: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      color: inherit;
+      background: none;
+      border: 0;
+      cursor: pointer;
+    }
+
+    ul, li {
+      list-style: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .num {
+      font-variant-numeric: tabular-nums lining-nums;
+      font-feature-settings: "tnum" 1, "lnum" 1;
+    }
+
+    *[tabindex]:focus-visible,
+    a:focus-visible,
+    button:focus-visible,
+    summary:focus-visible {
+      outline: 2px solid var(--amethyst-bright);
+      outline-offset: 3px;
+    }
+
+    /* =====================================================================
+       Top Navigation (Natural Flow - Scrolls Off Screen With Page)
+       ===================================================================== */
+    .nav-scrim {
+      position: fixed;
+      inset: 0;
+      z-index: 90;
+      background: rgba(0, 0, 0, 0.75);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+      pointer-events: none;
+    }
+
+    .nav-scrim.is-open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .site-nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: 80px;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-wrapper {
+      width: 100%;
+      max-width: 1360px;
+      height: 80px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .nav-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      height: 40px;
+      padding: 0 6px;
+      border-radius: 16px;
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .nav-brand img {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      flex-shrink: 0;
+    }
+
+    .nav-menu-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-link,
+    .nav-dd-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      height: 39px;
+      padding: 0 14px;
+      border-radius: 14px;
+      font-size: 0.96rem;
+      font-weight: 500;
+      color: var(--white);
+      white-space: nowrap;
+      transition: background-color 0.22s ease;
+    }
+
+    .nav-link:hover,
+    .nav-dd-trigger:hover,
+    .nav-dd.is-open .nav-dd-trigger {
+      background-color: var(--amethyst);
+    }
+
+    .nav-dd {
+      position: relative;
+    }
+
+    .nav-dd-chevron {
+      width: 16px;
+      height: 16px;
+      opacity: 0.65;
+      transition: transform 0.22s ease, opacity 0.22s ease;
+    }
+
+    .nav-dd.is-open .nav-dd-chevron {
+      transform: rotate(180deg);
+      opacity: 1;
+    }
+
+    .nav-dd-panel {
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 50%;
+      transform: translateX(-50%) translateY(-6px);
+      min-width: 248px;
+      padding: 24px;
+      border-radius: 32px;
+      background-color: var(--amethyst);
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.55);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s ease;
+    }
+
+    .nav-dd.is-open .nav-dd-panel {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .nav-dd-heading {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 12px;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-dd-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .nav-dd-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.94rem;
+      font-weight: 500;
+      color: var(--white);
+      padding: 4px 0;
+      transition: opacity 0.16s ease, transform 0.16s ease;
+    }
+
+    .nav-dd-item:hover {
+      opacity: 0.85;
+      transform: translateX(2px);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .button-nav {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      height: 39px;
+      padding: 0 16px;
+      border-radius: 16px;
+      background-color: var(--white);
+      color: var(--black);
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+      transition: background-color 0.3s ease;
+    }
+
+    .button-nav:hover {
+      background-color: var(--btn-white-hover);
+    }
+
+    .nav-burger-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background-color: rgba(255, 255, 255, 0.16);
+      color: var(--white);
+      transition: background-color 0.2s ease;
+    }
+
+    .nav-burger-btn:hover {
+      background-color: rgba(255, 255, 255, 0.25);
+    }
+
+    /* Mobile Drawer */
+    .mobile-drawer {
+      position: fixed;
+      inset: 0;
+      z-index: 120;
+      background: linear-gradient(180deg, var(--amethyst) 0%, var(--amethyst-deep) 55%, #160a2c 100%);
+      padding: 20px 24px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+      overflow-y: auto;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: opacity 0.24s ease, transform 0.24s ease, visibility 0.24s ease;
+    }
+
+    .mobile-drawer.is-open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .mobile-drawer-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 12px;
+    }
+
+    .mobile-drawer-close {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.16);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+    }
+
+    .mobile-drawer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .mobile-drawer-link {
+      display: block;
+      padding: 14px 4px;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--white);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    .mobile-drawer-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .mobile-drawer-btn {
+      width: 100%;
+      min-height: 48px;
+      padding: 12px 18px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-weight: 600;
+      font-size: 0.96rem;
+    }
+
+    .mobile-drawer-btn--primary {
+      background: var(--white);
+      color: var(--black);
+    }
+
+    .mobile-drawer-btn--ghost {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--white);
+    }
+
+    /* =====================================================================
+       Hero (Discord Editorial Style — Open Typography, Zero Card Boxes)
+       ===================================================================== */
+    .guide-hero {
+      position: relative;
+      text-align: center;
+      background-color: var(--black);
+      background-image:
+        radial-gradient(64% 52% at 50% 8%, rgba(139, 92, 246, 0.42) 0%, rgba(124, 58, 237, 0.24) 44%, rgba(76, 29, 149, 0.1) 72%, rgba(0, 0, 0, 0) 100%),
+        linear-gradient(180deg, #27114e 0%, #170a31 46%, #080412 78%, #000000 98%);
+      background-position: 50% 0;
+      background-repeat: no-repeat;
+      padding: 164px 40px 88px;
+      display: flex;
+      justify-content: center;
+      overflow-x: clip;
+    }
+
+    .hero-inner {
+      position: relative;
+      width: 100%;
+      max-width: 924px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .heading-h1 {
+      color: var(--white);
+      font-family: var(--font-display);
+      font-variation-settings: "wdth" 122, "wght" 800;
+      font-weight: 800;
+      font-size: clamp(2.4rem, 5.2vw, 4.5rem);
+      line-height: 0.94;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .hero-subtitle {
+      color: rgba(255, 255, 255, 0.9);
+      font-family: var(--font-body);
+      font-size: clamp(1.04rem, 1.4vw, 1.2rem);
+      font-weight: 400;
+      line-height: 1.55;
+      max-width: 680px;
+      text-align: center;
+    }
+
+    .hero-subtitle strong {
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    .hero-actions {
+      margin-top: 34px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .btn-primary-download {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      height: 48px;
+      padding: 0 24px;
+      border-radius: 12px;
+      background-color: var(--amethyst);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 500;
+      white-space: nowrap;
+      box-shadow: 0 14px 36px rgba(124, 58, 237, 0.35);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .btn-primary-download:hover {
+      background-color: var(--amethyst-hover);
+      box-shadow: 0 18px 42px rgba(124, 58, 237, 0.5);
+    }
+
+    .btn-white {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 12px 22px;
+      border-radius: 12px;
+      background-color: var(--white);
+      color: var(--black);
+      font-family: var(--font-body);
+      font-size: 0.98rem;
+      font-weight: 500;
+      line-height: 1.2;
+      white-space: nowrap;
+      transition: background-color 0.25s ease;
+    }
+
+    .btn-white:hover {
+      background-color: var(--btn-white-hover);
+    }
+
+    /* =====================================================================
+       Interactive Step Switcher (Teleparty Pattern in Discord Dark Theme)
+       ===================================================================== */
+    .walkthrough-section {
+      position: relative;
+      z-index: 20;
+      background-color: var(--black);
+      padding: 64px 40px 104px;
+    }
+
+    .section-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .walkthrough-grid {
+      display: grid;
+      grid-template-columns: 360px minmax(0, 1fr);
+      gap: 64px;
+      align-items: start;
+    }
+
+    .heading-h2 {
+      color: var(--white);
+      font-family: var(--font-display);
+      font-variation-settings: "wdth" 122, "wght" 800;
+      font-weight: 800;
+      font-size: clamp(1.95rem, 3.2vw, 2.75rem);
+      line-height: 0.96;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+    }
+
+    .step-rail-title {
+      margin-bottom: 28px;
+    }
+
+    .step-tabs {
+      display: flex;
+      flex-direction: column;
+      border-left: 2px solid rgba(255, 255, 255, 0.14);
+      margin-bottom: 32px;
+    }
+
+    .step-tab {
+      position: relative;
+      text-align: left;
+      padding: 15px 0 15px 22px;
+      margin-left: -2px;
+      border-left: 2px solid transparent;
+      font-size: 1.06rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.45);
+      transition: color 0.2s ease, border-color 0.2s ease;
+      line-height: 1.35;
+    }
+
+    .step-tab:hover {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .step-tab[aria-selected="true"] {
+      color: var(--white);
+      font-weight: 700;
+      border-left-color: var(--amethyst-bright);
+    }
+
+    /* Right Panel: Unboxed Screenshot + Direct Editorial Text Below */
+    .step-stage {
+      min-width: 0;
+    }
+
+    .step-media-wrap {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #0b0714;
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: zoom-in;
+      margin-bottom: 28px;
+      box-shadow: 0 28px 72px rgba(0, 0, 0, 0.72);
+    }
+
+    .step-media-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .step-detail-title {
+      font-family: var(--font-body);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--amethyst-soft);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .step-detail-copy {
+      font-size: 1.04rem;
+      line-height: 1.65;
+      color: rgba(255, 255, 255, 0.84);
+      max-width: 720px;
+    }
+
+    .step-detail-copy strong {
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    /* =====================================================================
+       Open Hairline Q&A Section (No Boxed Cards — Clean Dividers Only)
+       ===================================================================== */
+    .rules-section {
+      position: relative;
+      z-index: 20;
+      background-color: var(--black);
+      padding: 40px 40px 104px;
+    }
+
+    .rules-header {
+      max-width: 680px;
+      margin-bottom: 44px;
+    }
+
+    .rules-header p {
+      margin-top: 14px;
+      font-size: 1.02rem;
+      color: rgba(255, 255, 255, 0.74);
+      line-height: 1.55;
+    }
+
+    .rules-list {
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .rule-item {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .rule-item summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 26px 4px;
+      font-size: 1.16rem;
+      font-weight: 700;
+      color: var(--white);
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.18s ease;
+    }
+
+    .rule-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .rule-item summary:hover {
+      color: var(--amethyst-ice);
+    }
+
+    .rule-chevron {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      color: rgba(255, 255, 255, 0.65);
+      transition: transform 0.22s ease, color 0.22s ease;
+    }
+
+    .rule-item[open] .rule-chevron {
+      transform: rotate(180deg);
+      color: var(--amethyst-bright);
+    }
+
+    .rule-answer {
+      padding: 0 40px 28px 4px;
+      font-size: 1.02rem;
+      line-height: 1.65;
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 860px;
+    }
+
+    .rule-answer strong {
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    /* =====================================================================
+       Lower Banner + Footer (Identical to Main Download Page)
+       ===================================================================== */
+    .download-banner {
+      position: relative;
+      z-index: 20;
+      text-align: center;
+      background-color: var(--black);
+      background-image:
+        radial-gradient(66% 72% at 50% 62%, rgba(124, 58, 237, 0.32) 0%, rgba(76, 29, 149, 0.22) 44%, rgba(30, 12, 66, 0.12) 68%, rgba(0, 0, 0, 0) 100%),
+        linear-gradient(180deg, #000000 0%, #0d061c 38%, #271054 78%, #4c1d95 100%);
+      padding: 120px 40px 156px;
+    }
+
+    .banner-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .banner-h2 {
+      color: var(--white);
+      font-family: var(--font-display);
+      font-variation-settings: "wdth" 122, "wght" 800;
+      font-weight: 800;
+      font-size: clamp(2.15rem, 4.4vw, 3.25rem);
+      line-height: 0.98;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .banner-copy {
+      color: var(--white);
+      font-size: 1.06rem;
+      line-height: 1.5;
+      max-width: 560px;
+      margin-bottom: 34px;
+      opacity: 0.9;
+    }
+
+    .footer-amethyst {
+      position: relative;
+      z-index: 15;
+      background-color: var(--amethyst-deep);
+      background-image:
+        radial-gradient(65% 65% at 24% 100%, rgba(139, 92, 246, 0.45) 0%, rgba(124, 58, 237, 0) 64%),
+        linear-gradient(180deg, #4c1d95 0%, #6d28d9 48%, #7c3aed 100%);
+      padding-top: 84px;
+      overflow: hidden;
+    }
+
+    .footer-container {
+      width: 100%;
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0 40px 68px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .footer-brand-col {
+      grid-column: span 4;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .footer-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .footer-mark img {
+      width: 44px;
+      height: 44px;
+      border-radius: 11px;
+    }
+
+    .footer-label {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--muted-white);
+      margin-bottom: 10px;
+    }
+
+    .footer-platform-box {
+      width: min(314px, 100%);
+      height: 52px;
+      padding: 0 18px;
+      border-radius: 12px;
+      background-color: rgba(255, 255, 255, 0.14);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.94rem;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 28px;
+    }
+
+    .footer-socials {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .footer-social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      color: var(--white);
+      opacity: 0.92;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .footer-social-link:hover {
+      opacity: 1;
+      transform: translateY(-2px);
+    }
+
+    .footer-col {
+      grid-column: span 2;
+    }
+
+    .footer-col-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--muted-white);
+      margin-bottom: 16px;
+    }
+
+    .footer-accordion-btn {
+      display: none;
+    }
+
+    .footer-col-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-link {
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.4;
+      transition: text-decoration 0.15s ease;
+    }
+
+    .footer-link:hover {
+      text-decoration: underline;
+    }
+
+    .footer-wordmark-wrap {
+      width: 100%;
+      max-width: 1760px;
+      margin: 0 auto;
+      padding: 8px 24px 0;
+      line-height: 0;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .footer-wordmark-svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      transform: translateY(12%);
+    }
+
+    /* Lightbox Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0, 0, 0, 0.84);
+      -webkit-backdrop-filter: blur(22px);
+      backdrop-filter: blur(22px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.26s ease, visibility 0.26s ease;
+    }
+
+    .modal-backdrop[data-open="true"] {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-close {
+      position: fixed;
+      top: 22px;
+      right: 22px;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: var(--white);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 210;
+    }
+
+    .modal-close:hover {
+      background: var(--amethyst);
+    }
+
+    .lightbox-inner {
+      max-width: min(1240px, 94vw);
+      max-height: 90vh;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 36px 96px rgba(0, 0, 0, 0.9);
+    }
+
+    .lightbox-inner img {
+      max-width: 100%;
+      max-height: 88vh;
+      width: auto;
+      height: auto;
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 991px) {
+      .site-nav {
+        height: 64px;
+        padding: 0 20px;
+      }
+
+      .nav-wrapper {
+        height: 64px;
+        align-items: center;
+      }
+
+      .nav-menu-wrap,
+      .nav-actions .button-nav {
+        display: none;
+      }
+
+      .nav-burger-btn {
+        display: inline-flex;
+      }
+
+      .guide-hero {
+        padding: 118px 24px 56px;
+      }
+
+      .walkthrough-section,
+      .rules-section {
+        padding: 48px 24px 72px;
+      }
+
+      .walkthrough-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 36px;
+      }
+
+      .step-tabs {
+        margin-bottom: 24px;
+      }
+
+      .footer-container {
+        padding: 0 24px 48px;
+      }
+
+      .footer-brand-col {
+        grid-column: span 12;
+      }
+
+      .footer-col {
+        grid-column: span 6;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .heading-h1 {
+        font-size: clamp(2.05rem, 10vw, 2.9rem);
+      }
+
+      .heading-h2 {
+        font-size: clamp(1.65rem, 7.5vw, 2.2rem);
+      }
+
+      .rule-item summary {
+        font-size: 1.04rem;
+        padding: 20px 0;
+      }
+
+      .rule-answer {
+        padding: 0 8px 22px 0;
+      }
+
+      .download-banner {
+        padding: 96px 24px 128px;
+      }
+
+      .footer-amethyst {
+        padding-top: 56px;
+      }
+
+      .footer-col {
+        grid-column: span 12;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .footer-col-title {
+        display: none;
+      }
+
+      .footer-accordion-btn {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 0;
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--white);
+      }
+
+      .footer-accordion-btn svg {
+        width: 16px;
+        height: 16px;
+        transition: transform 0.2s ease;
+      }
+
+      .footer-col.is-open .footer-accordion-btn svg {
+        transform: rotate(180deg);
+      }
+
+      .footer-col-links {
+        display: none;
+        padding-bottom: 20px;
+      }
+
+      .footer-col.is-open .footer-col-links {
+        display: flex;
+      }
+    }
+
+    html.has-reveal [data-reveal] {
+      opacity: 0;
+      transform: translateY(20px);
+      transition:
+        opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    html.has-reveal [data-reveal].is-revealed {
+      opacity: 1;
+      transform: none;
+    }
+
+    .btn-primary-download:active,
+    .btn-white:active {
+      transform: translateY(1px);
+    }
+
+    .step-media-wrap img {
+      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .step-media-wrap:hover img {
+      transform: scale(1.015);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+
+      html.has-reveal [data-reveal] {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="navScrim" class="nav-scrim" aria-hidden="true"></div>
+
+  <header id="siteNav" class="site-nav">
+    <div class="nav-wrapper">
+      <a href="/epilod-party/" class="nav-brand" aria-label="Epilod Party Home">
+        <img src="/images/epilod-party/app-icon.png" alt="" width="28" height="28" draggable="false" />
+        <span>Epilod Party</span>
+      </a>
+
+      <nav class="nav-menu-wrap" aria-label="Primary">
+        <ul class="nav-menu">
+          <li><a href="/epilod-party/" class="nav-link">Download</a></li>
+          <li><a href="#steps" class="nav-link">How It Works</a></li>
+          <li><a href="#faq" class="nav-link">Rules &amp; Questions</a></li>
+          <li>
+            <div class="nav-dd" id="navResourcesDd">
+              <button
+                type="button"
+                class="nav-dd-trigger"
+                aria-expanded="false"
+                aria-controls="navResourcesPanel"
+              >
+                <span>Resources</span>
+                <svg class="nav-dd-chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M12 6L8 10L4 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </button>
+              <div id="navResourcesPanel" class="nav-dd-panel" role="menu">
+                <div class="nav-dd-heading">Epilod Party</div>
+                <div class="nav-dd-links">
+                  <a href="/epilod-party/" class="nav-dd-item">
+                    <span>Download Page</span>
+                    <span aria-hidden="true">←</span>
+                  </a>
+                  <a
+                    href="https://github.com/ahmednazief/epilod-party"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="nav-dd-item"
+                  >
+                    <span>GitHub Source</span>
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                  <a
+                    href="https://github.com/ahmednazief/epilod-party/releases"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="nav-dd-item"
+                  >
+                    <span>Release Notes</span>
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                  <a
+                    href="https://github.com/ahmednazief/epilod-party/blob/main/LICENSE"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="nav-dd-item"
+                  >
+                    <span>GPL-3.0 License</span>
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="/epilod-party/" class="button-nav">
+          Download App
+        </a>
+        <button
+          type="button"
+          id="mobileMenuBtn"
+          class="nav-burger-btn"
+          aria-label="Open Menu"
+          aria-expanded="false"
+          aria-controls="mobileDrawer"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 7H20M4 12H20M4 17H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div id="mobileDrawer" class="mobile-drawer" aria-hidden="true">
+    <div>
+      <div class="mobile-drawer-head">
+        <a href="/epilod-party/" class="nav-brand">
+          <img src="/images/epilod-party/app-icon.png" alt="" width="28" height="28" />
+          <span>Epilod Party</span>
+        </a>
+        <button type="button" id="mobileCloseBtn" class="mobile-drawer-close" aria-label="Close Menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+          </svg>
+        </button>
+      </div>
+      <div class="mobile-drawer-links">
+        <a href="/epilod-party/" class="mobile-drawer-link">Download Page</a>
+        <a href="#steps" class="mobile-drawer-link" data-close-drawer>4 Simple Steps</a>
+        <a href="#faq" class="mobile-drawer-link" data-close-drawer>Rules &amp; Questions</a>
+      </div>
+    </div>
+    <div class="mobile-drawer-actions">
+      <a
+        href="https://github.com/ahmednazief/epilod-party/releases/latest/download/Epilod.Party.Setup.exe"
+        download="Epilod.Party.Setup.exe"
+        class="mobile-drawer-btn mobile-drawer-btn--primary"
+        id="drawerDownloadBtn"
+      >
+        Download for Windows
+      </a>
+      <a href="/epilod-party/" class="mobile-drawer-btn mobile-drawer-btn--ghost">
+        Back to Overview
+      </a>
+    </div>
+  </div>
+
+  <main id="top">
+    <section class="guide-hero" aria-label="How Epilod Party Works">
+      <div class="hero-inner">
+        <h1 class="heading-h1">How Epilod Party Works</h1>
+        <p class="hero-subtitle">
+          <strong>Everyone opens the same show or movie downloaded on their own Windows PC.</strong> Connect with a 6-digit pass code and stay frame-locked together — with zero file uploads, full original quality, and no accounts.
+        </p>
+
+        <div class="hero-actions">
+          <a
+            id="heroDownloadBtn"
+            href="https://github.com/ahmednazief/epilod-party/releases/latest/download/Epilod.Party.Setup.exe"
+            download="Epilod.Party.Setup.exe"
+            class="btn-primary-download"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.707 10.708L16.293 9.29398L13 12.587V2.00098H11V12.587L7.70697 9.29398L6.29297 10.708L12 16.415L17.707 10.708Z" />
+              <path d="M18 18.001V20.001H6V18.001H4V20.001C4 21.103 4.897 22.001 6 22.001H18C19.104 22.001 20 21.103 20 20.001V18.001H18Z" />
+            </svg>
+            <span>Download for Windows</span>
+          </a>
+          <a href="#steps" class="btn-white">
+            <span>Walkthrough</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="steps" class="walkthrough-section" aria-label="How Epilod Party Works in 4 steps">
+      <div class="section-container">
+        <div class="walkthrough-grid" data-reveal>
+          <div>
+            <h2 class="heading-h2 step-rail-title">How it works</h2>
+            <div class="step-tabs" role="tablist" aria-label="Watch party steps">
+              <button type="button" class="step-tab" role="tab" aria-selected="true" data-step="0">
+                1. Open the same downloaded file
+              </button>
+              <button type="button" class="step-tab" role="tab" aria-selected="false" data-step="1">
+                2. Share a 6-digit pass code
+              </button>
+              <button type="button" class="step-tab" role="tab" aria-selected="false" data-step="2">
+                3. Watch frame-for-frame together
+              </button>
+              <button type="button" class="step-tab" role="tab" aria-selected="false" data-step="3">
+                4. Chat, react &amp; load subtitles
+              </button>
+            </div>
+
+            <a
+              id="stepsDownloadBtn"
+              href="https://github.com/ahmednazief/epilod-party/releases/latest/download/Epilod.Party.Setup.exe"
+              download="Epilod.Party.Setup.exe"
+              class="btn-primary-download"
+            >
+              Get Epilod Party
+            </a>
+          </div>
+
+          <div class="step-stage" role="tabpanel">
+            <div
+              id="stepMediaBtn"
+              class="step-media-wrap"
+              role="button"
+              tabindex="0"
+              data-lightbox-src="/images/epilod-party/episodes-full.webp"
+              data-lightbox-alt="Episode queue drawer over Stranger Things in Epilod Party"
+              aria-label="Inspect full-size screenshot"
+            >
+              <img
+                id="stepPreviewImg"
+                src="/images/epilod-party/episodes-full.webp"
+                alt="Episode queue drawer over Stranger Things in Epilod Party"
+                draggable="false"
+              />
+            </div>
+
+            <h3 id="stepHeading" class="step-detail-title">
+              1. Everyone opens their own local show or movie
+            </h3>
+            <p id="stepBody" class="step-detail-copy">
+              <strong>All friends in the watch party must have the movie or episode downloaded on their own PC before starting.</strong> Epilod Party plays straight from your Windows drive via embedded <strong>mpv</strong> (<code>.mkv</code>, <code>.mp4</code>, <code>.avi</code>) — drop an entire season folder once to load every episode with <strong>Auto-Next</strong> and <strong>Follow Party Episode</strong>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="rules-section" aria-label="Important rules and common questions">
+      <div class="section-container">
+        <div class="rules-header" data-reveal>
+          <h2 class="heading-h2">Rules &amp; common questions</h2>
+          <p>
+            Straight answers before you start your first watch room.
+          </p>
+        </div>
+
+        <div class="rules-list">
+          <details class="rule-item" open>
+            <summary>
+              <span>Do all viewers need to have the show or movie downloaded?</span>
+              <svg class="rule-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </summary>
+            <p class="rule-answer">
+              <strong>Yes — everyone must already have their own local copy saved on Windows.</strong> Epilod Party never uploads, stores, or streams video files across the internet. Your desktop <strong>mpv</strong> player renders the file straight from your local drive at full native quality, while Syncplay and peer connections only exchange timestamps, room status, chat, and reactions.
+            </p>
+          </details>
+
+          <details class="rule-item">
+            <summary>
+              <span>Do our video filenames or formats have to be identical?</span>
+              <svg class="rule-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </summary>
+            <p class="rule-answer">
+              <strong>No.</strong> One viewer can load a <code>.mkv</code> encode while another loads an <code>.mp4</code> with a different filename. As long as both files share the <strong>same cut and runtime</strong> (no extra extended scenes or trimmed intros), playback stays locked to the exact frame.
+            </p>
+          </details>
+
+          <details class="rule-item">
+            <summary>
+              <span>Do friends need to sign up or log in to join a room?</span>
+              <svg class="rule-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </summary>
+            <p class="rule-answer">
+              <strong>No accounts or logins exist.</strong> Set a display name and avatar inside Epilod Party, click <strong>Host a New Room</strong>, and share your <strong>6-digit pass code</strong> (with optional password). Rooms connect over <code>STARTTLS</code> using public Syncplay servers or any custom Syncplay endpoint.
+            </p>
+          </details>
+
+          <details class="rule-item">
+            <summary>
+              <span>Can the host control pausing, seeking, and episode changes?</span>
+              <svg class="rule-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </summary>
+            <p class="rule-answer">
+              <strong>Yes.</strong> Switch on <strong>Host Control</strong> when starting a room if you only want yourself (and appointed admins) pausing, seeking forward, or advancing the party via <strong>Follow Party Episode</strong>. Leave it off if everyone should be free to control playback.
+            </p>
+          </details>
+
+          <details class="rule-item">
+            <summary>
+              <span>Can everyone use their own subtitles and audio tracks?</span>
+              <svg class="rule-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </summary>
+            <p class="rule-answer">
+              <strong>Yes — subtitles and audio tracks stay private per screen.</strong> Load any local <code>.srt</code> or <code>.ass</code> file (auto-decoded for <strong>Arabic Windows-1256</strong>, UTF-8, and more), press <strong>S</strong> / <strong>A</strong> to switch tracks, and run built-in speech-envelope <strong>Auto-Sync</strong> if timing differs slightly from your video release.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="download-banner" aria-label="Download Epilod Party">
+      <div class="banner-inner" data-reveal>
+        <h2 class="banner-h2">Ready for movie night?</h2>
+        <p class="banner-copy">
+          Grab the Windows installer (<span class="num" id="liveVersion">v0.1.3</span>), open a local movie, and send your 6-digit pass code to friends.
+        </p>
+        <div class="hero-actions">
+          <a
+            id="bannerDownloadBtn"
+            href="https://github.com/ahmednazief/epilod-party/releases/latest/download/Epilod.Party.Setup.exe"
+            download="Epilod.Party.Setup.exe"
+            class="btn-primary-download"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.707 10.708L16.293 9.29398L13 12.587V2.00098H11V12.587L7.70697 9.29398L6.29297 10.708L12 16.415L17.707 10.708Z" />
+              <path d="M18 18.001V20.001H6V18.001H4V20.001C4 21.103 4.897 22.001 6 22.001H18C19.104 22.001 20 21.103 20 20.001V18.001H18Z" />
+            </svg>
+            <span>Download Windows Setup</span>
+          </a>
+          <a href="/epilod-party/" class="btn-white">
+            <span>View Full Feature Tour</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-amethyst">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <a href="/epilod-party/" class="footer-mark" aria-label="Epilod Party Home">
+            <img src="/images/epilod-party/app-icon.png" alt="" width="44" height="44" draggable="false" />
+          </a>
+
+          <div class="footer-label">Platform &amp; Channel</div>
+          <div class="footer-platform-box">
+            <span>Windows 10 &amp; 11 (x64)</span>
+            <span class="num" id="footerVersionTag">v0.1.3</span>
+          </div>
+
+          <div class="footer-socials">
+            <a
+              href="https://github.com/ahmednazief/epilod-party"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-social-link"
+              aria-label="GitHub Repository"
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+              </svg>
+            </a>
+            <a
+              href="https://github.com/ahmednazief/epilod-party/releases"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-social-link"
+              aria-label="GitHub Releases"
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 3V15M12 15L7 10M12 15L17 10M5 19H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+            <a
+              href="https://ahmednazif.com/"
+              class="footer-social-link"
+              aria-label="Ahmed Nazif Portfolio"
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" />
+                <path d="M3 12H21M12 3C14.5 5.8 15.8 8.8 15.8 12C15.8 15.2 14.5 18.2 12 21C9.5 18.2 8.2 15.2 8.2 12C8.2 8.8 9.5 5.8 12 3Z" stroke="currentColor" stroke-width="1.8" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">Guide</div>
+          <button type="button" class="footer-accordion-btn" aria-expanded="false">
+            <span>Guide</span>
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <div class="footer-col-links">
+            <a href="#steps" class="footer-link">4-Step Guide</a>
+            <a href="#faq" class="footer-link">Rules &amp; Questions</a>
+            <a href="/epilod-party/" class="footer-link">Download Page</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">App Pages</div>
+          <button type="button" class="footer-accordion-btn" aria-expanded="false">
+            <span>App Pages</span>
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <div class="footer-col-links">
+            <a href="/epilod-party/#playback" class="footer-link">Playback &amp; Queues</a>
+            <a href="/epilod-party/#rooms" class="footer-link">Instant Rooms</a>
+            <a href="/epilod-party/#reactions" class="footer-link">Live Reactions</a>
+            <a href="/epilod-party/#preferences" class="footer-link">Preferences</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">Resources</div>
+          <button type="button" class="footer-accordion-btn" aria-expanded="false">
+            <span>Resources</span>
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <div class="footer-col-links">
+            <a
+              href="https://github.com/ahmednazief/epilod-party"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-link"
+            >
+              Source Code
+            </a>
+            <a
+              href="https://github.com/ahmednazief/epilod-party/releases"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-link"
+            >
+              Release Notes
+            </a>
+            <a
+              href="https://github.com/ahmednazief/epilod-party/issues"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-link"
+            >
+              Report an Issue
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">Creator &amp; Legal</div>
+          <button type="button" class="footer-accordion-btn" aria-expanded="false">
+            <span>Creator &amp; Legal</span>
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <div class="footer-col-links">
+            <a href="https://ahmednazif.com/" class="footer-link">ahmednazif.com</a>
+            <a href="https://ahmednazif.com/boise" class="footer-link">Boise</a>
+            <a href="https://ahmednazif.com/voral" class="footer-link">Voral</a>
+            <a
+              href="https://github.com/ahmednazief/epilod-party/blob/main/LICENSE"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-link"
+            >
+              GPL-3.0 License
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-wordmark-wrap" aria-hidden="true">
+      <svg class="footer-wordmark-svg" viewBox="0 0 1320 230" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <text
+          x="50%"
+          y="206"
+          text-anchor="middle"
+          fill="#ffffff"
+          font-family="Archivo, Inter, system-ui, sans-serif"
+          font-weight="900"
+          font-size="270"
+          letter-spacing="10"
+        >EPILOD</text>
+      </svg>
+    </div>
+  </footer>
+
+  <!-- Fullscreen Lightbox Modal -->
+  <div id="lightboxModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-label="Screenshot preview">
+    <button type="button" class="modal-close" id="lightboxCloseBtn" aria-label="Close preview">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+      </svg>
+    </button>
+    <div class="lightbox-inner">
+      <img id="lightboxImg" src="" alt="" />
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const REPO = "ahmednazief/epilod-party";
+      const RELEASES_API = "https://api.github.com/repos/" + REPO + "/releases?per_page=6";
+      const CACHE_KEY = "epilod_party_releases_v2";
+      const CACHE_TTL_MS = 10 * 60 * 1000;
+
+      const STEPS = [
+        {
+          img: "/images/epilod-party/episodes-full.webp",
+          alt: "Episode queue drawer over Stranger Things in Epilod Party",
+          title: "1. Everyone opens their own local show or movie",
+          html: "<strong>All friends in the watch party must have the movie or episode downloaded on their own PC before starting.</strong> Epilod Party plays straight from your Windows drive via embedded <strong>mpv</strong> (<code>.mkv</code>, <code>.mp4</code>, <code>.avi</code>) — drop an entire season folder once to load every episode with <strong>Auto-Next</strong> and <strong>Follow Party Episode</strong>."
+        },
+        {
+          img: "/images/epilod-party/room-pass-card.webp",
+          alt: "Epilod Party 6-digit invite pass card showing room creation and quick join",
+          title: "2. Create a room and share the 6-digit pass code",
+          html: "<strong>Zero accounts or login walls.</strong> Pick a display name, click <strong>Host a New Room</strong>, and send the generated <strong>6-digit pass code</strong> (and optional room password) to friends. Turn on <strong>Host Control</strong> if only the host or admins should control pausing and seeking."
+        },
+        {
+          img: "/images/epilod-party/watch-party.webp",
+          alt: "Epilod Party theater window playing Breaking Bad in sync with docked Party Chat",
+          title: "3. Watch frame-for-frame at full native quality",
+          html: "<strong>Press play and every screen locks together automatically.</strong> Pausing, seeking, or switching episodes syncs over <code>STARTTLS</code> Syncplay while your local SSD streams full 4K HDR video and audio directly to <strong>mpv</strong> — zero server bandwidth caps or compression."
+        },
+        {
+          img: "/images/epilod-party/reactions-full.webp",
+          alt: "Epilod Party live flying reactions over Game of Thrones synced playback",
+          title: "4. Chat, react & calibrate subtitles locally",
+          html: "<strong>Use Party Chat or keys 1–8 for flying reactions without touching anyone else's screen.</strong> Load your own local <code>.srt</code> or <code>.ass</code> subtitles (with <strong>Windows-1256 Arabic</strong> auto-decoding) and run speech-envelope <strong>Auto-Sync</strong> whenever your caption timing differs."
+        }
+      ];
+
+      const stepTabs = document.querySelectorAll(".step-tab");
+      const stepMediaBtn = document.getElementById("stepMediaBtn");
+      const stepPreviewImg = document.getElementById("stepPreviewImg");
+      const stepHeading = document.getElementById("stepHeading");
+      const stepBody = document.getElementById("stepBody");
+
+      function selectStep(idx) {
+        const s = STEPS[idx];
+        if (!s) return;
+        stepTabs.forEach(function (t, i) {
+          t.setAttribute("aria-selected", i === idx ? "true" : "false");
+        });
+        if (stepPreviewImg) {
+          stepPreviewImg.src = s.img;
+          stepPreviewImg.alt = s.alt;
+        }
+        if (stepMediaBtn) {
+          stepMediaBtn.setAttribute("data-lightbox-src", s.img);
+          stepMediaBtn.setAttribute("data-lightbox-alt", s.alt);
+        }
+        if (stepHeading) stepHeading.textContent = s.title;
+        if (stepBody) stepBody.innerHTML = s.html;
+      }
+
+      stepTabs.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          const idx = parseInt(btn.getAttribute("data-step"), 10);
+          if (!isNaN(idx)) selectStep(idx);
+        });
+      });
+
+      const navScrim = document.getElementById("navScrim");
+      const navResourcesDd = document.getElementById("navResourcesDd");
+      const navResourcesBtn = navResourcesDd ? navResourcesDd.querySelector(".nav-dd-trigger") : null;
+
+      function closeNavDd() {
+        if (!navResourcesDd || !navResourcesBtn) return;
+        navResourcesDd.classList.remove("is-open");
+        navResourcesBtn.setAttribute("aria-expanded", "false");
+        if (navScrim) navScrim.classList.remove("is-open");
+      }
+
+      if (navResourcesDd && navResourcesBtn) {
+        let hoverCloseTimer = null;
+        function openNavDd() {
+          window.clearTimeout(hoverCloseTimer);
+          navResourcesDd.classList.add("is-open");
+          navResourcesBtn.setAttribute("aria-expanded", "true");
+          if (navScrim) navScrim.classList.add("is-open");
+        }
+        navResourcesDd.addEventListener("mouseenter", openNavDd);
+        navResourcesDd.addEventListener("mouseleave", function () {
+          hoverCloseTimer = window.setTimeout(closeNavDd, 120);
+        });
+        navResourcesBtn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          if (navResourcesDd.classList.contains("is-open")) {
+            closeNavDd();
+          } else {
+            openNavDd();
+          }
+        });
+      }
+
+      document.addEventListener("click", closeNavDd);
+
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const mobileCloseBtn = document.getElementById("mobileCloseBtn");
+      const mobileDrawer = document.getElementById("mobileDrawer");
+
+      function setDrawer(open) {
+        if (!mobileDrawer || !mobileMenuBtn) return;
+        mobileDrawer.classList.toggle("is-open", open);
+        mobileDrawer.setAttribute("aria-hidden", open ? "false" : "true");
+        mobileMenuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+        document.body.style.overflow = open ? "hidden" : "";
+      }
+
+      if (mobileMenuBtn && mobileDrawer) {
+        mobileMenuBtn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          setDrawer(true);
+        });
+        if (mobileCloseBtn) {
+          mobileCloseBtn.addEventListener("click", function () {
+            setDrawer(false);
+          });
+        }
+        mobileDrawer.querySelectorAll("[data-close-drawer]").forEach(function (link) {
+          link.addEventListener("click", function () {
+            setDrawer(false);
+          });
+        });
+      }
+
+      document.querySelectorAll(".footer-accordion-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          const col = btn.closest(".footer-col");
+          const open = col.classList.toggle("is-open");
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+        });
+      });
+
+      const lightboxModal = document.getElementById("lightboxModal");
+      const lightboxImg = document.getElementById("lightboxImg");
+      const lightboxCloseBtn = document.getElementById("lightboxCloseBtn");
+
+      function openLightbox(src, alt) {
+        if (!src || !lightboxModal || !lightboxImg) return;
+        lightboxImg.src = src;
+        lightboxImg.alt = alt || "Epilod Party preview";
+        lightboxModal.setAttribute("data-open", "true");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeLightbox() {
+        if (!lightboxModal) return;
+        lightboxModal.setAttribute("data-open", "false");
+        document.body.style.overflow = "";
+      }
+
+      if (stepMediaBtn) {
+        stepMediaBtn.addEventListener("click", function () {
+          openLightbox(stepMediaBtn.getAttribute("data-lightbox-src"), stepMediaBtn.getAttribute("data-lightbox-alt"));
+        });
+        stepMediaBtn.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openLightbox(stepMediaBtn.getAttribute("data-lightbox-src"), stepMediaBtn.getAttribute("data-lightbox-alt"));
+          }
+        });
+      }
+
+      if (lightboxCloseBtn) lightboxCloseBtn.addEventListener("click", closeLightbox);
+      if (lightboxModal) {
+        lightboxModal.addEventListener("click", function (e) {
+          if (e.target === lightboxModal) closeLightbox();
+        });
+      }
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeLightbox();
+          setDrawer(false);
+          closeNavDd();
+        }
+      });
+
+      try {
+        const raw = localStorage.getItem(CACHE_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (parsed && Array.isArray(parsed.data) && parsed.data.length && Date.now() - parsed.ts < CACHE_TTL_MS) {
+            const latest = parsed.data[0];
+            if (latest.version) {
+              ["liveVersion", "footerVersionTag"].forEach(function (id) {
+                const el = document.getElementById(id);
+                if (el) el.textContent = latest.version;
+              });
+            }
+            if (latest.downloadUrl) {
+              ["heroDownloadBtn", "stepsDownloadBtn", "bannerDownloadBtn", "drawerDownloadBtn"].forEach(function (id) {
+                const el = document.getElementById(id);
+                if (el) el.href = latest.downloadUrl;
+              });
+            }
+          }
+        }
+      } catch (_) {}
+
+      fetch(RELEASES_API)
+        .then(function (r) {
+          return r.ok ? r.json() : null;
+        })
+        .then(function (releases) {
+          if (!Array.isArray(releases) || !releases.length) return;
+          const rel = releases.find(function (x) {
+            return x && !x.draft && Array.isArray(x.assets) && x.assets.length;
+          }) || releases[0];
+          const clean = String(rel.tag_name || "").trim().replace(/^v/i, "");
+          const version = clean ? "v" + clean : null;
+          const exe = (rel.assets || []).find(function (a) {
+            return a && typeof a.name === "string" && /\.exe$/i.test(a.name);
+          });
+          if (version) {
+            ["liveVersion", "footerVersionTag"].forEach(function (id) {
+              const el = document.getElementById(id);
+              if (el) el.textContent = version;
+            });
+          }
+          if (exe && exe.browser_download_url) {
+            ["heroDownloadBtn", "stepsDownloadBtn", "bannerDownloadBtn", "drawerDownloadBtn"].forEach(function (id) {
+              const el = document.getElementById(id);
+              if (el) el.href = exe.browser_download_url;
+            });
+          }
+        })
+        .catch(function () {});
+
+      const revealEls = Array.prototype.slice.call(document.querySelectorAll("[data-reveal]"));
+      const prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (revealEls.length && !prefersReducedMotion) {
+        document.documentElement.classList.add("has-reveal");
+        function checkReveals() {
+          const thresholdY = window.innerHeight * 0.96;
+          revealEls.forEach(function (el) {
+            if (el.classList.contains("is-revealed")) return;
+            const rect = el.getBoundingClientRect();
+            if (rect.top <= thresholdY) {
+              el.classList.add("is-revealed");
+            }
+          });
+        }
+        checkReveals();
+        if ("IntersectionObserver" in window) {
+          const io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting || entry.boundingClientRect.top <= window.innerHeight * 0.96) {
+                entry.target.classList.add("is-revealed");
+                io.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.05 });
+          revealEls.forEach(function (el) {
+            if (!el.classList.contains("is-revealed")) io.observe(el);
+          });
+        }
+        window.addEventListener("scroll", checkReveals, { passive: true });
+        window.addEventListener("hashchange", function () {
+          window.requestAnimationFrame(checkReveals);
+        });
+      } else {
+        revealEls.forEach(function (el) {
+          el.classList.add("is-revealed");
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
