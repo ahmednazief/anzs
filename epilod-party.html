@@ -508,7 +508,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 12px;
     }
 
     /* Primary Hero CTA: Discord's 48px squircle (12px radius) in Epilod Amethyst */
@@ -547,30 +546,6 @@
 
     .btn-primary-download:active {
       transform: translateY(1px);
-    }
-
-    .hero-meta-line {
-      font-size: 0.82rem;
-      font-weight: 450;
-      color: var(--subtle-white);
-      display: inline-flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-    }
-
-    .hero-guide-link {
-      margin-top: 4px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--amethyst-ice);
-      transition: color 0.18s ease, text-decoration 0.18s ease;
-    }
-
-    .hero-guide-link:hover {
-      color: var(--white);
-      text-decoration: underline;
     }
 
     /* Hero Product Stage */
@@ -1661,16 +1636,6 @@
               </svg>
               <span id="heroBtnLabel">Download for Windows</span>
             </a>
-            <div class="hero-meta-line num" aria-live="polite">
-              <span>Windows 10 &amp; 11 (x64)</span>
-              <span aria-hidden="true">·</span>
-              <span>Public Beta <span id="liveVersion">v0.1.3</span></span>
-              <span aria-hidden="true">·</span>
-              <span id="liveSize">39.9 MB</span>
-            </div>
-            <a href="/epilod-party/how-it-works/" class="hero-guide-link">
-              New here? See how local watch parties work →
-            </a>
           </div>
         </div>
 
@@ -2359,13 +2324,13 @@
         const latest = items[0];
 
         if (latest.version) {
-          ["liveVersion", "winDdVersion", "footerVersionTag"].forEach(function (id) {
+          ["winDdVersion", "footerVersionTag"].forEach(function (id) {
             const el = document.getElementById(id);
             if (el) el.textContent = latest.version;
           });
         }
         if (latest.sizeLabel) {
-          ["liveSize", "winDdSize"].forEach(function (id) {
+          ["winDdSize"].forEach(function (id) {
             const el = document.getElementById(id);
             if (el) el.textContent = latest.sizeLabel;
           });
