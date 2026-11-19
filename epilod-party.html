@@ -781,15 +781,18 @@
       flex-shrink: 0;
     }
 
-    /* Saturated Rounded Showcase Mats */
+    /* Saturated Rounded Showcase Mats (Concentric Radii: R_outer 40px - 22px pad = 18px inner) */
     .card-mat {
       position: relative;
       width: 100%;
       height: auto;
-      border-radius: 48px;
+      border-radius: 40px;
+      padding: 22px;
       overflow: hidden;
       cursor: zoom-in;
       display: flex;
+      align-items: center;
+      justify-content: center;
       transition: transform 0.35s ease;
     }
 
@@ -798,66 +801,45 @@
     }
 
     .card-mat img {
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
       transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     /* Card 1: Mint Mat (Episodes & Auto-Next) */
     .card-mat--mint {
       background-image: var(--mat-mint);
-      padding: 36px 28px;
-      align-items: center;
-      justify-content: center;
     }
 
     .card-mat--mint img {
-      width: 100%;
-      height: auto;
-      border-radius: 18px;
       box-shadow: 0 22px 54px rgba(0, 0, 0, 0.44);
     }
 
     /* Card 2: Epilod Amethyst Mat (6-Digit Watch Party Pass) */
     .card-mat--amethyst {
       background-image: var(--mat-amethyst);
-      padding: 36px 28px;
-      align-items: center;
-      justify-content: center;
     }
 
     .card-mat--amethyst img {
-      width: 100%;
-      height: auto;
-      border-radius: 20px;
       box-shadow: 0 22px 54px rgba(17, 7, 41, 0.45);
     }
 
     /* Card 3: Pink Mat (Live Reactions) */
     .card-mat--pink {
       background-image: var(--mat-pink);
-      padding: 36px 28px;
-      align-items: center;
-      justify-content: center;
     }
 
     .card-mat--pink img {
-      width: 100%;
-      height: auto;
-      border-radius: 18px;
       box-shadow: 0 22px 54px rgba(0, 0, 0, 0.42);
     }
 
     /* Card 4: Deep Amethyst Mat (Smoked-Amethyst Preferences) */
     .card-mat--amethyst-deep {
       background-image: var(--mat-amethyst-deep);
-      padding: 36px 28px;
-      align-items: center;
-      justify-content: center;
     }
 
     .card-mat--amethyst-deep img {
-      width: 100%;
-      height: auto;
-      border-radius: 18px;
       box-shadow: 0 22px 56px rgba(0, 0, 0, 0.48);
     }
 
@@ -1377,6 +1359,7 @@
         order: -1;
         height: auto;
         border-radius: 36px;
+        padding: 18px;
         width: 100%;
         max-width: 440px;
         min-width: 0;
@@ -1467,23 +1450,19 @@
 
       .card-mat {
         height: auto;
-        border-radius: 32px;
+        border-radius: 30px;
+        padding: 14px;
       }
 
-      .card-mat--mint {
-        padding: 24px 20px;
+      .card-mat img {
+        border-radius: 16px;
       }
 
-      .card-mat--amethyst {
-        padding: 24px 20px;
-      }
-
-      .card-mat--pink {
-        padding: 24px 20px;
-      }
-
+      .card-mat--mint,
+      .card-mat--amethyst,
+      .card-mat--pink,
       .card-mat--amethyst-deep {
-        padding: 24px 20px;
+        padding: 14px;
       }
 
       .download-banner {
