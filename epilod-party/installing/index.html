@@ -38,7 +38,7 @@
     href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112.5..125,700..900&family=Inter:opsz,wght@14..32,400..700&display=swap"
     rel="stylesheet"
   />
-  <link rel="preload" as="image" href="/images/epilod-party/install-step2-moreinfo.webp" />
+  <link rel="preload" as="image" href="/images/epilod-party/install-step1-open.webp" />
 
   <style>
     :root {
@@ -1297,16 +1297,16 @@
             <h2 class="heading-h2 step-rail-title">Install steps</h2>
             <div class="step-tabs" role="tablist" aria-label="Windows installation steps">
               <button type="button" class="step-tab" role="tab" aria-selected="true" data-step="0">
-                1. Click "More info" on the blue screen
+                1. Open Epilod.Party.Setup.exe (Downloads)
               </button>
               <button type="button" class="step-tab" role="tab" aria-selected="false" data-step="1">
-                2. Click "Run anyway" to launch setup
+                2. Click "More info" on the blue screen
               </button>
               <button type="button" class="step-tab" role="tab" aria-selected="false" data-step="2">
-                3. Click Install inside Epilod Setup
+                3. Click "Run anyway" to launch setup
               </button>
               <button type="button" class="step-tab" role="tab" aria-selected="false" data-step="3">
-                4. Open from Downloads (Ctrl + J)
+                4. Click Install inside Epilod Setup
               </button>
             </div>
 
@@ -1321,23 +1321,23 @@
               class="step-media-wrap"
               role="button"
               tabindex="0"
-              data-lightbox-src="/images/epilod-party/install-step2-moreinfo.webp"
-              data-lightbox-alt="Windows Defender SmartScreen popup showing More info underlined"
+              data-lightbox-src="/images/epilod-party/install-step1-open.webp"
+              data-lightbox-alt="Windows 11 Downloads folder showing Epilod.Party.Setup.exe selected"
               aria-label="Inspect full-size screenshot"
             >
               <img
                 id="stepPreviewImg"
-                src="/images/epilod-party/install-step2-moreinfo.webp"
-                alt="Windows Defender SmartScreen popup showing More info underlined"
+                src="/images/epilod-party/install-step1-open.webp"
+                alt="Windows 11 Downloads folder showing Epilod.Party.Setup.exe selected"
                 draggable="false"
               />
             </div>
 
             <h3 id="stepHeading" class="step-detail-title">
-              1. On the blue "Windows protected your PC" alert, click "More info"
+              1. Open Epilod.Party.Setup.exe from Downloads (Ctrl + J)
             </h3>
             <p id="stepBody" class="step-detail-copy">
-              <strong>Do not click Don't run.</strong> Windows shows this blue SmartScreen dialog for newly released open-source apps that do not pay for an EV signing certificate yet. Look right below the description on the left and click the underlined <strong>More info</strong> link.
+              <strong>Press Ctrl + J in your browser</strong> or open <code>This PC &rsaquo; Downloads</code> in Windows Explorer and double-click <code>Epilod.Party.Setup.exe</code> to start the installer.
             </p>
           </div>
         </div>
@@ -1602,28 +1602,28 @@
 
       const STEPS = [
         {
+          img: "/images/epilod-party/install-step1-open.webp",
+          alt: "Windows 11 Downloads folder showing Epilod.Party.Setup.exe selected",
+          title: "1. Open Epilod.Party.Setup.exe from Downloads (Ctrl + J)",
+          html: "<strong>Press Ctrl + J in your browser</strong> or open <code>This PC &rsaquo; Downloads</code> in Windows Explorer and double-click <code>Epilod.Party.Setup.exe</code> to start the installer."
+        },
+        {
           img: "/images/epilod-party/install-step2-moreinfo.webp",
           alt: "Windows Defender SmartScreen popup showing More info underlined",
-          title: "1. On the blue \"Windows protected your PC\" alert, click \"More info\"",
+          title: "2. On the blue \"Windows protected your PC\" alert, click \"More info\"",
           html: "<strong>Do not click Don't run.</strong> Windows shows this blue SmartScreen dialog for newly released open-source apps that do not pay for an EV signing certificate yet. Look right below the description on the left and click the underlined <strong>More info</strong> link."
         },
         {
           img: "/images/epilod-party/install-step3-runanyway.webp",
           alt: "Expanded Windows SmartScreen dialog with Run anyway button highlighted",
-          title: "2. Click \"Run anyway\" once the installer name appears",
+          title: "3. Click \"Run anyway\" once the installer name appears",
           html: "<strong>After clicking More info</strong>, Windows displays <code>App: Epilod.Party.Setup.exe</code> and reveals a second button at the bottom right. Click <strong>Run anyway</strong> to open Epilod Party Setup."
         },
         {
           img: "/images/epilod-party/install-step4-setup.webp",
           alt: "Epilod Party Setup installer window showing Install button and Customize option",
-          title: "3. Click Install inside Epilod Party Setup",
+          title: "4. Click Install inside Epilod Party Setup",
           html: "<strong>Everything is bundled automatically.</strong> Click <strong>Install</strong> (or open <strong>Customize</strong> at the top left for folder or shortcut options). Setup unpacks <strong>mpv</strong> and <strong>FFmpeg</strong> in seconds and launches Epilod Party when finished."
-        },
-        {
-          img: "/images/epilod-party/install-step1-open.webp",
-          alt: "Windows 11 Downloads folder showing Epilod.Party.Setup.exe selected",
-          title: "4. Can't find the file? Open Downloads (Ctrl + J)",
-          html: "<strong>Press Ctrl + J in your browser</strong> or open <code>This PC &rsaquo; Downloads</code> in Windows Explorer and double-click <code>Epilod.Party.Setup.exe</code> to launch the installer."
         }
       ];
 
