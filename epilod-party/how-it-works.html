@@ -1159,6 +1159,10 @@
                     <span>Download Page</span>
                     <span aria-hidden="true">←</span>
                   </a>
+                  <a href="/epilod-party/installing/" class="nav-dd-item">
+                    <span>Install &amp; Blue Screen Guide</span>
+                    <span aria-hidden="true">→</span>
+                  </a>
                   <a
                     href="https://github.com/ahmednazief/epilod-party"
                     target="_blank"
@@ -1739,6 +1743,22 @@
           const open = col.classList.toggle("is-open");
           btn.setAttribute("aria-expanded", open ? "true" : "false");
         });
+      });
+
+      document.querySelectorAll("a[download]").forEach(function (link) {
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+      });
+
+      document.addEventListener("click", function (e) {
+        if (e.defaultPrevented || e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+        const link = e.target && e.target.closest ? e.target.closest("a[download]") : null;
+        if (!link) return;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        window.setTimeout(function () {
+          window.location.assign("/epilod-party/installing/");
+        }, 250);
       });
 
       const lightboxModal = document.getElementById("lightboxModal");

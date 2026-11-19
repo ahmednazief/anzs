@@ -46,7 +46,7 @@
     href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112.5..125,700..900&family=Inter:opsz,wght@14..32,400..700&display=swap"
     rel="stylesheet"
   />
-  <link rel="preload" as="image" href="/images/epilod-party/watch-party.webp" />
+  <link rel="preload" as="image" href="/images/epilod-party/hero-theater.webp" />
 
   <style>
     :root {
@@ -548,7 +548,7 @@
       transform: translateY(1px);
     }
 
-    /* Hero Product Stage */
+    /* Hero Product Stage (Desktop Theater + Overlapping Voice & Party Chat Panels) */
     .hero-stage {
       position: relative;
       max-width: 960px;
@@ -556,6 +556,8 @@
     }
 
     .hero-main-shot {
+      position: relative;
+      z-index: 1;
       width: 100%;
       border-radius: 18px;
       overflow: hidden;
@@ -577,6 +579,51 @@
     .hero-main-shot img {
       width: 100%;
       height: auto;
+    }
+
+    .hero-float-panels {
+      display: contents;
+    }
+
+    .hero-float-panel {
+      position: absolute;
+      bottom: -22px;
+      z-index: 4;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #0e0d15;
+      box-shadow:
+        0 26px 68px rgba(0, 0, 0, 0.88),
+        0 8px 24px rgba(0, 0, 0, 0.56),
+        0 0 0 1px rgba(255, 255, 255, 0.14);
+      cursor: zoom-in;
+      transition:
+        transform 0.36s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.36s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hero-float-panel:hover {
+      transform: translateY(-4px);
+      box-shadow:
+        0 34px 82px rgba(0, 0, 0, 0.92),
+        0 10px 28px rgba(0, 0, 0, 0.62),
+        0 0 0 1px rgba(196, 181, 253, 0.3);
+    }
+
+    .hero-float-panel img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .hero-float-panel--voice {
+      left: -140px;
+      width: 244px;
+    }
+
+    .hero-float-panel--chat {
+      right: -140px;
+      width: 240px;
     }
 
     /* =====================================================================
@@ -1249,7 +1296,31 @@
     /* =====================================================================
        Responsive Breakpoints (Discord 991px Tablet / Mobile Parity)
        ===================================================================== */
+    @media (max-width: 1280px) {
+      .hero-float-panel--voice {
+        left: -92px;
+        width: 224px;
+      }
+
+      .hero-float-panel--chat {
+        right: -92px;
+        width: 220px;
+      }
+    }
+
     @media (max-width: 1120px) {
+      .hero-float-panel--voice {
+        left: -48px;
+        width: 204px;
+        bottom: -16px;
+      }
+
+      .hero-float-panel--chat {
+        right: -48px;
+        width: 200px;
+        bottom: -16px;
+      }
+
       .feature-row,
       .feature-row--reverse {
         gap: 48px;
@@ -1286,12 +1357,18 @@
         padding: 112px 24px 28px;
       }
 
-      .hero-float-badge {
-        display: none;
+      .hero-float-panel--voice {
+        left: -18px;
+        width: 176px;
+        bottom: -14px;
+        border-radius: 14px;
       }
 
-      .hero-companion-card {
-        display: none;
+      .hero-float-panel--chat {
+        right: -18px;
+        width: 172px;
+        bottom: -14px;
+        border-radius: 14px;
       }
 
       .download-section {
@@ -1358,6 +1435,36 @@
 
       .heading-h2 {
         font-size: clamp(1.75rem, 8vw, 2.3rem);
+      }
+
+      .hero-stage {
+        margin-top: 38px;
+        margin-bottom: 36px;
+      }
+
+      .hero-main-shot {
+        border-radius: 14px;
+      }
+
+      .hero-float-panel {
+        bottom: -28px;
+        border-radius: 10px;
+        box-shadow:
+          0 18px 42px rgba(0, 0, 0, 0.9),
+          0 6px 16px rgba(0, 0, 0, 0.6),
+          0 0 0 1px rgba(255, 255, 255, 0.16);
+      }
+
+      .hero-float-panel--voice {
+        left: -8px;
+        width: 28.5%;
+        max-width: 152px;
+      }
+
+      .hero-float-panel--chat {
+        right: -8px;
+        width: 28%;
+        max-width: 150px;
       }
 
       .card-mat {
@@ -1506,6 +1613,10 @@
                     <span>How It Works</span>
                     <span aria-hidden="true">→</span>
                   </a>
+                  <a href="/epilod-party/installing/" class="nav-dd-item">
+                    <span>Install &amp; Blue Screen Guide</span>
+                    <span aria-hidden="true">→</span>
+                  </a>
                   <a
                     href="https://github.com/ahmednazief/epilod-party"
                     target="_blank"
@@ -1644,17 +1755,53 @@
             class="hero-main-shot"
             role="button"
             tabindex="0"
-            data-lightbox-src="/images/epilod-party/watch-party.webp"
-            data-lightbox-alt="Epilod Party theater window playing Breaking Bad in sync with docked Party Chat"
-            aria-label="Inspect full-size Watch Party screenshot"
+            data-lightbox-src="/images/epilod-party/hero-theater.webp"
+            data-lightbox-alt="Epilod Party desktop theater playing Breaking Bad S05E05 in sync"
+            aria-label="Inspect full-size Watch Party theater screenshot"
           >
             <img
-              src="/images/epilod-party/watch-party.webp"
-              alt="Epilod Party theater window playing Breaking Bad in sync with docked Party Chat"
-              width="2040"
-              height="1230"
+              src="/images/epilod-party/hero-theater.webp"
+              alt="Epilod Party desktop theater playing Breaking Bad S05E05 in sync"
+              width="1920"
+              height="1155"
               draggable="false"
             />
+          </div>
+
+          <div class="hero-float-panels">
+            <div
+              class="hero-float-panel hero-float-panel--voice"
+              role="button"
+              tabindex="0"
+              data-lightbox-src="/images/epilod-party/hero-voice-panel.webp"
+              data-lightbox-alt="Epilod Party live room voice chat with speaking indicators, mic mute, and deafen controls"
+              aria-label="Inspect Voice Chat panel screenshot"
+            >
+              <img
+                src="/images/epilod-party/hero-voice-panel.webp"
+                alt="Epilod Party live room voice chat with Maya speaking, mic mute, and deafen controls"
+                width="704"
+                height="906"
+                draggable="false"
+              />
+            </div>
+
+            <div
+              class="hero-float-panel hero-float-panel--chat"
+              role="button"
+              tabindex="0"
+              data-lightbox-src="/images/epilod-party/hero-chat-panel.webp"
+              data-lightbox-alt="Epilod Party synced room Party Chat panel with replies and live typing indicators"
+              aria-label="Inspect Party Chat panel screenshot"
+            >
+              <img
+                src="/images/epilod-party/hero-chat-panel.webp"
+                alt="Epilod Party synced room Party Chat panel with live messages and typing status"
+                width="640"
+                height="920"
+                draggable="false"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -2021,6 +2168,7 @@
               Release Notes
             </a>
             <a href="#builds" class="footer-link">Beta Archive</a>
+            <a href="/epilod-party/installing/" class="footer-link">SmartScreen Guide</a>
           </div>
         </div>
 
@@ -2278,7 +2426,7 @@
       });
 
       /* -------------------------------------------------------------------
-         Hero Download Click Feedback
+         Hero Download Feedback + Redirect to Install / SmartScreen Guide
          ------------------------------------------------------------------- */
       const heroDownloadBtn = document.getElementById("heroDownloadBtn");
       const heroBtnLabel = document.getElementById("heroBtnLabel");
@@ -2292,6 +2440,22 @@
           }, 2600);
         });
       }
+
+      document.querySelectorAll("a[download]").forEach(function (link) {
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+      });
+
+      document.addEventListener("click", function (e) {
+        if (e.defaultPrevented || e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+        const link = e.target && e.target.closest ? e.target.closest("a[download]") : null;
+        if (!link) return;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        window.setTimeout(function () {
+          window.location.assign("/epilod-party/installing/");
+        }, 250);
+      });
 
       /* -------------------------------------------------------------------
          Live GitHub Releases Sync (Updates CTA + Release Build Dropdown)
@@ -2358,6 +2522,8 @@
             const a = document.createElement("a");
             a.className = "dropdown-link-dark";
             a.href = rel.downloadUrl;
+            a.target = "_blank";
+            a.rel = "noopener noreferrer";
             a.setAttribute("download", rel.assetName || "Epilod.Party.Setup.exe");
 
             const title = document.createElement("span");
